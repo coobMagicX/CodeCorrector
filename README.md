@@ -23,22 +23,26 @@ The evaluation on a subset of the widely-used Defects4J v1.2 and v2.0 datasets s
 ## Project Structure
 ```
 .
-├── code: code for CodeCorrector
-│   ├── check_ast.py
-│   ├── check_intent.py
-│   ├── check_testcase.py
-│   ├── check_context.py
-│   └── repair.py
-│   └── utils.py
-├── README.md
-├── info: Data and results used in CodeCorrector.
-    ├── structureInfo
-    ├── sourceInfo
-    ├── relatedInfo
-    ├── failedTestInfo
-    ├── intentInfo
-    ├── contextInfo
-    └── results
+├── code/                     # Main code and data used for CodeCorrector
+│   ├── repair_data/           # Directory containing various information used for code repair
+│   │   ├── StructureInfo/     
+│   │   ├── SourceCode/        
+│   │   ├── RelatedMethods/       
+│   │   ├── FailTestCase/
+│   │   ├── Defects4j/         # Referenced from [Automated Program Repair in the Era of Large Pre-trained Language Models]
+│   │   ├── TestCaseIntent/       
+│   │   ├── ChosenMethods/
+│   │   └── Generation/    
+│   ├── check_ast.py          
+│   ├── check_intent.py       
+│   ├── check_testcase.py      
+│   ├── check_method.py       
+│   ├── repair.py              # Main script for performing code repairs
+│   └── utils.py               # Utility functions used across the project
+├── README.md                  # Project documentation
+├── result/                    # Some manual review results
+│   ├── 1.2result/             # Results for version 1.2
+│   └── 2.0result/             # Results for version 2.0
 ```
 
 ## Result
