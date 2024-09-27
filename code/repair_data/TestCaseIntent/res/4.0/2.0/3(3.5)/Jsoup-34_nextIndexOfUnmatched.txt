@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to check the behavior of the `nextIndexOf` method when searching for a substring that is not present in the input sequence.
+
+Repair strategy: The repair strategy for this code is to handle the case when the full sequence is not found in the input by returning -1.

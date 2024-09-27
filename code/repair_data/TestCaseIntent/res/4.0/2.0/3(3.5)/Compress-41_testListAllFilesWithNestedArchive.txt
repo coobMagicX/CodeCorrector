@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the list of files obtained from an archive with a nested archive is correct.
+
+Repair strategy: The repair strategy should focus on fixing the issue with the expectedExceptions list size. The test case is expecting only 1 exception to be thrown, but it is failing. The repair direction could be to investigate why more than 1 exception is being thrown and modify the code to throw only the expected exception.

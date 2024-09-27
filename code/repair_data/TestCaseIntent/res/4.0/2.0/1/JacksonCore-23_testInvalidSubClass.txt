@@ -1,0 +1,5 @@
+Intent:
+The intent of the test case `testInvalidSubClass` is to verify that the method `createInstance` should only be able to create instances of `DefaultPrettyPrinter` or its authorized subclasses that properly override necessary methods. The test expects an `IllegalStateException` if an unauthorized or improperly overriding subclass like `MyPrettyPrinter` attempts to create an instance using this method.
+
+Repair strategy:
+Adjust the implementation of the `createInstance` method in the `DefaultPrettyPrinter` class to include a validation check that ensures the type of the current instance (i.e., `this`) is permitted to create a new instance. Specifically, implement a mechanism to verify whether the subclass has overridden the required methods or configurations appropriately. If the verification fails, throw an `IllegalStateException`. This would prevent unauthorized subclasses from incorrectly extending functionality without proper implementation, adhering to intended use and design constraints.

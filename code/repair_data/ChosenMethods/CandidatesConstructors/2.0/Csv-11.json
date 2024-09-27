@@ -1,0 +1,1 @@
+{"CSVParser": "    public CSVParser(final Reader reader, final CSVFormat format) throws IOException {\n        Assertions.notNull(reader, \"reader\");\n        Assertions.notNull(format, \"format\");\n\n        this.format = format;\n        this.lexer = new Lexer(format, new ExtendedBufferedReader(reader));\n        this.headerMap = this.initializeHeader();\n    }"}

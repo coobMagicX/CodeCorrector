@@ -1,0 +1,16 @@
+Based on the test intent and repair logic, the method that needs to be added in the context is 'readLine'. 
+
+The repaired code would look like this:
+
+public String readLine() throws IOException {
+    StringBuilder sb = new StringBuilder();
+    int current;
+    while ((current = read()) != -1 && current != '\n') {
+        sb.append((char) current);
+    }
+    if (current == '\n') {
+        lineCounter++;
+    }
+    lastChar = current;
+    return sb.toString();
+}

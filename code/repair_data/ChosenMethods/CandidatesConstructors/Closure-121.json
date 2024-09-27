@@ -1,0 +1,1 @@
+{"InlineVariables": "  InlineVariables(\n      AbstractCompiler compiler,\n      Mode mode,\n      boolean inlineAllStrings) {\n    this.compiler = compiler;\n    this.mode = mode;\n    this.inlineAllStrings = inlineAllStrings;\n  }", "AliasCandidate": "    AliasCandidate(Var alias, ReferenceCollection refInfo) {\n      this.alias = alias;\n      this.refInfo = refInfo;\n    }"}

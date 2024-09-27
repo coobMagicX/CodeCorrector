@@ -1,0 +1,2 @@
+1-equals
+2-hashCode

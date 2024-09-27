@@ -1,0 +1,13 @@
+private void handleBlockComment(Comment comment) {
+    String commentValue = comment.getValue();
+    // Normalize newlines and remove leading asterisks which might be part of the block comment formatting
+    String normalizedComment = commentValue.replace("\n", "").replace("*", "").trim();
+    
+    // Check for the presence of JSDoc-like annotations starting with '@'
+    if (normalizedComment.contains("@")) {
+        errorReporter.warning(
+            SUSPICIOUS_COMMENT_WARNING,
+            sourceName,
+            comment.getLineno(), "", 0);
+    }
+}

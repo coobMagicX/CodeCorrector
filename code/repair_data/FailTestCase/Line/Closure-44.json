@@ -1,0 +1,1 @@
+{"testIssue620": "    assertPrint(\"alert(/ / / / /);\", \"alert(/ // / /)\");\n"}

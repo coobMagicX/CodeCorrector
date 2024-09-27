@@ -1,0 +1,1 @@
+{"SimplexSolver": "    public SimplexSolver(final double epsilon, final int maxUlps) {\n        this.epsilon = epsilon;\n        this.maxUlps = maxUlps;\n    }"}

@@ -1,0 +1,1 @@
+{"testHWRuleEx1": "        Assert.assertEquals(\"Y330\", this.getStringEncoder().encode(\"yhwdyt\"));\n"}

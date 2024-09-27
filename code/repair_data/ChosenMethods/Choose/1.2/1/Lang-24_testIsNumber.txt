@@ -1,0 +1,3 @@
+To repair the source code based on the intent of the test, you should select the following method from the candidate methods:
+
+1-isNumber

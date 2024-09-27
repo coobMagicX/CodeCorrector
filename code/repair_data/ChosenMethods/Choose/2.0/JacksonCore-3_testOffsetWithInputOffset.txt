@@ -1,0 +1,27 @@
+Based on the test intent and repair strategy, the method that needs to be added to the context is:
+
+1-_getByteOffset
+
+Updated source code:
+
+```
+public UTF8StreamJsonParser(IOContext ctxt, int features, InputStream in,
+        ObjectCodec codec, BytesToNameCanonicalizer sym,
+        byte[] inputBuffer, int start, int end,
+        boolean bufferRecyclable)
+{
+    super(ctxt, features);
+    _inputStream = in;
+    _objectCodec = codec;
+    _symbols = sym;
+    _inputBuffer = inputBuffer;
+    _inputPtr = start;
+    _inputEnd = end;
+    // If we have offset, need to omit that from byte offset, so:
+    _bufferRecyclable = bufferRecyclable;
+}
+
+private int _getByteOffset() {
+  // logic to calculate byte offset based on input offset
+}
+```

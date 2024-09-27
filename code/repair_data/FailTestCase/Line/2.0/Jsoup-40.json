@@ -1,0 +1,1 @@
+{"constructorValidationOkWithBlankName": "        DocumentType fail = new DocumentType(\"\",\"\", \"\", \"\");\n", "handlesInvalidDoctypes": "        Document doc = Jsoup.parse(\"<!DOCTYPE>\");\n"}

@@ -1,0 +1,7 @@
+To fix the issue related to minute rounding in the `modify` method, you should adjust the logic for handling minute values and rounding operations. Specifically, you need to ensure that the minutes are rounded up correctly when needed.
+
+Based on the context and the existing candidate methods, the method you need to use to address the minute rounding issue is:
+
+1-addMinutes
+
+Please incorporate the `addMinutes` method into the logic of the `modify` method to correctly handle minute rounding based on the specified conditions.

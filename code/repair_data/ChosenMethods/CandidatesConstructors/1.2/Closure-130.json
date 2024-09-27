@@ -1,0 +1,1 @@
+{"CollapseProperties": "  CollapseProperties(AbstractCompiler compiler,\n      boolean collapsePropertiesOnExternTypes, boolean inlineAliases) {\n    this.compiler = compiler;\n    this.collapsePropertiesOnExternTypes = collapsePropertiesOnExternTypes;\n    this.inlineAliases = inlineAliases;\n  }"}

@@ -1,0 +1,1 @@
+{"UnionType": "  UnionType(JSTypeRegistry registry, Set<JSType> alternates) {\n    super(registry);\n    this.alternates = alternates;\n  }"}

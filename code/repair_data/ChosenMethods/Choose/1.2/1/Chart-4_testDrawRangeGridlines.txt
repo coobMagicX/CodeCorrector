@@ -1,0 +1,4 @@
+To repair the source code based on the intent of the test, you need to provide a valid renderer to the plot before attempting to draw the chart.
+
+In this context, the method needed is:
+1-`setRenderer`

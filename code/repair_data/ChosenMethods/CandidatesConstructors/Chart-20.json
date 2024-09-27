@@ -1,0 +1,1 @@
+{"ValueMarker": "    public ValueMarker(double value, Paint paint, Stroke stroke, \n                       Paint outlinePaint, Stroke outlineStroke, float alpha) {\n        super(paint, stroke, paint, stroke, alpha);\n        this.value = value;\n    }"}

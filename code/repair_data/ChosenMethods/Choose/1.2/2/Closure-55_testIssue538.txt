@@ -1,0 +1,3 @@
+Based on the context provided, the method needed to repair the source code in the given context is:
+
+1-`isReduceableFunctionExpression`

@@ -1,0 +1,1 @@
+{"ProperFractionFormat": "    public ProperFractionFormat(NumberFormat wholeFormat,\n            NumberFormat numeratorFormat,\n            NumberFormat denominatorFormat)\n    {\n        super(numeratorFormat, denominatorFormat);\n        setWholeFormat(wholeFormat);\n    }"}

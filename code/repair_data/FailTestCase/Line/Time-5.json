@@ -1,0 +1,1 @@
+{"testNormalizedStandard_periodType_months1": "        Period result = test.normalizedStandard(PeriodType.months());\n", "testNormalizedStandard_periodType_months2": "        Period result = test.normalizedStandard(PeriodType.months());\n", "testNormalizedStandard_periodType_monthsWeeks": "        Period result = test.normalizedStandard(type);\n"}

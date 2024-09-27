@@ -1,0 +1,3 @@
+Intent: The intent of the test cases is to verify that the `getCharsetFromContentType` method correctly extracts and returns the charset value from the given content type string.
+
+Repair strategy: The repair strategy should focus on fixing the regular expression pattern used to extract the charset value from the content type string.

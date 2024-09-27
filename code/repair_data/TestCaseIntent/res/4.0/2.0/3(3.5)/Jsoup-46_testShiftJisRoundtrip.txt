@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to ensure that the output of the code does not contain any question marks.
+
+Repair strategy: The code should be modified to properly handle characters that cannot be encoded in the specified charset. This can be done by checking if the encoder can encode the character and appending it to the output if possible, or otherwise using the Unicode escape sequence.

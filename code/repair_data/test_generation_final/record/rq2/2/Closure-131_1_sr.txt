@@ -1,0 +1,24 @@
+public static boolean isJSIdentifier(String s) {
+  int length = s.length();
+
+  if (length == 0 ||
+      !isJSIdentifierPart(s.charAt(0))) {
+    return false;
+  }
+
+  for (int i = 1; i < length; i++) {
+    if (
+        !isJSIdentifierPart(s.charAt(i))) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+public static boolean isJSIdentifierPart(char c) {
+  return Character.isLetter(c) ||
+         Character.isDigit(c) ||
+         c == '_' ||
+         c == '$';
+}

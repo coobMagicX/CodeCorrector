@@ -1,0 +1,1 @@
+{"testLeapYearRulesConstruction": "        DateMidnight dt = new DateMidnight(1500, 2, 29, GJChronology.getInstanceUTC());\n"}

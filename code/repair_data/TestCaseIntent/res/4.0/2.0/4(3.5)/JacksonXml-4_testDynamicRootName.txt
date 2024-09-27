@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to verify that the root name is correctly applied when serializing XML.
+
+Repair strategy: The repair strategy should involve making sure that the root name is correctly applied when serializing XML, even when the value is null.

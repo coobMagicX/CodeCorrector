@@ -1,0 +1,23 @@
+Intent: The purpose of the source code is to update the indices of minimum and maximum start, middle, and end time of the TimePeriod objects in the TimePeriodValues collection. The failing test case is meant to test if the getMaxMiddleIndex() method correctly returns the index of the TimePeriod object with the maximum middle time. 
+
+Fix strategy: The error seems to be in the updateBounds() method where it is incorrectly calculating maxMiddle. In the maxMiddleIndex if branch, it is using minMiddleIndex instead of maxMiddleIndex to calculate maxMiddle, so it is not correctly identifying the maximum middle time index. 
+
+Correct lines should be: 
+
+```java
+if (this.maxMiddleIndex >= 0) {
+    long s = getDataItem(this.maxMiddleIndex).getPeriod().getStart()
+        .getTime();
+    long e = getDataItem(this.maxMiddleIndex).getPeriod().getEnd()
+        .getTime();
+    long maxMiddle = s + (e - s) / 2;
+    if (middle > maxMiddle) {
+        this.maxMiddleIndex = index;           
+    }
+}
+else {
+    this.maxMiddleIndex = index;
+}
+```
+
+By replacing minMiddleIndex with maxMiddleIndex, the maximum middle time index will be correctly identified and the test case should pass.

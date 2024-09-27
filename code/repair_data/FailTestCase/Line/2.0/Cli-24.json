@@ -1,0 +1,1 @@
+{"testLongLineChunkingIndentIgnored": "        formatter.printHelp(new PrintWriter(sw), 22, this.getClass().getName(), \"Header\", options, 0, 5, \"Footer\");\n"}

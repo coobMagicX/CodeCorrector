@@ -1,0 +1,1 @@
+{"testNumberAsStringDeserialization": "    Number value = gson.fromJson(\"\\\"18\\\"\", Number.class);\n"}

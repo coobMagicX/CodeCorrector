@@ -1,0 +1,7 @@
+Intent: The purpose of the source code is to determine if a function can be directly inlined into a call site. It checks certain conditions such as if the function is directly callable, if there are any mutable arguments used more than once, and if there are any side-effects in the call arguments.
+
+Fix strategy: The failed test case indicates that the function is not correctly handling situations where a function modifies a global state (modifiyX()) and then uses a parameter (a). The source code should be revised to account for these situations. The condition checking whether the arguments of the function may affect mutable state and are used more than once may need to be adjusted. 
+
+It might be beneficial to add additional checks for global state modifications within the function being inlined. This can be done by examining the function body for any calls that could potentially modify a global state. If such calls are found, the function should return CanInlineResult.NO. 
+
+Also, the test case name suggests that there may be an issue with handling of issue 1101a, which should be investigated to fully understand the nature of the problem and ensure the fix covers that scenario.

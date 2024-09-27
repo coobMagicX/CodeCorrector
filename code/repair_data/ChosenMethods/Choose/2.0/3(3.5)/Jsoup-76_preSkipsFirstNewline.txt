@@ -1,0 +1,1 @@
+The method that needs to be added to the context is `private boolean anyOtherEndTag(Token.EndTag endTag, HtmlTreeBuilder tb)`.

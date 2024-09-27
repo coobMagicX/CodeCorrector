@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to test the method writeBits() with 7 files, where some files are not empty.
+
+Repair strategy: The repair strategy for this failing test case would be to investigate and fix the issue with the writeBits() method that is causing it to fail.

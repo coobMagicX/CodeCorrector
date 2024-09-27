@@ -1,0 +1,1 @@
+{"listener": "        verify(invocationListener).reportInvocation(any(MethodInvocationReport.class));\n"}

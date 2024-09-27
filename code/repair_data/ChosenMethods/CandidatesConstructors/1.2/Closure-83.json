@@ -1,0 +1,1 @@
+{"BooleanOptionHandler": "      public BooleanOptionHandler(\n          CmdLineParser parser, OptionDef option,\n          Setter<? super Boolean> setter) {\n        super(parser, option, setter);\n      }", "CommandLineRunner": "  protected CommandLineRunner(String[] args, PrintStream out, PrintStream err) {\n    super(out, err);\n    initConfigFromFlags(args, err);\n  }"}

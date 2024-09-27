@@ -1,0 +1,1 @@
+{"Dfp": "    protected Dfp(final DfpField field, final byte sign, final byte nans) {\n        this.field = field;\n        this.mant    = new int[field.getRadixDigits()];\n        this.sign    = sign;\n        this.exp     = 0;\n        this.nans    = nans;\n    }"}

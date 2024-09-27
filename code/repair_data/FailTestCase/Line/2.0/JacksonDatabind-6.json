@@ -1,0 +1,1 @@
+{"testISO8601MissingSeconds": "        inputDate = MAPPER.readValue(quote(inputStr), java.util.Date.class);\n", "testISO8601PartialMilliseconds": "        inputDate = MAPPER.readValue(quote(inputStr), java.util.Date.class);\n"}

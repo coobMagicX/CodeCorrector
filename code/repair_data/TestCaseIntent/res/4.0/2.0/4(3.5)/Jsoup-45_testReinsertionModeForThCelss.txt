@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that after parsing the HTML string, the body element contains only one child element.
+
+Repair strategy: The repair strategy should focus on fixing the logic in the `resetInsertionMode()` method. The current implementation does not handle the case when the parent element of a table is a th element. This results in incorrect insertion mode transitions and can lead to incorrect parsing of the HTML structure. The repair direction should be to update the logic to handle the th element properly and transition to the correct insertion mode accordingly.

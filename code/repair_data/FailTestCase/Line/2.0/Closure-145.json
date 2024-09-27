@@ -1,0 +1,1 @@
+{"testFunctionSafariCompatiblity": "    assertPrint(\"if(e1)A:function goo(){return true}\",\n", "testDoLoopIECompatiblity": "    assertPrint(\"if(x)A:do{foo()}while(y);\",\n"}

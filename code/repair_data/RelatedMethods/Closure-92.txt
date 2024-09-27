@@ -1,0 +1,1 @@
+['getExportedVariableNames', 'process', 'visit', 'getEnclosingDeclNameNode', 'processSetCssNameMapping', 'updateMinimumModule', 'replace', 'createDeclarationNode', 'makeVarDeclNode', 'createNamespaceLiteral', 'makeAssignmentExprNode', 'isNamespacePlaceholder']

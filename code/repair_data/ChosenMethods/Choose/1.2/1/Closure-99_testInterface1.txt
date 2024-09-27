@@ -1,0 +1,3 @@
+Based on the context provided and the purpose of the `testInterface1` test case, the method needed to be included in the source code is:
+
+1-`getFunctionJsDocInfo`

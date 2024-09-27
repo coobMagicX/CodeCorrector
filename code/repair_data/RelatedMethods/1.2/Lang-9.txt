@@ -1,0 +1,1 @@
+['init', 'getPattern', 'getTimeZone', 'getLocale', 'getParsePattern', 'equals', 'toString', 'parse', 'escapeRegex', 'getDisplayNames', 'toArray', 'createKeyValues', 'count', 'copy', 'adjustYear', 'getFieldWidth', 'getStrategy', 'addRegex', 'setCalendar', 'modify']

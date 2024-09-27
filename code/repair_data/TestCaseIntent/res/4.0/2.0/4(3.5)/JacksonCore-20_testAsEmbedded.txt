@@ -1,0 +1,3 @@
+Intent: The intent and purpose of the failed test cases is to test the behavior of the writeEmbeddedObject method when passing a null object and an illegal unknown object.
+
+Repair strategy: The repair strategy for the writeEmbeddedObject method is to handle the cases of writing a null object and an illegal unknown object correctly. The method should not throw a JsonGenerationException and should write "null" for a null object. For an illegal unknown object, it should throw an exception with a specific message indicating the lack of support.

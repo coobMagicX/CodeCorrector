@@ -1,0 +1,12 @@
+To repair the source code based on the intent of the test, the method that needs to be added in the context is:
+
+1- `classNames`
+
+Repaired Source code:
+```
+public Element clone() {
+    Element clone = (Element) super.clone();
+    clone.classNames();
+    return clone;
+}
+```

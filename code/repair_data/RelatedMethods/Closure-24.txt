@@ -1,0 +1,1 @@
+['process', 'hotSwapScript', 'getAliasDefinitionsInOrder', 'getAliasUsages', 'getScopeCalls', 'isCallToScopeMethod', 'enterScope', 'exitScope', 'shouldTraverse', 'getSourceRegion', 'report', 'findAliases', 'validateScopeCall', 'visit', 'fixTypeNode']

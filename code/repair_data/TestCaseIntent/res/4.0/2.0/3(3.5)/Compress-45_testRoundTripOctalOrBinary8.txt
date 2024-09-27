@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to test the round-trip of octal or binary conversion for the value 8.
+
+Repair strategy: The repair strategy to pass this test case is to identify and fix the issue that is causing the failure in the testRoundTripOctalOrBinary method.

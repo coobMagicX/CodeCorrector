@@ -1,0 +1,1 @@
+{"testLinearCombinationWithSingleElementArray": "        Assert.assertEquals(a[0] * b[0], MathArrays.linearCombination(a, b), 0d);\n"}

@@ -1,0 +1,6 @@
+Intent: The intent of the test case `shouldStubBooleanVarargs` is to verify that the method `withBooleanVarargs` correctly handles and returns expected results when called with various combinations of boolean arguments (including variable arguments).
+
+Repair strategy: The source code should ensure that the `captureArgumentsFrom` function correctly handles scenarios where methods have variable arguments (varargs), especially for boolean types. It should capture and process each argument separately for correct matching and result retrieval in mocked scenarios. The current implementation throws an `UnsupportedOperationException` for varargs, which prevents the proper handling of methods with variable arguments. The repair should include:
+1. Removing or modifying the exception throw for varargs.
+2. Ensuring that all variable arguments are appropriately captured and matched.
+3. Ensuring that methods with variable arguments are fully integrated into the mocking framework to return the correct values as per the test stubs.

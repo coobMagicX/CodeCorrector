@@ -1,0 +1,10 @@
+Analysis: The purpose of the `cumulativeProbability` method is to calculate the cumulative probability for a given value in a normal distribution. The intent is to correctly calculate the cumulative probability using the error function (Erf) formula.
+
+Reasons for failure:
+1. The specific failed line `double lowerTail = distribution.cumulativeProbability((double)-i);` is failing because the input value `-i` is being used, which is causing issues in the calculation of the cumulative probability.
+
+2. When using the input value `-i`, it leads to negative values being passed into the cumulativeProbability method. This can result in incorrect calculations as the method may not be handling negative values correctly for the given distribution parameters.
+
+3. The calculation of the cumulative probability for negative values might not be supported correctly by the implementation of the method, leading to unexpected results and test failures for extreme values.
+
+To address the issue, the method should be modified to handle negative input values appropriately, ensuring that the calculation of the cumulative probability is accurate and consistent across all input ranges.

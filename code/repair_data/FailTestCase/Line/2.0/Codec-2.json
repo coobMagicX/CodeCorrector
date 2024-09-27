@@ -1,0 +1,1 @@
+{"testBase64EmptyInputStream": "        testByteByByte(emptyEncoded, emptyDecoded, 76, CRLF);\n", "testBase64EmptyOutputStream": "        testByteByByte(emptyEncoded, emptyDecoded, 76, CRLF);\n"}

@@ -1,0 +1,1 @@
+{"DataUtil": "    private DataUtil() {}", "BomCharset": "        public BomCharset(String charset, boolean offset) {\n            this.charset = charset;\n            this.offset = offset;\n        }"}

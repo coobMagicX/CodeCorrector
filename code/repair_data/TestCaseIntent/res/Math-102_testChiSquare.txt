@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to validate the chi-square statistic computation by comparing the output from the `chiSquare` method against a known correct value (precomputed using R).
+
+Repair strategy: Ensure that the chi-square statistic calculation inside the `chiSquare` method is correctly implemented. Check for any floating-point precision issues or discrepancies in how the calculations are done compared to the R implementation. If needed, adjust the calculation method to more closely align with the R computation, ensuring that errors due to rounding or floating-point arithmetic are minimized.

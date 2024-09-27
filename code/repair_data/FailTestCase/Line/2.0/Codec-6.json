@@ -1,0 +1,1 @@
+{"testCodec101": "        assertTrue(\"Codec101: First read successful [c=\" + c + \"]\", c > 0);\n"}

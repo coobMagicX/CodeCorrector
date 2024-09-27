@@ -1,0 +1,3 @@
+Based on the analysis provided, you need to choose the following method to repair the source code:
+
+1-`isWordChar`

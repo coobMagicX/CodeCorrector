@@ -1,0 +1,15 @@
+Intent: The intent of the source code is to generate a random string based on the specified parameters. It can generate a random string of a certain length, within a certain range of characters, and also specifying whether the string should contain letters, numbers or both. The code also includes logic to handle Unicode high and low surrogate pairs.
+
+In the test case, the intent is to verify that an IllegalArgumentException is thrown when the start and end parameters are the same, and the letters and numbers parameters are both set to false. It also checks if the exception message contains the words 'start' and 'end'.
+
+Fix strategy: The test is failing because the exception message does not contain the words 'start' and 'end'. This is because the source code does not provide a specific exception message when start and end are equal. To fix this, we need to add a condition in the source code to throw an IllegalArgumentException with a specific message when start and end parameters are equal and both letters and numbers are set to false. The exception message should state that 'start' and 'end' should not be the same, or at least either 'letters' or 'numbers' should be true.
+
+Here is a possible fix:
+
+```java
+if (start == end && !letters && !numbers) {
+    throw new IllegalArgumentException("Start and end must not be the same, or at least one of 'letters' or 'numbers' must be true.");
+}
+```
+
+This code should be added before the existing condition that checks if start and end are both 0.

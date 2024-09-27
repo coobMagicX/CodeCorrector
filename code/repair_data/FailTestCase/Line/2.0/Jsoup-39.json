@@ -1,0 +1,1 @@
+{"discardsSpuriousByteOrderMarkWhenNoCharsetSet": "        assertEquals(\"One\", doc.head().text());\n"}

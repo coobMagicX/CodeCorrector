@@ -1,0 +1,1 @@
+{"testStripLeadingAndTrailingQuotes": "        assertEquals(\"foo \\\"bar\\\"\", Util.stripLeadingAndTrailingQuotes(\"foo \\\"bar\\\"\"));\n"}

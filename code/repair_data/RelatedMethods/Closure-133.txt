@@ -1,0 +1,1 @@
+['parseTypeString', 'parse', 'toString', 'parseResultType', 'newStringNode', 'match', 'next', 'current', 'getRemainingJSDocLine']

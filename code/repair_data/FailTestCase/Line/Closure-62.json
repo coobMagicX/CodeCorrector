@@ -1,0 +1,1 @@
+{"testFormatErrorSpaceEndOfLine1": "    assertEquals(\"javascript/complex.js:1: ERROR - error description here\\n\" +\n", "testFormatErrorSpaceEndOfLine2": "    assertEquals(\"javascript/complex.js:6: ERROR - error description here\\n\" +\n"}

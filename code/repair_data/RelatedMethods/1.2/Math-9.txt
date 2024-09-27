@@ -1,0 +1,1 @@
+['reset', 'revert', 'getDirection', 'contains', 'distance', 'intersection', 'wholeLine']

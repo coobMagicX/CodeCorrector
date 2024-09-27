@@ -1,0 +1,1 @@
+{"nextIndexOfUnmatched": "        assertEquals(-1, r.nextIndexOf(\"]]>\"));\n", "handlesUnclosedCdataAtEOF": "        Document doc = Jsoup.parse(h);\n"}

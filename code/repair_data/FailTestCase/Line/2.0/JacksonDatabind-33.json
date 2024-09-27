@@ -1,0 +1,1 @@
+{"testUnwrappedAsPropertyIndicator": "        String actual = MAPPER.writeValueAsString(outer);\n"}

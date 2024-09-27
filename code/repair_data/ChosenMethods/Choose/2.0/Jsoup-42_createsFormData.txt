@@ -1,0 +1,3 @@
+Based on the test intent and repair strategy, the method that would aid in repairing the source code is:
+
+10-elements

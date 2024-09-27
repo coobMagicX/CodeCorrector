@@ -1,0 +1,1 @@
+{"XmlSerializerProvider": "    public XmlSerializerProvider(XmlSerializerProvider src,\n            SerializationConfig config, SerializerFactory f)\n    {\n        super(src, config, f);\n        _rootNameLookup  = src._rootNameLookup;\n    }"}

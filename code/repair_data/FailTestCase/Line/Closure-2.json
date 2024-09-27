@@ -1,0 +1,1 @@
+{"testBadInterfaceExtendsNonExistentInterfaces": "    testTypes(js, expectedWarnings);\n"}

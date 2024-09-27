@@ -1,0 +1,28 @@
+Based on the analysis provided and the intent of the `testWith3` test case, the missing validation check for the existence of the specified DateTimeFieldType in the `with` method implementation can be corrected by adding a check to throw an `IllegalArgumentException` when trying to set a value for a DateTimeFieldType that is not present in the original Partial object.
+
+To address this issue, you can modify the `with` method by adding the necessary validation check. Here is the corrected method:
+
+```java
+public Partial with(DateTimeFieldType fieldType, int value) {
+    if (fieldType == null) {
+        throw new IllegalArgumentException("The field type must not be null");
+    }
+
+    int index = indexOf(fieldType);
+    if (index == -1) {
+        throw new IllegalArgumentException("The specified DateTimeFieldType does not exist in the original Partial object");
+    }
+
+    if (value == getValue(index)) {
+        return this;
+    }
+
+    int[] newValues = getValues();
+    newValues = getField(index).set(this, index, newValues, value);
+    return new Partial(this, newValues);
+}
+```
+
+Desired format:
+1-with
+```

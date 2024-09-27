@@ -1,0 +1,3 @@
+Intent: The test case `test1808376` is designed to validate the correct creation and initialization of a `ValueMarker` object, ensuring that all provided parameters (value, paint, stroke, outlinePaint, outlineStroke, and alpha transparency) are correctly set and retrieved using corresponding getter methods.
+
+Repair strategy: The constructor of `ValueMarker` should correctly assign the `outlinePaint` and `outlineStroke` parameters to their respective fields. However, it incorrectly passes the `paint` and `stroke` parameters in place of `outlinePaint` and `outlineStroke`. Modify the constructor to correctly assign `outlinePaint` and `outlineStroke` to the corresponding fields.

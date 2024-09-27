@@ -1,0 +1,1 @@
+{"testNestedUnwrappedLists180": "        assertNotNull(result.records.get(0));\n", "testNestedWithEmpty2": "        assertEquals(1, del.vehicleActivity.size());\n", "testNestedWithEmpty": "        assertEquals(1, svc.vehicleMonitoringDelivery.size());\n"}

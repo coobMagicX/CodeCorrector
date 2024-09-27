@@ -1,0 +1,1 @@
+{"testAddNaN": "        Assert.assertTrue(Double.isNaN(w.getReal()));\n"}

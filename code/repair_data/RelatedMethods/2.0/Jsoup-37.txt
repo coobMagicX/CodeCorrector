@@ -1,0 +1,1 @@
+['tag', 'id', 'attr', 'dataset', 'parent', 'parents', 'accumulateParents', 'child', 'children', 'select', 'append', 'prepend', 'before', 'after', 'empty', 'wrap', 'text', 'data', 'val', 'outerHtmlHead', 'outerHtmlTail', 'html', 'toString', 'equals', 'clone']

@@ -1,0 +1,1 @@
+['equals', 'newString', 'newStringIso8859_1', 'newStringUsAscii', 'newStringUtf16', 'newStringUtf16Be', 'newStringUtf16Le', 'newStringUtf8']

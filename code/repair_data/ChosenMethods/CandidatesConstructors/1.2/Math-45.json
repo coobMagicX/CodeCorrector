@@ -1,0 +1,1 @@
+{"OpenMapRealMatrix": "    public OpenMapRealMatrix(OpenMapRealMatrix matrix) {\n        this.rows = matrix.rows;\n        this.columns = matrix.columns;\n        this.entries = new OpenIntToDoubleHashMap(matrix.entries);\n    }"}

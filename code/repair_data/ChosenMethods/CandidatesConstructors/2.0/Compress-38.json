@@ -1,0 +1,1 @@
+{"TarArchiveEntry": "    public TarArchiveEntry(final byte[] headerBuf, final ZipEncoding encoding)\n        throws IOException {\n        this();\n        parseTarHeader(headerBuf, encoding);\n    }"}

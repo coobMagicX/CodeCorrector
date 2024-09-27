@@ -1,0 +1,1 @@
+{"Class": ["Equality"], "Constructor": [], "Method": ["areEqual", "areArraysEqual", "areArrayLengthsEqual", "areArrayElementsEqual", "isArray"], "Overloaded": {"areEqual": [["areEqual", 2]], "areArraysEqual": [["areArraysEqual", 2]], "areArrayLengthsEqual": [["areArrayLengthsEqual", 2]], "areArrayElementsEqual": [["areArrayElementsEqual", 2]], "isArray": [["isArray", 1]]}}

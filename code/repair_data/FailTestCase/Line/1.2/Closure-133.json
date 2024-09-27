@@ -1,0 +1,1 @@
+{"testTextExtents": "    parse(\"@return {@code foo} bar \\n *    baz. */\",\n"}

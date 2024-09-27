@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that should be used in the context is `toMap()`. 
+
+Therefore, the desired format for this repair is:
+
+2-toMap

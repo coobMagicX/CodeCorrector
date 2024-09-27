@@ -1,0 +1,1 @@
+{"testClassKey": "        assertEquals(aposToQuotes(\"{'java.lang.String':2}\"), json);\n"}

@@ -1,0 +1,1 @@
+['getPivotColumn', 'getPivotRow', 'doIteration', 'isPhase1Solved', 'isOptimal', 'doOptimize']

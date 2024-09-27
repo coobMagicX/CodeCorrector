@@ -1,0 +1,7 @@
+Based on the analysis provided, you need to modify the `escapeRegex` method to correctly handle consecutive whitespace characters. 
+
+To address this issue, you can choose the following method from the candidate methods:
+
+1-`addRegex`
+
+You can use the `addRegex` method to enhance the logic of escaping consecutive whitespace characters in the input string within the `escapeRegex` method.

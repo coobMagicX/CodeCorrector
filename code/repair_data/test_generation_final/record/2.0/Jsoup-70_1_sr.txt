@@ -1,0 +1,13 @@
+static boolean preserveWhitespace(Node node) {
+    if (node != null && node instanceof Element) {
+        Element el = (Element) node;
+        Elements parents = new Elements();
+        accumulateParents(el, parents);
+        for (Element parent : parents) {
+            if (parent.tag.preserveWhitespace()) {
+                return true;
+            }
+        }
+    }
+    return false;
+}

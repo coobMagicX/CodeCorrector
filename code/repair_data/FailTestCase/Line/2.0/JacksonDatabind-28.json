@@ -1,0 +1,1 @@
+{"testIssue941": "        MyValue de2 = MAPPER.readValue(json, MyValue.class);  // but this throws exception\n"}

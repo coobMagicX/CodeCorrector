@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that a MissingOptionException is thrown when required options are not provided.
+
+Repair strategy: To pass the test case, the source code needs to correctly throw a MissingOptionException with the message "Missing required options: fx".

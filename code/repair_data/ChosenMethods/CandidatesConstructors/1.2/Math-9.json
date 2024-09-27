@@ -1,0 +1,1 @@
+{"Line": "    public Line(final Line line) {\n        this.direction = line.direction;\n        this.zero      = line.zero;\n    }"}

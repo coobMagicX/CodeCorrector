@@ -1,0 +1,1 @@
+['close', 'available', 'skip', 'reset', 'isEOFRecord', 'readRecord', 'readGNUSparse', 'read', 'canReadEntryData', 'isAtEOF', 'matches']

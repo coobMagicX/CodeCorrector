@@ -1,0 +1,1 @@
+['isNoType', 'isNoResolvedType', 'isNoObjectType', 'equals', 'dereference', 'visit', 'resolve']

@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to test the behavior of the readBits method when reading bits in little endian format.
+
+Repair strategy: The repair strategy to fix the failing test cases is to investigate the calculation of bitsOut in the readBits method and ensure that it is correctly handling the little endian format.

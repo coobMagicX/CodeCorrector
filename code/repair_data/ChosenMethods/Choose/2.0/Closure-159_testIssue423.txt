@@ -1,0 +1,1 @@
+Based on the test intent and repair strategy, the candidate method that aids in the repair is 'findCalledFunctions'.

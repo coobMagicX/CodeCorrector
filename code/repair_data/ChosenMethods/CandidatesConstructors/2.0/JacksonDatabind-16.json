@@ -1,0 +1,1 @@
+{"AnnotationMap": "    private AnnotationMap(HashMap<Class<? extends Annotation>,Annotation> a) {\n        _annotations = a;\n    }"}

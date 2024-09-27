@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that if a checkbox is checked and no value is set, the formData() method should return "on" as the value for the checkbox.
+
+Repair strategy: The repair strategy for this issue would be to modify the formData() method to check if the checkbox is checked and no value is set, and then set the value as "on" before adding it to the data list.

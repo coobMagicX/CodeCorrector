@@ -1,0 +1,1 @@
+{"testToPeriod_fixedZone": "            assertEquals(0, test.getWeeks());\n", "testConstructor_long_fixedZone": "            assertEquals(0, test.getWeeks());\n"}

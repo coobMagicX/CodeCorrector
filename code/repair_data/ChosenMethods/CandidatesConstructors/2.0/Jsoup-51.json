@@ -1,0 +1,1 @@
+{"CharacterReader": "    CharacterReader(String input) {\n        Validate.notNull(input);\n        this.input = input.toCharArray();\n        this.length = this.input.length;\n    }"}

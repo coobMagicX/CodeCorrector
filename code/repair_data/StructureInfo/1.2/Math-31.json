@@ -1,0 +1,1 @@
+{"Class": ["ContinuedFraction"], "Constructor": ["ContinuedFraction"], "Method": ["getA", "getB", "evaluate"], "Overloaded": {"getA": [["getA", 2]], "getB": [["getB", 2]], "evaluate": [["evaluate", 1], ["evaluate", 2], ["evaluate", 2], ["evaluate", 3]]}}

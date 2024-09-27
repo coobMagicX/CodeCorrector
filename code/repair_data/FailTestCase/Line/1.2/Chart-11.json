@@ -1,0 +1,1 @@
+{"testEqualGeneralPaths": "        assertFalse(ShapeUtilities.equal(g1, g2));\n"}

@@ -1,0 +1,1 @@
+{"testLang299": "        sb.appendFixedWidthPadRight(\"foo\", 1, '-');\n"}

@@ -1,0 +1,1 @@
+{"testMapToProperties": "        assertEquals(\"129\", props.getProperty(\"A\"));\n", "testReadProperties": "        assertEquals(\"123\", props.getProperty(\"b\"));\n", "testProperties": "        assertSame(String.class, ((MapType) t).getKeyType().getRawClass());\n"}

@@ -1,0 +1,4 @@
+1-resolveInternal
+2-safeResolve
+3-getTypeOfThis
+4-setResolvedTypeInternal

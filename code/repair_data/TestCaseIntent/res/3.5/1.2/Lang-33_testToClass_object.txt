@@ -1,0 +1,5 @@
+Analysis: The purpose of the `toClass` method is to convert an array of objects into an array of corresponding Class objects representing their runtime class types.
+
+The specific failed line `assertTrue(Arrays.equals(new Class[] { String.class, null, Double.class }, ClassUtils.toClass(new Object[] { "Test", null, 99d })));` failed because the expected array contains a `null` value for the class type, but the `toClass` method does not handle cases where the input object in the array is `null`. This causes the `getClass()` method to throw a `NullPointerException` when trying to get the class type of a `null` object.
+
+To fix this issue, you need to modify the `toClass` method to handle `null` objects in the input array. You can add a check to skip `null` objects and replace them with a default value or handle them differently based on the requirements of the method.

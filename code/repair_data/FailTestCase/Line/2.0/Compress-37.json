@@ -1,0 +1,1 @@
+{"survivesBlankLinesInPaxHeader": "            final TarArchiveEntry entry = is.getNextTarEntry();\n"}

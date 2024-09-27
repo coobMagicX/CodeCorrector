@@ -1,0 +1,1 @@
+['createMock', 'ensureMockIsAssignableToMockedType', 'describeClass', 'getHandler', 'resetMock', 'initializeClassInstantiator', 'asInternalMockHandler']

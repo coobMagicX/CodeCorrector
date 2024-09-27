@@ -1,0 +1,1 @@
+{"SimpleType": "    protected SimpleType(Class<?> cls, TypeBindings bindings,\n            JavaType superClass, JavaType[] superInts, int extraHash,\n            Object valueHandler, Object typeHandler, boolean asStatic)\n    {\n        super(cls, bindings, superClass, superInts, \n                extraHash, valueHandler, typeHandler, asStatic);\n    }"}

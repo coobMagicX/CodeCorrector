@@ -1,0 +1,1 @@
+{"testGetTypedPercent5": "    assertEquals(100.0, getTypedPercent(js), 0.1);\n", "testGetTypedPercent6": "    assertEquals(100.0, getTypedPercent(js), 0.1);\n"}

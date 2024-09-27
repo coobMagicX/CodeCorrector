@@ -1,0 +1,1 @@
+['setErrorManager', 'createMessageFormatter', 'initOptions', 'init', 'initBasedOnOptions', 'compile', 'parse', 'precheck', 'check', 'process', 'addIncrementalSourceAst', 'initCompilerOptionsIfTesting', 'reset', 'append', 'optimize', 'normalize', 'addChangeHandler', 'getDiagnosticGroups', 'report', 'addToDebugLog', 'getOptions', 'getErrorManager']

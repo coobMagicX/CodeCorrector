@@ -1,0 +1,3 @@
+Based on the provided source code and the context of the test failure, you need the following method to address the issue:
+
+1-`setVisible`

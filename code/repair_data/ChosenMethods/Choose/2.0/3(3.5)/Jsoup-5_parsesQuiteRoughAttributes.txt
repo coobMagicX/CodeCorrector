@@ -1,0 +1,7 @@
+To repair the source code based on the intent of the test, we need to modify the logic in the `parseAttribute()` method. 
+
+The candidate methods that exist in the context are: `parse`, `parseAttribute`, and `last`. 
+
+Based on the test intent and repair strategy, the method that aids in the repair is: 
+
+1-parseAttribute

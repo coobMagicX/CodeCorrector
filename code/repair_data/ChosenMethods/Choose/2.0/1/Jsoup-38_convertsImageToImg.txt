@@ -1,0 +1,1 @@
+The method 'process' from the source code appears to be the one responsible for handling the logic of HTML tag conversion. According to the test intent and repair strategy, this method needs to be adjusted to handle the '<image>' tag conversion based on the SVG context. The code within 'StartTag' case under 'process' method needs to be updated for this purpose.

@@ -1,0 +1,30 @@
+To repair the source code based on the test intent, the method that needs to be modified is "burstToken". 
+
+The repaired method should be as follows:
+
+```java
+protected void burstToken(String token, boolean stopAtNonOption) {
+    for (int i = 1; i < token.length(); i++) {
+        String ch = String.valueOf(token.charAt(i));
+
+        if (options.hasOption(ch)) {
+            tokens.add("-" + ch);
+            currentOption = options.getOption(ch);
+
+            if (currentOption.hasArg() && (token.length() != (i + 1))) {
+                tokens.add(token.substring(i + 1));
+
+                break;
+            }
+        } else if (stopAtNonOption) {
+            process(token.substring(i));
+            break; // Add break statement to stop processing after encountering a non-option token.
+        } else {
+            tokens.add(token);
+            break;
+        }
+    }
+}
+```
+
+This modification ensures that only one extra argument is added to the argument list when the "stopAtNonOption" parameter is set to true, which aligns with the test intent.

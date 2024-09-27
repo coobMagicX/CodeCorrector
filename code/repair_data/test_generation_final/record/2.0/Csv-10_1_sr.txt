@@ -1,0 +1,16 @@
+public CSVPrinter(final Appendable out, final CSVFormat format) throws IOException {
+    Assertions.notNull(out, "out");
+    Assertions.notNull(format, "format");
+
+    this.out = out;
+    this.format = format;
+    this.format.validate();
+
+    // Print headers initially if they are set and not empty
+    if (format.getHeader() != null && format.getHeader().length > 0) {
+        for (String header : format.getHeader()) {
+            out.append(header + format.getDelimiter());
+        }
+        println();  // Ensures that headers are followed by a record separator
+    }
+}

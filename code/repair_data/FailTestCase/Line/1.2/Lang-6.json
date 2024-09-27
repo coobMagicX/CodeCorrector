@@ -1,0 +1,1 @@
+{"testEscapeSurrogatePairs": "        assertEquals(\"\\uD83D\\uDE30\", StringEscapeUtils.escapeCsv(\"\\uD83D\\uDE30\"));\n"}

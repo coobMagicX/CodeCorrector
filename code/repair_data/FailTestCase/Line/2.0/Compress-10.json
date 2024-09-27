@@ -1,0 +1,1 @@
+{"testReadWinZipArchive": "            assertCanRead(zf, EURO_FOR_DOLLAR_TXT);\n"}

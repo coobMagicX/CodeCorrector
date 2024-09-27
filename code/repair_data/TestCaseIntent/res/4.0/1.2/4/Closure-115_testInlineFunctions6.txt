@@ -1,0 +1,6 @@
+Intent: The test case `testInlineFunctions6()` is intended to check if the source code can correctly inline a function call where the function itself takes a function as a parameter and applies it to some computed result. The function `BAR_FN` computes `x + y` and then applies the function `z` to the result of `foo(x + y)`. The test verifies that `BAR_FN` is inlined to directly apply `baz` to `foo(1+2)` without invoking `BAR_FN`.
+
+Repair strategy: The repair should focus on handling the inlining process when the function parameters are themselves functions that need to be applied to the results of other expressions. Specifically:
+1. Ensure that the function inlining logic correctly understands and translates scenarios where a function argument (`z` in this test) is another function that is used within the returned expression.
+2. Modify the inlining mechanism to handle higher-order functions and ensure that they are correctly applied in the inlined version.
+3. Check and possibly revise the side-effects analysis to ensure that it doesn't incorrectly flag cases where functions are passed as parameters and used within the return expression, which might be mistakenly identified as having unintended side-effects.

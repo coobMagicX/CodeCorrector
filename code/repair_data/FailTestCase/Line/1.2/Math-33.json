@@ -1,0 +1,1 @@
+{"testMath781": "        Assert.assertTrue(Precision.compareTo(solution.getPoint()[0], 0.0d, epsilon) > 0);\n"}

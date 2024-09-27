@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the functionality of the "stripLeadingHyphens" method in the Util class. The test cases aim to verify that the method correctly removes leading hyphens from a given string.
+
+Repair strategy: Based on the failed test cases, the potential error in the source code is that it does not handle the case when the input string is null. To pass the test case, the code needs to be modified to handle the null input correctly. The repair direction is to add a check for null input and return null in such cases.

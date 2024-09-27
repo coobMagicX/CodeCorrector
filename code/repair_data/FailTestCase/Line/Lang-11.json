@@ -1,0 +1,1 @@
+{"testLANG807": "            assertTrue(\"Message (\" + msg + \") must contain 'start'\", msg.contains(\"start\"));\n"}

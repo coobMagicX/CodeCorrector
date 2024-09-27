@@ -1,0 +1,1 @@
+['getDomainLowerBound', 'getDomainUpperBound', 'getInitialDomain', 'setNumeratorDegreesOfFreedom', 'getNumeratorDegreesOfFreedom', 'setDenominatorDegreesOfFreedom', 'getDenominatorDegreesOfFreedom']

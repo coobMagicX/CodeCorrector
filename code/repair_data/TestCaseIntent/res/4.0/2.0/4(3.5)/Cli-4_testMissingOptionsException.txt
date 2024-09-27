@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that a MissingOptionException is thrown when required options are not provided.
+
+Repair strategy: The repair strategy should be to ensure that the error message in the MissingOptionException includes the missing required options.

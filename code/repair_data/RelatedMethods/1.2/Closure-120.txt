@@ -1,0 +1,1 @@
+['process', 'getReferences', 'visit', 'isBlockBoundary', 'addReference', 'iterator', 'add', 'getInitializingReference', 'getInitializingReferenceForConstants', 'getOneAndOnlyAssignment', 'firstReferenceIsAssigningDeclaration', 'createRefForTest', 'getBasicBlock', 'getParent', 'isGlobalScopeBlock']

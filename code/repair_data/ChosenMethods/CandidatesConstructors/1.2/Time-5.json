@@ -1,0 +1,1 @@
+{"Period": "    private Period(int[] values, PeriodType type) {\n        super(values, type);\n    }"}

@@ -1,0 +1,4 @@
+11-renderWrappedText
+12-findWrapPos
+11-createPadding
+12-rtrim

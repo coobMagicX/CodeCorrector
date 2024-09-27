@@ -1,0 +1,1 @@
+{"CharacterReader": "    public CharacterReader(String input) {\n        this(new StringReader(input), input.length());\n    }"}

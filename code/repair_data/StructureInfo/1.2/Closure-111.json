@@ -1,0 +1,1 @@
+{"Class": ["ClosureReverseAbstractInterpreter", "TypeRestriction"], "Constructor": ["ClosureReverseAbstractInterpreter", "TypeRestriction"], "Method": ["getPreciserScopeKnowingConditionOutcome", "restrictParameter"], "Overloaded": {"getPreciserScopeKnowingConditionOutcome": [["getPreciserScopeKnowingConditionOutcome", 3]], "restrictParameter": [["restrictParameter", 5]]}}

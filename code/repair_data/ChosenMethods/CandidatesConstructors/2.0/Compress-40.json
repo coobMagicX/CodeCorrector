@@ -1,0 +1,1 @@
+{"BitInputStream": "    public BitInputStream(final InputStream in, final ByteOrder byteOrder) {\n        this.in = in;\n        this.byteOrder = byteOrder;\n    }"}

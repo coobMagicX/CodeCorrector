@@ -1,0 +1,1 @@
+{"JsonNodeDeserializer": "    protected JsonNodeDeserializer() { super(JsonNode.class); }", "ObjectDeserializer": "        protected ObjectDeserializer() { super(ObjectNode.class); }", "ArrayDeserializer": "        protected ArrayDeserializer() { super(ArrayNode.class); }", "BaseNodeDeserializer": "    public BaseNodeDeserializer(Class<T> vc) {\n        super(vc);\n    }"}

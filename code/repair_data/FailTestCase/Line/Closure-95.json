@@ -1,0 +1,1 @@
+{"testQualifiedNameInference5": "    testTypes(\n", "testGlobalQualifiedNameInLocalScope": "    assertNotNull(globalScope.getVar(\"ns.foo\"));\n"}

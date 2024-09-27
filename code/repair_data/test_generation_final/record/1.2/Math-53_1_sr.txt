@@ -1,0 +1,16 @@
+public Complex add(Complex rhs) throws NullArgumentException {
+    MathUtils.checkNotNull(rhs);
+
+    double realPart = rhs.getReal();
+    double imaginaryPart = rhs.getImaginary();
+
+    if (Double.isNaN(realPart)) {
+        realPart = Double.NaN;
+    }
+
+    if (Double.isNaN(imaginaryPart)) {
+        imaginaryPart = Double.NaN;
+    }
+
+    return createComplex(real + realPart, imaginary + imaginaryPart);
+}

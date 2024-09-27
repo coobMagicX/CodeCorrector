@@ -1,0 +1,13 @@
+Intent: The intent of this function is to find the starting index of a given string in the buffer. If the string is found, it returns the starting index; if the string is not found or if the starting index is greater than the size of the buffer, it returns -1.
+
+Fix strategy: The issue in the test case seems to be that after deleting "three" from the StrBuilder, the test is expecting -1 as the result of indexOf("three") which is correct as "three" no longer exists in the StrBuilder. However, the test case is failing which means the indexOf function is not returning -1 as expected. 
+
+We need to check if the deletion of the string "three" is done correctly. If that's not the issue, then we need to look at the condition where the function returns -1 when the string is not found.
+
+In the indexOf function, there could be a problem with the outer loop where it scans the buffer to find the match for the input string. 
+
+The limit for the loop is set to 'len', which is 'thisBuf.length - strLen'. This might cause the loop to terminate prematurely before it can find the string, thus returning -1. 
+
+We can fix this by updating the loop limit to 'thisBuf.length' instead of 'len'. This will ensure the entire buffer is scanned for the input string. 
+
+Also, updating the if condition 'if (strLen > size)' to 'if (strLen > thisBuf.length)' can fix the issue as it correctly checks if the input string length is greater than the buffer length.

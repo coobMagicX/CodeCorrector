@@ -1,0 +1,1 @@
+{"testJira567": "               n = ArrayUtils.addAll(new Integer[]{Integer.valueOf(1)}, new Long[]{Long.valueOf(2)});\n"}

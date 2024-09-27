@@ -1,0 +1,1 @@
+{"testObject10": "    testLocal(\"var x = {}; var b = f(); x = {a:a, b:b}; if(x.a) g(x.b) + x.c\",\n", "testObject12": "    testLocal(\"var a; a = {x:1, y:2}; f(a.x, a.y2);\",\n", "testObject22": "    testLocal(\"var a; while (1) { f(a.x, a.y); a = {x:1, y:1};}\",\n", "testIssue724": "    test(options, code, result);\n"}

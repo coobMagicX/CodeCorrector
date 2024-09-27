@@ -1,0 +1,1 @@
+{"reset": "    protected JsonWriteContext reset(int type) {\n        _type = type;\n        _index = -1;\n        _currentName = null;\n        _gotName = false;\n        _currentValue = null;\n        if (_dups != null) { _dups.reset(); }\n        return this;\n    }"}

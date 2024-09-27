@@ -1,0 +1,1 @@
+['getOffset', 'getOffsetFromLocal', 'nextTransition', 'previousTransition', 'equals']

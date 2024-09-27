@@ -1,0 +1,3 @@
+Based on the analysis provided and the context of the code, the method needed in this context is:
+
+1-normalize

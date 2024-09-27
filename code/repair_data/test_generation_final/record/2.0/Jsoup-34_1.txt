@@ -1,0 +1,15 @@
+int nextIndexOf(CharSequence seq) {
+    char startChar = seq.charAt(0);
+    for (int offset = pos; offset < length; offset++) {
+        if (startChar == input[offset]) {
+            int i = offset + 1;
+            int last = offset + seq.length();
+            if (last > length) return -1; // Return -1 if the sequence would go past the end of the input
+            int j = 1;
+            for (; i < last && seq.charAt(j) == input[i]; i++, j++);
+            if (j == seq.length()) // Ensure the whole sequence was matched
+                return offset - pos;
+        }
+    }
+    return -1;
+}

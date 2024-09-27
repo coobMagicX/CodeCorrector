@@ -1,0 +1,9 @@
+Intent: The intent of the test cases is to ensure that the `random` method correctly handles various edge cases, including negative lengths, empty character arrays, and proper exception handling for invalid inputs.
+
+Repair strategy: Modify the `random` method to include a check for empty character arrays when `chars` is not null. If `chars` is an empty array, throw an `IllegalArgumentException`. This will prevent the method from proceeding with an invalid state that could lead to runtime errors or unexpected behavior. Specifically, add a condition at the beginning of the method:
+```java
+if (chars != null && chars.length == 0) {
+    throw new IllegalArgumentException("Character array must not be empty.");
+}
+```
+This will ensure that the method throws an exception if an empty array is passed, aligning with the expected behavior outlined in the failing test case.

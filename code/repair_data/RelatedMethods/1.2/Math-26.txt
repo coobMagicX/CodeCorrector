@@ -1,0 +1,1 @@
+['abs', 'doubleValue', 'equals', 'floatValue', 'getDenominator', 'getNumerator', 'intValue', 'longValue', 'negate', 'reciprocal', 'add', 'subtract', 'multiply', 'divide', 'percentageValue', 'getReducedFraction', 'toString']

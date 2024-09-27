@@ -1,0 +1,1 @@
+{"shouldMatchCaptureArgumentsWhenArgsCountDoesNOTMatch": "        invocationMatcher.captureArgumentsFrom(invocation);\n", "shouldMatchEasilyEmptyVararg": "        assertEquals(-1, mock.foo());\n"}

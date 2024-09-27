@@ -1,0 +1,19 @@
+Intent: The intent of the code is to optimize bitwise shift operations on numerical constants. It performs bitwise shift operations on the constants at compile-time, rather than at runtime, hence improving the performance. The code checks for valid ranges and values before performing the shift operations. For instance, it checks for fractional numbers and out-of-range values and throws an error if any such values are encountered.
+
+Fix strategy: The specific test case that failed is "x = -1 >>> 0", which should result in "x = 4294967295". The issue arises from how signed numbers are handled differently in JavaScript and Java. In this case, -1 is being right-shifted by 0 bits, which in JavaScript results in an unsigned 32-bit number 4294967295. However, Java's right shift operation is causing an issue because Java handles the signed bit differently. 
+
+A possible fix strategy would be to handle the negative number shifting operation differently. We can use a bitwise AND operation with 0xFFFFFFFF to the result of the shift operation in case of a negative number. This would effectively replicate JavaScript's behavior of treating the number as an unsigned 32-bit integer.
+
+So the code change would be:
+
+```java
+case Token.URSH:
+    if (lvalInt < 0) { 
+        result = (lvalInt >>> rvalInt) & 0xFFFFFFFFL;
+    } else {
+        result = lvalInt >>> rvalInt;
+    }
+    break;
+```
+
+This will ensure the shifting operation on negative numbers behaves the same as in JavaScript.

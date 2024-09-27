@@ -1,0 +1,1 @@
+{"testFoldBitShifts": "    fold(\"x = -1 >>> 0\", \"x = 4294967295\"); // 0xffffffff\n"}

@@ -1,0 +1,1 @@
+{"Base64InputStream": "    public Base64InputStream(InputStream in, boolean doEncode, int lineLength, byte[] lineSeparator) {\n        super(in);\n        this.doEncode = doEncode;\n        this.base64 = new Base64(lineLength, lineSeparator);\n    }"}

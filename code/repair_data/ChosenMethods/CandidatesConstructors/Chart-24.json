@@ -1,0 +1,1 @@
+{"GrayPaintScale": "    public GrayPaintScale(double lowerBound, double upperBound) {\n        if (lowerBound >= upperBound) {\n            throw new IllegalArgumentException(\n                    \"Requires lowerBound < upperBound.\");\n        }\n        this.lowerBound = lowerBound;\n        this.upperBound = upperBound;\n    }"}

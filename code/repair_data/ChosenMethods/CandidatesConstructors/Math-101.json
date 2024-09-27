@@ -1,0 +1,1 @@
+{"ComplexFormat": "    public ComplexFormat(String imaginaryCharacter, NumberFormat realFormat,\n            NumberFormat imaginaryFormat) {\n        super();\n        setImaginaryCharacter(imaginaryCharacter);\n        setImaginaryFormat(imaginaryFormat);\n        setRealFormat(realFormat);\n    }"}

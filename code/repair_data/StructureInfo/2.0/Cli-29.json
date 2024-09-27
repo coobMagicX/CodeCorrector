@@ -1,0 +1,1 @@
+{"Class": ["Util"], "Constructor": [], "Method": ["stripLeadingHyphens", "stripLeadingAndTrailingQuotes"], "Overloaded": {"stripLeadingHyphens": [["stripLeadingHyphens", 1]], "stripLeadingAndTrailingQuotes": [["stripLeadingAndTrailingQuotes", 1]]}}

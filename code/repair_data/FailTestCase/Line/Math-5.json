@@ -1,0 +1,1 @@
+{"testReciprocalZero": "        Assert.assertEquals(Complex.ZERO.reciprocal(), Complex.INF);\n"}

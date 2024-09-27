@@ -1,0 +1,3 @@
+Based on the provided context and the purpose of the test case `testConstrainedRosenWithMoreInterpolationPoints`, the method needed to address the issue related to the calculation of the maximum additional points is:
+
+1-update

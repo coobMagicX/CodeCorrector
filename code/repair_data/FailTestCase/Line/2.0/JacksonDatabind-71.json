@@ -1,0 +1,1 @@
+{"testcharSequenceKeyMap": "        Map<CharSequence,String> result = MAPPER.readValue(JSON, new TypeReference<Map<CharSequence,String>>() { });\n"}

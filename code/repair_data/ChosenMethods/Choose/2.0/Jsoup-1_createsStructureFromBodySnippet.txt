@@ -1,0 +1,23 @@
+Based on the test intent and repair strategy, the method that needs to be modified in the context is the `normalise()` method.
+
+Modified code:
+
+```java
+private void normalise(Element element) {
+    List<Node> toMove = new ArrayList<Node>();
+    for (Node node: element.childNodes) {
+        if (node instanceof TextNode) {
+            TextNode tn = (TextNode) node;
+            if (!tn.isBlank())
+                toMove.add(tn);
+        }
+    }
+
+    for (Node node: toMove) {
+        element.removeChild(node);
+        body().insertChildren(0, node);
+    }
+}
+```
+
+This modification removes the existing code that appends a space to the body and appends the "foo" element instead, which aligns with the repair strategy and the intent of the test.

@@ -1,0 +1,1 @@
+{"testEncoder": "                assertTrue(\"Encoder test-\" + i, b);\n", "testBinaryEncoder": "                assertTrue(\"BinaryEncoder test-\" + i, b);\n"}

@@ -1,0 +1,1 @@
+{"testNegativeZero": "\t    assertEquals(\"-0\", reader.nextString());\n"}

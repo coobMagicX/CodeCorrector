@@ -1,0 +1,1 @@
+['getMean', 'getStandardDeviation', 'density', 'sample']

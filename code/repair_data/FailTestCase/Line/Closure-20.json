@@ -1,0 +1,1 @@
+{"testSimpleFunctionCall": "    testSame(\"var a = String('hello', bar());\");\n"}

@@ -1,0 +1,6 @@
+Intent: The test case `testStopBursting` is designed to check the behavior of the `burstToken` method when it encounters a non-option character and the `stopAtNonOption` flag is set to `true`. The test ensures that once a non-option character is found, the method stops processing the remaining characters as options and instead treats them as a single argument.
+
+Repair strategy: The `burstToken` method should be modified to correctly handle the scenario where a non-option character is encountered and `stopAtNonOption` is true. Specifically, the method should:
+1. Correctly identify non-option characters and immediately stop processing further characters as options.
+2. Append the remainder of the string (after the non-option character) as a single argument to the tokens list, ensuring that no further splitting or processing of this substring occurs.
+3. Ensure that the loop breaks immediately after handling the non-option character scenario, to prevent further characters from being incorrectly processed as options.

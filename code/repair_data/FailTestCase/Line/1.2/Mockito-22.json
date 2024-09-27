@@ -1,0 +1,1 @@
+{"shouldKnowIfObjectsAreEqual": "\tassertTrue(areEqual(badequals,badequals));\n"}

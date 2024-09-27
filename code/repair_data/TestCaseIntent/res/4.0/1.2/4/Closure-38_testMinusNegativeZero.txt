@@ -1,0 +1,6 @@
+Intent: The test case `testMinusNegativeZero` is intended to ensure that the function `addNumber` correctly formats and distinguishes negative zero (which can behave differently in some mathematical contexts) from positive zero when outputting it as part of a string. The expected output should clearly show the distinction between "x-" and "-0.0" to prevent misinterpretation as a decrement operation (e.g., `x--0`).
+
+Repair strategy: The source code needs to be updated to explicitly handle the case of negative zero. In the current implementation, there is likely a missing condition or incorrect handling that does not differentiate between `-0.0` and `0`. To fix this issue:
+
+1. Ensure that the function `isNegativeZero(x)` accurately identifies negative zero values.
+2. Modify the conditional checks to properly format and space negative zero values, especially when preceded by a minus sign (`-`), to maintain clarity in the output string (e.g., "x- -0.0" instead of "x--0"). This might involve adding or refining conditions that check for negative zero and setting the output format accordingly.

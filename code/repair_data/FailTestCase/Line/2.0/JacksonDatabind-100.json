@@ -1,0 +1,1 @@
+{"testBase64Text": "                    fail(\"Failed (variant \"+variant+\", data length \"+len+\"): \"+e.getMessage());\n"}

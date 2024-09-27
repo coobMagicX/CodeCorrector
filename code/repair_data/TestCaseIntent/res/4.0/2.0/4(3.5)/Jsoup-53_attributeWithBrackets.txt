@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to verify the correct extraction of text from HTML elements with attribute values containing brackets.
+
+Repair strategy: The repair strategy should involve fixing the issue with the chompBalanced() method, which is not handling the brackets in attribute values correctly. The code should be modified to properly handle the brackets in attribute values.

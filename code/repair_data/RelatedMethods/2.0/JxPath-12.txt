@@ -1,0 +1,1 @@
+['testNode', 'equalStrings', 'getName', 'getNamespaceURI', 'getDefaultNamespaceURI', 'getImmediateNode', 'remove', 'escape', 'getRelativePositionOfTextNode', 'equals', 'getPrefix', 'getLocalName', 'stringValue', 'compareChildNodePointers']

@@ -1,0 +1,1 @@
+['reportChange', 'process', 'normalizeNodeTypes', 'normalizeBlocks', 'visit', 'normalizeObjectLiteralAnnotations', 'annotateCalls', 'annotateDispatchers', 'normalizeObjectLiteralKeyAnnotations']

@@ -1,0 +1,3 @@
+Intent: The test case `testLANG807` intends to validate that an `IllegalArgumentException` is thrown when the `start` and `end` parameters are equal, which should logically indicate an invalid range for generating a random string, as there would be no characters to select from.
+
+Repair strategy: Modify the `random` function to include a check for when `start` is equal to `end` and throw an `IllegalArgumentException` with a message explicitly stating that the `start` index must not equal the `end` index. This ensures clarity in error messages and correct handling of invalid range inputs.

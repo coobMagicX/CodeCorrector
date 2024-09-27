@@ -1,0 +1,1 @@
+{"Class": ["CoreOperationCompare"], "Constructor": ["CoreOperationCompare"], "Method": ["equal", "contains", "findMatch"], "Overloaded": {"equal": [["equal", 3], ["equal", 2]], "contains": [["contains", 2]], "findMatch": [["findMatch", 2]]}}

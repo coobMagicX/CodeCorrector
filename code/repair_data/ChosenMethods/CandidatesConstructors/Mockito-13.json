@@ -1,0 +1,1 @@
+{"MockHandler": "    public MockHandler(MockHandlerInterface<T> oldMockHandler) {\n        this(oldMockHandler.getMockSettings());\n    }"}

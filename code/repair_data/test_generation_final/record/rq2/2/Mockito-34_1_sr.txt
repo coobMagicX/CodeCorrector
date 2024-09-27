@@ -1,0 +1,14 @@
+public void captureArgumentsFrom(Invocation i) {
+    // Check if the number of arguments matches the number of matchers
+    if (i.getArguments().length != matchers.size()) {
+        throw new IllegalArgumentException("The number of arguments does not match the number of matchers");
+    }
+
+    int k = 0;
+    for (Matcher m : matchers) {
+        if (m instanceof CapturesArguments) {
+            ((CapturesArguments) m).captureFrom(i.getArguments()[k]);
+        }
+        k++;
+    }
+}

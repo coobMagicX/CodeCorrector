@@ -1,0 +1,11 @@
+Intent: The source code is intended to parse a string and create a corresponding Number object based on the contents of the string. This includes handling of different numerical types like integer, long, BigInteger, float, double, and BigDecimal. The function should be able to handle different string formats, including scientific notation and hexadecimal numbers.
+
+Fix strategy: The failed test case shows that the function does not handle single character strings like "l", "L", "f", "F" and non-numerical strings such as "junk", "bobL" correctly. It should throw a NumberFormatException for these inputs, but it does not. To fix this, we should add a condition at the start of the function to check if the string length is equal to 1 and that the string is not a digit. If so, it should throw a NumberFormatException. 
+
+Here is the code snippet to implement this fix strategy:
+
+```
+if (val.length() == 1 && !Character.isDigit(val.charAt(0))) {
+    throw new NumberFormatException(val + " is not a valid number.");
+}
+```

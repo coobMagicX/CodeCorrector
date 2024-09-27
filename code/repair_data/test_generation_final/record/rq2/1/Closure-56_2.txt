@@ -1,0 +1,41 @@
+public String getLine(int lineNumber) {
+    String js = "";
+    try {
+        js = getCode(); // Obtain the code using the provided getCode() method
+    } catch (IOException e) {
+        return null; // Return null if an IOException occurs
+    }
+
+    int pos = 0;
+    int startLine = 1;
+
+    // If we've saved a previous offset and it's for a line less than the
+    // one we're searching for, then start at that point.
+    if (lineNumber >= lastLine) {
+        pos = lastOffset;
+        startLine = lastLine;
+    }
+
+    for (int n = startLine; n < lineNumber; n++) {
+        int nextpos = js.indexOf('\n', pos);
+        if (nextpos == -1) {
+            return null; // Return null if no more lines are found
+        }
+        pos = nextpos + 1;
+    }
+
+    // Remember this offset for the next search we do.
+    lastOffset = pos;
+    lastLine = lineNumber;
+
+    int endPos = js.indexOf('\n', pos);
+    if (endPos == -1) {
+        if (pos >= js.length()) {
+            return null; // Return null if pos is at or beyond the end of the string
+        } else {
+            return js.substring(pos); // Return the substring from pos to the end of the file
+        }
+    } else {
+        return js.substring(pos, endPos); // Return the substring from pos to the next newline
+    }
+}

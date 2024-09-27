@@ -1,0 +1,1 @@
+{"testSingleOptionSingleArgument": "        assertEquals(\"[\" + enteredValue1 + \", 1000]\", b + \"\");\n", "testSingleOptionMaximumNumberOfArgument": "        assertEquals(\"[1, 2, 10000]\", b + \"\");\n"}

@@ -1,0 +1,1 @@
+{"testUselessCode": "    test(\"var a, b; a = (bar(), 6, 7)\",\n"}

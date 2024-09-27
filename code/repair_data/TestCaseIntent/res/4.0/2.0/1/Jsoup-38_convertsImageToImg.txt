@@ -1,0 +1,3 @@
+Intent: The test case is intended to verify that the HTML parsing system correctly converts `<image>` tags to `<img>` tags outside of SVG contexts, but keeps them as `<image>` within SVG contexts.
+
+Repair strategy: The code responsible for handling the `<image>` tag should be adjusted to check the current context or environment to determine whether the tag is inside an SVG element. If the `<image>` tag is inside an SVG, it should not be converted to `<img>`. This can be implemented by enhancing the condition checks around the tag conversion logic to include context awareness, possibly by checking the current node or using a flag that indicates if the SVG context is active.

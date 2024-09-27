@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to check if the code correctly handles a script tag containing the characters "<?" and "?>". 
+
+Repair strategy: The code needs to be modified to correctly parse the script tag and handle the characters "<?" and "?>".

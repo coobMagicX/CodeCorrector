@@ -1,0 +1,1 @@
+{"testRevert": "        Assert.assertArrayEquals(expected.toArray(), reverted.getDirection().toArray(), 0);\n"}

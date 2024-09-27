@@ -1,0 +1,6 @@
+public double solve(final UnivariateRealFunction f, double min, double max, double initial)
+    throws MaxIterationsExceededException, FunctionEvaluationException {
+    // Assuming solve method should start searching from the 'initial' value using some iterative method.
+    // Adjust the solve method to utilize 'initial' as a starting point for the solution.
+    return solve(f, min, max, initial); // This would ideally be an implementation that uses 'initial'.
+}

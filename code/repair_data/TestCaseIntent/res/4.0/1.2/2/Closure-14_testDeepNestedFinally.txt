@@ -1,0 +1,7 @@
+Intent: The purpose of the source code is to compute the follow node in a control flow analysis (CFA). The code is used to determine the next node in a control flow graph based on the current node and its parent. It handles different cases for different types of nodes (like IF, WHILE, DO, FOR, TRY, etc.) and returns the next appropriate node.
+
+Fix strategy: The failed test case indicates an issue with handling of Token.IF within a nested try-finally block. The expected behaviour appears to be that control should be transferred to the block (Token.BLOCK) on exception (Branch.ON_EX). 
+
+However, the existing code does not handle the case where an IF statement can be a part of a finally block, thus causing the test case to fail. The fix strategy would involve modifying the logic within the Token.TRY case to account for IF statements within finally blocks. 
+
+You would need to add a condition to check if the node inside the finally block is an IF statement (Token.IF) and then handle its control flow accordingly. This would involve defining the control flow for IF within the finally block such that it correctly transfers control to the block on exception.

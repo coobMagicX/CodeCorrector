@@ -1,0 +1,1 @@
+{"CheckSideEffects": "  CheckSideEffects(AbstractCompiler compiler, CheckLevel level,\n      boolean protectSideEffectFreeCode) {\n    this.compiler = compiler;\n    this.level = level;\n    this.protectSideEffectFreeCode = protectSideEffectFreeCode;\n  }", "StripProtection": "    StripProtection(AbstractCompiler compiler) {\n      this.compiler = compiler;\n    }"}

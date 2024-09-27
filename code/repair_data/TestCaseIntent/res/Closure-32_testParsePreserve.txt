@@ -1,0 +1,6 @@
+Intent: The test case `testParsePreserve` aims to verify that the method `parse` correctly handles the preservation of whitespace and new lines in a multi-line JSDoc comment when the `WhitespaceOption.PRESERVE` option is used. It ensures that the comment text is correctly extracted and stored as the license information in the associated node, with leading and internal whitespaces intact.
+
+Repair strategy: Review and adjust the handling of whitespace in the `extractMultilineTextualBlock` method when the `WhitespaceOption.PRESERVE` is selected. Ensure that the leading whitespace in the first line and subsequent lines is correctly preserved, and that spaces are not erroneously added or removed during the processing. Specifically:
+1. Verify that the initial trimming of the line when `WhitespaceOption.PRESERVE` is applied does not remove necessary spaces.
+2. Ensure that the transition between lines preserves newline characters and spaces as per the `PRESERVE` option.
+3. Check the final construction of `multilineText` to ensure no additional trimming or space modifications are applied beyond those required by the preservation settings.

@@ -1,0 +1,1 @@
+['getOptPrefix', 'getLongOptPrefix', 'getArgName', 'getOptionComparator', 'setOptionComparator', 'appendOptionGroup', 'appendOption', 'printOptions', 'renderOptions', 'rtrim', 'compare']

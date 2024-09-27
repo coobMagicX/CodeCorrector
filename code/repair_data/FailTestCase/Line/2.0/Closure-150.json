@@ -1,0 +1,1 @@
+{"testNamespacedFunctionStubLocal": "    assertTrue(goog.hasProperty(\"foo\"));\n", "testCollectedFunctionStubLocal": "    assertTrue(x.hasProperty(\"foo\"));\n"}

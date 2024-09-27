@@ -1,0 +1,1 @@
+['getTypeInclusion', 'baseTypeName', 'getPropertyName', 'getTypeIdResolver', 'getDefaultImpl', 'baseType', 'toString', '_findDeserializer', '_findDefaultImplDeserializer', '_deserializeWithNativeTypeId', '_handleUnknownTypeId', '_handleMissingTypeId']

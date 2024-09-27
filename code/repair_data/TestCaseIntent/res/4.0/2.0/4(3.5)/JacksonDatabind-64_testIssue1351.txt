@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to verify the serialization behavior when using the JsonInclude.Include.NON_DEFAULT inclusion setting.
+
+Repair strategy: The repair strategy for the source code is to handle the case when the inclusion setting is JsonInclude.Include.NON_DEFAULT, so that it correctly excludes properties with default values from the serialized output.

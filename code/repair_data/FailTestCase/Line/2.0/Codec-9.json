@@ -1,0 +1,1 @@
+{"testCodec112": "        Base64.encodeBase64(in, false, false, out.length);\n"}

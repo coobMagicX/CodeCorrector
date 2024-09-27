@@ -1,0 +1,1 @@
+['getRadixDigits', 'align', 'abs', 'equals', 'unequal', 'compare', 'rint', 'floor', 'ceil', 'remainder', 'trunc', 'log10K', 'power10K', 'log10', 'power10', 'complement', 'add', 'negate', 'subtract', 'round', 'multiply', 'multiplyFast', 'divide', 'reciprocal', 'sqrt', 'dfp2sci', 'dfp2string', 'dotrap', 'trap', 'classify', 'copysign', 'nextAfter']

@@ -1,0 +1,1 @@
+{"testGenericSignature1195": "        assertEquals(\"Ljava/util/concurrent/atomic/AtomicReference<Ljava/lang/String;>;\", t.getGenericSignature());\n"}

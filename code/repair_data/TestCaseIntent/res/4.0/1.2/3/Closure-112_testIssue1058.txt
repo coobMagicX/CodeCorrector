@@ -1,0 +1,5 @@
+Intent: The intention of the source code is to infer the types of template parameters for a JavaScript function call. It does this by retrieving the template keys, inferring the template types from parameters, replacing all template types, and setting the type of the function call. If it fails to find a replacement for a template type, it replaces it with UNKNOWN.
+
+Fix strategy: From the failed test case, it appears that the code is trying to handle templated types but fails when a function of a template type is passed as a parameter. In the test case, function 'a' which is of type number is passed to the method 'foo' of the 'Class' object, but 'foo' is expecting a function of type CLASS. 
+
+The fix should involve adding a check to ensure that the types of the passed parameters match the expected template types. If a mismatch is detected, an appropriate error should be thrown. This check should be added in the 'inferTemplateTypesFromParameters' method or wherever the type checking for the function parameters is being done.

@@ -1,0 +1,1 @@
+['handleBlockComment', 'transform', 'position2charno']

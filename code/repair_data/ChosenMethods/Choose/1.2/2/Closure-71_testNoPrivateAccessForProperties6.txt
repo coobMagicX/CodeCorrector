@@ -1,0 +1,3 @@
+The method needed in this context is:
+
+1-checkPropertyVisibility

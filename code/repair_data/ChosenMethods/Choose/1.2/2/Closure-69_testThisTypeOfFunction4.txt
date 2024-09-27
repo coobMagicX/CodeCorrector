@@ -1,0 +1,3 @@
+Based on the provided source code and the intent of the test case `testThisTypeOfFunction4`, you need to add a method to check if functions with explicit 'this' types are called correctly. The method needed in this context is:
+
+1-`checkPropertyAccess`

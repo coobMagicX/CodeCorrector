@@ -1,0 +1,12 @@
+Intent: The purpose of the source code is to add a number to a string. If the number is a long type and its absolute value is greater than or equal to 100, it is transformed into a string representation in scientific notation, otherwise it is just converted into a string directly. If the number is a double type, it is directly converted into a string. Additionally, if the number is a negative number and the last character added to the string is a "-", a space is added to prevent syntax errors.
+
+Fix strategy: The problem lies in the handling of negative zero (-0.0). When the input is -0.0, the output is supposed to be "var x=-0.0", but the current code does not correctly handle this situation. This is because -0.0 is considered as 0 in the condition check and hence, the '-' sign is discarded. 
+To fix this issue, you should add an additional check for negative zero. This can be done by adding a condition that checks if 'x' is -0.0 before the typecasting to long, and if true, directly add "-0.0" to the string. The additional check would look something like this:
+
+```java
+if (x == 0.0 && 1/x == Double.NEGATIVE_INFINITY) {
+  add("-0.0");
+} else if ...
+```
+
+This condition checks if 'x' is -0.0 by using the property that 1/-0.0 is Negative Infinity in Java. If it's true, it directly adds "-0.0" to the string. Otherwise, it proceeds with the existing checks.

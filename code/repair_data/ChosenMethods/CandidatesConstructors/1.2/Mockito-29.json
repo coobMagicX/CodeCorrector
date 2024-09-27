@@ -1,0 +1,1 @@
+{"Same": "    public Same(Object wanted) {\n        this.wanted = wanted;\n    }"}

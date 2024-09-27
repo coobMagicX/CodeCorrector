@@ -1,0 +1,13 @@
+Based on the provided context and the test-repair intent described, the source code needs to be modified to ensure that the parser handles `<style>` and `<script>` tags correctly, treating them as raw text elements. The methods `text()` and `data()` should behave appropriately with these tags, where `text()` should not return the contents of these tags, but `data()` should.
+
+In the provided source code, the handling of different tags during the parsing process is implemented in the `process` method with a switch-case statement based on token type and tag names. However, no direct method name is provided in the question prompt that specifically addresses the handling of raw text content for `<style>` and `<script>` tags.
+
+From the description and the source code, it is apparent that a method like `handleRawtext` should be utilized or created to process `<style>` and `<script>` tags correctly. This method should ensure that the content inside these tags is treated as raw text and not visible text, aligning with the test intent. 
+
+Since the candidate methods are not explicitly listed in the question, but based on the explanation and context, the method that needs to be either utilized or created and adjusted is `handleRawtext`. This method should be refined to differentiate text extraction behavior between `text()` and `data()` methods for the tags in question.
+
+Desired format response based on the analysis:
+```
+<idx>-handleRawtext
+```
+Note: Replace `<idx>` with the appropriate index number if multiple method choices were provided in an actual list. Since the candidate methods list is empty in this scenario, the specific method has been deduced from the context and typical parsing strategy requirements.

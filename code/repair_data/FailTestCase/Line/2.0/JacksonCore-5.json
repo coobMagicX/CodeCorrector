@@ -1,0 +1,1 @@
+{"testWonkyNumber173": "        JsonPointer ptr = JsonPointer.compile(\"/1e0\");\n"}

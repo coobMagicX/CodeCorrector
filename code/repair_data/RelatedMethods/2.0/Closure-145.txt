@@ -1,0 +1,1 @@
+['add', 'addIdentifier', 'addNonEmptyExpression', 'isOneExactlyFunctionOrDo', 'addAllSiblings', 'jsString', 'escapeToDoubleQuotedJsString', 'identifierEscape', 'getNonEmptyChildCount', 'getFirstNonEmptyChild', 'getContextForNonEmptyExpression', 'getContextForNoInOperator', 'clearContextForNoInOperator', 'appendHexJavaScriptRepresentation']

@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that needs to be added is:
+
+1- `coerceNonStringValuesToString`
+
+This method should be responsible for converting non-String values to Strings when mapping a Java object to a Properties object.

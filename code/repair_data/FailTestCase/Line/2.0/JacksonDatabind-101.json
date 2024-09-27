@@ -1,0 +1,1 @@
+{"testIssue2088UnwrappedFieldsAfterLastCreatorProp": "        assertEquals(4, bean.w.b);\n"}

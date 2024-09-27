@@ -1,0 +1,1 @@
+{"PearsonsCorrelation": "    public PearsonsCorrelation(RealMatrix covarianceMatrix, int numberOfObservations) {\n        nObs = numberOfObservations;\n        correlationMatrix = covarianceToCorrelation(covarianceMatrix);\n\n    }"}

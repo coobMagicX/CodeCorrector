@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that the custom protocols "cid" and "data" are preserved in the cleaned HTML.
+
+Repair strategy: The repair strategy should involve updating the "testValidProtocol" method to correctly handle and preserve the custom protocols "cid" and "data" in the cleaned HTML.

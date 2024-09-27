@@ -1,0 +1,1 @@
+{"testContainsAnyCharArrayWithSupplementaryChars": "\t\tassertEquals(false, StringUtils.containsAny(CharU20000, CharU20001.toCharArray()));\n", "testContainsAnyStringWithSupplementaryChars": "\t\tassertEquals(false, StringUtils.containsAny(CharU20000, CharU20001));\n"}

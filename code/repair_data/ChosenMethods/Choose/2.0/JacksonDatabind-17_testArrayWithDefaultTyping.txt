@@ -1,0 +1,4 @@
+Based on the test intent and repair strategy, the method that needs to be repaired is the "useForType" method.
+
+The repaired method would be:
+1-setSubtypeResolver

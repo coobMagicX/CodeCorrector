@@ -1,0 +1,11 @@
+Intent: The purpose of the provided source code is to create a Fraction object from a given double value. It uses the method of continued fractions to approximate the double value as a fraction, within a certain error tolerance (epsilon). The constructor throws a FractionConversionException if it cannot convert the value within the provided maximum number of iterations or if the numerator or denominator exceeds the maximum integer value. 
+
+The failed test case is designed to test the constructor's ability to handle large negative numbers and to throw a FractionConversionException when overflow occurs.
+
+Fix Strategy: The failure seems to be occurring because the check for overflow is not properly accounting for negative numbers. The line "if ((p2 > overflow) || (q2 > overflow))" only checks if p2 or q2 are greater than the maximum integer value, but it does not check if they are less than the minimum integer value. 
+
+You can modify the overflow check to also consider negative overflow. This can be done by adding a condition that checks if p2 or q2 is less than Integer.MIN_VALUE. Here's how the modified code might look:
+
+"if ((p2 > overflow) || (q2 > overflow) || (p2 < Integer.MIN_VALUE) || (q2 < Integer.MIN_VALUE))".
+
+This modification should handle integer overflow for both positive and negative numbers correctly, and allow the test case to pass.

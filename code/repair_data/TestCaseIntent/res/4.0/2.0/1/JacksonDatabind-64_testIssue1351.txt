@@ -1,0 +1,8 @@
+Intent: The test case `testIssue1351` is intended to serialize objects of `Issue1351Bean` and `Issue1351NonBean` classes with the serialization inclusion rule set to `JsonInclude.Include.NON_DEFAULT`. This rule means that the output JSON should not include properties that are set to their default values. The expected outcome is to receive an empty JSON object `{}` because all properties in the object being serialized are set to their default values.
+
+Repair strategy: The source code likely fails to correctly handle the `JsonInclude.Include.NON_DEFAULT` inclusion setting, particularly in the computation or handling of default values for properties. The repair should involve:
+
+1. Verifying and possibly fixing the logic within the `NON_DEFAULT` case in the switch statement that handles different inclusion rules. Ensure that the logic correctly identifies and suppresses default values.
+2. Ensuring that the method `getPropertyDefaultValue` (and related logic for defaults handling) accurately fetches or computes default values for properties, particularly for custom or non-standard types that might not have straightforward default values.
+3. Reviewing the integration and effect of `_useRealPropertyDefaults` flag to ensure it works as intended, especially in scenarios where the default instance creation is complex or might fail.
+4. Adding or improving unit tests to cover various scenarios under the `NON_DEFAULT` setting to catch any edge cases or missed behaviors.

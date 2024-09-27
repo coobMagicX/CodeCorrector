@@ -1,0 +1,1 @@
+{"DateTimeSerializerBase": "    protected DateTimeSerializerBase(Class<T> type,\n            Boolean useTimestamp, DateFormat customFormat)\n    {\n        super(type);\n        _useTimestamp = useTimestamp;\n        _customFormat = customFormat;\n    }"}

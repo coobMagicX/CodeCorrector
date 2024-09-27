@@ -1,0 +1,3 @@
+Intent: The test "shouldDealWithNestedGenerics" aims to verify that the method `getGenericType` correctly identifies and returns the class object for the outermost generic type of a field, even when dealing with nested or multiple levels of generics. 
+
+Repair strategy: Modify the `getGenericType` method to handle nested generics more effectively. The current implementation only retrieves the first level of a generic type. Enhance the method to recursively or iteratively check for nested generics until the outermost type is reached, or adjust the logic to directly access the outermost type from a nested generic structure, ensuring that it does not return prematurely for nested generic types.

@@ -1,0 +1,1 @@
+['forProperty', 'getTypeInclusion', 'deserializeTypedFromObject', 'deserializeTypedFromArray', 'deserializeTypedFromScalar', 'deserializeTypedFromAny', '_deserialize']

@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to test the behavior of the `isOneExactlyFunctionOrDo` function when given different inputs related to function and block statements.
+
+Repair strategy: The repair strategy for the source code could involve modifying the `isOneExactlyFunctionOrDo` function to handle the case where a label is present before a function statement. This could potentially involve checking for the presence of a label and adjusting the logic accordingly.

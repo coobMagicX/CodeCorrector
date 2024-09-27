@@ -1,0 +1,1 @@
+{"getRootMatrix": "    public RealMatrix getRootMatrix() {\n        return root;\n    }", "getRank": "    public int getRank() {\n        return rank;\n    }"}

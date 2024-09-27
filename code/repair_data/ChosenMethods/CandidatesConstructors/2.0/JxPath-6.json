@@ -1,0 +1,1 @@
+{"CoreOperationCompare": "    public CoreOperationCompare(Expression arg1, Expression arg2) {\n        super(new Expression[] { arg1, arg2 });\n    }"}

@@ -1,0 +1,2 @@
+1-_detectBindAndReadValues
+2-_considerFilter

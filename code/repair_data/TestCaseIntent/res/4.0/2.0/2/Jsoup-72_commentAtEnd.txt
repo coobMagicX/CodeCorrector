@@ -1,0 +1,3 @@
+Intent: The intent of the test case `commentAtEnd` is to verify that the string "<!" is correctly parsed as a comment node in a document when using the `Jsoup.parse()` method.
+
+Repair strategy: Investigate the parsing logic within the `Jsoup.parse()` method to ensure it correctly identifies and handles strings that are intended to be comments but may not follow the conventional comment format (e.g., "<!-- comment -->"). The parser should be adjusted to recognize "<!" as the start of a comment even if it is not followed by "--". This might involve modifying the parsing rules or the condition checks for defining what constitutes a comment in the HTML parsing logic.

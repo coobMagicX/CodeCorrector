@@ -1,0 +1,1 @@
+['equals', 'getName', 'getFile', 'isDirectory', 'isFile', 'normalizeFileName']

@@ -1,0 +1,1 @@
+{"FDistributionImpl": "    public FDistributionImpl(double numeratorDegreesOfFreedom,\n            double denominatorDegreesOfFreedom) {\n        super();\n        setNumeratorDegreesOfFreedom(numeratorDegreesOfFreedom);\n        setDenominatorDegreesOfFreedom(denominatorDegreesOfFreedom);\n    }"}

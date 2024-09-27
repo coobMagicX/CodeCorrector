@@ -1,0 +1,1 @@
+{"testElementSiblingIndexSameContent": "        assertTrue(1 == ps.get(1).elementSiblingIndex());\n", "testGetSiblingsWithDuplicateContent": "        assertEquals(\"is\", p.nextElementSibling().nextElementSibling().nextElementSibling().text());\n"}

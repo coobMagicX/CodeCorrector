@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that when parsing a `<pre>` tag with multiple lines of text, the first newline character is skipped and not included in the parsed text content.
+
+Repair strategy: The repair strategy for this issue would involve modifying the `process()` method to handle the skipping of the first newline character in `<pre>` tags. This could be done by checking if the current token is of type `Character` and its data starts with a newline character. If so, the newline character should be removed before inserting the text into the `HtmlTreeBuilder`.

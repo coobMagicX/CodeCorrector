@@ -1,0 +1,17 @@
+Intent: The intent of the source code is to calculate the DateTimeZone for given hours and minutes offset. The method checks for the validity of the input and calculates the offset in milliseconds. 
+
+The failed line in the test case is trying to assert that calling the method with a zero hours offset and a -15 minutes offset returns a DateTimeZone equal to the one returned by DateTimeZone.forID("-00:15").
+
+Fix strategy: The issue arises when the hour is zero and the minute is negative. The source code does not handle this situation correctly. The correct behavior would be to subtract the negative minutes from the hours, but currently, it is adding them. 
+
+A fix could be to adjust the code where minutesOffset is calculated. We can add an extra condition to check if the hour is zero and the minutes are negative. If so, we invert the minutes. 
+
+Here is the proposed fix:
+
+```java
+if (hoursInMinutes < 0 || (hoursOffset == 0 && minutesOffset < 0)) {
+    minutesOffset = hoursInMinutes - minutesOffset;
+} else {
+    minutesOffset = hoursInMinutes + minutesOffset;
+}
+```

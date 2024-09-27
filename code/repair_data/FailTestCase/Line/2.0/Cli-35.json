@@ -1,0 +1,1 @@
+{"testExactOptionNameMatch": "        new DefaultParser().parse(getOptions(), new String[]{\"--prefix\"});\n"}

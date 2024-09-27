@@ -1,0 +1,1 @@
+{"testNonFiniteDoublesWhenLenient": "    jsonWriter.value(Double.NaN);\n"}

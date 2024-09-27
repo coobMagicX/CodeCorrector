@@ -1,0 +1,1 @@
+{"testBinaryAsEmbeddedObject": "        g.writeEmbeddedObject(WIKIPEDIA_BASE64_AS_BYTES);\n", "testAsEmbedded": "        g.writeEmbeddedObject(null);\n"}

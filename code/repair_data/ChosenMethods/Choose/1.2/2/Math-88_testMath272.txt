@@ -1,0 +1,5 @@
+Based on the provided source code and the intent of the test, the method needed to correct the issue in setting the value of a decision variable in the solution is `getBasicRow`.
+
+Therefore, the correct format for the method to choose from the candidate methods is:
+
+1-getBasicRow

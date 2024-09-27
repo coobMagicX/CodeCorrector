@@ -1,0 +1,1 @@
+{"CreatorCollector": "    public CreatorCollector(BeanDescription beanDesc, boolean canFixAccess)\n    {\n        _beanDesc = beanDesc;\n        _canFixAccess = canFixAccess;\n    }", "Vanilla": "        public Vanilla(int t) {\n            _type = t;\n        }"}

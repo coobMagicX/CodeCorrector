@@ -1,0 +1,1 @@
+{"Class": ["WritableObjectId"], "Constructor": ["WritableObjectId"], "Method": ["writeAsId", "generateId", "writeAsField"], "Overloaded": {"writeAsId": [["writeAsId", 3]], "generateId": [["generateId", 1]], "writeAsField": [["writeAsField", 3]]}}

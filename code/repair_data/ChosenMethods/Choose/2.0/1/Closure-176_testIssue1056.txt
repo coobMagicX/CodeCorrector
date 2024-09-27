@@ -1,0 +1,5 @@
+5-narrowScope
+7-traverseGetProp
+8-getPropertyType
+11-redeclareSimpleVar
+12-getJSType

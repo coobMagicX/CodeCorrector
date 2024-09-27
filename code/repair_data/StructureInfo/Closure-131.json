@@ -1,0 +1,1 @@
+{"Class": ["TokenStream"], "Constructor": [], "Method": ["isKeyword", "isJSIdentifier"], "Overloaded": {"isKeyword": [["isKeyword", 1]], "isJSIdentifier": [["isJSIdentifier", 1]]}}

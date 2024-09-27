@@ -1,0 +1,10 @@
+Intent:
+The intent of the test case `createsStructureFromBodySnippet` is to validate that the `normalise` method correctly restructures the HTML content by moving all text nodes to the body of the document, while preserving the text order and content. The HTML input contains a mix of text nodes both outside and inside of HTML tags, and the test checks if after normalization, the document text reflects the expected sequence and content.
+
+Repair strategy:
+The failure of the test case indicates an issue with how the `normalise` method handles the movement of text nodes. Specifically, the method seems to indiscriminately append moved text nodes to the body without considering their original positions relative to other elements. This can lead to text reordering or incorrect merging of text nodes.
+
+To correct this:
+1. Modify the `normalise` method to maintain the relative order of text nodes and elements as they originally appear in the document.
+2. Ensure that text nodes that are meant to remain at the root (outside any specific HTML structure) are handled correctly, possibly by checking their original position before moving.
+3. Adjust the handling of whitespace or text node creation in the body to avoid introducing unintended spaces or altering the structure, which might affect the final text output of the document.

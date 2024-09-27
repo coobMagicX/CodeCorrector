@@ -1,0 +1,3 @@
+1-SimplexSolver
+2-SimplexSolver
+3-getPivotRow

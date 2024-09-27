@@ -1,0 +1,5 @@
+Based on the analysis provided, the issue seems to be related to the calculation logic within the `chiSquare` method. To address the problem and make the test pass, you should choose the following method from the candidate methods:
+
+1-chiSquare
+
+This method should be reviewed and adjusted to ensure the calculation of the chi-square statistic aligns with the expected computation.

@@ -1,0 +1,1 @@
+{"testJDKTypes1872": "        Authentication1872 result = mapper.readValue(json, Authentication1872.class);\n"}

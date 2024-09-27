@@ -1,0 +1,1 @@
+['getDomainDescription', 'setDomainDescription', 'getRangeDescription', 'setRangeDescription', 'getItemCount', 'getDataItem', 'getTimePeriod', 'getValue', 'add', 'updateBounds', 'recalculateBounds', 'update', 'delete', 'equals', 'hashCode', 'clone', 'createCopy', 'getMinStartIndex', 'getMaxStartIndex', 'getMinMiddleIndex', 'getMaxMiddleIndex', 'getMinEndIndex', 'getMaxEndIndex']

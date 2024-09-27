@@ -1,0 +1,1 @@
+['builder', 'start', 'handleTypePropertyValue', '_handleTypePropertyValue', 'handlePropertyValue', 'complete', '_deserialize', '_deserializeAndSet', '_addPropertyIndex', 'build', 'linkTypeProperty', 'hasTypePropertyName', 'hasDefaultType', 'getDefaultTypeId', 'getTypePropertyName', 'getProperty', 'getTypeProperty']

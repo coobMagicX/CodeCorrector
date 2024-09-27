@@ -1,0 +1,8 @@
+Analysis: The purpose of the `containsAny` method is to check if a given CharSequence contains any of the characters from a given char array. The specific failed line `assertEquals(false, StringUtils.containsAny(CharU20000, CharU20001));` indicates that the method failed to correctly identify the presence of characters from the `CharU20001` array in the `CharU20000` CharSequence.
+
+Reasons for the failure:
+1. The `containsAny` method iterates over the characters in the CharSequence and the characters in the char array to compare them. However, the method is not handling supplementary characters correctly.
+2. In the case of supplementary characters like `CharU20000` and `CharU20001`, each character may be represented by multiple `char` values in Java due to UTF-16 encoding.
+3. The method is comparing individual `char` values, which is not sufficient to handle supplementary characters correctly. It should consider surrogate pairs when comparing characters.
+
+To fix this issue, the `containsAny` method should be updated to properly handle supplementary characters by considering surrogate pairs and comparing them appropriately. This will ensure that the method can correctly detect the presence of characters, including supplementary characters, in the input CharSequence.

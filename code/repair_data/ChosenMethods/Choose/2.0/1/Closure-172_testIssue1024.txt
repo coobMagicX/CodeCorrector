@@ -1,0 +1,4 @@
+1-isQualifiedNameInferred
+2-getFunctionAnalysisResults
+3-isConstantSymbol
+4-FunctionTypeBuilder.isFunctionTypeDeclaration

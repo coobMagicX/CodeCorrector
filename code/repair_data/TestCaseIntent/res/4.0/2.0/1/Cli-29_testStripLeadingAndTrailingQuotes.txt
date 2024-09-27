@@ -1,0 +1,3 @@
+Intent: The purpose of the test cases is to verify the functionality of the `stripLeadingAndTrailingQuotes` method, which should remove only the leading and trailing quotes from a given string. This method is intended to keep internal quotes intact.
+
+Repair strategy: Modify the source code to ensure that it checks for and removes only the first and last characters of the string if they are quotation marks, without altering the rest of the string. This involves refining the condition checks to explicitly target only the first and last character positions for quotes, rather than using broad checks that could incorrectly interpret internal quotes as leading or trailing.

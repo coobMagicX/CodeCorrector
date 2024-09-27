@@ -1,0 +1,1 @@
+{"handlesAbsPrefixOnHasAttr": "        assertTrue(two.hasAttr(\"abs:href\"));\n", "handlesAbsPrefix": "        assertTrue(a.hasAttr(\"abs:href\"));\n", "absAttr": "        assertEquals(\"http://jsoup.org\", two.attr(\"abs:href\"));\n", "hasAbsAttr": "        assertTrue(two.hasAttr(\"abs:href\"));\n"}

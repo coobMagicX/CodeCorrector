@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that the byte offset is correct when there is an input offset.
+
+Repair strategy: The repair strategy should involve checking the calculation of the byte offset in the source code.

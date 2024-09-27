@@ -1,0 +1,1 @@
+{"Complex": "    public Complex(double real, double imaginary) {\n        this.real = real;\n        this.imaginary = imaginary;\n\n        isNaN = Double.isNaN(real) || Double.isNaN(imaginary);\n        isInfinite = !isNaN &&\n            (Double.isInfinite(real) || Double.isInfinite(imaginary));\n    }"}

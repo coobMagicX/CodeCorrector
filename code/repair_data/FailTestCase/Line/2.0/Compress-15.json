@@ -1,0 +1,1 @@
+{"testNullCommentEqualsEmptyComment": "        assertEquals(entry1, entry2);\n"}

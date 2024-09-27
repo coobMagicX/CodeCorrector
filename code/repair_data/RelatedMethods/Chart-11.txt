@@ -1,0 +1,1 @@
+['clone', 'equal', 'contains', 'intersects']

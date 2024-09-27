@@ -1,0 +1,11 @@
+Intent: The purpose of the source code is to initialize an optimization algorithm that operates on a set of data points within given boundaries. It calculates the next value of an objective function and updates the quadratic model based on the function value. The aim is to find the minimum or maximum value of the function within the given boundaries.
+
+Fix strategy: The test case fails as it reaches a limit of additional interpolation points (maxAdditionalPoints = 47) beyond which the test fails. This limit is not sufficiently explained in the code comments, which suggest a higher limit (78). This discrepancy needs to be addressed. 
+
+First, check that the 'doTest' function works correctly and handles the given number of interpolation points properly. Then, verify the calculation for the maximum number of additional interpolation points in the code comment. If this calculation is correct and the actual limit is indeed 78, then the issue might be in the 'prelim' function where these points are processed. 
+
+A potential issue could be in the loop where the code checks if 'numEval <= 2 * n + 1'. If 'numEval' is larger than expected, the function might not set the correct values for the 'bMatrix' and 'zMatrix' arrays. 
+
+Lastly, ensure that the 'PathIsExploredException' is correctly thrown and handled. If this exception is thrown prematurely, the function might not complete all necessary computations. 
+
+The issue lies either in the 'doTest' function or the 'prelim' function, and identifying where exactly will help to fix the problem.

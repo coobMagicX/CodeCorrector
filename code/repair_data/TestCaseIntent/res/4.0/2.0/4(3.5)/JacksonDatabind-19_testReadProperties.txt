@@ -1,0 +1,3 @@
+Intent: The purpose of the failing test cases is to test the ability of the code to read and convert a JSON object into a Properties object. 
+
+Repair strategy: The repair strategy should focus on fixing the issue with retrieving the property value for key "b".

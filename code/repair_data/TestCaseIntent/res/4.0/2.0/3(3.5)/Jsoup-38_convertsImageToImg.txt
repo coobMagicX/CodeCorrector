@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to check if the "image" tag is correctly converted to "img" tag, except when it is inside an SVG tag.
+
+Repair strategy: The repair strategy should involve modifying the code to correctly convert the "image" tag to "img" tag, except when it is inside an SVG tag.

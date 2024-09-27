@@ -1,0 +1,3 @@
+Intent: The test case `testIssue701` is designed to verify if the source code correctly preserves ASCII art within license comments when the `@preserve` annotation is specified.
+
+Repair strategy: Modify the source code to ensure it preserves the original structure and spacing of multiline comments marked with `@preserve`, specifically being careful not to alter ASCII art formatting. Ensure that the trimming operation does not remove necessary spaces from the start or within the multiline text when the preservation option is active. Adjust handling of new lines and spaces in the `extractMultilineTextualBlock` method to respect the `@preserve` directive fully.

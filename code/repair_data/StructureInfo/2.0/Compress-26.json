@@ -1,0 +1,1 @@
+{"Class": ["IOUtils"], "Constructor": ["IOUtils"], "Method": ["copy", "skip", "readFully", "toByteArray", "closeQuietly"], "Overloaded": {"copy": [["copy", 2], ["copy", 3]], "skip": [["skip", 2]], "readFully": [["readFully", 2], ["readFully", 4]], "toByteArray": [["toByteArray", 1]], "closeQuietly": [["closeQuietly", 1]]}}

@@ -1,0 +1,5 @@
+Intent: The purpose of the code is to optimize a function using the MultiDirectional method. It aims to find the global minimum and maximum of a function with multiple local extrema. The function being optimized has four local extrema, and it is tested for both minimization and maximization. The test verifies if the optimization method correctly identifies the global minimum and maximum, as well as checking that the number of evaluations falls within an expected range.
+
+Fix strategy: The test case fails on the assertion where the number of evaluations by the optimizer exceeds 150. This suggests that the optimization process is not as efficient as expected. The optimization process might be stuck in a local minimum/maximum or it could be due to the step size being too small thus requiring more iterations to converge.
+
+To fix this, consider using a different optimization method that is less likely to get stuck in local extrema, or adjust the step size or tolerance of the method. Additionally, re-evaluating the initial start configuration might also help improve the efficiency of the optimization process.

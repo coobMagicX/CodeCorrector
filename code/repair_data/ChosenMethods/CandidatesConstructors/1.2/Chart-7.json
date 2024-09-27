@@ -1,0 +1,1 @@
+{"TimePeriodValues": "    public TimePeriodValues(Comparable name, String domain, String range) {\n        super(name);\n        this.domain = domain;\n        this.range = range;\n        this.data = new ArrayList();\n    }"}

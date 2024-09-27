@@ -1,0 +1,1 @@
+{"CheckAccessControls": "  CheckAccessControls(AbstractCompiler compiler) {\n    this.compiler = compiler;\n    this.validator = compiler.getTypeValidator();\n    this.initializedConstantProperties = HashMultimap.create();\n  }"}

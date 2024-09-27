@@ -1,0 +1,1 @@
+{"areArraysEqual": "    static boolean areArraysEqual(Object o1, Object o2) {\n        return areArrayLengthsEqual(o1, o2)\n                && areArrayElementsEqual(o1, o2);\n    }", "isArray": "    static boolean isArray(Object o) {\n        return o.getClass().isArray();\n    }"}

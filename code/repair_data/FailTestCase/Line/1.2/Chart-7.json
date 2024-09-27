@@ -1,0 +1,1 @@
+{"testGetMaxMiddleIndex": "        assertEquals(1, s.getMaxMiddleIndex());\n"}

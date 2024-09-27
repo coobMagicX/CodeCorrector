@@ -1,0 +1,1 @@
+{"Class": ["MultiDirectional"], "Constructor": ["MultiDirectional", "MultiDirectional"], "Method": ["iterateSimplex", "evaluateNewSimplex"], "Overloaded": {"iterateSimplex": [["iterateSimplex", 1]], "evaluateNewSimplex": [["evaluateNewSimplex", 3]]}}

@@ -1,0 +1,18 @@
+Intent: The purpose of the source code is to translate numerical HTML entities into their corresponding characters. 
+
+The code checks if the input sequence starts with "&#". If it does, it checks if the next character is "x" or "X" indicating a hexadecimal number. If it is not "x" or "X", the function assumes it's a decimal number. It then reads the number until it encounters a ";" and tries to parse it into an integer. If the integer is larger than 0xFFFF, it gets converted into a character using the Character.toChars() function and is written to the output. If the integer is smaller or equal to 0xFFFF, it is directly written to the output as a character.
+
+The testOutOfBounds() function tests if the translate() function ignores the last character if it is "&", "&#", "&#x", or "&#X".
+
+Fix strategy: The problem seems to lie in the while loop where it continues to increment 'end' until it finds a ';' character. In the failed test case, the input string ends with '&#' and there is no ';' character. This will lead to an IndexOutOfBoundsException. 
+
+To fix this, we should add a check in the while loop condition to ensure 'end' is less than 'seqEnd'. 
+
+The corrected loop should look like this:
+
+while(end < seqEnd && input.charAt(end) != ';') 
+{
+    end++;
+} 
+
+This will prevent the 'end' index from going out of bounds of the input CharSequence.

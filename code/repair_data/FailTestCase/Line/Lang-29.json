@@ -1,0 +1,1 @@
+{"testJavaVersionAsInt": "        assertEquals(0, SystemUtils.toJavaVersionInt(null));\n"}

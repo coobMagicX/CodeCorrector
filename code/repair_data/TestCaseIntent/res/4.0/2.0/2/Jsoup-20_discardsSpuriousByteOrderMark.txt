@@ -1,0 +1,3 @@
+Intent: The test case named "discardsSpuriousByteOrderMark" is designed to validate whether the function `parseByteData` correctly handles and discards a Byte Order Mark (BOM) when present at the beginning of a UTF-8 encoded HTML document. The test ensures that the parser does not misinterpret the BOM as part of the content and accurately retrieves the text within the `<title>` tag.
+
+Repair strategy: Add logic to explicitly check for and remove a BOM from the `docData` string after decoding the byte buffer and before parsing it into a `Document`. This will prevent the BOM from affecting the parsing process. The removal should only occur if the detected charset is UTF-8, as BOM is primarily an issue with UTF-8 encoded texts.

@@ -1,0 +1,1 @@
+{"JsonReader": "public class JsonReader implements Closeable {\n  /** The only non-execute prefix this parser permits */\n  private static final char[] NON_EXECUTE_PREFIX = \")]}'\\n\".toCharArray();"}

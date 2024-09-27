@@ -1,0 +1,1 @@
+{"testExtremeValues": "        assertEquals(distribution.cumulativeProbability(Double.MAX_VALUE), 1, 0);\n"}

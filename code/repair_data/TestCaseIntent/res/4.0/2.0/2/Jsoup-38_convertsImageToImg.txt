@@ -1,0 +1,3 @@
+Intent: The intent of this test case is to validate that the `<image>` tag is converted to `<img>` when it is not contained within an `<svg>` element, ensuring compatibility with modern HTML standards while maintaining correct behavior within SVG contexts.
+
+Repair strategy: Ensure the source code correctly checks the context in which the `<image>` tag appears. If the `<image>` tag is within an `<svg>` element, it should not be converted to `<img>`. This likely involves adjusting the tag conversion logic to be aware of the current parent or scope, possibly by enhancing the conditions under which tag names are transformed or by refining how the HTML is parsed and reconstructed in different contexts.

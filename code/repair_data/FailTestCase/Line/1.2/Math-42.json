@@ -1,0 +1,1 @@
+{"testMath713NegativeVariable": "        Assert.assertTrue(Precision.compareTo(solution.getPoint()[1], 0.0d, epsilon) >= 0);\n"}

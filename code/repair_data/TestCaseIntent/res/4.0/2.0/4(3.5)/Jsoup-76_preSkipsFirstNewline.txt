@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the `pre` element skips the first newline character when retrieving its text content.
+
+Repair strategy: The repair strategy should involve modifying the `process` method to handle the `pre` element correctly by skipping the first newline character.

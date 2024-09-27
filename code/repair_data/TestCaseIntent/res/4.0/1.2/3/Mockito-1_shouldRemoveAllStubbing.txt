@@ -1,0 +1,11 @@
+Intent: The purpose of the source code is to capture arguments from a given invocation. It checks if the method of the invocation is a variable argument method. If it is, it throws an UnsupportedOperationException. If it isn't, it goes through each matcher in a list of matchers and if the matcher captures arguments, it captures from the argument at the current position. Then, it goes through each matcher again, and if a matcher captures arguments and the length of the raw arguments of the invocation is greater than the current position, it tries to capture from the raw arguments. If the argument is a variable argument and the matcher is a vararg matcher, it captures from each element in the array. If it isn't, it captures from the raw argument at the current position.
+
+The failed test case is testing the removal of all stubbing for the mock object. It first sets up two stubs for the method "objectReturningMethod" of the mock object, then it resets the mock. It checks if the method returns null when called with 200 as an argument and if it returns null when called with "blah" as an argument.
+
+The line where the test case failed is setting up the second stub for the method "objectReturningMethod" of the mock object. 
+
+Fix strategy: The failing test case suggests that the issue lies with the handling of non-variable arguments. The method `captureArgumentsFrom` seems to not properly handle non-variable argument matchers leading to the failure. 
+
+The fix could be to add a condition in the `captureArgumentsFrom` method that checks if the method of the invocation is not a variable argument method and the matcher doesn't capture arguments. If both conditions are true, it should continue to the next iteration. This will ensure that non-variable argument matchers are handled correctly.
+
+Alternatively, the issue might be related to the stubbing mechanism itself in the test. If the stubbing mechanism is not correctly resetting the stubs, the subsequent invocation of `objectReturningMethod(200)` might not return the expected value. Double-check the implementation of the `reset(mock)` method to ensure it's resetting all stubs as expected.

@@ -1,0 +1,1 @@
+{"testEscapedMySqlNullValue": "        assertThat(lexer.nextToken(new Token()), hasContent(\"character\\\\NEscaped\"));\n", "testEscapedCharacter": "        assertThat(lexer.nextToken(new Token()), hasContent(\"character\\\\aEscaped\"));\n", "testBackslashEscaping": "        Utils.compare(\"Records do not match expected result\", res, records);\n"}

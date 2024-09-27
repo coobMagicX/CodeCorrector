@@ -1,0 +1,4 @@
+Based on the analysis provided, you need to use the `resetMock` method in the context to properly configure or reset the mocked object for the `AbstractMessage` class.
+
+Desired format:
+1-resetMock

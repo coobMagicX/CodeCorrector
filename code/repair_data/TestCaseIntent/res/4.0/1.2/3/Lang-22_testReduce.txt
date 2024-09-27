@@ -1,0 +1,13 @@
+Intent: The intent of the source code is to find the greatest common divisor (GCD) of two integer inputs, which is used in the Fraction class to reduce a fraction to its simplest form. The test cases are checking that the fraction reduction is working correctly.
+
+Fix strategy: The specific failure occurs when the test tries to create a fraction with `Integer.MIN_VALUE / 2` as the numerator. This is because when `Integer.MIN_VALUE` is made negative in the GCD function, it overflows. A possible fix could be to check if `u` or `v` equals `Integer.MIN_VALUE` at the beginning of the function. If so, add one to prevent overflow when negating. This will slightly modify the GCD but since the GCD is used for reducing fractions and `Integer.MIN_VALUE` is even, this change will not affect the result of the fraction reduction.
+
+Here is the modified code:
+
+```java
+private static int greatestCommonDivisor(int u, int v) {
+    if (u == Integer.MIN_VALUE) u++;
+    if (v == Integer.MIN_VALUE) v++;
+    // The rest of the code remains the same
+}
+```

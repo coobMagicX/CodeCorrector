@@ -1,0 +1,1 @@
+{"testToMapWithNoHeader": "       Map<String, String> map = shortRec.toMap();\n"}

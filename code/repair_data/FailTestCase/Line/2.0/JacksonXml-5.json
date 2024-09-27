@@ -1,0 +1,1 @@
+{"testCopyWith": "            fail(\"Should NOT use name 'AnnotatedName' but 'Pojo282', xml = \"+xml1);\n"}

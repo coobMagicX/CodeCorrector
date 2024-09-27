@@ -1,0 +1,11 @@
+Intent: The intent of the source code is to calculate the percentage value of a fraction. The test case is designed to check the calculation when the fraction is made up of large numbers, specifically the maximum integer value divided by 99.
+
+Fix strategy: The issue seems to be an overflow problem when calculating the percentage value with large numbers. The current implementation is multiplying the fraction by 100 and then converting it to a double. A potential fix would be to convert the fraction to a double first, and then multiply by 100. This should help prevent the overflow issue. 
+
+Here's the modified source code:
+```java
+public double percentageValue() {
+    return this.doubleValue() * 100;
+}
+```
+The test case should pass now without causing an overflow error.

@@ -1,0 +1,1 @@
+{"CoderId": "        CoderId(SevenZMethod method, final CoderBase coder) {\n            this.method = method;\n            this.coder = coder;\n        }", "DummyByteAddingInputStream": "        private DummyByteAddingInputStream(InputStream in) {\n            super(in);\n        }"}

@@ -1,0 +1,1 @@
+{"ReferenceType": "    protected ReferenceType(Class<?> cls, JavaType refType,\n            Object valueHandler, Object typeHandler, boolean asStatic)\n    {\n        super(cls, refType.hashCode(),\n                valueHandler, typeHandler, asStatic);\n        _referencedType = refType;\n    }"}

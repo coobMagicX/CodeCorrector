@@ -1,0 +1,1 @@
+['enterScope', 'exitScope', 'process', 'visit', 'canInline', 'inlineVariable', 'getDefinition', 'getNumUseInUseCfgNode', 'checkRightOf', 'checkLeftOf']

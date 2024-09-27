@@ -1,0 +1,3 @@
+1-Dfp
+2-Dfp
+3-multiplyFast

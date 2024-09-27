@@ -1,0 +1,1 @@
+{"should_return_empty_iterable": "        assertFalse(((Iterable) values.returnValueFor(Iterable.class)).iterator().hasNext());\n"}

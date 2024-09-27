@@ -1,0 +1,6 @@
+Intent: The test case `testIssue937` aims to validate the minification and type-casting functionalities of a JavaScript compiler. It checks whether a complex JavaScript expression involving a new object instantiation followed by a type-cast and method call is correctly minimized and that the type annotations are preserved properly after the compilation.
+
+Repair strategy: The source code should be reviewed to ensure proper handling of casts and method calls on newly created objects. Specifically, the `annotateCalls` method in the source code appears to focus on handling "this" context and direct eval calls but may not adequately address type-casts or property accesses (like `['abc']`) on new instances. The repair should involve:
+1. Ensuring that the type information (`/** @type {function():!string} */`) is retained during and after the transformation.
+2. Verifying and possibly enhancing the handling of property access (`['abc']`) on new object instances post instantiation and ensuring it transitions correctly during code minimization.
+3. Checking the interaction between different node transformations (like casts and calls) to ensure they are correctly recognized and processed by the compiler optimization routines.

@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to check whether the "image" tag is converted to "img" tag, except when it is inside an "svg" tag.
+
+Repair strategy: The repair strategy for this test case would be to modify the source code to correctly handle the conversion of the "image" tag to "img" tag, except when it is inside an "svg" tag.

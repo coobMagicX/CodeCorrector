@@ -1,0 +1,1 @@
+{"testIssue291": "    foldSame(\"if (f) { f.onchange(); }\");\n"}

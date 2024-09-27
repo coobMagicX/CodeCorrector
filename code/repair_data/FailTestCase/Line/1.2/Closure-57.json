@@ -1,0 +1,1 @@
+{"testRequire": "    assertNotRequire(\"goog.require(foo)\");\n"}

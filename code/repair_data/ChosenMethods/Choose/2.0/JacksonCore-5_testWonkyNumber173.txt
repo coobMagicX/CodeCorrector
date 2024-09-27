@@ -1,0 +1,38 @@
+Based on the test intent and repair strategy, the method that should be added to the context is:
+
+1-_parseScientificNotation
+
+The new source code with the added method would be:
+
+private final static int _parseIndex(String str) {
+    final int len = str.length();
+    // [Issue#133]: beware of super long indexes; assume we never
+    // have arrays over 2 billion entries so ints are fine.
+    if (len == 0 || len > 10) {
+        return -1;
+    }
+    for (int i = 0; i < len; ++i) {
+        char c = str.charAt(i++);
+        if (c > '9' || c < '0') {
+            return -1;
+        }
+    }
+    if (len == 10) {
+        long l = NumberInput.parseLong(str);
+        if (l > Integer.MAX_VALUE) {
+            return -1;
+        }
+    }
+    return NumberInput.parseInt(str);
+}
+
+private final static int _parseScientificNotation(String str) {
+    // Handle scientific notation separately
+    // return -1 if scientific notation is encountered
+    if (str.contains("e") || str.contains("E")) {
+        return -1;
+    }
+    return 0;
+}
+
+Note: The logic inside the _parseScientificNotation method should be implemented based on the specific requirements and specifications of the JSON Pointer implementation.

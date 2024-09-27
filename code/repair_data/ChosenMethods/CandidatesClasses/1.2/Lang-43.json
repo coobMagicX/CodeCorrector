@@ -1,0 +1,1 @@
+{"ExtendedMessageFormat": "public class ExtendedMessageFormat extends MessageFormat {\n    private static final long serialVersionUID = -2362048321261811743L;\n\n    private static final String DUMMY_PATTERN = \"\";\n    private static final String ESCAPED_QUOTE = \"''\";\n    private static final char START_FMT = ',';\n    private static final char END_FE = '}';"}

@@ -1,0 +1,1 @@
+{"testIssue779": "    testNotMissing(\n", "testDeepNestedFinally": "    assertCrossEdge(cfg, Token.IF, Token.BLOCK, Branch.ON_EX);\n", "testDeepNestedBreakwithFinally": "    assertCrossEdge(cfg, Token.BLOCK, Token.BLOCK, Branch.ON_EX);\n"}

@@ -1,0 +1,19 @@
+Intent: The intent of the source code is to convert a given period into a normalized standard period of a specified type. It converts all the period fields (seconds, minutes, hours, etc.) into milliseconds and then creates a new Period object with these milliseconds and the given type. If the period contains years or months, it adds the months to the years (after converting months to years) and the remaining months are kept as is.
+
+Fix strategy: The test case indicates that the method does not properly handle the situation when the months are more than 12 and years are negative. It seems the code is not correctly factoring in negative years in the calculation. The issue lies in this section of code:
+
+```
+years = FieldUtils.safeAdd(years, months / 12);
+months = months % 12;
+```
+
+The problem is that when the months are more than 12 and years are negative, this code effectively subtracts the years instead of adding them. A potential fix would be to take the absolute value of years when adding it to the months, and then reapply the sign of the years to the result. This would ensure that the years are correctly factored into the calculation. 
+
+So the fix could be:
+
+```
+years = FieldUtils.safeAdd(Math.abs(years), months / 12) * Math.signum(years);
+months = months % 12;
+```
+
+Also, this issue could be due to the `safeAdd` method not handling negative numbers properly. If that's the case, then the `safeAdd` method may need to be reviewed and fixed as well.

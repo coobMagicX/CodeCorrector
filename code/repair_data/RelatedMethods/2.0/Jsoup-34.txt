@@ -1,0 +1,1 @@
+['pos', 'isEmpty', 'current', 'consume', 'unconsume', 'advance', 'mark', 'rewindToMark', 'consumeAsString', 'nextIndexOf', 'consumeLetterSequence', 'consumeLetterThenDigitSequence', 'consumeHexSequence', 'consumeDigitSequence', 'matches', 'matchesIgnoreCase', 'matchesDigit', 'matchConsumeIgnoreCase', 'containsIgnoreCase', 'toString']

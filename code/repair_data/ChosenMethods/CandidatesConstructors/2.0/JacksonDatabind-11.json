@@ -1,0 +1,1 @@
+{"TypeFactory": "    protected TypeFactory(TypeParser p, TypeModifier[] mods) {\n        _parser = p;\n        _modifiers = mods;\n    }"}

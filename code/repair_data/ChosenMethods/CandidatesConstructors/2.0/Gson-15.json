@@ -1,0 +1,1 @@
+{"JsonWriter": "  public JsonWriter(Writer out) {\n    if (out == null) {\n      throw new NullPointerException(\"out == null\");\n    }\n    this.out = out;\n  }"}

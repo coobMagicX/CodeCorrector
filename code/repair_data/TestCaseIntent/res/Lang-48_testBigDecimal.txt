@@ -1,0 +1,3 @@
+Intent: The test case `testBigDecimal` is intended to ensure that the `EqualsBuilder` class can accurately compare two `BigDecimal` objects where one might have a different scale but is numerically equivalent (e.g., "2.0" vs "2.00").
+
+Repair strategy: Modify the `EqualsBuilder` to include a specific comparison logic for `BigDecimal` objects that considers numerical equivalence regardless of scale. This could involve checking if both objects are instances of `BigDecimal` and then using `BigDecimal.compareTo` method instead of `equals` method, which checks for scale as well as value.

@@ -1,0 +1,6 @@
+To repair the source code based on the intent of the test, the method that needs to be modified is the "isDirectory" method.
+
+The modified code should include a condition to check if the file name ends with a slash ("/") and return true in that case.
+
+Desired format:
+1-endsWith

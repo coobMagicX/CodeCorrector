@@ -1,0 +1,10 @@
+Intent: The intent of the source code is to create a method named "revert" that inverts the direction of a line. The method should return a new line with the same origin but the opposite direction.
+
+Fix strategy: The test case is failing at the assertion line which is trying to assert that the direction of the reverted line is the negative of the original line's direction. The issue lies within the logic of the revert method in the source code. Currently, the method is subtracting the direction from zero which is not the correct way to negate a vector. The fix would be to directly negate the direction. Here's how the updated code should look:
+
+```java
+public Line revert() {
+    final Line reverted = new Line(zero, direction.negate());
+    return reverted;
+}
+```

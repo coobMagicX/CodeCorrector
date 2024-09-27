@@ -1,0 +1,1 @@
+{"CpioArchiveOutputStream": "    public CpioArchiveOutputStream(final OutputStream out) {\n        this(out, FORMAT_NEW);\n    }"}

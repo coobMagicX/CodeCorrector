@@ -1,0 +1,1 @@
+{"PropertyPointer": "    public PropertyPointer(NodePointer parent) {\n        super(parent);\n    }"}

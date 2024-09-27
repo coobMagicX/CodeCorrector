@@ -1,0 +1,1 @@
+['formatComplex', 'format', 'getAvailableLocales', 'getDefaultNumberFormat', 'getImaginaryCharacter', 'getImaginaryFormat', 'getInstance', 'getRealFormat', 'parse', 'parseAndIgnoreWhitespace', 'parseNextCharacter', 'parseNumber', 'parseObject', 'setImaginaryCharacter', 'setImaginaryFormat', 'setRealFormat']

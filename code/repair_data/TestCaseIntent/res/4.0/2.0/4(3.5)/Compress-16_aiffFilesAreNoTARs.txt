@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that creating an ArchiveInputStream for a non-archive file throws an ArchiveException with the message "No Archiver found".
+
+Repair strategy: The repair strategy for this test case is to modify the source code to correctly handle non-archive files and throw the expected ArchiveException with the appropriate message.

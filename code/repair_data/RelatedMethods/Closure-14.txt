@@ -1,0 +1,1 @@
+['getCfg', 'process', 'prioritizeFromEntryNode', 'visit', 'handleIf', 'handleWhile', 'handleDo', 'handleFor', 'handleCase', 'handleTry', 'computeFollowNode', 'computeFallThrough', 'createEdge', 'getNextSiblingOfType', 'isBreakTarget', 'isContinueTarget', 'getExceptionHandler', 'getCatchHandlerForBlock', 'getOptionalNodeComparator', 'getPosition']

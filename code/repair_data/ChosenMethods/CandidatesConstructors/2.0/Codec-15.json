@@ -1,0 +1,1 @@
+{"Soundex": "    public Soundex(final String mapping) {\n        this.soundexMapping = mapping.toCharArray();\n    }"}

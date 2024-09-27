@@ -1,0 +1,1 @@
+{"testOneType4": "    testSets(false, js, js, expected);\n", "testTwoTypes4": "    testSets(false, js, output, \"{a=[[Foo.prototype]]}\");\n"}

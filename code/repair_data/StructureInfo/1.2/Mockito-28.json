@@ -1,0 +1,1 @@
+{"Class": ["DefaultInjectionEngine"], "Constructor": [], "Method": ["injectMocksOnFields", "injectMockCandidate", "orderedInstanceFieldsFrom"], "Overloaded": {"injectMocksOnFields": [["injectMocksOnFields", 3]], "injectMockCandidate": [["injectMockCandidate", 3]], "orderedInstanceFieldsFrom": [["orderedInstanceFieldsFrom", 1]]}}

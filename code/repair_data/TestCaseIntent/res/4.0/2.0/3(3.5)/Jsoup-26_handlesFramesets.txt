@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the `clean()` method can handle framesets in the dirty document and produce a clean document without any child nodes in the body.
+
+Repair strategy: The repair strategy should focus on fixing the cleaning process for framesets in the `clean()` method.

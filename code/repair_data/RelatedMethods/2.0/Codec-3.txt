@@ -1,0 +1,1 @@
+['encode', 'handleGH', 'isSlavoGermanic', 'isVowel', 'charAt', 'contains', 'append', 'appendPrimary', 'appendAlternate']

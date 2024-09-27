@@ -1,0 +1,1 @@
+{"shouldNotThrowNPEWhenNullPassedToSame": "        verify(mock).objectArgMethod(same(null));\n"}

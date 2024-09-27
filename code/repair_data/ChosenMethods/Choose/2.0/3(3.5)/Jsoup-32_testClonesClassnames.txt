@@ -1,0 +1,4 @@
+The candidate method that aids in the repair based on the test intent and repair logic is 'classNames'.
+
+Desired format:
+1-classNames

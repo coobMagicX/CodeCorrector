@@ -1,0 +1,1 @@
+{"testBug545": "    testLocal(\"var a; a = {}\", \"true\");\n"}

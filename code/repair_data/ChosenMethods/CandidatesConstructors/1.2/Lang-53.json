@@ -1,0 +1,1 @@
+{"DateUtils": "    public DateUtils() {\n        super();\n    }", "DateIterator": "        DateIterator(Calendar startFinal, Calendar endFinal) {\n            super();\n            this.endFinal = endFinal;\n            spot = startFinal;\n            spot.add(Calendar.DATE, -1);\n        }"}

@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to validate the FileValidator by passing a valid file name as a command line argument and asserting that the correct file is returned.
+
+Repair strategy: The repair strategy would be to ensure that the Parser is properly initialized and configured before parsing the command line arguments.

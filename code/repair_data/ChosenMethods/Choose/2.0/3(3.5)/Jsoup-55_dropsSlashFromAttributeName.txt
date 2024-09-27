@@ -1,0 +1,3 @@
+Based on the test intent and repair logic, the candidate method needed in the context is:
+
+1-emitTagPending()

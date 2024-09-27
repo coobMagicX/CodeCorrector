@@ -1,0 +1,1 @@
+{"attributeWithBrackets": "        assertEquals(\"One\", doc.select(\"div[data='End]'\").first().text());\n"}

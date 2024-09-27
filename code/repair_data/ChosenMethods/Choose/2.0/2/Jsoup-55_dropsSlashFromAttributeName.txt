@@ -1,0 +1,1 @@
+It seems you've provided detailed information on the test and repair strategy but haven't included the candidate methods that are available for selection to aid in the source code repair. To give an accurate response according to your desired format, I need a list of candidate method names that exist in the context. Could you please provide the list of candidate methods?

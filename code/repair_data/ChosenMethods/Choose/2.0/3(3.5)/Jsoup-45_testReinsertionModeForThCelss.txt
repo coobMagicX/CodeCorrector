@@ -1,0 +1,3 @@
+The method that needs to be used in the context to repair the source code based on the test intent is:
+
+25-replaceOnStack

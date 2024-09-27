@@ -1,0 +1,1 @@
+{"BisectionSolver": "    public BisectionSolver() {\n        super(100, 1E-6);\n    }"}

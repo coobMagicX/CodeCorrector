@@ -1,0 +1,13 @@
+Intent: The intent of the code is to compute the geometrical properties of a polygon. The code calculates the size (area) of the polygon and sets its barycenter (center of mass) depending on whether the polygon is finite or infinite. The test case "testIssue780" generates a 3D polygon, calculates the size and boundary size of the polygon, and checks if these are as expected.
+
+Fix strategy: The failure occurs at the assertion where the size of the polygon isn't equal to the expected one. This could be due to the computation of polygon size in the "computeGeometricalProperties()" method or the way the test case constructs the polygon. 
+
+1. Check the "computeGeometricalProperties()" method to ensure the calculations are correct, particularly the summing of the 'factor' and how it's used to calculate the 'sum', 'sumX', and 'sumY'. 
+
+2. Check the construction of the polygon in the test case. Make sure that the vertices are arranged in the correct order and are forming the expected polygon. 
+
+3. The issue might also be due to floating-point precision issues. As the test case deals with float numbers, it might be useful to check whether the precision of these numbers is causing the discrepancy. 
+
+4. If the issue is indeed due to floating-point precision, one possible fix strategy could be to increase the delta value in the assertEquals method to account for the lack of precision. 
+
+5. If the computations in "computeGeometricalProperties()" are correct, then the problem might be in the way the polygon is constructed in the test case. In such a case, you need to debug the test case to ensure the vertices are correctly defined and ordered.

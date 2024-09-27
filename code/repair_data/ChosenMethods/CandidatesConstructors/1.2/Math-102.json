@@ -1,0 +1,1 @@
+{"ChiSquareTestImpl": "    public ChiSquareTestImpl(ChiSquaredDistribution x) {\n        super();\n        setDistribution(x);\n    }"}

@@ -1,0 +1,1 @@
+{"handlesDodgyXmlDecl": "        Document doc = Jsoup.parse(xml, \"\", Parser.xmlParser());\n"}

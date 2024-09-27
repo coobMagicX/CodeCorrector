@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that a map with a CharSequence key can be deserialized correctly from JSON.
+
+Repair strategy: The repair strategy for this issue would be to add support for deserializing a map with a CharSequence key in the source code.

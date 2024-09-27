@@ -1,0 +1,1 @@
+{"FromStringDeserializer": "    protected FromStringDeserializer(Class<?> vc) {\n        super(vc);\n    }", "Std": "        protected Std(Class<?> valueType, int kind) {\n            super(valueType);\n            _kind = kind;\n        }"}

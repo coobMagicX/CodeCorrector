@@ -1,0 +1,1 @@
+['writeReplace', 'cachedDeserializersCount', '_createAndCacheValueDeserializer', '_createAndCache2', '_createDeserializer', '_createDeserializer2', 'findDeserializerFromAnnotation', 'findConvertingDeserializer', 'findConverter', 'modifyTypeByAnnotation', '_hasCustomHandlers']

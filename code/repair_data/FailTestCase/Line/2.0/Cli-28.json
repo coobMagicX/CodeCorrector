@@ -1,0 +1,1 @@
+{"testPropertyOptionFlags": "        assertTrue( cmd.hasOption(\"e\") ); // this option accepts as argument\n"}

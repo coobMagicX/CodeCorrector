@@ -1,0 +1,7 @@
+Intent: The purpose of the source code is to calculate the percentage of a given value in a frequency distribution. The test cases are designed to confirm the accuracy of the percentage calculations for a variety of input types and values, including integers, Longs, and non-numeric values.
+
+Fix strategy: From the failed test case, it's apparent that the issue arises when the method 'getPct' is called with an object type of Integer. The source code is expected to handle this input and return the correct percentage, but it's failing. 
+
+A possible fix strategy could be to add a check in the 'getPct' method to determine the type of object passed, and handle Integer objects differently if necessary. Alternatively, there could be an issue with the 'getCumPct' method that 'getPct' calls - if this is the case, the fix would involve correcting the 'getCumPct' method to handle Integer objects correctly. 
+
+In either case, the fix would involve ensuring that Integer objects are correctly cast and processed to return the expected result. This could potentially involve implementing a separate method for handling Integer objects, or amending the existing methods to correctly handle this type of input.

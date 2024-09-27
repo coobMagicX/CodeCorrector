@@ -1,0 +1,6 @@
+public JSType caseObjectType(ObjectType type) {
+    if (type instanceof FunctionType) {
+        return caseFunctionType((FunctionType) type);
+    }
+    return matchesExpectation("object") ? type : null;
+}

@@ -1,0 +1,1 @@
+{"JsonReader": "  public JsonReader(Reader in) {\n    if (in == null) {\n      throw new NullPointerException(\"in == null\");\n    }\n    this.in = in;\n  }"}

@@ -1,0 +1,4 @@
+protected void setName(String name) {
+    // Ensure that backslashes are replaced with forward slashes and handle special characters correctly
+    this.name = name.replace('\\', '/');
+}

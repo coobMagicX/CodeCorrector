@@ -1,0 +1,1 @@
+{"testFoldGetElem": "    fold(\"x = [,10][0]\", \"x = void 0\");\n"}

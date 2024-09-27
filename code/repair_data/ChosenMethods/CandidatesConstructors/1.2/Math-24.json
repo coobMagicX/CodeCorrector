@@ -1,0 +1,1 @@
+{"BrentOptimizer": "    public BrentOptimizer(double rel,\n                          double abs) {\n        this(rel, abs, null);\n    }"}

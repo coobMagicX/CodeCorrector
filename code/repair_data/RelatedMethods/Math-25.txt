@@ -1,0 +1,1 @@
+['fit', 'guess', 'sortObservations', 'guessAOmega', 'guessPhi']

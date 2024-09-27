@@ -1,0 +1,1 @@
+{"shouldParseShortOptionWithoutValue": "        assertNotEquals(\"Second option has been used as value for first option\", \"-last\", commandLine.getOptionValue(\"t1\"));\n"}

@@ -1,0 +1,6 @@
+Based on the context and the issue described, you need to adjust how whitespace is handled during the extraction of multiline textual blocks to ensure that the extracted text matches the expected format, including whitespace characters. To do this, you should modify the `extractMultilineTextualBlock` method to preserve whitespace consistently.
+
+Desired format:
+1-parseTypeString
+
+You should review the handling of whitespace in the method to ensure that the extracted multiline textual blocks maintain the correct whitespace and alignment, especially when dealing with license blocks from JavaScript comments. This adjustment will help in resolving the discrepancy between the expected and actual license text.

@@ -1,0 +1,1 @@
+{"testUnfinishedEntity": "        String result = neu.translate(input);\n", "testOutOfBounds": "        assertEquals(\"Failed to ignore when last character is &\", \"Test &#\", neu.translate(\"Test &#\"));\n"}

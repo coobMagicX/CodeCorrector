@@ -1,0 +1,15 @@
+To repair the source code based on the intent of the test, the method that would aid in the repair is:
+
+1- "startsWith" method
+
+The repaired code would look like this:
+
+public boolean hasAttr(String attributeKey) {
+    Validate.notNull(attributeKey);
+
+    if(attributeKey.startsWith("abs:")) {
+        attributeKey = attributeKey.substring(4);
+    }
+
+    return attributes.hasKey(attributeKey);
+}

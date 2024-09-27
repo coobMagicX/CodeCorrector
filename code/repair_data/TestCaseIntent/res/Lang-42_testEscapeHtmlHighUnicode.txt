@@ -1,0 +1,6 @@
+Intent: The test case `testEscapeHtmlHighUnicode` is designed to verify that high Unicode characters (specifically those outside the Basic Multilingual Plane, which are represented by code points above U+FFFF) are correctly escaped to their respective HTML numeric character references. The specific Unicode character tested is U+1D362, which should be escaped as `&#119650;`.
+
+Repair strategy: The source code needs to be adjusted to handle Unicode characters that are represented by surrogate pairs in Java. Currently, the code checks if the character code is greater than 0x7F and then escapes it using its integer value. This approach fails for characters outside the Basic Multilingual Plane because these characters are represented in Java as a pair of `char` values (surrogate pairs), and the code incorrectly processes each `char` of the pair individually. The repair should involve:
+1. Detecting surrogate pairs in the input string.
+2. Correctly calculating the code point for characters represented by surrogate pairs.
+3. Escaping the entire code point as a single numeric character reference when such characters are encountered.

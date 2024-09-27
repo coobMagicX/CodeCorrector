@@ -1,0 +1,1 @@
+{"testOffsetWithInputOffset": "        assertEquals(0L, loc.getByteOffset());\n"}

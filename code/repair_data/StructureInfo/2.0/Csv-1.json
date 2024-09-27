@@ -1,0 +1,1 @@
+{"Class": ["ExtendedBufferedReader"], "Constructor": ["ExtendedBufferedReader"], "Method": ["read", "readAgain", "readLine", "lookAhead", "getLineNumber"], "Overloaded": {"read": [["read", 0], ["read", 3]], "readAgain": [["readAgain", 0]], "readLine": [["readLine", 0]], "lookAhead": [["lookAhead", 0]], "getLineNumber": [["getLineNumber", 0]]}}

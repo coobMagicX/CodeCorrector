@@ -1,0 +1,1 @@
+{"testMath789": "        Assert.assertEquals(0.0, m3.subtract(rebuiltM3).getNorm(), 1.0e-16);\n", "testFullRank": "        Assert.assertTrue(root.subtract(base).getNorm() > 0.3);\n"}

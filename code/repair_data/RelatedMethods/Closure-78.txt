@@ -1,0 +1,1 @@
+['optimizeSubtree', 'tryFoldChildAddString', 'tryFoldAddConstantString', 'performArithmeticOp', 'tryFoldLeftChildOp', 'tryFoldAdd', 'inForcedStringContext', 'tryFoldInForcedStringContext', 'tryFoldKnownStringMethods', 'tryFoldStringToLowerCase', 'tryFoldStringToUpperCase', 'tryFoldStringIndexOf', 'tryFoldStringSubstr', 'tryFoldStringSubstring']

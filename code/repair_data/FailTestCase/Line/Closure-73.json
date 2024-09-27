@@ -1,0 +1,1 @@
+{"testUnicode": "    assertPrint(\"var x ='\\\\x7f';\", \"var x=\\\"\\\\u007f\\\"\");\n"}

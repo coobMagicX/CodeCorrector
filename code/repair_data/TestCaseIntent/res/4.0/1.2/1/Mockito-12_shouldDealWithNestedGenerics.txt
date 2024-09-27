@@ -1,0 +1,20 @@
+Intent: The intent of the source code is to return the generic type of a given field. If the field has a generic type, it returns the class of the actual generic type. If the field doesn't have a generic type, it returns the Object class. However, the code does not handle nested generic types.
+
+Fix strategy: Modify the method to handle nested generic types. We need to create a loop that continually checks if the actual type is a ParameterizedType. If it is, we keep digging into its actual type arguments until we find a type that's not a ParameterizedType. Here is a simple fix that can handle the nested generics:
+
+Source code: 
+```java
+public Class getGenericType(Field field) {        
+    Type generic = field.getGenericType();
+    while (generic instanceof ParameterizedType) {
+        generic = ((ParameterizedType) generic).getActualTypeArguments()[0];
+    }
+    
+    if(generic instanceof Class) {
+        return (Class) generic;
+    }
+    
+    return Object.class;
+}
+```
+This version of the method will keep digging into the actual type arguments of a ParameterizedType until it finds a Class or something that's not a ParameterizedType. If it finds a Class, it returns that. If it finds something that's not a ParameterizedType, it returns Object.class.

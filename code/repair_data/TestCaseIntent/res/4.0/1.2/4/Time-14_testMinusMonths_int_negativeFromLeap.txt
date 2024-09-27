@@ -1,0 +1,9 @@
+Intent:
+The intent of the failing test case `testMinusMonths_int_negativeFromLeap` is to verify that the method correctly handles the subtraction of a negative number of months from a date, which effectively adds months to the date. This particular test focuses on a leap day scenario, checking if subtracting negative one month from February 29 results in March 29.
+
+Repair strategy:
+The repair should focus on ensuring that the `add` method, which is used indirectly through `minusMonths`, handles the leap year and month wrapping correctly when adding months. Specifically, the strategy should ensure that:
+1. The addition of months to a date like February 29 (leap day) correctly computes the resulting month and day, considering the variations in month lengths and leap year adjustments.
+2. The `add` method or the underlying date-time handling must correctly interpret and handle the month and year transition, ensuring that adding months to a date near the end of February on a leap year results in the correct date values for non-leap years.
+3. Verify and possibly adjust the implementation of time field manipulation (e.g., handling of month and day fields in `add` method) to respect calendar anomalies such as leap years.
+4. The test case uses different chronologies (UTC in test setup vs. unspecified in expected result); ensure that chronology handling is consistent and correct across the method's logic.

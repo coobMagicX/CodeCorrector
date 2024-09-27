@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that only one extra argument is added to the argument list when the "stopAtNonOption" parameter is set to true.
+
+Repair strategy: The repair strategy should involve fixing the logic in the source code's "burstToken" method to correctly add only one extra argument to the argument list when the "stopAtNonOption" condition is met.

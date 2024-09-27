@@ -1,0 +1,1 @@
+{"CheckGlobalThis": "  CheckGlobalThis(AbstractCompiler compiler, CheckLevel level) {\n    this.compiler = compiler;\n    this.level = level;\n  }"}

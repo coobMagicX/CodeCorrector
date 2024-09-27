@@ -1,0 +1,1 @@
+['getInstance', 'getDateInstance', 'getTimeInstance', 'getDateTimeInstance', 'getTimeZoneDisplay', 'init', 'parsePattern', 'parseToken', 'selectNumberRule', 'format', 'applyRules', 'parseObject', 'getTimeZone', 'getLocale', 'getMaxLengthEstimate', 'equals', 'hashCode', 'toString', 'readObject', 'estimateLength']

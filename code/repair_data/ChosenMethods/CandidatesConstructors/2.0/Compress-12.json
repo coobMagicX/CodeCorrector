@@ -1,0 +1,1 @@
+{"TarArchiveInputStream": "    public TarArchiveInputStream(InputStream is, int blockSize, int recordSize) {\n        this.buffer = new TarBuffer(is, blockSize, recordSize);\n        this.readBuf = null;\n        this.hasHitEOF = false;\n    }"}

@@ -1,0 +1,28 @@
+Intent: The purpose of the method "addValue(Object v)" is to add the object v to a frequency table, freqTable. If the object is an integer, it is converted to a long before being added. If the object is already in the table, it increments the frequency count by 1. If the object is not comparable to the existing objects in the frequency table, it throws an IllegalArgumentException.
+
+Fix strategy: The issue seems to be occurring when a non-comparable object is being added to the frequency table. When a new Object() is added to the frequency table, it should throw a ClassCastException as expected by the test case. However, this is not happening and the test case is failing.
+
+One possible fix strategy would be to add a check in the addValue method to ensure that the object being added is an instance of Comparable. If it's not, the method should throw a ClassCastException as expected. The fixed code could look like this:
+
+```java
+public void addValue(Object v) {
+    if (!(v instanceof Comparable)) {
+        throw new ClassCastException("Value not comparable to existing values.");
+    }
+    Object obj = v;
+    if (v instanceof Integer) {
+        obj = Long.valueOf(((Integer) v).longValue());
+    }
+    try {
+        Long count = (Long) freqTable.get(obj);
+        if (count == null) {
+            freqTable.put(obj, Long.valueOf(1));
+        } else {
+            freqTable.put(obj, Long.valueOf(count.longValue() + 1));
+        }
+    } catch (ClassCastException ex) {   
+        throw new IllegalArgumentException("Value not comparable to existing values.");
+    }
+}
+```
+This ensures that only Comparable objects can be added to the frequency table, and non-comparable objects will lead to a ClassCastException as expected by the test case.

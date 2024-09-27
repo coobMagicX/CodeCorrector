@@ -1,0 +1,1 @@
+{"Class": ["ProperFractionFormat"], "Constructor": ["ProperFractionFormat", "ProperFractionFormat", "ProperFractionFormat"], "Method": ["format", "getWholeFormat", "parse", "setWholeFormat"], "Overloaded": {"format": [["format", 3]], "getWholeFormat": [["getWholeFormat", 0]], "parse": [["parse", 2]], "setWholeFormat": [["setWholeFormat", 1]]}}

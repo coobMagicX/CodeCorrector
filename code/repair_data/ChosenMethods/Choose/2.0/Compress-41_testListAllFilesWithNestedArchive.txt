@@ -1,0 +1,3 @@
+Based on the test intent and repair strategy, the chosen method from the candidate list that aids in the repair is:
+
+28-readFully

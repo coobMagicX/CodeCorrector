@@ -1,0 +1,1 @@
+{"booleanAttributesAreEmptyStringValues": "        assertEquals(\"\", first.getValue());\n"}

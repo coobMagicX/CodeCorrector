@@ -1,0 +1,3 @@
+Intent: The test case `testNullRecordSeparatorCsv106` is intended to verify that the formatted CSV output string does not end with the string "null". The purpose is to ensure that when no explicit record separator is provided to the `CSVFormat`, the system should handle it gracefully without appending "null" as a default separator in the output.
+
+Repair strategy: Modify the `CSVFormat` class or relevant output formatting method to ensure that if the `recordSeparator` is `null`, it defaults to a common separator (such as a newline character or remains empty) instead of converting `null` to the string "null". This could involve adding a conditional check for `null` values in the record separator handling logic and setting an appropriate default value.

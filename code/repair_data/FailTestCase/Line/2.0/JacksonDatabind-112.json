@@ -1,0 +1,1 @@
+{"testDeserializeBagOfStrings": "        WithBagOfStrings result = MAPPER.readerFor(WithBagOfStrings.class)\n"}

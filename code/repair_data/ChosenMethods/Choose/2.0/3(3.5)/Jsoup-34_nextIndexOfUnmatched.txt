@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that should be added to the context is:
+
+19-contains
+
+The `contains` method can be used to check if the input sequence contains the substring `seq`. This can be used in the repair strategy to determine if the full sequence was found or not.

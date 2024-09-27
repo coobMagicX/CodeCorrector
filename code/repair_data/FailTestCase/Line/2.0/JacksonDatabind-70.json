@@ -1,0 +1,1 @@
+{"testCaseInsensitiveUnwrap": "        Person p = mapper.readValue(\"{ }\", Person.class);\n"}

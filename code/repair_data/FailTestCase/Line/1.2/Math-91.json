@@ -1,0 +1,1 @@
+{"testCompareTo": "        assertEquals(-1, pi1.compareTo(pi2));\n"}

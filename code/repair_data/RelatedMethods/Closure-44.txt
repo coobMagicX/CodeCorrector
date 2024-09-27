@@ -1,0 +1,1 @@
+['startSourceMapping', 'endSourceMapping', 'continueProcessing', 'getLastChar', 'addIdentifier', 'append', 'appendBlockStart', 'appendBlockEnd', 'maybeCutLine', 'beginBlock', 'endBlock', 'maybeEndStatement', 'endFunction', 'beginCaseBody', 'endCaseBody', 'add', 'appendOp', 'addOp', 'addNumber', 'isWordChar', 'shouldPreserveExtraBlocks', 'breakAfterBlockFor']

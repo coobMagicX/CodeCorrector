@@ -1,0 +1,9 @@
+Analysis: The purpose of the `parseContextTypeExpression` method is to parse a context type expression based on the provided JsDocToken. In this specific case, it seems to be used for parsing the type of a function with a "new" parameter.
+
+The test case failed at the line `resolve(parse("@type {function (new:*)} */").getType(),` which suggests that the parsing of the context type expression for a function with a "new" parameter failed.
+
+Reasons for failure:
+1. Incorrect format: The format of the context type expression for a function with a "new" parameter might not be correctly handled by the `parseContextTypeExpression` method. It could be missing proper handling for this specific type of function signature.
+2. Parsing logic: The parsing logic within the `parseContextTypeExpression` method might not be able to correctly extract the type information for a function with a "new" parameter, leading to an incorrect result or failure to parse.
+
+To address the issue, you may need to review and update the `parseContextTypeExpression` method to handle the specific format of a function with a "new" parameter correctly. This may involve adjusting the parsing logic to accommodate this type of function signature.

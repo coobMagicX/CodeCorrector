@@ -1,0 +1,3 @@
+Intent: The test case `testMinusNegativeZero` intends to verify that the function `addNumber` correctly handles the formatting when adding a negative zero following a negative sign, ensuring it prints "x- -0.0" to avoid confusion with decrement operation syntax ("x--0").
+
+Repair strategy: Update the `addNumber` function to ensure that when the input number is negative zero, it explicitly formats the output to include one decimal place (i.e., "-0.0"), regardless of the last character or other conditions. This could involve refining the condition where `negativeZero` is checked and ensuring the formatted output is specifically handled for this edge case.

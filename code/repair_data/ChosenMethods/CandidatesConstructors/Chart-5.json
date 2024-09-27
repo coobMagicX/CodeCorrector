@@ -1,0 +1,1 @@
+{"XYSeries": "    public XYSeries(Comparable key,\n                    boolean autoSort,\n                    boolean allowDuplicateXValues) {\n        super(key);\n        this.data = new java.util.ArrayList();\n        this.autoSort = autoSort;\n        this.allowDuplicateXValues = allowDuplicateXValues;\n    }"}

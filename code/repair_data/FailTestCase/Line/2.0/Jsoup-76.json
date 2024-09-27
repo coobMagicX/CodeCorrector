@@ -1,0 +1,1 @@
+{"preSkipsFirstNewline": "        assertEquals(\"\\nOne\\nTwo\\n\", pre.wholeText());\n"}

@@ -1,0 +1,1 @@
+{"testDontRemoveBreakInTryFinally": "    foldSame(\"function f() {b:try{throw 9} finally {break b} return 1;}\");\n", "testFunctionReturnOptimization": "    fold(\"function f(){try{return;}catch(e){throw 9;}finally{return}}\",\n"}

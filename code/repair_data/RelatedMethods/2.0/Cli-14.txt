@@ -1,0 +1,1 @@
+['getPrefixes', 'getTriggers', 'process', 'validate', 'getPreferredName', 'getDescription', 'helpLines', 'getOptions', 'getAnonymous', 'findOption', 'getMinimum', 'getMaximum', 'isRequired', 'defaults', 'getInstance', 'compare']

@@ -1,0 +1,1 @@
+{"testMath288": "        assertEquals(10.0, solution.getValue(), .0000001);\n"}

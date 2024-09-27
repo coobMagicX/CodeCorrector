@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to test the functionality of getting the next element sibling of a given element.
+
+Repair strategy: The repair strategy should focus on fixing the logic for getting the next element sibling.

@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to check whether the code correctly identifies a type error when trying to push a value into a null variable.
+
+Repair strategy: The code should be modified to handle the case where the variable is null and throw a type error in that scenario.

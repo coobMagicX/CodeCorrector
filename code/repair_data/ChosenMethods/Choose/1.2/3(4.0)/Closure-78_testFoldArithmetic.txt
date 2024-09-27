@@ -1,0 +1,2 @@
+1-PeepholeFoldConstants
+2-performArithmeticOp

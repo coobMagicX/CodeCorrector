@@ -1,0 +1,1 @@
+['binomialCoefficient', 'binomialCoefficientDouble', 'binomialCoefficientLog', 'checkBinomial', 'cosh', 'equals', 'factorial', 'factorialDouble', 'factorialLog', 'gcd', 'hash', 'indicator', 'lcm', 'log', 'scalb', 'normalizeAngle', 'normalizeArray', 'round', 'sign', 'sinh', 'pow', 'distance1', 'distance', 'distanceInf']

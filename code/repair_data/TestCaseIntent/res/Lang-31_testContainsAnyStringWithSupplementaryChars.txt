@@ -1,0 +1,5 @@
+Intent: The intent of the test `testContainsAnyStringWithSupplementaryChars` is to verify that the `containsAny` method correctly identifies whether a `CharSequence` contains any characters from a given array of characters, including proper handling of supplementary (non-BMP) Unicode characters.
+
+Repair strategy: The failing test cases suggest that the `containsAny` method does not correctly handle strings containing supplementary characters. The method should be updated to correctly iterate over all characters in the `CharSequence` and the character array, properly handling characters that are represented by two Java `char` values (surrogate pairs). This might involve:
+- Adjusting the character comparison to account for the possibility of surrogate pairs by using methods like `Character.codePointAt` instead of directly accessing `charAt`.
+- Ensuring that the loop that iterates through the characters in `cs` and `searchChars` is aware of the possibility of surrogate pairs, potentially adjusting the loop increment condition to skip the next index when a surrogate pair is detected.

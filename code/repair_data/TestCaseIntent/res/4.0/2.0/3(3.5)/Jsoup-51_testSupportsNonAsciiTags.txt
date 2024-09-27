@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to check if the code supports non-ASCII tags in the input HTML document and correctly selects and retrieves the text content of those tags.
+
+Repair strategy: The repair strategy should involve modifying the `matchesLetter()` method to handle non-ASCII characters and ensure that the code correctly identifies and selects the non-ASCII tags in the input HTML document.

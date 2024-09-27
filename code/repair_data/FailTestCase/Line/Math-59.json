@@ -1,0 +1,1 @@
+{"testMinMaxFloat": "            Assert.assertEquals(\"max(\" + pair[1] + \", \" + pair[0] + \")\",\n"}

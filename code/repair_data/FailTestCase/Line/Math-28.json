@@ -1,0 +1,1 @@
+{"testMath828Cycle": "        PointValuePair solution = new SimplexSolver().optimize(f, constraints, GoalType.MINIMIZE, true);\n"}

@@ -1,0 +1,1 @@
+{"ByteBuddyMockMaker": "    public ByteBuddyMockMaker() {\n        classInstantiator = initializeClassInstantiator();\n        cachingMockBytecodeGenerator = new CachingMockBytecodeGenerator();\n    }"}

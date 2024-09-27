@@ -1,0 +1,1 @@
+['equals', 'getBytes', 'getBytesIso8859_1', 'getBytesUnchecked', 'getBytesUsAscii', 'getBytesUtf16', 'getBytesUtf16Be', 'getBytesUtf16Le', 'getBytesUtf8', 'newString', 'newStringIso8859_1', 'newStringUsAscii', 'newStringUtf16', 'newStringUtf16Be', 'newStringUtf16Le', 'newStringUtf8']

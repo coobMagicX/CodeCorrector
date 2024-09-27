@@ -1,0 +1,1 @@
+['getLocalFileDataLength', 'getCentralDirectoryLength', 'reparseCentralDirectoryData', 'getSize', 'setSize', 'getCompressedSize', 'setCompressedSize', 'getRelativeHeaderOffset', 'setRelativeHeaderOffset', 'getDiskStartNumber', 'setDiskStartNumber', 'addSizes']

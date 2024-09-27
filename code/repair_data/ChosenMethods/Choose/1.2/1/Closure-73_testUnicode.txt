@@ -1,0 +1,4 @@
+To fix the issue of incorrectly escaping the character '\x7f' in the `strEscape` method, you need to adjust the condition that determines which characters should be passed through without escaping. Specifically, you should modify the range check to include the character '\x7f' (decimal value 127).
+
+Desired format:
+1-appendHexJavaScriptRepresentation

@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to ensure that the custom key deserializer is being used during deserialization.
+
+Repair strategy: The repair strategy would be to investigate why the custom key deserializer is not being used and make the necessary changes in the source code to ensure its usage.

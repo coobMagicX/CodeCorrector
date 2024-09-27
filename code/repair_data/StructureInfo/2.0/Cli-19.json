@@ -1,0 +1,1 @@
+{"Class": ["PosixParser"], "Constructor": [], "Method": ["init", "flatten", "gobble", "process", "processOptionToken", "burstToken"], "Overloaded": {"init": [["init", 0]], "flatten": [["flatten", 3]], "gobble": [["gobble", 1]], "process": [["process", 1]], "processOptionToken": [["processOptionToken", 2]], "burstToken": [["burstToken", 2]]}}

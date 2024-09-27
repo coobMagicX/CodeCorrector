@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to verify the behavior of the `processProperties` method when parsing properties and adding options to the `CommandLine` object.
+
+Repair strategy: The repair strategy should focus on fixing the condition that allows the option to be added to the `CommandLine` object even if the value is not "yes", "true", or "1".

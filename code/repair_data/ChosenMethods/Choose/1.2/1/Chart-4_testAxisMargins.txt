@@ -1,0 +1,5 @@
+Based on the analysis provided and the purpose of the code to calculate the data range for a given axis in a chart, the method needed in this context is:
+
+1-`getDatasetsMappedToDomainAxis`. 
+
+You can use this method to retrieve the datasets mapped to the domain axis, which is essential for calculating the data range for the specified axis in the chart.

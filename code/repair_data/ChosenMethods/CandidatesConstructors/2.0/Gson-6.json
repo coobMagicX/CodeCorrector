@@ -1,0 +1,1 @@
+{"JsonAdapterAnnotationTypeAdapterFactory": "  public JsonAdapterAnnotationTypeAdapterFactory(ConstructorConstructor constructorConstructor) {\n    this.constructorConstructor = constructorConstructor;\n  }"}

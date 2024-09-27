@@ -1,0 +1,1 @@
+{"testInverseExternalId928": "        Envelope928 envelope2 = mapper.readValue(failCase, Envelope928.class);\n"}

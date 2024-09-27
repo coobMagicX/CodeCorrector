@@ -1,0 +1,18 @@
+public boolean hasClass(String className) {
+    final String classAttr = className().toLowerCase(); // Utilize the existing method to get and trim the class attribute
+    final String searchClassName = className.toLowerCase(); // Normalize the input className to lowercase for case-insensitive comparison
+
+    if (classAttr.isEmpty()) {
+        return false;
+    }
+
+    String[] classes = classAttr.split("\\s+"); // Split the class attribute by whitespace to handle multiple classes
+
+    for (String singleClass : classes) {
+        if (singleClass.equals(searchClassName)) {
+            return true; // Compare each class name in the attribute to the search class name
+        }
+    }
+
+    return false;
+}

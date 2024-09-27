@@ -1,0 +1,11 @@
+Intent: The purpose of the function `isFoldableExpressBlock` is to determine if a given block node from the abstract syntax tree (AST) can be folded. This refers to simplifying the code by removing unnecessary brackets or curly braces. This function is particularly designed to handle a specific bug in Internet Explorer where event handlers behave differently when their return value is used versus when their return value is in an `EXPR_RESULT`. The code attempts to detect this case and avoids folding `EXPR_RESULTs` into other expressions. 
+
+However, there seems to be a problem when running the test `testIssue291`. The test case `foldSame("if (f) { f.onchange(); }")` fails, indicating that the method `isFoldableExpressBlock` might not be correctly identifying whether the block can be simplified or not.
+
+Fix strategy: The function `isFoldableExpressBlock` might not be correctly identifying whether the block is foldable or not. For the failed test case, the problem could lie in the condition used, specifically `NodeUtil.isExpressionNode(maybeExpr)`. 
+
+The first step in the solution would be to debug and verify whether `NodeUtil.isExpressionNode(maybeExpr)` is returning the expected values for the test cases. If not, we should revisit the implementation of the method `isExpressionNode`.
+
+If the problem is not with `NodeUtil.isExpressionNode(maybeExpr)`, then we should examine the logic within `isFoldableExpressBlock` to ensure it correctly identifies foldable blocks. This could also mean checking the logic that determines when an `EXPR_RESULT` should not be folded into other expressions. 
+
+Finally, we should also check the test cases themselves to ensure they are correctly designed to test the function `isFoldableExpressBlock`. It's essential to ensure that the test cases are correctly simulating the issue with Internet Explorer's handling of return values in event handlers.

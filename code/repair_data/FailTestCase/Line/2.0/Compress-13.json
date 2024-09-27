@@ -1,0 +1,1 @@
+{"winzipBackSlashWorkaround": "            assertEquals(\"\\u00e4/\", zae.getName());\n", "testWinzipBackSlashWorkaround": "        assertNull(zf.getEntry(\"\\u00e4\\\\\\u00fc.txt\"));\n"}

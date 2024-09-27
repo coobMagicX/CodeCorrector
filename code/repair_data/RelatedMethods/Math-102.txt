@@ -1,0 +1,1 @@
+['chiSquare', 'chiSquareTest', 'chiSquareDataSetsComparison', 'chiSquareTestDataSetsComparison', 'getDistributionFactory', 'isRectangular', 'isPositive', 'isNonNegative', 'setDistribution']

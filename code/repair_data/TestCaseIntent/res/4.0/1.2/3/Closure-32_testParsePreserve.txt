@@ -1,0 +1,3 @@
+Intent: The purpose of the source code is to extract multiline textual blocks from a given stream of JsDocToken. It handles different whitespace options and returns an ExtractionInfo object that contains the extracted multiline text and the last token found. The failed test case is intended to test the preservation of whitespace in the extracted multiline text.
+
+Fix strategy: The failure seems to be caused by the fact that the extracted multiline text does not preserve the leading whitespace. A possible fix could be to revise the code that handles the WhitespaceOption.PRESERVE option. Make sure that if this option is selected, the leading whitespace in each line of the multiline text is preserved.

@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to check if the "HW rule" is correctly applied in the encoding process. The HW rule states that if a letter 'H' or 'W' is followed by a letter that has the same mapping code as the previous letter, it should be ignored and not included in the encoding.
+
+Repair strategy: The repair strategy should focus on identifying and fixing the issue in the code that causes the test case to fail. The key repair direction is to investigate the logic in the "HW rule" check and ensure that it correctly handles the scenario where a letter 'H' or 'W' is followed by a letter with the same mapping code.

@@ -1,0 +1,1 @@
+['getLineNumber', 'readEscape', 'trimTrailingSpaces', 'readEndOfLine', 'isWhitespace', 'isStartOfLine', 'isEndOfFile', 'isEscape', 'isQuoteChar', 'isCommentStart']

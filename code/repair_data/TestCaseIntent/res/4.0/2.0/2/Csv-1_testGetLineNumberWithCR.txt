@@ -1,0 +1,3 @@
+Intent: The purpose of the failing test case `testGetLineNumberWithCR` is to verify that the `CSVParser` correctly increments the line number when encountering a carriage return (`\r`) as the line separator. The test checks the line number after reading each record from input using `\r` as a line separator.
+
+Repair strategy: Modify the `read` method in the source code to correctly handle carriage returns (`\r`) as line separators for incrementing the `lineCounter`. The current implementation only increments the line counter for newline characters (`\n`). Update the condition in the `read` method to also check for `\r` and increment the `lineCounter` accordingly.

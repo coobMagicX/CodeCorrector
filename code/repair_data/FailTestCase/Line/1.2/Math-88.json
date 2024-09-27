@@ -1,0 +1,1 @@
+{"testMath272": "        assertEquals(1.0, solution.getPoint()[2], .0000001);\n"}

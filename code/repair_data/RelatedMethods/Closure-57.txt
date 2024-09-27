@@ -1,0 +1,1 @@
+['extractClassNameIfProvide', 'extractClassNameIfRequire', 'extractClassNameIfGoog', 'getSingletonGetterClassName']

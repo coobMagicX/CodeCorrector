@@ -1,0 +1,1 @@
+['close', 'getRecordSize', 'available', 'skip', 'reset', 'getNextTarEntry', 'getRecord', 'paxHeaders', 'parsePaxHeaders', 'applyPaxHeadersToCurrentEntry', 'readGNUSparse', 'getNextEntry', 'read', 'canReadEntryData', 'matches']

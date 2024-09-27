@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the deserialization of a JSON object using a TokenBuffer.
+
+Repair strategy: The repair strategy should be to ensure that the deserialization process correctly handles the case where the input starts from a FIELD_NAME token instead of a START_OBJECT token.

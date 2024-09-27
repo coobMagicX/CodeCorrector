@@ -1,0 +1,1 @@
+['tryFoldKnownMethods', 'tryFoldKnownStringMethods', 'tryFoldKnownNumericMethods', 'tryFoldStringToLowerCase', 'tryFoldStringToUpperCase', 'normalizeNumericString', 'tryFoldParseNumber', 'tryFoldStringIndexOf', 'tryFoldArrayJoin', 'tryFoldStringSubstr', 'tryFoldStringSubstring', 'tryFoldStringCharAt', 'tryFoldStringCharCodeAt']

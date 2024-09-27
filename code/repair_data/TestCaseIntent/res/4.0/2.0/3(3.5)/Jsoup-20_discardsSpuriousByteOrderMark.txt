@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that the method `parseByteData` correctly discards spurious byte order marks (BOM) from the HTML input.
+
+Repair strategy: The repair strategy for this test case would involve modifying the `parseByteData` method to check for the presence of a BOM at the start of the decoded text and strip it if found. This will prevent the parser from going straight into head mode and ensure that the test case passes.

@@ -1,0 +1,1 @@
+{"CSVRecord": "    CSVRecord(final String[] values, final Map<String, Integer> mapping,\n            final String comment, final long recordNumber) {\n        this.recordNumber = recordNumber;\n        this.values = values != null ? values : EMPTY_STRING_ARRAY;\n        this.mapping = mapping;\n        this.comment = comment;\n    }"}

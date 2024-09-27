@@ -1,0 +1,1 @@
+{"testEscapeJavaScript": "        assertEquals(\"document.getElementById(\\\\\\\"test\\\\\\\").value = \\\\'<script>alert(\\\\'aaa\\\\');<\\\\/script>\\\\';\", \n"}

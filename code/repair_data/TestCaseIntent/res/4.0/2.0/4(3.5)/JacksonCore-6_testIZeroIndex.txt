@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the behavior of the `getMatchingIndex()` method of the `JsonPointer` class. The first test case is checking if the method returns 0 when the pointer is "/0", and the second test case is checking if the method returns -1 when the pointer is "/00".
+
+Repair strategy: The repair strategy should address the issue with the `getMatchingIndex()` method returning -1 for the second test case when the pointer is "/00". The issue is likely related to the code not handling leading zeroes properly. The repair direction could involve modifying the code to handle leading zeroes and return the correct index value.

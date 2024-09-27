@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that an exception is thrown when an invalid subclass of DefaultPrettyPrinter is used.
+
+Repair strategy: The repair strategy for this test case is to update the source code to throw an IllegalStateException when an invalid subclass is used.

@@ -1,0 +1,1 @@
+['translate', 'with', 'hex']

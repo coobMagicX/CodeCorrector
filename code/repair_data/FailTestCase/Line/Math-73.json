@@ -1,0 +1,1 @@
+{"testBadEndpoints": "            fail(\"Expecting IllegalArgumentException - non-bracketing\");\n"}

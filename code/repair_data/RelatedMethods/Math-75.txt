@@ -1,0 +1,1 @@
+['addValue', 'clear', 'valuesIterator', 'getCumPct', 'compare', 'equals']

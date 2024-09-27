@@ -1,0 +1,8 @@
+Intent: The intent of the test case `testMath718` is to evaluate the accuracy and numerical stability of the `evaluate` method within the `ContinuedFraction` implementation, particularly for large numbers of trials. The test aims to verify if the method consistently calculates the median (or near-median) of a binomial distribution as the number of trials increases massively.
+
+Repair strategy: The failure appears when `int p = dist.inverseCumulativeProbability(0.5);` is executed, which suggests potential issues in the implementation of `inverseCumulativeProbability` or the `evaluate` method it relies on. To repair:
+1. Review and adjust the numerical stability in the `evaluate` method, particularly ensuring that calculations involving large numbers or small increments do not lead to overflow, underflow, or loss of precision.
+2. Check the scaling factors and their adjustments within the loop where `cN` and `q2` are calculated, as improper scaling might lead to infinite or NaN values that compromise the accuracy.
+3. Ensure that the `epsilon` and `maxIterations` parameters are adequately set to handle large numbers without hitting the maximum iteration count prematurely or failing to converge due to too coarse epsilon.
+4. Verify the implementation of `getA` and `getB` functions used in the `evaluate` method to ensure they handle large inputs correctly and do not introduce errors.
+5. Consider implementing additional checks or alternative algorithms for cases where the current method fails to converge or provides unstable results for large trial numbers in the binomial distribution calculations.

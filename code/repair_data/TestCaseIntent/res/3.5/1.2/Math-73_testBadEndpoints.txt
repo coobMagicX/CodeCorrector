@@ -1,0 +1,5 @@
+Analysis: The purpose of the `testBadEndpoints` test case is to check how the `solve` method handles cases where the provided endpoints do not bracket the root of the function. The intent is to expect an `IllegalArgumentException` to be thrown in such scenarios.
+
+The specific failed line `fail("Expecting IllegalArgumentException - non-bracketing");` failed because the `solve` method did not throw the expected `IllegalArgumentException` when the endpoints provided did not bracket the root of the function. 
+
+This failure indicates that the method is not correctly identifying the non-bracketing scenario and not throwing the appropriate exception as expected. The method should be updated to properly handle cases where the endpoints do not bracket the root to align with the test case expectations.

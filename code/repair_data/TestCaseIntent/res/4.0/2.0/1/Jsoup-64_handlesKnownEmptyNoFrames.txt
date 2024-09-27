@@ -1,0 +1,3 @@
+Intent: The test case `handlesKnownEmptyNoFrames` is designed to verify that the parser correctly handles the `<noframes>` tag when it is self-closing, ensuring it is parsed into an explicitly closed element in the output HTML.
+
+Repair strategy: Investigate and adjust the handling of self-closing tags within the `HtmlTreeBuilder` class. Ensure that self-closing tags like `<noframes />` are correctly interpreted and transformed into `<noframes></noframes>` in the output HTML. This might involve modifying the `insert` method or the state transitions in the `tokeniser` to correctly handle self-closing syntax for specific HTML tags that are typically empty but require explicit closure in the output.

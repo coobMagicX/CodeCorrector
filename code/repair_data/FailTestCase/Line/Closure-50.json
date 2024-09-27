@@ -1,0 +1,1 @@
+{"testStringJoinAdd": "    fold(\"x = ['a', foo, 'b', 'c'].join(',')\",\n", "testNoStringJoin": "    foldSame(\"x = [].join(',',2)\");\n"}

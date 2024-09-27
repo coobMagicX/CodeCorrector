@@ -1,0 +1,1 @@
+{"testByteToStringVariations": "        assertEquals(\"byteToString static Hello World\", \"SGVsbG8gV29ybGQ=\", Base64.encodeBase64String(b1));\n", "testRfc4648Section10Encode": "        assertEquals(\"Zg==\", Base64.encodeBase64String(StringUtils.getBytesUtf8(\"f\")));\n"}

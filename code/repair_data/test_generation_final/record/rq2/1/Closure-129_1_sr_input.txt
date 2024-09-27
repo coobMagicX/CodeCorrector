@@ -1,0 +1,12 @@
+"
+            The previous test case passed, but a new test case failed. Repair the code again!
+            Only use the existing methods and data for the repair.
+            Limit your modifications to the source code section.
+
+            Desired format:
+            ```java
+            <put the full fixed code here>
+            ```
+
+            New failed test:[b'Failing tests: 1\n', b'  - com.google.javascript.jscomp.IntegrationTest::testIssue937\n']
+            

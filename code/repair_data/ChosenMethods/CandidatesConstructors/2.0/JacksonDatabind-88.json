@@ -1,0 +1,1 @@
+{"ClassNameIdResolver": "    public ClassNameIdResolver(JavaType baseType, TypeFactory typeFactory) {\n        super(baseType, typeFactory);\n    }"}

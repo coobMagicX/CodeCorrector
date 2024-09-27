@@ -1,0 +1,1 @@
+{"DOMNodePointer": "    public DOMNodePointer(NodePointer parent, Node node) {\n        super(parent);\n        this.node = node;\n    }"}

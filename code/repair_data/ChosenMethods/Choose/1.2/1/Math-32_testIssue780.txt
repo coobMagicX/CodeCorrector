@@ -1,0 +1,3 @@
+Based on the analysis provided, the method needed to repair the source code and address the failure in the test case is:
+
+1-computeGeometricalProperties.

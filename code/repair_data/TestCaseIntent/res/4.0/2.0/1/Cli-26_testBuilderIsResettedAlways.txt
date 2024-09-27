@@ -1,0 +1,3 @@
+Intent: The test case `testBuilderIsResettedAlways` is intended to ensure that the `OptionBuilder` resets its internal state after an `Option` object is created, so that subsequent uses of the `OptionBuilder` do not inadvertently inherit properties from the previous configuration.
+
+Repair strategy: Modify the `OptionBuilder` class to ensure properties such as description are reset to `null` or a default state after creating an `Option` object. This might involve adding a reset method call at the end of the `create` method or ensuring that each property is explicitly set to a default state when an `Option` is initialized. Ensure that the `reset` method in `OptionBuilder` correctly clears all the properties that should not be inherited across different `Option` creations.

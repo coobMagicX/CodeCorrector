@@ -1,0 +1,1 @@
+{"shouldWorkFineWhenGivenArgIsNull": "        Integer[] suspicious = tool.getSuspiciouslyNotMatchingArgsIndexes((List) Arrays.asList(new Equals(20)), new Object[] {null});\n", "shouldAllowPassingNullArgument": "            verify(mockFun).doFun(\"hello\");\n"}

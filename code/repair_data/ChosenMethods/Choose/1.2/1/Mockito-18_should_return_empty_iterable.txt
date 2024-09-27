@@ -1,0 +1,3 @@
+1-returnValueFor
+
+I recommend updating the `returnValueFor` method to handle the `Iterable` interface specifically by adding a case for `Iterable.class` and returning an appropriate instance of an `Iterable` type, such as `ArrayList` or `LinkedList`, to prevent the `NullPointerException` when the `type` is `Iterable`.

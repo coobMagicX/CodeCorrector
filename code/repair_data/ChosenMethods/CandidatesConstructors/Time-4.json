@@ -1,0 +1,1 @@
+{"Partial": "    Partial(Chronology chronology, DateTimeFieldType[] types, int[] values) {\n        super();\n        iChronology = chronology;\n        iTypes = types;\n        iValues = values;\n    }", "Property": "        Property(Partial partial, int fieldIndex) {\n            super();\n            iPartial = partial;\n            iFieldIndex = fieldIndex;\n        }"}

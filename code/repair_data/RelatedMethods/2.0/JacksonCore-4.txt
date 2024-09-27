@@ -1,0 +1,1 @@
+['buf', 'size', 'append', 'getCurrentSegment', 'emptyAndGetCurrentSegment', 'getCurrentSegmentSize', 'setCurrentLength', 'finishCurrentSegment', 'expandCurrentSegment', 'unshare', 'expand', 'carr']

@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the boolean attributes are correctly output in the HTML representation of an element.
+
+Repair strategy: The repair strategy would involve modifying the `html` method to correctly handle boolean attributes and output them in the expected format.

@@ -1,0 +1,36 @@
+public T deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    String text = p.getValueAsString();
+    if (text != null) { // has String representation
+        if (text.length() == 0 || (text = text.trim()).length() == 0) {
+            return _deserializeFromEmptyString();
+        }
+        try {
+            T result = _deserialize(text, ctxt);
+            if (result != null) {
+                return result;
+            } else {
+                // Handle null which might be due to an invalid format
+                return (T) ctxt.handleWeirdStringValue(_valueClass, text, "Cannot deserialize to type");
+            }
+        } catch (IllegalArgumentException | MalformedURLException ex) {
+            JsonMappingException e = ctxt.weirdStringException(text, _valueClass, "not a valid textual representation, problem: " + ex.getMessage());
+            e.initCause(ex);
+            throw e;
+        }
+    }
+    JsonToken t = p.getCurrentToken();
+    if (t == JsonToken.START_ARRAY) {
+        return _deserializeFromArray(p, ctxt);
+    }
+    if (t == JsonToken.VALUE_EMBEDDED_OBJECT) {
+        Object ob = p.getEmbeddedObject();
+        if (ob == null) {
+            return null;
+        }
+        if (_valueClass.isAssignableFrom(ob.getClass())) {
+            return (T) ob;
+        }
+        return _deserializeEmbedded(ob, ctxt);
+    }
+    return (T) ctxt.handleUnexpectedToken(_valueClass, p);
+}

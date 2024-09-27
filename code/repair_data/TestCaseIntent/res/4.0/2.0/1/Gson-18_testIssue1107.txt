@@ -1,0 +1,6 @@
+Intent: The test case `testIssue1107` is intended to verify that the JSON deserialization process correctly maps a nested JSON structure to a Java object hierarchy. Specifically, it tests the functionality where JSON data is deserialized into `BigClass` and `SmallClass` objects, ensuring that nested objects are accessible and correctly instantiated from the JSON string.
+
+Repair strategy: The failure suggests a possible issue with the deserialization process where the structure of `BigClass` or the handling of nested types might not align with the JSON structure. The repair should focus on:
+1. Ensuring that the `BigClass` has an appropriate field or map to capture the nested JSON structure under the key "inBig".
+2. Verifying that the field types and names in `BigClass` and `SmallClass` are compatible with the JSON structure, particularly focusing on how keys and lists are managed.
+3. Checking and updating the Gson deserialization configuration or annotations in `BigClass` and `SmallClass` to properly map the JSON keys and structures to the corresponding Java fields.

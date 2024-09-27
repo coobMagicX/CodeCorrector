@@ -1,0 +1,1 @@
+{"testForOffsetHoursMinutes_int_int": "        assertEquals(DateTimeZone.forID(\"-00:15\"), DateTimeZone.forOffsetHoursMinutes(0, -15));\n"}

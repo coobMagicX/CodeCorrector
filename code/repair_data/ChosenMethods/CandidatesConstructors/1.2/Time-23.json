@@ -1,0 +1,1 @@
+{"DateTimeZone": "    protected DateTimeZone(String id) {\n        if (id == null) {\n            throw new IllegalArgumentException(\"Id must not be null\");\n        }\n        iID = id;\n    }", "Stub": "        Stub(String id) {\n            iID = id;\n        }"}

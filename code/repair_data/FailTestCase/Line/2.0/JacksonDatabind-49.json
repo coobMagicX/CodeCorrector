@@ -1,0 +1,1 @@
+{"testIssue1255": "        Foo result = mapper.readValue(json, Foo.class);\n"}

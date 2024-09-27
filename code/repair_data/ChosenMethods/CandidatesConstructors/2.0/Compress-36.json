@@ -1,0 +1,1 @@
+{"SevenZFile": "    public SevenZFile(final File filename) throws IOException {\n        this(filename, null);\n    }"}

@@ -1,0 +1,1 @@
+['setFileLevelJsDocBuilder', 'parseTypeString', 'parse', 'toString', 'extractSingleLineBlock', 'extractMultilineTextualBlock', 'trimEnd', 'parseTypeExpressionAnnotation', 'parseParamTypeExpressionAnnotation', 'parseTypeNameAnnotation', 'newStringNode', 'eatTokensUntilEOL', 'match', 'next', 'current', 'skipEOLs', 'lookAheadForTypeAnnotation']

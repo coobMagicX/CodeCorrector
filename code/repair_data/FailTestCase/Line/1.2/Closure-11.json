@@ -1,0 +1,1 @@
+{"testGetprop4": "    testTypes(\"var x = null; x.prop = 3;\",\n", "testIssue810": "    testTypes(\n"}

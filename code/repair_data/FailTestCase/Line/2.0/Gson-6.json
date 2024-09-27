@@ -1,0 +1,1 @@
+{"testNullSafeBugDeserialize": "    Device device = gson.fromJson(\"{'id':'ec57803e2'}\", Device.class);\n", "testNullSafeBugSerialize": "    gson.toJson(device);\n"}

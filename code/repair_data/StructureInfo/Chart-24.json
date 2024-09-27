@@ -1,0 +1,1 @@
+{"Class": ["GrayPaintScale"], "Constructor": ["GrayPaintScale", "GrayPaintScale"], "Method": ["getLowerBound", "getUpperBound", "getPaint", "equals", "clone"], "Overloaded": {"getLowerBound": [["getLowerBound", 0]], "getUpperBound": [["getUpperBound", 0]], "getPaint": [["getPaint", 1]], "equals": [["equals", 1]], "clone": [["clone", 0]]}}

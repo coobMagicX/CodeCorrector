@@ -1,0 +1,1 @@
+{"Attribute": "    public Attribute(String key, String val, Attributes parent) {\n        Validate.notNull(key);\n        key = key.trim();\n        Validate.notEmpty(key); // trimming could potentially make empty, so validate here\n        this.key = key;\n        this.val = val;\n        this.parent = parent;\n    }"}

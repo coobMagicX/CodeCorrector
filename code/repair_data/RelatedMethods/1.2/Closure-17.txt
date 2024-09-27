@@ -1,0 +1,1 @@
+['resolve', 'visit', 'identifyNameNode', 'getDeclaredTypeInAnnotation', 'assertDefinitionNode', 'shouldUseFunctionLiteralType', 'createFunctionTypeFromNodes', 'createEnumTypeFromNodes', 'getDeclaredType', 'build', 'process']

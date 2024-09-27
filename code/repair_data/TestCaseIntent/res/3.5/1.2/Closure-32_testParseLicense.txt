@@ -1,0 +1,5 @@
+Analysis: The purpose of the `extractMultilineTextualBlock` method is to extract and process multiline textual content from a JsDoc token while handling whitespace options. The failed test case `testParseLicense` aims to test the extraction of a license block from a JsDoc comment.
+
+The specific failed line `assertEquals(" Foo\n   Bar\n\n  Baz", node.getJSDocInfo().getLicense());` failed because the expected license content does not match the actual extracted license content. The expected content has extra whitespace characters that are not present in the actual extracted license content. This mismatch in whitespace characters caused the assertion to fail.
+
+To resolve the failure, you may need to adjust the expected license content in the test case to match the actual extracted content. Alternatively, you can review the whitespace handling logic in the `extractMultilineTextualBlock` method to ensure that the whitespace is processed correctly during extraction.

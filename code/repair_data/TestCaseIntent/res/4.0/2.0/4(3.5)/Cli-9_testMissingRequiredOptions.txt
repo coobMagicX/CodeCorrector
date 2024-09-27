@@ -1,0 +1,3 @@
+Intent: The intent and purpose of the failing test case is to check if the program correctly throws a MissingOptionException when a required option is missing.
+
+Repair strategy: The repair strategy should involve checking the logic for processing required options in the source code.

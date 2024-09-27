@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that needs to be added in the context is:
+
+9-nextRecord
+
+This method is needed to read the next record from the file and retrieve the header values.

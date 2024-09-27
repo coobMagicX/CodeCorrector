@@ -1,0 +1,1 @@
+{"testNullColumn": "        assertEquals(\"[null,\\\"bar\\\"]\", MAPPER.writeValueAsString(new TwoStringsBean()));\n"}

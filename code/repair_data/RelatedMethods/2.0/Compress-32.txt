@@ -1,0 +1,1 @@
+['close', 'available', 'skip', 'mark', 'reset', 'getNextTarEntry', 'getLongNameData', 'paxHeaders', 'parsePaxHeaders', 'applyPaxHeadersToCurrentEntry', 'getNextEntry', 'read', 'canReadEntryData', 'getCurrentEntry', 'setCurrentEntry', 'matches']

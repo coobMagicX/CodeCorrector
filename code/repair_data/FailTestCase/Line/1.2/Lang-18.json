@@ -1,0 +1,1 @@
+{"testFormat": "            assertEquals(sdf.format(date1).replaceAll(\"2003 03 03 03\", \"2003 2003 03 2003\"), fdf.format(date1));\n"}

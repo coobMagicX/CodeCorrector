@@ -1,0 +1,6 @@
+Intent: The purpose of the test case `testIssue787` is to verify that the function `removeUnreferencedFunctionArgs` correctly handles the removal of unreferenced function arguments in a scenario where functions are defined conditionally within another function and are referenced later. This test aims to ensure that the code optimizer does not remove necessary function parameters or alter the functionality when dealing with nested functions and conditional definitions.
+
+Repair strategy: The repair should focus on ensuring that the `removeUnreferencedFunctionArgs` function correctly identifies and preserves function arguments that are used conditionally or in a nested scope. The strategy should include:
+1. Enhancing the analysis of function arguments to consider their scope and usage context more accurately.
+2. Adjusting the logic that determines whether a function argument is considered "unreferenced" to account for references in nested or conditionally executed blocks of code.
+3. Implementing additional checks or a more sophisticated mechanism to trace variable usage across different scopes and conditional constructs, ensuring that function arguments critical to the retained functionality are not removed.

@@ -1,0 +1,1 @@
+{"BeanDeserializer": "    public BeanDeserializer(BeanDeserializerBase src, HashSet<String> ignorableProps) {\n        super(src, ignorableProps);\n    }"}

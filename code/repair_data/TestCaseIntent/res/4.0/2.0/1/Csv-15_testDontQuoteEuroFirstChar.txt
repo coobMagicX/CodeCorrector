@@ -1,0 +1,6 @@
+Intent: The test case `testDontQuoteEuroFirstChar` aims to evaluate whether the method `printAndQuote` correctly handles and outputs a string starting with the Euro character (€) without unnecessarily quoting it when the quote mode policy is set to minimal and the Euro character does not meet the criteria for quoting.
+
+Repair strategy: 
+1. Verify and adjust the character handling logic within the `MINIMAL` quote mode section of the `printAndQuote` method to ensure that it appropriately determines when to quote based on the actual character values and their significance in CSV formatting.
+2. Specifically, assess and possibly refine the conditions that check for character ranges and special characters to ensure that the Euro character, when used as the first character, is not mistakenly quoted if it does not interfere with CSV formatting rules or the defined delimiter and quote characters.
+3. Test with different non-ASCII characters, especially those like the Euro symbol, to ensure the logic robustly handles various character sets without misinterpreting their need for quotation.

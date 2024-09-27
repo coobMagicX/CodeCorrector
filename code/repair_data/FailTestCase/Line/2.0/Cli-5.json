@@ -1,0 +1,1 @@
+{"testStripLeadingHyphens": "        assertNull(Util.stripLeadingHyphens(null));\n", "testOrder": "        assertFalse(line.hasOption(null));\n"}

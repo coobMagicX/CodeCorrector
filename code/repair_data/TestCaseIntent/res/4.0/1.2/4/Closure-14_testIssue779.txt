@@ -1,0 +1,8 @@
+Intent: The intent of the test case `testIssue779` appears to be to verify the correct computation of control flow in a JavaScript code snippet that uses `try`, `if`, and `finally` blocks. The test ensures that the control flow analysis correctly handles return statements inside conditional blocks within a `try` block followed by a `finally` block.
+
+Repair strategy: Given the error encountered in the test case, the source code likely does not correctly handle the control flow transitions when `return` statements are used inside conditional blocks within a `try` block, especially when followed by a `finally` block. The repair should focus on ensuring that the `computeFollowNode` method properly manages control flow when a `return` statement is reached inside a `try` block:
+
+1. Analyze and potentially revise the control flow handling in the `TRY` case of the `switch` statement in the `computeFollowNode` method. Make sure that the logic accounts for `return` statements within an `if` inside a `try`.
+2. Ensure correct transitions to the `finally` block regardless of where the return occurs in the preceding `try`.
+3. Adjust the logic to correctly compute the follow node after executing a `finally` block, considering the scenario where control might be transferred back after a `return` in an `if` block within a `try`.
+4. Review and possibly enhance the handling of `null` values being returned incorrectly or prematurely during the computation of follow nodes in complex nested structures.

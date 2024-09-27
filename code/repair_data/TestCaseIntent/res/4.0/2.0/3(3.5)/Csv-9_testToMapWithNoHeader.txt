@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that when a CSV record with no header is converted to a map, the resulting map is empty.
+
+Repair strategy: The repair strategy for this test case is to ensure that the `toMap()` method returns an empty map when called on a CSV record with no header.

@@ -1,0 +1,1 @@
+['computeWeightedJacobian', 'computeCost', 'getRMS', 'getWeightSquareRoot', 'computeCovariances', 'guessParametersErrors', 'computeSigma', 'optimize', 'optimizeInternal', 'computeResiduals', 'squareRoot']

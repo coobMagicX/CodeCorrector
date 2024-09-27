@@ -1,0 +1,8 @@
+Intent: The intent of the failing test cases is to verify that the `translate` method correctly handles scenarios where a numeric entity reference (`&#` or `&#x`) is not followed by a complete valid number or semicolon, especially at the end of the input string. This is intended to assess the robustness of the function in dealing with incomplete entity references, ensuring that it does not attempt to process or decode them incorrectly, which could lead to errors or unexpected behavior.
+
+Repair strategy: To handle incomplete numeric entities at the end of the input string, the source code should include checks to ensure that after detecting an initial `&#` or `&#x`, there is a valid number followed by a semicolon before attempting to decode it. If the input ends prematurely (without a complete entity format), the function should simply return without modification or error. This requires:
+
+1. Adding a check after determining the start of a numeric entity to verify that there is at least one more character after `&#x` or `&#` before proceeding with further processing.
+2. Implementing a condition to verify that the loop looking for the semicolon (`;`) does not exceed the bounds of the input string, preventing `IndexOutOfBoundsException`.
+3. Adjusting the loop that increments the `end` index to ensure termination if a semicolon is not found before reaching the end of the string. This might involve setting a conditional break if `end` reaches `seqEnd`.
+4. Ensuring that decoding and character writing only occur if a complete and valid numeric entity has been identified, fully bounded by a starting `&#` or `&#x` and a terminating `;`.

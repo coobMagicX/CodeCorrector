@@ -1,0 +1,1 @@
+['isUrlSafe', 'avail', 'resizeBuf', 'setInitialBuffer', 'encode', 'decode', 'isBase64', 'isArrayByteBase64', 'containsBase64Byte', 'encodeBase64', 'encodeBase64URLSafe', 'encodeBase64Chunked', 'decodeBase64', 'discardWhitespace', 'isWhiteSpace', 'discardNonBase64', 'decodeInteger', 'encodeInteger', 'toIntegerBytes']

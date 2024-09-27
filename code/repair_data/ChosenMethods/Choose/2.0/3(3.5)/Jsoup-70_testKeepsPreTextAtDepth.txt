@@ -1,0 +1,3 @@
+Based on the test intent and repair strategy, the appropriate method to choose from the candidate list is:
+
+1-preserveWhitespace

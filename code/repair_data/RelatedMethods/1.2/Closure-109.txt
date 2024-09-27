@@ -1,0 +1,1 @@
+['recordTypeNode', 'parse', 'parseAndRecordTypeNode', 'parseAndRecordTypeNameNode', 'parseAndRecordParamTypeNode', 'parseTypeNameAnnotation', 'parseContextTypeExpression', 'parseTypeName', 'wrapNode', 'newNode', 'newStringNode', 'createTemplateNode', 'eatTokensUntilEOL', 'match', 'next', 'current']

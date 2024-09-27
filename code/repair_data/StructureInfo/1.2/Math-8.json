@@ -1,0 +1,1 @@
+{"Class": ["DiscreteDistribution"], "Constructor": ["DiscreteDistribution", "DiscreteDistribution"], "Method": ["reseedRandomGenerator", "probability", "getSamples", "sample"], "Overloaded": {"reseedRandomGenerator": [["reseedRandomGenerator", 1]], "probability": [["probability", 1]], "getSamples": [["getSamples", 0]], "sample": [["sample", 0], ["sample", 1]]}}

@@ -1,0 +1,1 @@
+['createMock', 'resetMock', 'newMethodInterceptorFilter', 'getMockHandler', 'isMockitoMock', 'isMock', 'getInterceptor', 'getMockName']

@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that an IOException is thrown when attempting to get the next entry from an ArchiveInputStream.
+
+Repair strategy: The repair strategy should be to modify the source code to throw an IOException when the condition for throwing an IllegalArgumentException is met. This will ensure that the test case passes and the expected exception is thrown.

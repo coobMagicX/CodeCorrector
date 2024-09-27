@@ -1,0 +1,1 @@
+{"testReducedFactory_int_int": "        assertEquals(Integer.MIN_VALUE / 2, f.getNumerator());\n", "testReduce": "        assertEquals(Integer.MIN_VALUE / 2, result.getNumerator());\n"}

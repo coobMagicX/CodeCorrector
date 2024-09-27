@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the cloning of class names in the `Element` class.
+
+Repair strategy: The repair strategy should focus on fixing the cloning of class names in the `Element` class.

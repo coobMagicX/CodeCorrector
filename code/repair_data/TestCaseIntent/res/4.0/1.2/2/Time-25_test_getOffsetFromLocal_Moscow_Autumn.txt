@@ -1,0 +1,7 @@
+Intent: The intent of the function `getOffsetFromLocal` is to calculate the timezone offset from GMT for a given local instant. This function takes into account the daylight savings time (DST) adjustments and ensures that the time is always after the DST gap. This is done by first estimating the offset, adjusting the local instant using the estimate, and recalculating the offset. If the offsets differ, it indicates that we are near a DST boundary, and further checks and adjustments are made to ensure the time is after the DST gap.
+
+Fix strategy: The failure is occurring in the test case `doTest_getOffsetFromLocal(10, 28, 2, 0, "2007-10-28T02:00:00.000+04:00", ZONE_MOSCOW)`. This test case is testing for a Moscow time zone during the autumn DST transition, and the expected offset appears to be incorrect. 
+
+To fix this issue, it's necessary to review the logic in the `getOffsetFromLocal` function where it handles the DST boundary cases. There might be an error in how it calculates the offset during these transition periods. Also, ensure that the `nextTransition` function is returning the correct next transition time for the given instant. 
+
+Lastly, it might also be beneficial to cross-verify the DST rules for the Moscow time zone for the year 2007 to ensure that the test case is correct and the expected offset is accurate. If the DST rules used in the `nextTransition` function are outdated or incorrect, it could cause the function to return the wrong offset.

@@ -1,0 +1,12 @@
+Intent: The purpose of the code is to check if a reference is assigned once and only once in its lifetime and not in a loop. It takes a reference, checks if it's null or not, and then iterates over the blocks to see if the assignment is in a loop. If it is, it returns false, otherwise true.
+
+Fix strategy: The problem seems to be with the test case, not with the function itself. The test case is checking if a variable is re-assigned inside a recursive function, which is not a valid test for this function. The function should be tested with a different scenario where a variable is assigned only once and not inside a loop. 
+
+A correct test case could be:
+```java
+public void validTest() {
+  testSame(
+      "var u; function f() { u = Random(); alert(u)}");
+}
+```
+In this case, the variable `u` is assigned once inside function `f` and not in a loop. If the function `isAssignedOnceInLifetime()` returns true for this test case, it would be working correctly. If it returns false, there could be a problem with the function which needs further investigation.

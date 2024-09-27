@@ -1,0 +1,1 @@
+{"testNan": "        assertXPathValue(context, \"$nan > $nan\", Boolean.FALSE, Boolean.class);\n"}

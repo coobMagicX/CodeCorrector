@@ -1,0 +1,1 @@
+{"Class": ["Entities"], "Constructor": [], "Method": ["escape", "unescape"], "Overloaded": {"escape": [["escape", 2], ["escape", 3]], "unescape": [["unescape", 1]]}}

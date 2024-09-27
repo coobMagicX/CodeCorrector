@@ -1,0 +1,5 @@
+Based on the given information, the method that can aid in repairing the source code based on the test intent is:
+
+1-insertNoFramesIfNeeded
+
+The repair strategy mentioned is to ensure that the handleRawtext method correctly inserts the <noframes> tag into the document, as expected by the test case. The candidate method "insertNoFramesIfNeeded" seems to be the appropriate choice for this purpose.

@@ -1,0 +1,1 @@
+{"main": "  public static void main(String[] args) {\n    CommandLineRunner runner = new CommandLineRunner(args);\n    if (runner.shouldRunCompiler()) {\n      runner.run();\n    } else {\n      System.exit(-1);\n    }\n  }"}

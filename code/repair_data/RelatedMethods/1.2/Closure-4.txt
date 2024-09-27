@@ -1,0 +1,1 @@
+['defineProperty', 'finishPropertyContinuations', 'getReferencedType', 'getReferenceName', 'toStringHelper', 'isNamedType', 'isNominalType', 'resolveInternal', 'resolveViaRegistry', 'resolveViaProperties', 'lookupViaProperties', 'setReferencedAndResolvedType', 'handleTypeCycle', 'checkEnumElementCycle', 'handleUnresolvedType', 'getTypedefType', 'setValidator', 'commit']

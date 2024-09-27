@@ -1,0 +1,27 @@
+Intent: The purpose of the provided code is to append an object to `StrBuilder` instance with a fixed amount of padding on the right. If the string representation of the object is shorter than the specified width, the padding character is appended until the total length matches the width. If the string representation of the object is longer than the specified width, it is truncated to fit the width.
+
+Fix strategy: The test case `testLang299()` failed because it expected the string "foo" to be truncated to one character, but the code implementation didn't handle the truncation properly. The source code attempts to get characters beyond the string length when the string length is greater than or equal to the specified width, leading to an `IndexOutOfBoundsException`. To fix this, the source code should truncate the string to the specified width when the string length is greater than the width.
+
+Here is the corrected source code:
+
+```java
+public StrBuilder appendFixedWidthPadRight(Object obj, int width, char padChar) {
+    if (width > 0) {
+        ensureCapacity(size + width);
+        String str = (obj == null ? getNullText() : obj.toString());
+        int strLen = str.length();
+        if (strLen > width) {
+            str.getChars(0, width, buffer, size);
+        } else {
+            int padLen = width - strLen;
+            str.getChars(0, strLen, buffer, size);
+            for (int i = 0; i < padLen; i++) {
+                buffer[size + strLen + i] = padChar;
+            }
+        }
+        size += width;
+    }
+    return this;
+}
+```
+This code correctly truncates the string when its length exceeds the specified width, and pads the string when its length is less than the width.

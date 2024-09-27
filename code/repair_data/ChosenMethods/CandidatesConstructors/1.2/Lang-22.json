@@ -1,0 +1,1 @@
+{"Fraction": "    private Fraction(int numerator, int denominator) {\n        super();\n        this.numerator = numerator;\n        this.denominator = denominator;\n    }"}

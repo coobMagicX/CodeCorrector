@@ -1,0 +1,1 @@
+{"FoldConstants": "  FoldConstants(AbstractCompiler compiler) {\n    this.compiler = compiler;\n  }"}

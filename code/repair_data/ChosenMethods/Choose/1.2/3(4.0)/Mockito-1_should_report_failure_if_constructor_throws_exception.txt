@@ -1,0 +1,3 @@
+1-Class_list: InvocationMatcher
+2-Constructor_list: InvocationMatcher
+3-Methods_list: captureArgumentsFrom

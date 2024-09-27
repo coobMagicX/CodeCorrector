@@ -1,0 +1,9 @@
+Intent: The purpose of this code is to define a function `visitNew` which seems to be part of a JavaScript type checker. It checks the type of a constructor and ensures that the parameters and instance are correctly typed. If not, it reports an error. 
+
+The failed test case `testIssue1002` is designed to test whether the type checker can correctly handle constructors that implement the same interface.
+
+Fix strategy: The test case failure could be due to a variety of reasons. It might be because the type checker is not correctly identifying the types of `A` and `B` as constructors implementing the same interface `I`, or because it is not correctly handling the comparison `A === B`.
+
+To fix this, you should check the definition and usage of the function `getJSType` and `restrictByNotNullOrUndefined` in the `visitNew` method. Also, check the `visitParameterList` and `ensureTyped` methods to ensure they are working as expected. If they are not, you may need to modify these methods or the way they are called.
+
+If the error is due to the comparison `A === B`, you might need to add additional logic to handle this case. This could involve checking whether `A` and `B` are both constructors that implement the same interface, and if so, treating them as equivalent for the purposes of type checking.

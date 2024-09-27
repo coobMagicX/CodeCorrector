@@ -1,0 +1,1 @@
+{"fallbackToUtfIfCantEncode": "        assertEquals(\"UTF-8\", doc.charset().name());\n"}

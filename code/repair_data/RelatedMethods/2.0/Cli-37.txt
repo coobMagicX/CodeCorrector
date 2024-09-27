@@ -1,0 +1,1 @@
+['parse', 'checkRequiredOptions', 'handleToken', 'handleUnknownToken', 'updateRequiredOptions', 'handleConcatenatedOptions']

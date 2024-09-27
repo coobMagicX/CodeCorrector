@@ -1,0 +1,7 @@
+Based on the analysis provided, in order to repair the source code to handle the case where a property (`prop`) is accessed on an object of type `C2` and the property is never defined on `C2`, you should choose the following method from the candidate methods:
+
+1-expectNotNullOrUndefined
+
+This method can be used to check if the property `prop` is not null or undefined on the object of type `C2`. By incorporating this check into the `getReadableJSTypeName` method, you can ensure that the method handles the scenario where the property is accessed on an object where it is not defined.
+
+Make sure to implement the `expectNotNullOrUndefined` method in the appropriate part of the `getReadableJSTypeName` method to address the issue identified in the test case `testIssue1047`.

@@ -1,0 +1,6 @@
+Intent: The test case `can_spy_abstract_classes()` is intended to verify that the system can successfully create a spy (a partial mock that calls real methods) of an abstract class, and that this spy correctly implements and returns expected results from a method call (in this case, `getMessage()`).
+
+Repair strategy: The error likely stems from either the improper instantiation of the abstract class (which should not be directly instantiable) or the incorrect configuration/setup of the spy to ensure that the `getMessage()` method is properly overridden or handled. To resolve the issue, the source code needs to be adjusted to ensure that:
+1. Abstract classes are correctly instantiated as spy objects using a subclass or another instantiation mechanism that supports abstract class handling.
+2. The method `getMessage()` is either adequately mocked or the spy setup ensures execution of real methods where applicable.
+3. Ensure the spy's behavior conforms to the expected method outputs, especially for abstract methods which might not have actual implementations in the abstract class itself.

@@ -1,0 +1,5 @@
+Intent: The test case is designed to verify two main functionalities of the `MultiplePiePlot` constructor. First, it checks that a newly created `MultiplePiePlot` instance without any parameters has a null dataset. Second, it tests that when a `MultiplePiePlot` is created with a dataset, it correctly registers itself as a listener to the dataset. This is important to ensure that the plot updates whenever the dataset changes, reflecting the correct and updated data.
+
+Repair strategy: The source code constructor does not currently support a parameterless constructor, nor does it register itself as a listener to the dataset. To address the failures:
+1. Implement an overloaded constructor that accepts no parameters and initializes the dataset to null.
+2. Modify the existing constructor to register the `MultiplePiePlot` instance as a listener to the dataset passed to it. This could involve adding a method call within the constructor that attaches the plot to the dataset's list of listeners (e.g., `dataset.addChangeListener(this)` or a similar method, depending on the actual method available in the `CategoryDataset` interface or its implementation).

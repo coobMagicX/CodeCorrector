@@ -1,0 +1,1 @@
+['process', 'enterScope', 'visit', 'tryRemoveDeadAssignments', 'tryRemoveAssignment', 'isVariableStillLiveWithinExpression', 'isVariableReadBeforeKill']

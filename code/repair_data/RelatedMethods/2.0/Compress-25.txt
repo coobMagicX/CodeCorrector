@@ -1,0 +1,1 @@
+['read', 'readFromInflater', 'close', 'skip', 'matches', 'checksig', 'drainCurrentEntryData', 'getBytesInflated', 'fill', 'bufferContainsSignature', 'pushback', 'skipRemainderOfArchive', 'findEocdRecord', 'available']

@@ -1,0 +1,1 @@
+{"testMath835": "        Assert.assertEquals(percentage, frac.percentageValue(), Math.ulp(percentage));\n"}

@@ -1,0 +1,134 @@
+To repair the source code based on the intent of the test, the method "anyOtherEndTag" is needed in the context.
+
+Desired format:
+1-anyOtherEndTag
+
+Candidate methods that exist in the context: [anyOtherEndTag]
+
+Test-Repair intent:
+Intent: The intent of the test case is to check whether the text content of the document is correctly parsed and returned.
+
+Repair strategy: The repair strategy for this test case would involve identifying and fixing any issues in the code that prevent the correct parsing and retrieval of the text content of the document.
+
+Source code:
+```java
+boolean process(Token t, TreeBuilder tb) {
+    switch (t.type) {
+        ...
+        case EndTag:
+            Token.EndTag endTag = t.asEndTag();
+            name = endTag.name();
+            if (name.equals("body")) {
+                if (!tb.inScope("body")) {
+                    tb.error(this);
+                    return false;
+                } else {
+                    // todo: error if stack contains something not dd, dt, li, optgroup, option, p, rp, rt, tbody, td, tfoot, th, thead, tr, body, html
+                    tb.transition(AfterBody);
+                }
+            } else if (name.equals("html")) {
+                boolean notIgnored = tb.process(new Token.EndTag("body"));
+                if (notIgnored)
+                    return tb.process(endTag);
+            } else if (StringUtil.in(name,
+                    "address", "article", "aside", "blockquote", "button", "center", "details", "dir", "div",
+                    "dl", "fieldset", "figcaption", "figure", "footer", "header", "hgroup", "listing", "menu",
+                    "nav", "ol", "pre", "section", "summary", "ul")) {
+                // todo: refactor these lookups
+                if (!tb.inScope(name)) {
+                    // nothing to close
+                    tb.error(this);
+                    return false;
+                } else {
+                    tb.generateImpliedEndTags();
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose(name);
+                }
+            } else if (name.equals("form")) {
+                Element currentForm = tb.getFormElement();
+                tb.setFormElement(null);
+                if (currentForm == null || !tb.inScope(name)) {
+                    tb.error(this);
+                    return false;
+                } else {
+                    tb.generateImpliedEndTags();
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    // remove currentForm from stack. will shift anything under up.
+                    tb.removeFromStack(currentForm);
+                }
+            } else if (name.equals("p")) {
+                if (!tb.inButtonScope(name)) {
+                    tb.error(this);
+                    tb.process(new Token.StartTag(name)); // if no p to close, creates an empty <p></p>
+                    return tb.process(endTag);
+                } else {
+                    tb.generateImpliedEndTags(name);
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose(name);
+                }
+            } else if (name.equals("li")) {
+                if (!tb.inListItemScope(name)) {
+                    tb.error(this);
+                    return false;
+                } else {
+                    tb.generateImpliedEndTags(name);
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose(name);
+                }
+            } else if (StringUtil.in(name, "dd", "dt")) {
+                if (!tb.inScope(name)) {
+                    tb.error(this);
+                    return false;
+                } else {
+                    tb.generateImpliedEndTags(name);
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose(name);
+                }
+            } else if (StringUtil.in(name, "h1", "h2", "h3", "h4", "h5", "h6")) {
+                if (!tb.inScope(new String[]{"h1", "h2", "h3", "h4", "h5", "h6"})) {
+                    tb.error(this);
+                    return false;
+                } else {
+                    tb.generateImpliedEndTags(name);
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose("h1", "h2", "h3", "h4", "h5", "h6");
+                }
+            } else if (name.equals("sarcasm")) {
+                // *sigh*
+                return anyOtherEndTag(t, tb);
+            } else if (StringUtil.in(name,
+                    "a", "b", "big", "code", "em", "font", "i", "nobr", "s", "small", "strike", "strong", "tt", "u")) {
+                // Adoption Agency Algorithm.
+                ...
+            } else if (StringUtil.in(name, "applet", "marquee", "object")) {
+                if (!tb.inScope("name")) {
+                    if (!tb.inScope(name)) {
+                        tb.error(this);
+                        return false;
+                    }
+                    tb.generateImpliedEndTags();
+                    if (!tb.currentElement().nodeName().equals(name))
+                        tb.error(this);
+                    tb.popStackToClose(name);
+                    tb.clearFormattingElementsToLastMarker();
+                }
+            } else if (name.equals("br")) {
+                tb.error(this);
+                tb.process(new Token.StartTag("br"));
+                return false;
+            } else {
+                return anyOtherEndTag(t, tb);
+            }
+
+            break;
+        ...
+    }
+    return true;
+}
+```

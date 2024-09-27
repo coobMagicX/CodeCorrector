@@ -1,0 +1,1 @@
+{"Vector3D": "  public Vector3D(double a1, Vector3D u1, double a2, Vector3D u2,\n                  double a3, Vector3D u3, double a4, Vector3D u4) {\n    this.x = a1 * u1.x + a2 * u2.x + a3 * u3.x + a4 * u4.x;\n    this.y = a1 * u1.y + a2 * u2.y + a3 * u3.y + a4 * u4.y;\n    this.z = a1 * u1.z + a2 * u2.z + a3 * u3.z + a4 * u4.z;\n  }"}

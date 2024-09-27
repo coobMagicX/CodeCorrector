@@ -1,0 +1,1 @@
+{"testXmlAttributesWithNextTextValue": "        assertEquals(\"7\", xp.nextTextValue());\n"}

@@ -1,0 +1,37 @@
+public String absUrl(String attributeKey) {
+    Validate.notEmpty(attributeKey);
+
+    String relUrl = attr(attributeKey);
+    if (!hasAttr(attributeKey)) {
+        return ""; // nothing to make absolute with
+    } else {
+        URL base;
+        try {
+            base = new URL(baseUri);
+        } catch (MalformedURLException e) {
+            // the base is unsuitable, but the attribute may be abs on its own, so try that
+            try {
+                URL abs = new URL(relUrl);
+                return abs.toExternalForm();
+            } catch (MalformedURLException e2) {
+                return "";
+            }
+        }
+        try {
+            // Check if the relative URL starts with a query parameter
+            if (relUrl.startsWith("?")) {
+                // Append the query string directly to the base URL's file path
+                String basePath = base.getPath();
+                String absUrlString = base.getProtocol() + "://" + base.getHost() + (base.getPort() != -1 ? ":" + base.getPort() : "") + basePath + relUrl;
+                URL absUrl = new URL(absUrlString);
+                return absUrl.toExternalForm();
+            } else {
+                // Handle normal relative URLs
+                URL abs = new URL(base, relUrl);
+                return abs.toExternalForm();
+            }
+        } catch (MalformedURLException e) {
+            return "";
+        }
+    }
+}

@@ -1,0 +1,4 @@
+Based on the test intent and repair logic, the appropriate method to use in this context would be 'constructMapType'. 
+
+Therefore, the desired format would be:
+3-constructMapType

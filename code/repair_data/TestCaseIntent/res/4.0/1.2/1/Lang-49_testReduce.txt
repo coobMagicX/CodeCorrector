@@ -1,0 +1,9 @@
+Intent: The purpose of the source code is to reduce a fraction to its simplest form by finding the greatest common divisor (gcd) of the numerator and the denominator and dividing both by the gcd. If the gcd is 1, it should return the fraction as is. 
+
+The test case is designed to verify whether the method works properly for different types of fractions - positive, negative, zero, and fractions that are already in their simplest form. 
+
+Fix strategy: The specific failure occurred when the test expected the denominator to be 1, but got a different result. This issue indicates that the greatestCommonDivisor function may not be working properly. Debug and test the greatestCommonDivisor function to ensure it correctly calculates the gcd. 
+
+Also, consider adding checks to handle edge cases, especially for fractions with a zero numerator which should always reduce to 0/1 and not to any other denominator. 
+
+In addition, the current implementation doesn't seem to handle the sign of fractions correctly. If the denominator is negative, the sign should be transferred to the numerator.

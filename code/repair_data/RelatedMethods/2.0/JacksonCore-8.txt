@@ -1,0 +1,1 @@
+['buf', 'size', 'getTextBuffer', 'contentsAsArray', 'append', 'unshare', 'expand', 'carr']

@@ -1,0 +1,1 @@
+{"testIsNumber": "        assertFalse(\"isNumber(String) LANG-664 failed\", NumberUtils.isNumber(val));\n"}

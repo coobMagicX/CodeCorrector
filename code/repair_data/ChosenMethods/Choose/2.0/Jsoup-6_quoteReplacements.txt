@@ -1,0 +1,3 @@
+Based on the intent of the test and the repair strategy mentioned, the method that can aid in the repair is:
+
+1-replace

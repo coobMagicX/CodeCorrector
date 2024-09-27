@@ -1,0 +1,1 @@
+{"ScopeState": "    ScopeState() {\n      reset();\n    }", "StateStack": "    StateStack() {\n      states.add(new ScopeState());\n    }", "PeepholeOptimizationsPass": "  PeepholeOptimizationsPass(AbstractCompiler compiler,\n      AbstractPeepholeOptimization... optimizations) {\n    this.compiler = compiler;\n    this.peepholeOptimizations = optimizations;\n  }"}

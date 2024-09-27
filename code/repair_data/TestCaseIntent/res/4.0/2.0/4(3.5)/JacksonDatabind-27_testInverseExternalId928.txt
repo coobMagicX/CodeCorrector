@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to test the deserialization of an object with an external type id.
+
+Repair strategy: The repair strategy for the failing test cases is to ensure that the deserialization of the object with an external type id is handled correctly, even when the order of the properties in the JSON input is different.

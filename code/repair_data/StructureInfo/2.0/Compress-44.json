@@ -1,0 +1,1 @@
+{"Class": ["ChecksumCalculatingInputStream"], "Constructor": ["ChecksumCalculatingInputStream"], "Method": ["read", "skip", "getValue"], "Overloaded": {"read": [["read", 0], ["read", 1], ["read", 3]], "skip": [["skip", 1]], "getValue": [["getValue", 0]]}}

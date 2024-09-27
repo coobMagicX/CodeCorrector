@@ -1,0 +1,1 @@
+{"pure_mockito_should_not_depend_JUnit": "            checkDependency(classLoader_without_JUnit, pureMockitoAPIClass);\n"}

@@ -1,0 +1,1 @@
+['reportCodeChange', 'process', 'shouldTraverse', 'visit', 'doStatementNormalizations', 'extractForInitializer', 'splitVarDeclarations', 'moveNamedFunctions', 'addToFront', 'removeDuplicateDeclarations', 'onRedeclaration', 'enterScope', 'exitScope']

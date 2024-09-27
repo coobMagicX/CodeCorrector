@@ -1,0 +1,4 @@
+Intent: The test case `testChainedRemoveAttributes` is intended to verify that multiple attributes can be removed from an HTML element in a chained (sequential) manner, and that the resultant HTML element correctly reflects these removals, ending up with no attributes.
+
+Repair strategy: The issue likely arises from the concurrent modification of the `attributes` map within the `removeIgnoreCase` method, where the attribute is being removed from the map during iteration, which is not allowed in Java. To resolve this issue:
+- Modify the `removeIgnoreCase` method to avoid direct removal within the loop. One approach is to collect keys to be removed in a separate list during iteration, and then remove these keys from the map after the loop completes. This prevents concurrent modification errors and ensures all specified attributes are correctly removed without affecting the iteration process.

@@ -1,0 +1,3 @@
+To repair the source code based on the intent of the test, the method needed in the context is:
+
+1-getRangeAxisIndex

@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify the deserialization of a custom map value using a non-standard deserializer.
+
+Repair strategy: The repair direction for this test case is to ensure that the custom map value is deserialized correctly by fixing any issues with the deserialization process.

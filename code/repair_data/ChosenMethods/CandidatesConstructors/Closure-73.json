@@ -1,0 +1,1 @@
+{"CodeGenerator": "  CodeGenerator(CodeConsumer consumer) {\n    this(consumer, null);\n  }"}

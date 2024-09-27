@@ -1,0 +1,1 @@
+{"testIssue297": "    test(\"function f(p) {\" +\n", "testIssue297a": "    testSame(\"function f(p) {\" +\n", "testIssue297b": "    test(\"function f() {\" +\n", "testIssue297c": "    test(\"function f() {\" +\n", "testIssue297d": "    test(\"function f(a) {\" +\n", "testIssue297e": "    test(\"function f(a) {\" +\n", "testIssue297f": "    test(\"function f(a) {\" +\n"}

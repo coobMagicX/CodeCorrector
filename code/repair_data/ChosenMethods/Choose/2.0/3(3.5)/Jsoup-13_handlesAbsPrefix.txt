@@ -1,0 +1,2 @@
+To repair the source code based on the test intent, the method that needs to be added is:
+1- `hasAttr`

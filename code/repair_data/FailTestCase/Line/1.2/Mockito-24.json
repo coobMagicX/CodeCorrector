@@ -1,0 +1,1 @@
+{"should_return_zero_if_mock_is_compared_to_itself": "        assertEquals(0, result);\n", "should_compare_to_be_consistent_with_equals_when_comparing_the_same_reference": "        assertEquals(1, set.size());\n"}

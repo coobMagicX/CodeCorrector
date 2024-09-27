@@ -1,0 +1,21 @@
+Intent: The purpose of the code is to manage a stopwatch. It should be able to start, stop, and suspend the stopwatch. When the stopwatch is suspended, the time should not increase until it is resumed. 
+
+Fix strategy: The issue seems to be with the stop() method. It does not consider the case when the stopwatch is suspended. We need to modify the stop() method to store the suspendTime when the stopwatch is suspended and add it to the stopTime when the stopwatch is resumed. The failed assertTrue line suggests that the suspend time is not equal to the total time, indicating that the time continues to increase even when the stopwatch is suspended. Here's a proposed fix:
+
+Source code: 
+```java
+public void stop() {
+    if(this.runningState != STATE_RUNNING && this.runningState != STATE_SUSPENDED) {
+        throw new IllegalStateException("Stopwatch is not running. ");
+    }
+    if(this.runningState == STATE_SUSPENDED) {
+        stopTime = suspendTime;
+    } else {
+        stopTime = System.currentTimeMillis();
+    }
+    this.runningState = STATE_STOPPED;
+}
+```
+This will ensure that if the stopwatch is stopped while suspended, the time at which it was suspended is used as the stopTime. If it is not suspended, the current time is used as the stopTime, as before. 
+
+Please note that this fix assumes that the 'suspendTime' is stored when the stopwatch is suspended. If it's not the case, you need to add code to store 'suspendTime' in your suspend() method.

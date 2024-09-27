@@ -1,0 +1,5 @@
+Intent: The test case `testNoPrivateAccessForProperties8` is intended to confirm that the source code correctly handles the visibility rules of private properties in JavaScript, specifically checking that a private property defined in a superclass cannot be overridden in a subclass.
+
+Repair strategy: Examine the logic in the `checkPropertyVisibility` method that handles the visibility checks when properties are being overridden. Ensure that the method correctly identifies when a property is private and disallows overriding of private properties from different input files or classes. The repair should include:
+1. Verifying that the `sameInput` check accurately determines if the superclass and subclass are defined in the same source.
+2. Ensuring that the condition which checks for private visibility (`visibility == Visibility.PRIVATE && !sameInput`) properly catches attempts to override private properties in subclasses, even when the declaration appears in the same file but different classes. Adjust the logic if necessary to account for subclass scenarios distinctly.

@@ -1,0 +1,9 @@
+Intent: The intent of the `testWriteNonAsciiDirectoryNamePosixMode` test case is to ensure that a `TarArchiveEntry` with a non-ASCII directory name is correctly handled when written to a `TarArchiveOutputStream`, particularly focusing on POSIX mode compatibility and the proper handling of Pax headers for non-ASCII names.
+
+Repair strategy: The test failure suggests issues with handling non-ASCII characters in the Tar archive entry names, particularly when Pax headers are supposed to be added for such names. The repair should focus on:
+
+1. Ensuring that the `writePaxHeaders` method is correctly invoked when non-ASCII names are detected, especially for directory names.
+2. Verifying that the `stripTo7Bits` method used in `writePaxHeaders` correctly handles non-ASCII characters without data loss or corruption.
+3. Checking that the Tar constants and header size calculations accommodate the encoded length of non-ASCII characters correctly.
+4. Implementing or verifying logic in `TarArchiveOutputStream` to ensure it correctly decides when to add Pax headers based on the `setAddPaxHeadersForNonAsciiNames` setting.
+5. Testing and adjusting the loop that recalculates the header line length in `writePaxHeaders` to ensure it correctly handles UTF-8 encoded lengths of non-ASCII characters.

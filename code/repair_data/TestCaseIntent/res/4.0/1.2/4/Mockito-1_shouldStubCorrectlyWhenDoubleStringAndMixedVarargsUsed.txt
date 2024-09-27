@@ -1,0 +1,7 @@
+Intent: The test case `shouldStubCorrectlyWhenDoubleStringAndMixedVarargsUsed` aims to verify that the method `doSomething` correctly handles invocations with two string arguments followed by a null varargs parameter (String array), and that it returns the expected stubbed values ("hello" and "goodbye").
+
+Repair strategy: The main issue likely lies in the handling of varargs when they are null. The source code currently throws an `UnsupportedOperationException` if the method is identified as a varargs method. However, it does not handle the scenario where the varargs are null, which is a valid use case, particularly in testing scenarios involving mocking and stubbing. 
+
+1. Modify the `captureArgumentsFrom` method to check if the varargs are null before throwing an exception or trying to capture arguments from the array. This can be done by adding a condition to verify if the varargs argument (`invocation.getRawArguments()[indexOfVararg]`) is null.
+2. Ensure that when varargs are null, the method does not attempt to iterate over or capture arguments from them, but instead handles them gracefully, possibly treating them as an empty array or simply skipping further processing for that parameter.
+3. Adjust the logic to ensure that even with null varargs, the method's behavior remains consistent with non-varargs or fully specified varargs cases, thus maintaining the integrity of the method's intended functionality across different input scenarios.

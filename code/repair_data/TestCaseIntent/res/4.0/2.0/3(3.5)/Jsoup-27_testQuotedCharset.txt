@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to verify the correctness of the getCharsetFromContentType() method in extracting and returning the charset value from the given contentType string.
+
+Repair strategy: The source code should be modified to correctly extract the charset value from the contentType string and return it in uppercase.

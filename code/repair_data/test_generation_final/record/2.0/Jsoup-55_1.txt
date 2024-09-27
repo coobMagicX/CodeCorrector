@@ -1,0 +1,21 @@
+void read(Tokeniser t, CharacterReader r) {
+    char c = r.consume();
+    while (Character.isWhitespace(c)) { // Handle whitespace before the '>'
+        c = r.consume();
+    }
+    switch (c) {
+        case '>':
+            t.tagPending.selfClosing = true;
+            t.emitTagPending();
+            t.transition(Data);
+            break;
+        case eof:
+            t.eofError(this);
+            t.transition(Data);
+            break;
+        default:
+            t.error(this);
+            r.unconsume(); // Put the character back if it's not what we're looking for
+            t.transition(BeforeAttributeName);
+    }
+}

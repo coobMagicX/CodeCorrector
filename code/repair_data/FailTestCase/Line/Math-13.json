@@ -1,0 +1,1 @@
+{"testLargeSample": "            PolynomialFunction fitted = new PolynomialFunction(fitter.fit(init));\n"}

@@ -1,0 +1,1 @@
+['traverse', 'updateScopeForTypeChange', 'ensurePropertyDefined', 'ensurePropertyDeclared', 'ensurePropertyDeclaredHelper', 'tightenTypesAfterAssertions', 'updateTypeOfParameters', 'updateTypeOfThisOnClosure', 'traverseGetProp', 'inferPropertyTypesToMatchConstraint', 'getPropertyType', 'getJSType', 'getNativeType']

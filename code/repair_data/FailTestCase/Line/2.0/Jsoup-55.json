@@ -1,0 +1,1 @@
+{"dropsSlashFromAttributeName": "        assertTrue(\"SelfClosingStartTag ignores last character\", doc.select(\"img[onerror]\").size() != 0);\n"}

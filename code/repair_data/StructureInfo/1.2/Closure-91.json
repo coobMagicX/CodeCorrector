@@ -1,0 +1,1 @@
+{"Class": ["CheckGlobalThis"], "Constructor": ["CheckGlobalThis"], "Method": ["shouldTraverse", "visit", "shouldReportThis", "getFunctionJsDocInfo"], "Overloaded": {"shouldTraverse": [["shouldTraverse", 3]], "visit": [["visit", 3]], "shouldReportThis": [["shouldReportThis", 2]], "getFunctionJsDocInfo": [["getFunctionJsDocInfo", 1]]}}

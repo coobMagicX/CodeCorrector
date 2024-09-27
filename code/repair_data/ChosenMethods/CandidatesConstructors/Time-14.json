@@ -1,0 +1,1 @@
+{"BasicMonthOfYearDateTimeField": "    BasicMonthOfYearDateTimeField(BasicChronology chronology, int leapMonth) {\n        super(DateTimeFieldType.monthOfYear(), chronology.getAverageMillisPerMonth());\n        iChronology = chronology;\n        iMax = iChronology.getMaxMonth();\n        iLeapMonth = leapMonth;\n    }"}

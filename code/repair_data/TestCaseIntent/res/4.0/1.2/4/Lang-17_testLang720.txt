@@ -1,0 +1,8 @@
+Intent:
+The test case `testLang720` is intended to verify that the `StringEscapeUtils.escapeXml` method correctly escapes XML-sensitive characters without altering characters that do not require escaping. This includes properly handling Unicode surrogate pairs, which are used to represent characters outside the Basic Multilingual Plane in UTF-16 encoding.
+
+Repair strategy:
+The error likely lies in the handling of surrogate pairs in the `translate` method of the source code. The method should accurately determine the length of the code point and increment the position `pos` correctly within the input sequence, especially when dealing with characters represented by surrogate pairs. The repair should focus on the loop increment logic for `pos` inside the translate method:
+1. Ensure that the loop properly increments by the size of the code point (which is 2 for surrogate pairs) when such pairs are processed.
+2. Adjust the condition inside the loop that incorrectly manipulates `pos` after consuming characters to correctly update based on the number of characters (`charCount`) represented by the code point rather than decrementing `pos` unconditionally.
+3. Implement comprehensive checks for boundary conditions to prevent over-incrementing or under-incrementing `pos`, ensuring that it accurately reflects the current position in the input after each iteration, particularly after processing surrogate pairs or other multi-character sequences.

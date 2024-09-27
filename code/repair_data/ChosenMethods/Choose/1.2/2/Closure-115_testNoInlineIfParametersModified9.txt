@@ -1,0 +1,4 @@
+Based on the analysis provided, to repair the source code based on the intent of the test, you need to choose the method `inline` from the candidate methods in the context.
+
+Desired format:
+1-inline

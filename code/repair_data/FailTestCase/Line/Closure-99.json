@@ -1,0 +1,1 @@
+{"testPropertyOfMethod": "    testFailure(\"a.protoype.b = {}; \" +\n", "testMethod4": "    testSame(\"a.prototype['x' + 'y'] =  function() { this.foo = 3; };\");\n", "testInterface1": "    testSame(\n"}

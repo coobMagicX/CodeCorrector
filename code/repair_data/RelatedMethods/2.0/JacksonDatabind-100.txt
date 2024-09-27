@@ -1,0 +1,1 @@
+['version', 'close', 'nextToken', 'skipChildren', 'getCurrentName', 'overrideCurrentName', 'getParsingContext', 'getTokenLocation', 'getCurrentLocation', 'getTextLength', 'getNumberType', 'getBigIntegerValue', 'getLongValue', 'getIntValue', 'getNumberValue', 'getEmbeddedObject', 'isNaN', 'getBinaryValue', 'readBinaryValue', 'currentNode', 'currentNumericNode', '_handleEOF']

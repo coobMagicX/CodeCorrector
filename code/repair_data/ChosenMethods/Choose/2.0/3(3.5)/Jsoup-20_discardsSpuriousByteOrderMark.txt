@@ -1,0 +1,1 @@
+Based on the test intent and repair strategy, the method that needs to be modified is `parseByteData`. Specifically, the modification should involve checking for the presence of a byte order mark (BOM) at the start of the decoded text and stripping it if found.

@@ -1,0 +1,3 @@
+Based on the provided context, the appropriate method to address the issue in the test case is as follows:
+
+1-getFunctionJsDocInfo

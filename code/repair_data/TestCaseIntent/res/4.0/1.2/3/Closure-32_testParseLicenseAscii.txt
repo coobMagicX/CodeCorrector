@@ -1,0 +1,11 @@
+Intent: The intent of the provided code block is to extract multiline textual blocks from a given JsDocToken stream. It's designed to handle different whitespace options and consider the use of certain JsDocTokens like EOC, EOL, EOF, and ANNOTATION. This information is used to build a multiline string and the function returns this along with the last read token. 
+
+The failed test case is testing the functionality of parsing a license text block from a JsDoc comment in a node object. It is expected that the license text is correctly extracted, with proper formatting and whitespace preservation.
+
+Fix strategy: The test case is failing at the line where it checks if the extracted license text equals the expected license text. The problem might exist in how the code handles whitespace and line breaks. It seems like it's not preserving the original text formatting correctly. 
+
+A possible fix strategy could be to adjust the whitespace handling in the `extractMultilineTextualBlock` method. This could be done by modifying the conditions under which whitespace characters are appended to the builder, or by changing the logic that determines when to ignore a star character (`*`). 
+
+In addition, a thorough review of the `extractMultilineTextualBlock` method should be performed to ensure that it correctly handles all JsDocToken types, especially EOC, EOL, EOF, and ANNOTATION. 
+
+After modifying the code according to these guidelines, the failed test case should be run again to verify whether the problem has been solved. If the test case still fails, further debugging and code modification might be necessary.

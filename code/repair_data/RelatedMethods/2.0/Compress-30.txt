@@ -1,0 +1,1 @@
+['read', 'read0', 'init', 'initBlock', 'endBlock', 'complete', 'close', 'bsR', 'bsGetBit', 'bsGetUByte', 'bsGetInt', 'hbCreateDecodeTables', 'recvDecodingTables', 'createHuffmanDecodingTables', 'getAndMoveToFrontDecode', 'getAndMoveToFrontDecode0', 'setupBlock', 'setupRandPartB', 'setupRandPartC', 'setupNoRandPartB', 'setupNoRandPartC', 'initTT', 'matches']

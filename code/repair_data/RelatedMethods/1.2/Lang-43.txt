@@ -1,0 +1,1 @@
+['toPattern', 'applyPattern', 'setFormatByArgumentIndex', 'setFormatsByArgumentIndex', 'readArgumentIndex', 'parseFormatDescription', 'insertFormats', 'next', 'appendQuotedString', 'getQuotedString', 'containsElements']

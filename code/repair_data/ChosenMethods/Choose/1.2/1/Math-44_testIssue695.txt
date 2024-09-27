@@ -1,0 +1,5 @@
+To repair the source code based on the intent of the test, you need to add a method related to event handling logic. 
+
+The method you need to choose from the candidate methods that exist in the context is:
+
+1-`addEventHandler`

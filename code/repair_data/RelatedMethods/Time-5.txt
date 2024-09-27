@@ -1,0 +1,1 @@
+['parse', 'years', 'months', 'weeks', 'days', 'hours', 'minutes', 'seconds', 'millis', 'toPeriod', 'getYears', 'getMonths', 'getMillis', 'withPeriodType', 'withYears', 'withMonths', 'withMillis', 'plus', 'plusYears', 'plusMonths', 'plusMillis', 'minus', 'minusYears', 'minusMonths', 'minusMillis', 'negated', 'checkYearsAndMonths', 'normalizedStandard']

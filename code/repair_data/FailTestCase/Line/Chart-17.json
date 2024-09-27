@@ -1,0 +1,1 @@
+{"testBug1832432": "            s2 = (TimeSeries) s1.clone();\n"}

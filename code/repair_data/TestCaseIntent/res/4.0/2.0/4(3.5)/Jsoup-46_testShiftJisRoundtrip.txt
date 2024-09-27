@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to check that the output HTML does not contain the character '?'.
+
+Repair strategy: The repair strategy for this test case would involve checking the code that generates the HTML output and ensuring that it does not introduce the character '?' in the output. This could be achieved by modifying the code that handles encoding and escaping of characters in the HTML.

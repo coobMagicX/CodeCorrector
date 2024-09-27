@@ -1,0 +1,1 @@
+{"SevenZOutputFile": "    public SevenZOutputFile(final File filename) throws IOException {\n        file = new RandomAccessFile(filename, \"rw\");\n        file.seek(SevenZFile.SIGNATURE_HEADER_SIZE);\n    }"}

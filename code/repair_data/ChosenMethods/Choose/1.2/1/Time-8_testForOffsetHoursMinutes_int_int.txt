@@ -1,0 +1,7 @@
+Based on the analysis provided, you need to modify the `forOffsetHoursMinutes` method to handle the scenario of a negative zero hours offset with a negative minutes offset separately in order to correctly calculate the offset and create the DateTimeZone.
+
+To fix this issue, you should adjust the logic in the method to correctly handle the case where the hours offset is zero but the minutes offset is negative. You can do this by updating the calculation of the offset based on the sign of the hours offset.
+
+Therefore, the method you need in this context is:
+
+1-adjustOffset

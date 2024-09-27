@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that the "vehicleMonitoringDelivery" list in the "ServiceDelivery" object contains one empty entry.
+
+Repair strategy: The repair strategy for this test case is to ensure that the "vehicleMonitoringDelivery" list contains one empty entry after deserializing the XML.

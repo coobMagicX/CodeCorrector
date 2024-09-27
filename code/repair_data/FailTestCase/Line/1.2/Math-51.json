@@ -1,0 +1,1 @@
+{"testIssue631": "        final double root = solver.solve(3624, f, 1, 10);\n"}

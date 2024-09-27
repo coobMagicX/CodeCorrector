@@ -1,0 +1,3 @@
+Intent: The intent of the test case `testSupportsNonAsciiTags()` is to verify if the HTML parsing library can correctly handle and parse non-ASCII tags in the HTML document, extracting the correct content within these tags.
+
+Repair strategy: The issue might be with the handling of non-ASCII characters in the `matchesLetter()` method, which currently checks for characters only within the ASCII range for English alphabets. To fix this, the method should be updated to support a broader range of character sets, including non-ASCII characters. This could involve changing the logic to check if the character is a valid letter based on Unicode standards, possibly using Java’s built-in methods such as `Character.isLetter(char c)`.

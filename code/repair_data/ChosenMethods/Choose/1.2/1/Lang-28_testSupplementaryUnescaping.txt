@@ -1,0 +1,3 @@
+To fix the issue related to handling supplementary characters in the `translate` method, you need to implement the following modification:
+
+1-`translate`

@@ -1,0 +1,1 @@
+{"NodePointer": "    protected NodePointer(NodePointer parent, Locale locale) {\n        this.parent = parent;\n        this.locale = locale;\n    }"}

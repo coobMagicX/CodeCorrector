@@ -1,0 +1,1 @@
+Based on the test intent and repair strategy, the method that needs to be modified is "getMappingCode". The logic in the "HW rule" check needs to be investigated and fixed to correctly handle the scenario where a letter 'H' or 'W' is followed by a letter with the same mapping code.

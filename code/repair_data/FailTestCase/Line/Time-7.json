@@ -1,0 +1,1 @@
+{"testParseInto_monthDay_feb29_newYork_startOfYear": "        assertEquals(4, f.parseInto(result, \"2 29\", 0));\n", "testParseInto_monthDay_feb29_tokyo_endOfYear": "        assertEquals(4, f.parseInto(result, \"2 29\", 0));\n"}

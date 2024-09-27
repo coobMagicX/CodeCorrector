@@ -1,0 +1,20 @@
+Intent: The purpose of this code is to reset the mocks such that any interactions with them are forgotten. It is expected that after resetting the mock object, any invocation should still be reported to an invocation listener attached to the mock.
+
+Fix strategy: The failure is likely happening because the resetMock() method does not retain invocation listeners from the old mock settings. This implies that after resetting, the invocation listeners are lost hence the invocationListener is not reporting the invocation of `mockedList.clear()`. 
+
+We need to modify the resetMock method to retain invocation listeners from the old mock handler. The new mock handler should be created with the same set of listeners as the old one. 
+
+This can be achieved by adding a new method in the MockHandler class that will return a list of InvocationListeners, then these listeners can be added to the newMockHandler in the resetMock() method.
+
+Here is the modified resetMock() method:
+
+```java
+public <T> void resetMock(T mock) {
+    MockHandlerInterface<T> oldMockHandler = getMockHandler(mock);
+    MockHandler<T> newMockHandler = new MockHandler<T>(oldMockHandler);
+    newMockHandler.setInvocationListeners(oldMockHandler.getInvocationListeners());
+    MethodInterceptorFilter newFilter = new MethodInterceptorFilter(newMockHandler, (MockSettingsImpl) org.mockito.Mockito.withSettings().defaultAnswer(org.mockito.Mockito.RETURNS_DEFAULTS));
+    ((Factory) mock).setCallback(0, newFilter);
+}
+```
+Please note that this fix requires the addition of a getInvocationListeners() method in the MockHandler class which returns the list of InvocationListeners. It also requires the addition of a setInvocationListeners() method in the same class to set the listeners to a MockHandler.

@@ -1,0 +1,1 @@
+{"booleanAttributeOutput": "        assertEquals(\"<img src=\\\"foo\\\" noshade nohref async autofocus=\\\"false\\\">\", img.outerHtml());\n"}

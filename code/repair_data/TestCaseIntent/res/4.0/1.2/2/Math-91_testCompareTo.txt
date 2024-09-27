@@ -1,0 +1,19 @@
+Intent: The intent of the source code is to compare two Fraction objects based on their values. The 'compareTo' method is supposed to return '-1' if the calling Fraction object is smaller than the object passed as an argument, '+1' if it is greater, and '0' if they are equal.
+
+Fix strategy: The failure is due to the precision of the double values. When comparing two very close values, the precision of the double number can lead to incorrect comparison results. A strategy to fix this would be to introduce a tolerance value within which two numbers are considered equal. For example, if the absolute difference between two numbers is less than the tolerance, they are considered equal. This would handle the floating-point precision issue. 
+
+Here's a possible fix:
+
+```java
+public int compareTo(Fraction object) {
+    double nOd = doubleValue();
+    double dOn = object.doubleValue();
+    double tolerance = 1.0e-20;
+
+    if (Math.abs(nOd - dOn) < tolerance) {
+        return 0;
+    } else {
+        return (nOd < dOn) ? -1 : ((nOd > dOn) ? +1 : 0);
+    }
+}
+```

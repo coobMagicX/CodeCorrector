@@ -1,0 +1,1 @@
+['getDataset', 'setDataset', 'getPieChart', 'setPieChart', 'getDataExtractOrder', 'setDataExtractOrder', 'getAggregatedItemsKey', 'setAggregatedItemsKey', 'getAggregatedItemsPaint', 'setAggregatedItemsPaint', 'draw', 'prefetchSectionPaints', 'equals']

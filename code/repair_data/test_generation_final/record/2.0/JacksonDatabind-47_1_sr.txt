@@ -1,0 +1,72 @@
+public JavaType refineSerializationType(final MapperConfig<?> config,
+        final Annotated a, final JavaType baseType) throws JsonMappingException {
+    JavaType type = baseType;
+    final TypeFactory tf = config.getTypeFactory();
+    
+    // Ok: start by refining the main type itself; common to all types
+    Class<?> serClass = findSerializationType(a);
+    if (serClass != null) {
+        if (type.hasRawClass(serClass)) {
+            // Allow forcing of static typing
+            type = type.withStaticTyping();
+        } else {
+            if (serClass.isAssignableFrom(type.getRawClass())) {
+                type = tf.constructGeneralizedType(type, serClass);
+            } else if (type.getRawClass().isAssignableFrom(serClass)) {
+                type = tf.constructSpecializedType(type, serClass);
+            } else {
+                throw new JsonMappingException(null,
+                        String.format("Can not refine serialization type %s into %s; types not related",
+                                type, serClass.getName()));
+            }
+        }
+    }
+    // Then further processing for container types
+
+    // First, key type (for Maps, Map-like types):
+    if (type.isMapLikeType()) {
+        JavaType keyType = type.getKeyType();
+        Class<?> keyClass = findSerializationKeyType(a, keyType);
+        if (keyClass != null) {
+            if (keyType.hasRawClass(keyClass)) {
+                keyType = keyType.withStaticTyping();
+            } else {
+                Class<?> currRaw = keyType.getRawClass();
+                if (keyClass.isAssignableFrom(currRaw)) {
+                    keyType = tf.constructGeneralizedType(keyType, keyClass);
+                } else if (currRaw.isAssignableFrom(keyClass)) {
+                    keyType = tf.constructSpecializedType(keyType, keyClass);
+                } else {
+                    throw new JsonMappingException(null,
+                            String.format("Can not refine serialization key type %s into %s; types not related",
+                                    keyType, keyClass.getName()));
+                }
+            }
+            type = ((MapLikeType) type).withKeyType(keyType);
+        }
+    }
+
+    JavaType contentType = type.getContentType();
+    if (contentType != null) { // collection[like], map[like], array, reference
+        // And then value types for all containers:
+        Class<?> contentClass = findSerializationContentType(a, contentType);
+        if (contentClass != null) {
+            if (contentType.hasRawClass(contentClass)) {
+                contentType = contentType.withStaticTyping();
+            } else {
+                Class<?> currRaw = contentType.getRawClass();
+                if (contentClass.isAssignableFrom(currRaw)) {
+                    contentType = tf.constructGeneralizedType(contentType, contentClass);
+                } else if (currRaw.isAssignableFrom(contentClass)) {
+                    contentType = tf.constructSpecializedType(contentType, contentClass);
+                } else {
+                    throw new JsonMappingException(null,
+                            String.format("Can not refine serialization content type %s into %s; types not related",
+                                    contentType, contentClass.getName()));
+                }
+            }
+            type = type.withContentType(contentType);
+        }
+    }
+    return type;
+}

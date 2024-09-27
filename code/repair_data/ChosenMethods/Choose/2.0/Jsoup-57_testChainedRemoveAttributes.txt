@@ -1,0 +1,5 @@
+To repair the source code based on the intent of the test, the method that needs to be added in the context is:
+
+1-removeIgnoreCaseChained
+
+Candidate methods that exist in the context:['get', 'put', 'remove', 'removeIgnoreCase', 'hasKey', 'hasKeyIgnoreCase', 'size', 'iterator', 'dataset', 'html', 'toString', 'equals', 'clone', 'hasNext', 'next', 'dataKey']

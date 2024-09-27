@@ -1,0 +1,24 @@
+public int writeValue() {
+    // Most likely, object:
+    if (_type == TYPE_OBJECT) {
+        if (!_gotName) {
+            // Expecting a field name, not a value
+            return STATUS_EXPECT_NAME;
+        }
+        _gotName = false; // Reset for the next field or value
+        ++_index;
+        return STATUS_OK_AFTER_COLON;
+    }
+
+    // Ok, array?
+    if (_type == TYPE_ARRAY) {
+        int ix = _index;
+        ++_index;
+        return (ix < 0) ? STATUS_OK_AS_IS : STATUS_OK_AFTER_COMMA;
+    }
+    
+    // Nope, root context
+    // No commas within root context, but need space
+    ++_index;
+    return (_index == 0) ? STATUS_OK_AS_IS : STATUS_OK_AFTER_SPACE;
+}

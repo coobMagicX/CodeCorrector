@@ -1,0 +1,3 @@
+Intent: The failed test case is intended to verify that the method `stripLeadingHyphens` can handle a `null` input gracefully by returning `null` when given such an input, instead of throwing an exception.
+
+Repair strategy: Modify the `stripLeadingHyphens` method to include a check for a `null` input at the beginning of the method. If the input is `null`, the method should immediately return `null`. This will prevent any operations (like `startsWith`) being called on a `null` object, which would lead to a `NullPointerException`.

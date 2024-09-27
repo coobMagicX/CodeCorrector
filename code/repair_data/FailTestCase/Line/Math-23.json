@@ -1,0 +1,1 @@
+{"testKeepInitIfBest": "        Assert.assertTrue(\"Best point not reported\", f.value(sol) <= f.value(expected));\n"}

@@ -1,0 +1,1 @@
+['setAddPaxHeadersForNonAsciiNames', 'getBytesWritten', 'finish', 'close', 'putArchiveEntry', 'closeArchiveEntry', 'write', 'writePaxHeaders', 'stripTo7Bits', 'writeEOFRecord', 'flush', 'createArchiveEntry', 'addPaxHeadersForBigNumbers', 'addPaxHeaderForBigNumber']

@@ -1,0 +1,1 @@
+['setWidth', 'getWidth', 'setLeftPadding', 'getLeftPadding', 'setDescPadding', 'getDescPadding', 'appendOptionGroup', 'appendOption', 'renderWrappedText', 'findWrapPos', 'createPadding', 'rtrim', 'compare']

@@ -1,0 +1,1 @@
+['addAndCheck', 'binomialCoefficient', 'binomialCoefficientDouble', 'binomialCoefficientLog', 'cosh', 'equals', 'factorial', 'factorialDouble', 'factorialLog', 'gcd', 'hash', 'indicator', 'lcm', 'log', 'mulAndCheck', 'nextAfter', 'scalb', 'round', 'roundUnscaled', 'sign', 'sinh', 'subAndCheck']

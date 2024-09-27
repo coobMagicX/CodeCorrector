@@ -1,0 +1,1 @@
+['getCorrelationMatrix', 'getCorrelationStandardErrors', 'getCorrelationPValues', 'computeCorrelationMatrix', 'correlation', 'covarianceToCorrelation', 'checkSufficientData']

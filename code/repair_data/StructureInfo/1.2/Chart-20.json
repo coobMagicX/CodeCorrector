@@ -1,0 +1,1 @@
+{"Class": ["ValueMarker"], "Constructor": ["ValueMarker", "ValueMarker", "ValueMarker"], "Method": ["getValue", "setValue", "equals"], "Overloaded": {"getValue": [["getValue", 0]], "setValue": [["setValue", 1]], "equals": [["equals", 1]]}}

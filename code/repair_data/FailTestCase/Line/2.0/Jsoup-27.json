@@ -1,0 +1,1 @@
+{"testCharset": "        assertEquals(\"utf-8\", DataUtil.getCharsetFromContentType(\"text/html;charset=utf-8 \"));\n", "testQuotedCharset": "        assertEquals(\"utf-8\", DataUtil.getCharsetFromContentType(\"text/html; charset=\\\"utf-8\\\"\"));\n"}

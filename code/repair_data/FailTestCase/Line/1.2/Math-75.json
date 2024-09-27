@@ -1,0 +1,1 @@
+{"testPcts": "        assertEquals(\"three (Object) pct\",0.5,f.getPct((Object) (Integer.valueOf(3))),tolerance);\n"}

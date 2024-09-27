@@ -1,0 +1,1 @@
+['process', 'afterExitScope', 'blacklistVarReferencesInTree', 'isVarInlineForbidden', 'isInlinableObject', 'isVarOrAssignExprLhs', 'computeVarList', 'fillInitialValues', 'replaceAssignmentExpression', 'splitObject']

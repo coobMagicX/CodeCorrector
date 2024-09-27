@@ -1,0 +1,1 @@
+Based on the provided context and repair strategy, the method from the candidate list that needs to be modified is "encode".

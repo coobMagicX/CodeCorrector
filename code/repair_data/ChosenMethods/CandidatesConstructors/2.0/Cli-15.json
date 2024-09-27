@@ -1,0 +1,1 @@
+{"WriteableCommandLineImpl": "    public WriteableCommandLineImpl(final Option rootOption,\n                                    final List arguments) {\n        this.prefixes = rootOption.getPrefixes();\n        this.normalised = arguments;\n    }"}

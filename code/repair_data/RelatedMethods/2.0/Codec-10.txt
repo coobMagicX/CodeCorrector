@@ -1,0 +1,1 @@
+['caverphone', 'encode', 'isCaverphoneEqual']

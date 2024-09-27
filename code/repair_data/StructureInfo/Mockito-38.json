@@ -1,0 +1,1 @@
+{"Class": ["ArgumentMatchingTool"], "Constructor": [], "Method": ["getSuspiciouslyNotMatchingArgsIndexes", "safelyMatches", "toStringEquals"], "Overloaded": {"getSuspiciouslyNotMatchingArgsIndexes": [["getSuspiciouslyNotMatchingArgsIndexes", 2]], "safelyMatches": [["safelyMatches", 2]], "toStringEquals": [["toStringEquals", 2]]}}

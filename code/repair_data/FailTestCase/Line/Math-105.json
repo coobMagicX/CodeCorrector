@@ -1,0 +1,1 @@
+{"testSSENonNegative": "        assertTrue(reg.getSumSquaredErrors() >= 0.0);\n"}

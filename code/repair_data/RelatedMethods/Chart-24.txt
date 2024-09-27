@@ -1,0 +1,1 @@
+['getLowerBound', 'getUpperBound', 'getPaint', 'equals', 'clone']

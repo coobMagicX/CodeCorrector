@@ -1,0 +1,1 @@
+{"testAssignWithCall": "    test(\"var fun, x; (fun = function(){ x; })();\",\n"}

@@ -1,0 +1,1 @@
+{"appendMustCorrectlyMoveChildrenInsideOneParentElement": "        assertEquals(\"<body><div3>Check</div3><div4></div4><div1></div1><div2></div2></body>\", result);\n"}

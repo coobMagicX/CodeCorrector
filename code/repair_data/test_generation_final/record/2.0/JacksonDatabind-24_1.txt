@@ -1,0 +1,9 @@
+public BaseSettings withDateFormat(DateFormat df) {
+    if (_dateFormat == df) {
+        return this;
+    }
+    // Preserve the original timezone setting and do not change it based on the DateFormat's timezone
+    return new BaseSettings(_classIntrospector, _annotationIntrospector, _visibilityChecker, _propertyNamingStrategy, _typeFactory,
+            _typeResolverBuilder, df, _handlerInstantiator, _locale,
+            _timeZone, _defaultBase64);  // Keep the original _timeZone
+}

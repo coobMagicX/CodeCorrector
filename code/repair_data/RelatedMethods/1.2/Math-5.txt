@@ -1,0 +1,1 @@
+['abs', 'add', 'conjugate', 'divide', 'reciprocal', 'equals', 'getImaginary', 'getReal', 'isNaN', 'isInfinite', 'multiply', 'negate', 'subtract', 'acos', 'asin', 'atan', 'cos', 'cosh', 'exp', 'log', 'pow', 'sin', 'sinh', 'sqrt', 'sqrt1z', 'tan', 'tanh', 'createComplex']

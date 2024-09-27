@@ -1,0 +1,1 @@
+['getLineOffset', 'getNumLines', 'findLineOffsets', 'getCode', 'getCodeReader', 'getCodeNoCache', 'setCode', 'getOriginalPath', 'setOriginalPath', 'clearCachedSource', 'hasSourceInMemory', 'getName', 'isExtern', 'setIsExtern', 'getLine', 'getRegion', 'toString', 'fromFile', 'fromCode', 'fromInputStream', 'fromReader', 'fromGenerator', 'setCharset', 'getCharset']

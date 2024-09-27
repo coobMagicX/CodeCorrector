@@ -1,0 +1,1 @@
+{"testArrayWithDefaultTyping": "        JsonNode array = mapper.readTree(\"[ 1, 2 ]\");\n"}

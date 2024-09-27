@@ -1,0 +1,1 @@
+{"testRootEndpoints": "        assertEquals(Math.PI, result, solver.getAbsoluteAccuracy());\n"}

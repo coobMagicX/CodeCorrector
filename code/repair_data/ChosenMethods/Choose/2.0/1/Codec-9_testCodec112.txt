@@ -1,0 +1,2 @@
+8-encodeBase64
+15-getEncodeLength

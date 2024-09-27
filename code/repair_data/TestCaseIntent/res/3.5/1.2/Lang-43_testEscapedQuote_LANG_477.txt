@@ -1,0 +1,3 @@
+Analysis: The purpose of the `testEscapedQuote_LANG_477` test case is to verify the behavior of handling escaped quotes within a message pattern in the `ExtendedMessageFormat` class. The test case attempts to format a message using a pattern containing an escaped single quote.
+
+Reasons for failure: The specific line `ExtendedMessageFormat emf = new ExtendedMessageFormat(pattern, registry);` failed because the `ExtendedMessageFormat` class or its constructor is not properly handling the escaped quotes within the message pattern. This failure could be due to incorrect handling of escaped quotes or a bug in the constructor logic of `ExtendedMessageFormat`.

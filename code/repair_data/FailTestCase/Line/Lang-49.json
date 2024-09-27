@@ -1,0 +1,1 @@
+{"testReduce": "        assertEquals(1, result.getDenominator());\n"}

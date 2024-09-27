@@ -1,0 +1,1 @@
+{"ChecksumCalculatingInputStream": "    public ChecksumCalculatingInputStream(final Checksum checksum, final InputStream in) {\n\n\n\n        this.checksum = checksum;\n        this.in = in;\n    }"}

@@ -1,0 +1,1 @@
+{"testExceptNoNewLine": "    assertEquals(\"foo2:third line\", provider.getSourceLine(\"foo2\", 3));\n", "testSyntaxError1": "      assertTrue(e.getMessage().contains(\"if (true) {}}\\n\"));\n", "testSyntaxError2": "      assertTrue(e.getMessage().contains(\"if (true) {}}\\n\"));\n"}

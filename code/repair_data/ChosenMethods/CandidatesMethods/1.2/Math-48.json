@@ -1,0 +1,1 @@
+{"solve": "    public double solve(final int maxEval, final UnivariateRealFunction f,\n                        final double min, final double max, final double startValue) {\n        return solve(maxEval, f, min, max, startValue, AllowedSolution.ANY_SIDE);\n    }"}

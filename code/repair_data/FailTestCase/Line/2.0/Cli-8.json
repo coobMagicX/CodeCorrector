@@ -1,0 +1,1 @@
+{"testPrintWrapped": "      assertEquals(\"single line padded text 2\", expected, sb.toString());\n"}

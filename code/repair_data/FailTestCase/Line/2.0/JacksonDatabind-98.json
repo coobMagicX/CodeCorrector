@@ -1,0 +1,1 @@
+{"testExample": "        List<AnimalAndType> list = mapper.readerFor(new TypeReference<List<AnimalAndType>>() { })\n"}

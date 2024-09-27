@@ -1,0 +1,1 @@
+{"TokenQueue": "    public TokenQueue(String data) {\n        Validate.notNull(data);\n        queue = data;\n    }"}

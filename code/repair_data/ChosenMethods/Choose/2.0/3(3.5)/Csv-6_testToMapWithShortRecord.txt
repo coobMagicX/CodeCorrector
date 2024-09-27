@@ -1,0 +1,16 @@
+To repair the source code based on the intent of the test, the method that can be used is `toMap()`. 
+
+Repaired code:
+```
+<M extends Map<String, String>> M toMap(final M map) {
+    for (final Entry<String, Integer> entry : mapping.entrySet()) {
+        final int col = entry.getValue().intValue();
+        if (col < values.length) {
+            map.put(entry.getKey(), values[col]);
+        } else {
+            map.put(entry.getKey(), "");
+        }
+    }
+    return map;
+}
+```

@@ -1,0 +1,1 @@
+{"testEquals": "        assertTrue(StringUtils.equals(fooCs, (CharSequence) new StringBuilder(FOO)));\n"}

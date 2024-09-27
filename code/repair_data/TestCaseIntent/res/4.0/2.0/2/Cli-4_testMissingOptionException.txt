@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to ensure that the `MissingOptionException` is thrown when a required option is not provided in the input arguments, and the exception message should specify which required options are missing using a clear and formatted message.
+
+Repair strategy: Modify the `checkRequiredOptions` method to format the exception message in such a way that it clearly specifies which required options are missing. This involves adjusting the way the `StringBuffer` accumulates the missing option names, possibly by adding descriptive text and ensuring proper formatting with separators if multiple options are missing. Ensure that the error message matches the expected format in the test case assertion.

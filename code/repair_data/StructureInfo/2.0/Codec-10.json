@@ -1,0 +1,1 @@
+{"Class": ["Caverphone"], "Constructor": ["Caverphone"], "Method": ["caverphone", "encode", "isCaverphoneEqual"], "Overloaded": {"caverphone": [["caverphone", 1]], "encode": [["encode", 1], ["encode", 1]], "isCaverphoneEqual": [["isCaverphoneEqual", 2]]}}

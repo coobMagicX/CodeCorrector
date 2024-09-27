@@ -1,0 +1,1 @@
+{"testGetLineNumberWithCR": "        assertEquals(1, parser.getLineNumber());\n"}

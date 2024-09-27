@@ -1,0 +1,1 @@
+{"testSimpleForIn": "    noInline(\"var a,b,x = a in b; delete a[b]; x\");\n"}

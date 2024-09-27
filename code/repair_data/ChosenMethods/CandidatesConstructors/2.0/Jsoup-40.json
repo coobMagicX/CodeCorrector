@@ -1,0 +1,1 @@
+{"DocumentType": "    public DocumentType(String name, String publicId, String systemId, String baseUri) {\n        super(baseUri);\n\n        Validate.notEmpty(name);\n        attr(\"name\", name);\n        attr(\"publicId\", publicId);\n        attr(\"systemId\", systemId);\n    }"}

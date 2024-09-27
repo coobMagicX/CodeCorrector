@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the "findCalledFunctions" method by providing different inputs.
+
+Repair strategy: The repair strategy for the failing test cases is to modify the test inputs to ensure that the "findCalledFunctions" method is called with the correct arguments and produces the expected output.

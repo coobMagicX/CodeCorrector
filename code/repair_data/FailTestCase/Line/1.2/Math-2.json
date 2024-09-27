@@ -1,0 +1,1 @@
+{"testMath1021": "            Assert.assertTrue(\"sample=\" + sample, 0 <= sample);\n"}

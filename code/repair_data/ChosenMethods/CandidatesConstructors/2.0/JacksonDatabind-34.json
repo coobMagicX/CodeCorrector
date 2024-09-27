@@ -1,0 +1,1 @@
+{"NumberSerializer": "    public NumberSerializer(Class<? extends Number> rawType) {\n        super(rawType, false);\n        // since this will NOT be constructed for Integer or Long, only case is:\n        _isInt = (rawType == BigInteger.class);\n    }"}

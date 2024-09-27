@@ -1,0 +1,6 @@
+public double cumulativeProbability(double x) throws MathException {
+    if (x == mean) {
+        return 0.5; // Directly return 0.5 if x is exactly the mean
+    }
+    return 0.5 * (1.0 + Erf.erf((x - mean) / (standardDeviation * Math.sqrt(2.0))));
+}

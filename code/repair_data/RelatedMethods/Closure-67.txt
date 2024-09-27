@@ -1,0 +1,1 @@
+['process', 'getAllNameInfo', 'getNameInfoForName', 'enterScope', 'visit', 'isGlobalFunctionDeclaration', 'isPrototypePropertyAssign', 'processGlobalFunctionDeclaration', 'processPrototypeParent', 'remove', 'getFunctionNode', 'getAssignNode', 'toString', 'isReferenced', 'markReference', 'getDeepestCommonModuleRef', 'getDeclarations']

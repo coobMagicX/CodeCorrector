@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the `formData()` method creates the correct form data from the HTML form.
+
+Repair strategy: The repair strategy is to investigate the source code and check for potential errors in the logic that could result in incorrect form data being generated.

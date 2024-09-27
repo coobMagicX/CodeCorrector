@@ -1,0 +1,1 @@
+['getAlternates', 'meet', 'equals', 'isUnionType', 'isObject', 'contains', 'isSubtype', 'visit']

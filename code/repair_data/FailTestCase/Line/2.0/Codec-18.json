@@ -1,0 +1,1 @@
+{"testEqualsCS1": "        Assert.assertFalse(StringUtils.equals(new StringBuilder(\"abc\"), new StringBuilder(\"abcd\")));\n", "testEqualsCS2": "        Assert.assertFalse(StringUtils.equals(new StringBuilder(\"abc\"), \"abcd\"));\n"}

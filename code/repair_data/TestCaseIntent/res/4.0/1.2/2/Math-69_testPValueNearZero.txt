@@ -1,0 +1,9 @@
+Intent: The purpose of this code is to compute the correlation p-values for a given correlation matrix. The p-values are computed using the t-distribution. The computed correlation p-values are used in the test case to determine if the correlation coefficient is statistically significant.
+
+Fix Strategy: The failure could be due to an issue with the mathematical computation of the p-values. The line that fails is asserting that the p-value for the correlation of the first two variables should be greater than zero. If this assertion is not met, it could be due to an error in the calculation of the p-value within the getCorrelationPValues method. 
+
+Check for any mathematical errors in the calculation of the p-value. Ensure that the formula used in calculating the t-value: `double t = Math.abs(r * Math.sqrt((nObs - 2)/(1 - r * r)));` is accurate. Also, verify the calculation of the p-value: `out[i][j] = 2 * (1 - tDistribution.cumulativeProbability(t));`. 
+
+Additionally, it could be an issue with the dataset being used, verify that the dataset being used in the test case is correctly setup and appropriate for the test. 
+
+If all the calculations are correct, then the issue may be with the assert condition. The test case expects a p-value greater than zero but depending on the dataset and the calculation, this may not always be the case. The assert condition may need to be adjusted to better reflect the expectation of the test case.

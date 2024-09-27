@@ -1,0 +1,1 @@
+{"InvocationMatcher": "    public InvocationMatcher(Invocation invocation) {\n        this(invocation, Collections.<Matcher>emptyList());\n    }"}

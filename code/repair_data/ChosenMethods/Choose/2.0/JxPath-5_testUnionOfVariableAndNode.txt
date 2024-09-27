@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that needs to be added to the context is:
+
+10-getCountPointers
+
+This method should be implemented to iterate over the pointers of the union and return the count.

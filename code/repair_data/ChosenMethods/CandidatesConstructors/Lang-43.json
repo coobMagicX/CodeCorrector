@@ -1,0 +1,1 @@
+{"ExtendedMessageFormat": "    public ExtendedMessageFormat(String pattern, Locale locale, Map registry) {\n        super(DUMMY_PATTERN);\n        setLocale(locale);\n        this.registry = registry;\n        applyPattern(pattern);\n    }"}

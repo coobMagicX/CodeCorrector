@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to check if the normalise() method correctly moves the "foo" element from the root to the start of the body, resulting in the text "foo bar baz" when retrieved using doc.text().
+
+Repair strategy: The repair strategy for this code can be to modify the normalise() method to correctly move the "foo" element from the root to the start of the body. This can be done by removing the existing code that appends a space to the body and appending the "foo" element instead.

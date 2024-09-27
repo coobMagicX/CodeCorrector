@@ -1,0 +1,1 @@
+{"InlineObjectLiterals": "  InlineObjectLiterals(\n      AbstractCompiler compiler,\n      Supplier<String> safeNameIdSupplier) {\n    this.compiler = compiler;\n    this.safeNameIdSupplier = safeNameIdSupplier;\n  }"}

@@ -1,0 +1,1 @@
+{"testSerialization": "        assertEquals(l1, l2);\n", "testEquals": "        assertTrue(l1.equals(l2));\n"}

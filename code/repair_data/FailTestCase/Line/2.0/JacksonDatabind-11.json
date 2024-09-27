@@ -1,0 +1,1 @@
+{"testLocalType728": "        assertEquals(CharSequence.class, t.getRawClass());\n", "testLocalPartialType609": "        EntityContainer output = mapper.readValue(json, EntityContainer.class);\n"}

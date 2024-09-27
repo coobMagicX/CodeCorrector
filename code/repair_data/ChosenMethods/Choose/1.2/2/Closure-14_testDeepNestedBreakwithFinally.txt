@@ -1,0 +1,5 @@
+Based on the analysis provided, you need to update the logic related to exception handling, specifically for `finally` blocks, in the `computeFollowNode` method to ensure the correct construction of the control flow graph.
+
+Therefore, to address the issue, you should choose the following method from the candidate methods:
+
+1-`computeFallThrough`

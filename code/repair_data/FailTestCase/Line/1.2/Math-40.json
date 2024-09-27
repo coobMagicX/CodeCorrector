@@ -1,0 +1,1 @@
+{"testIssue716": "        double result = solver.solve(100, sharpTurn, -0.9999999, 30, 15, AllowedSolution.RIGHT_SIDE);\n"}

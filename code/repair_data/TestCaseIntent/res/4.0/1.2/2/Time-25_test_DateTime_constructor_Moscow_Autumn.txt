@@ -1,0 +1,11 @@
+Intent: The purpose of the test case test_DateTime_constructor_Moscow_Autumn is to verify that the DateTime constructor correctly handles the transition of daylight saving time (DST) in Moscow during autumn, specifically focusing on ensuring that the time and offset accurately reflect the expected values at the moment of a DST rollback, which occurs when clocks are set back.
+
+Repair strategy: The repair strategy should focus on enhancing the handling of DST transitions within the getOffsetFromLocal method, especially concerning negative and positive offset adjustments around DST changes. This includes:
+
+Adjusting for Negative Offset Transitions: Ensure that the method handles negative offset transitions correctly, particularly when transitioning from a higher to a lower offset (e.g., from DST to standard time). This involves refining the comparison and adjustment logic to avoid erroneous time calculations that do not respect the actual transition moments.
+
+Incorporating Previous Transition Handling: Integrate checks that account for the previous transitions when the local offset is positive. This can be done by:
+
+Calculating the previous transition point (prev) and determining the offset at that point (offsetPrev).
+Comparing the difference in offsets and the duration since the previous transition to decide whether the current offset calculation might be inaccurate due to being too close to the transition point.
+This strategy ensures that the DateTime objects created during DST transitions, such as the autumn rollback, accurately reflect both the correct local time and the associated offset, especially around the boundaries of these transitions.

@@ -1,0 +1,3 @@
+Intent: The test `testToMapWithNoHeader()` is designed to ensure that the method `toMap()` can handle CSV records without headers correctly, creating an empty map when there are no headers provided.
+
+Repair strategy: Modify the `toMap()` method in the `CSVRecord` class to check if headers are present before trying to map record values to header keys. If no headers are present, the method should return an empty map immediately. This will prevent any attempts to access headers that are not available, which seems to be the cause of the failure in the provided test case.

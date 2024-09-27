@@ -1,0 +1,1 @@
+{"testWithDeserializationProblemHandler": "        GenericContent processableContent = mapper.readValue(JSON, GenericContent.class);\n"}

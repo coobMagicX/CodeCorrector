@@ -1,0 +1,1 @@
+['process', 'traverseNode', 'isRemovableVar', 'traverseFunction', 'collectMaybeUnreferencedVars', 'removeUnreferencedFunctionArgs', 'getFunctionArgList', 'optimize', 'markUnreferencedFunctionArgs', 'canModifyCallers', 'getFunctionDefinition', 'markReferencedVar', 'removeUnreferencedVars', 'apply', 'remove']

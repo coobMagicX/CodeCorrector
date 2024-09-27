@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the `formData()` method correctly creates a list of `Connection.KeyVal` objects based on the form elements present in the HTML document.
+
+Repair strategy: The repair strategy should focus on identifying and fixing any issues in the `formData()` method that are causing incorrect or missing `Connection.KeyVal` objects to be added to the list.

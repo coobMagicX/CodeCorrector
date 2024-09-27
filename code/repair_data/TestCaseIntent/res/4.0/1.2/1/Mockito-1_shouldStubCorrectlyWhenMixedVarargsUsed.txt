@@ -1,0 +1,9 @@
+Intent: The intent of the source code is to capture arguments from an invocation using matchers. The code checks if the method of the invocation is a variable argument (vararg) method and if so, it throws an UnsupportedOperationException. Otherwise, it captures arguments from the invocation for each matcher present. If a matcher captures arguments and the length of raw arguments from the invocation is greater than the current position, it checks if the argument at the current position is a variable argument and if the matcher is a vararg matcher. If both conditions are satisfied, it captures all arguments from the array. If not, it captures the argument at the current position. 
+
+The test case "shouldStubCorrectlyWhenMixedVarargsUsed" is designed to test if the code can stub correctly when mixed variable arguments are used. The test fails at the line where it tries to invoke the method "doSomething" with "hello" and a null value and then tries to capture the result.
+
+Fix strategy: The code throws an UnsupportedOperationException when it encounters a method with vararg. This is likely the cause of the test failure because the "doSomething" method being invoked in the test is a vararg method. The fix would be to implement handling of variable arguments instead of throwing an exception. 
+
+Also, the code appears to have a TODO comment indicating that the logic for capturing from the implementation can be moved. This can also be considered as part of the fix strategy. 
+
+Note: It is assumed that MixedVarargs class and doSomething method are correctly implemented as per the requirements and are outside the scope of the given code.

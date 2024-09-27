@@ -1,0 +1,5 @@
+Based on the analysis provided, the method needed in the context is to ensure that the `ParameterizedConstructorInstantiator` class throws an exception when instantiated with a throwing constructor.
+
+To address this issue and test the expected behavior, the appropriate method to choose from the candidate methods is:
+
+1-`createFrom`

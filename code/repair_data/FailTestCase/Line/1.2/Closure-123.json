@@ -1,0 +1,1 @@
+{"testPrintInOperatorInForLoop": "    assertPrintSame(\"for(a=c?0:(0 in d);;)foo()\");\n"}

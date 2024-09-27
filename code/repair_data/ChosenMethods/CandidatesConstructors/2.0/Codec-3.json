@@ -1,0 +1,1 @@
+{"DoubleMetaphone": "    public DoubleMetaphone() {\n        super();\n    }", "DoubleMetaphoneResult": "        public DoubleMetaphoneResult(int maxLength) {\n            this.maxLength = maxLength;\n        }"}

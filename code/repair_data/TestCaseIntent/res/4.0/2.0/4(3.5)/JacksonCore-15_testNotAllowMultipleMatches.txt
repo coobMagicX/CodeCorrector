@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that when the multipleMatches parameter is set to false, the FilteringParserDelegate only returns the first matching token.
+
+Repair strategy: The repair strategy for this test case is to modify the logic in the FilteringParserDelegate's nextToken() method to only return the first matching token when multipleMatches is false.

@@ -1,0 +1,1 @@
+{"testStringCreateNumberEnsureNoPrecisionLoss": "        assertTrue(NumberUtils.createNumber(shouldBeDouble) instanceof Double);\n"}

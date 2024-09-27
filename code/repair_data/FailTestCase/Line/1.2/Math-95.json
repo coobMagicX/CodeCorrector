@@ -1,0 +1,1 @@
+{"testSmallDegreesOfFreedom": "        double x = fd.inverseCumulativeProbability(p);\n"}

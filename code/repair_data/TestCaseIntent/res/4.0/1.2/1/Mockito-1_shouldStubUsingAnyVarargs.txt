@@ -1,0 +1,5 @@
+Intent: The intent of the source code is to capture arguments from a given invocation. If the method of the invocation has variable arguments (varargs), it should capture these arguments. If not, it captures arguments based on the matchers' size. If the matcher is an instance of 'CapturesArguments', it captures from the raw argument at the current position.
+
+Fix strategy: The failure occurs because the 'anyVararg()' matcher is not correctly capturing variable arguments. The problem seems to be the 'UnsupportedOperationException' thrown when the method has varargs. This exception should not be thrown and the code should handle varargs correctly. The fix strategy would be to remove the 'throw new UnsupportedOperationException()' line and implement the correct handling of variable arguments. This could involve iterating over the variable arguments and capturing them. 
+
+Also, ensure that the 'isVarargMatcher(m)' method correctly identifies when a matcher should be used for variable arguments, and that the 'captureFrom' method can correctly capture variable arguments.

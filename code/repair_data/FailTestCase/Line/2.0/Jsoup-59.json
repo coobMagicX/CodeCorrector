@@ -1,0 +1,1 @@
+{"handlesControlCodeInAttributeName": "        Document doc = Jsoup.parse(\"<p><a \\06=foo>One</a><a/\\06=bar><a foo\\06=bar>Two</a></p>\");\n", "handlesControlCharactersAfterTagName": "        String clean = Jsoup.clean(html, Whitelist.basic());\n"}

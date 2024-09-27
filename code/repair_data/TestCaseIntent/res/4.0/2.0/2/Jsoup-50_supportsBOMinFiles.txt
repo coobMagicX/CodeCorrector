@@ -1,0 +1,6 @@
+Intent: The test case `supportsBOMinFiles` is intended to verify that the system correctly handles files with a Byte Order Mark (BOM) in various encodings (UTF-16BE, UTF-16LE, UTF-32BE, UTF-32LE). It checks if the parsed documents correctly identify the encoding from the BOM and accurately decode the text content according to that encoding.
+
+Repair strategy: The source code needs enhancements to properly detect and handle different types of BOMs, specifically for UTF-16 and UTF-32 encodings, which appear not to be managed correctly. The repair should include:
+1. Adding specific checks for UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE BOMs at the beginning of the data stream.
+2. Adjusting the decoding process to switch to the appropriate charset once a BOM is identified.
+3. Ensuring that after detecting the BOM and setting the charset, the data is decoded again if necessary, and any BOM is removed from the start of the text stream before parsing.

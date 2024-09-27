@@ -1,0 +1,3 @@
+Intent: The intent of the test case is to verify that the object "x" has a property named "foo" with a specific type.
+
+Repair strategy: The source code needs to correctly define the property "foo" on the object "x" with the correct type.

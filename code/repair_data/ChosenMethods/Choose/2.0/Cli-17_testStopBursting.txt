@@ -1,0 +1,1 @@
+To repair the source code based on the intent of the test, the method that should be modified in the context is "burstToken".

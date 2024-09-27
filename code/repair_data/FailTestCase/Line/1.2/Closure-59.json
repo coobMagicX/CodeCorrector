@@ -1,0 +1,1 @@
+{"testCheckGlobalThisOff": "    testSame(\"function f() { this.a = 3; }\");\n"}

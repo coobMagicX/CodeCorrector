@@ -1,0 +1,1 @@
+{"Class": ["JsonAdapterAnnotationTypeAdapterFactory"], "Constructor": ["JsonAdapterAnnotationTypeAdapterFactory"], "Method": ["create", "getTypeAdapter"], "Overloaded": {"create": [["create", 2]], "getTypeAdapter": [["getTypeAdapter", 4]]}}

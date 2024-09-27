@@ -1,0 +1,4 @@
+The method that needs to be modified in the context to repair the source code based on the test's intent is `process()`. The method `process()` is responsible for processing the tokens and building the HTML tree structure, and it needs to be modified to correctly handle the unclosed anchor tags when a new block element begins. 
+
+Desired format:
+1-process

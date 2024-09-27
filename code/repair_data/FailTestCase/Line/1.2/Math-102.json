@@ -1,0 +1,1 @@
+{"testChiSquareLargeTestStatistic": "        assertEquals( \"chi-square test statistic\", \n", "testChiSquare": "        assertEquals( \"chi-square test statistic\", 9.023307936427388, TestUtils.chiSquare(expected1, observed1), 1E-10);\n"}

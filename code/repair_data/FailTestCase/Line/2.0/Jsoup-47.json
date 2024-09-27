@@ -1,0 +1,1 @@
+{"escapesGtInXmlAttributesButNotInHtml": "        assertEquals(\"<a title=\\\"&lt;p>One&lt;/p>\\\">One</a>\", element.outerHtml());\n"}

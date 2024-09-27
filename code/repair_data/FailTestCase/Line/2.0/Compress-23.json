@@ -1,0 +1,1 @@
+{"testCompressedHeaderWithNonDefaultDictionarySize": "        SevenZFile sevenZFile = new SevenZFile(getFile(\"COMPRESS-256.7z\"));\n"}

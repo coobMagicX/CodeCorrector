@@ -1,0 +1,1 @@
+['abs', 'doubleValue', 'equals', 'negate', 'reciprocal', 'add', 'subtract', 'multiply', 'divide', 'getReducedFraction']

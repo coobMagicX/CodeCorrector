@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to test the deserialization of a polymorphic type using a custom deserializer.
+
+Repair strategy: The repair direction for this code is to ensure that the custom deserializer is correctly implemented and registered in the ObjectMapper so that the deserialization of the polymorphic type can be successful.

@@ -1,0 +1,1 @@
+['apply', 'equals', 'toString', 'hashCode', 'getEscapedLocals', 'getVarIndex', 'isForward', 'createEntryLattice', 'createInitialEstimateLattice', 'computeGenKill', 'addToSetIfLocal', 'markAllParametersEscaped', 'isArgumentsName']

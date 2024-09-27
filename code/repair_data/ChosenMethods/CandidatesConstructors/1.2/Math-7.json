@@ -1,0 +1,1 @@
+{"AbstractIntegrator": "    protected AbstractIntegrator() {\n        this(null);\n    }"}

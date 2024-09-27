@@ -1,0 +1,4 @@
+Based on the test intent and repair strategy, the method that should be used in the context is 'serialize'. 
+
+Desired format:
+1-serialize

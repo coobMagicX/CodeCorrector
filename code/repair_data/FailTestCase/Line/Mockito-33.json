@@ -1,0 +1,1 @@
+{"shouldStubbingWork": "        Assert.assertNotNull(((Iterable) iterable).iterator());\n", "shouldVerificationWorks": "        verify((Iterable) iterable).iterator();\n"}

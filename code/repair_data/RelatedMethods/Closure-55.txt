@@ -1,0 +1,1 @@
+['process', 'isReduceableFunctionExpression', 'apply', 'estimateSavings', 'visit', 'reduce', 'buildCallNode', 'maybeGetSingleReturnRValue', 'isIdentityFunction', 'getValueNode', 'getGetPropertyName', 'getSetPropertyName']

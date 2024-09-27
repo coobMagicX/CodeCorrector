@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that attempting to create an ArchiveInputStream for a non-archive input stream throws an ArchiveException with the message starting with "No Archiver found".
+
+Repair strategy: To fix this issue, the source code should throw an ArchiveException with the message "No Archiver found" when the input stream does not match any of the supported archive formats.

@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that the "normalise" method correctly moves the text node "foo" into the start of the body.
+
+Repair strategy: The repair strategy should focus on modifying the "normalise" method to correctly move the text node "foo" into the start of the body.

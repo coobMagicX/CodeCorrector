@@ -1,0 +1,1 @@
+{"discoverDeepMockingOfGenerics": "    when(myMock1.getNested().getNested().returnSomething()).thenReturn(\"Hello World.\");\n"}

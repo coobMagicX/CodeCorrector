@@ -1,0 +1,11 @@
+Intent: The intent of the source code is to report a warning when a comment contains certain suspicious patterns. The suspicious patterns it is checking for are "/* @" and "\n * @". If any of these patterns are present in a comment, a warning is issued. 
+
+The test case is designed to verify that this warning is correctly issued when a comment with a suspicious pattern is encountered. 
+
+Fix strategy: The problem in the test case is that the suspicious comment pattern it is using doesn't match the patterns being checked for in the source code. The source code is looking for "/* @" or "\n * @", but the test case is using "/* \n *@". 
+
+The fix strategy would be to change the test case to use a comment pattern that matches one of the suspicious patterns being checked for in the source code. For example, changing the test case to 
+                parse("/* @type {number} */ var x = 3;", SUSPICIOUS_COMMENT_WARNING);
+or 
+                parse("\n * @type {number} */ var x = 3;", SUSPICIOUS_COMMENT_WARNING);
+should make the test case pass.

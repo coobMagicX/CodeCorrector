@@ -1,0 +1,1 @@
+{"testWithEmptyStringAsNullObject1533": "        AsPropertyWrapper wrapper = mapper.readValue(\"{ \\\"value\\\": \\\"\\\" }\", AsPropertyWrapper.class);\n"}

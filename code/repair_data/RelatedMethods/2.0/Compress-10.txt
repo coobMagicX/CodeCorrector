@@ -1,0 +1,1 @@
+['getEncoding', 'close', 'getEntries', 'getEntriesInPhysicalOrder', 'getEntry', 'getInputStream', 'finalize', 'setSizesAndOffsetFromZip64Extra', 'skipBytes', 'resolveLocalFileHeaderData', 'read']

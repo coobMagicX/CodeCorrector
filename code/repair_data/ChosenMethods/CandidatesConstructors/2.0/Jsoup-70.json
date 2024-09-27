@@ -1,0 +1,1 @@
+{"Element": "    public Element(Tag tag, String baseUri) {\n        this(tag, baseUri, null);\n    }", "NodeList": "        NodeList(Element owner, int initialCapacity) {\n            super(initialCapacity);\n            this.owner = owner;\n        }"}

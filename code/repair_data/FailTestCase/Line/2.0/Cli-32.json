@@ -1,0 +1,1 @@
+{"testRenderWrappedTextWordCut": "        new HelpFormatter().renderWrappedText(sb, width, padding, text);\n", "testFindWrapPos": "        assertEquals(\"wrap position 3\", 3, hf.findWrapPos(text, 3, 0));\n"}

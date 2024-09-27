@@ -1,0 +1,3 @@
+Intent: The intent of the test case `testNonFiniteDoublesWhenLenient` is to verify that the `JsonWriter` can properly write non-finite double values (NaN, negative infinity, and positive infinity) into a JSON array when it is set to lenient mode. The test expects these special double values to be written as strings in the JSON output.
+
+Repair strategy: Modify the `value(double value)` method in the `JsonWriter` class to allow non-finite numbers to be written when the writer is in lenient mode. This could involve adding a check for the leniency mode of the `JsonWriter` within the `value(double value)` method. If the writer is set to lenient, bypass the exception throwing for non-finite numbers and proceed to write them as strings in the JSON output.

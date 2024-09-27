@@ -1,0 +1,1 @@
+['add', 'arrange', 'arrangeNN', 'arrangeFR', 'arrangeFN', 'arrangeRR', 'arrangeFF', 'clear', 'equals']

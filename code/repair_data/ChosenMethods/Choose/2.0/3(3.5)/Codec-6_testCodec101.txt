@@ -1,0 +1,4 @@
+Based on the test intent and repair strategy, the method that would aid in the repair is the `readResults` method.
+
+Desired format:
+1-readResults

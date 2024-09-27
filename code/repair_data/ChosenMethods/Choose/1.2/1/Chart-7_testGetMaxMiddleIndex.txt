@@ -1,0 +1,21 @@
+Based on the analysis provided, the correction needed in the `updateBounds` method is to ensure that the `maxMiddleIndex` is updated correctly based on the middle time of the added time periods. The incorrect calculation and comparison with `middle` are causing the test to fail.
+
+To fix this issue, you should correct the calculation of `maxMiddle` and the comparison logic in the `updateBounds` method. Here is the corrected code snippet for that part of the method:
+
+```java
+if (this.maxMiddleIndex >= 0) {
+    long s = getDataItem(this.maxMiddleIndex).getPeriod().getStart().getTime();
+    long e = getDataItem(this.maxMiddleIndex).getPeriod().getEnd().getTime();
+    long maxMiddle = s + (e - s) / 2;
+    if (middle > maxMiddle) {
+        this.maxMiddleIndex = index;           
+    }
+}
+else {
+    this.maxMiddleIndex = index;
+}
+```
+
+Therefore, in the context of the provided source code and analysis, the correct method to choose is:
+
+1-updateBounds

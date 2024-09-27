@@ -1,0 +1,1 @@
+{"readOfLength0ShouldReturn0": "        Assert.assertEquals(0, bzipIn.read(buffer, 1024, 0));\n"}

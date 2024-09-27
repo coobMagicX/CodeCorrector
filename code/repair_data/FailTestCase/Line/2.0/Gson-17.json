@@ -1,0 +1,1 @@
+{"testUnexpectedToken": "      adapter.fromJson(\"{}\");\n", "testNullValue": "    assertNull(adapter.fromJson(\"null\"));\n"}

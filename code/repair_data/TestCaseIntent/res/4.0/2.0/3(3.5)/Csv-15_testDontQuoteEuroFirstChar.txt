@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that the Euro symbol in the first character of a record is not quoted when printing in CSV format.
+
+Repair strategy: The repair strategy should involve modifying the code to correctly handle the case where the Euro symbol is the first character of a record. The code should ensure that the Euro symbol is not quoted when printing in CSV format.

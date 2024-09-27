@@ -1,0 +1,7 @@
+Intent: The purpose of the test `testDateFormatConfig` is to ensure that setting a new date format on an `ObjectMapper` does not unintentionally change its timezone configuration. The test initially sets the timezone of the `ObjectMapper` to `tz1` and subsequently changes the date format, which has a different timezone `tz2`. The intent is to verify that the original timezone `tz1` remains unaffected by the change in date format.
+
+Repair strategy: The issue likely lies in the `withDateFormat` method where the timezone of the new `BaseSettings` instance is derived from the date format's timezone, if not null. To ensure that the original timezone setting is retained despite changes to the date format, modify the `withDateFormat` method to preserve the original timezone (`_timeZone`) when creating a new instance of `BaseSettings`, unless explicitly changed. Adjust the line:
+```java
+TimeZone tz = (df == null) ? _timeZone : df.getTimeZone();
+```
+to always use `_timeZone` rather than conditionally setting it based on the presence of `df`. This change ensures that the timezone is not inadvertently modified when setting a new date format.

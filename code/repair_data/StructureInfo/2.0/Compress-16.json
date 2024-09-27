@@ -1,0 +1,1 @@
+{"Class": ["ArchiveStreamFactory"], "Constructor": [], "Method": ["createArchiveInputStream", "createArchiveOutputStream"], "Overloaded": {"createArchiveInputStream": [["createArchiveInputStream", 2], ["createArchiveInputStream", 1]], "createArchiveOutputStream": [["createArchiveOutputStream", 2]]}}

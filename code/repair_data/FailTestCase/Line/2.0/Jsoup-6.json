@@ -1,0 +1,1 @@
+{"testYahooArticle": "        Document doc = Jsoup.parse(in, \"UTF-8\", \"http://news.yahoo.com/s/nm/20100831/bs_nm/us_gm_china\");\n", "quoteReplacements": "        assertEquals(unescaped, Entities.unescape(escaped));\n"}

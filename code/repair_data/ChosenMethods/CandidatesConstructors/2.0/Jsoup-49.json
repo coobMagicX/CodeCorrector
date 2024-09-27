@@ -1,0 +1,1 @@
+{"Node": "    protected Node() {\n        childNodes = EMPTY_NODES;\n        attributes = null;\n    }", "OuterHtmlVisitor": "        OuterHtmlVisitor(StringBuilder accum, Document.OutputSettings out) {\n            this.accum = accum;\n            this.out = out;\n        }"}

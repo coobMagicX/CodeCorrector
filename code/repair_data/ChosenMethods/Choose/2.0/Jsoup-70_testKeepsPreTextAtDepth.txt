@@ -1,0 +1,17 @@
+To repair the source code based on the test intent, the method "preserveWhitespace" needs to be modified. The candidate method that aids in the repair based on the test intent and repair logic is:
+
+1-preserveWhitespace
+
+The modified code can be as follows:
+
+static boolean preserveWhitespace(Node node) {
+    // looks only at this element and five levels up, to prevent recursion & needless stack searches
+    if (node != null && node instanceof Element) {
+        Element el = (Element) node;
+            if (el.tag.preserveWhitespace() || el.tagName().equalsIgnoreCase("pre"))
+                return true;
+            else
+                return el.parent() != null && el.parent().tag.preserveWhitespace();
+    }
+    return false;
+}

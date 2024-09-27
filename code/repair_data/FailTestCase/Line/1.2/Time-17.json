@@ -1,0 +1,1 @@
+{"testBug3476684_adjustOffset": "        assertEquals(baseAfter, baseBefore.withLaterOffsetAtOverlap());\n"}

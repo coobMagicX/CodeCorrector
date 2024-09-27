@@ -1,0 +1,1 @@
+['getX', 'getY', 'getZ', 'add', 'subtract', 'normalize', 'orthogonal', 'angle', 'negate', 'scalarMultiply', 'equals', 'crossProduct', 'distance1', 'distance']

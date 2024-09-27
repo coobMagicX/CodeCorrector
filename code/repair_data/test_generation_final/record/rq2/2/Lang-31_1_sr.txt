@@ -1,0 +1,32 @@
+public static boolean containsAny(CharSequence cs, char[] searchChars) {
+    if (isEmpty(cs) || ArrayUtils.isEmpty(searchChars)) {
+        return false;
+    }
+    int csLength = cs.length();
+    int searchLength = searchChars.length;
+    for (int i = 0; i < csLength; i++) {
+        char ch = cs.charAt(i);
+        if (Character.isHighSurrogate(ch) && i < csLength - 1) {
+            int codePoint = Character.toCodePoint(ch, cs.charAt(i + 1));
+            for (int j = 0; j < searchLength; j++) {
+                if (Character.toChars(searchChars[j]).length == 2) {
+                    int searchCodePoint = Character.toCodePoint(searchChars[j], searchChars[j + 1]);
+                    if (searchCodePoint == codePoint) {
+                        return true;
+                    }
+                    j++; // Skip the next character as it is part of the current supplementary character
+                } else if (searchChars[j] == codePoint) {
+                    return true;
+                }
+            }
+            i++; // Skip the next character as it is part of the current supplementary character
+        } else {
+            for (int j = 0; j < searchLength; j++) {
+                if (searchChars[j] == ch) {
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}

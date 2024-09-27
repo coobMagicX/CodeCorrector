@@ -1,0 +1,10 @@
+Intent: The test case `testEscapedQuote_LANG_477` is intended to check if the `ExtendedMessageFormat` class can correctly interpret and format strings containing escaped quotes, specifically to ensure that double single quotes ('') are treated as a literal single quote (') in the formatted output.
+
+Repair strategy: The source code should be reviewed and potentially updated to ensure that the handling of escaped quotes is correct. This involves:
+1. Ensuring that the loop iterating through the pattern string correctly identifies and processes escaped quotes without altering other parts of the string unnecessarily.
+2. Correctly updating the `ParsePosition` index after processing an escaped quote to avoid parsing errors or infinite loops.
+3. Ensuring that the append operation in cases of escaped quotes correctly appends the single quote to the `appendTo` StringBuffer and then resumes parsing after the escaped quote.
+4. Adding comprehensive boundary checks and ensuring that the final string is correctly constructed when escaped quotes are present.
+5. Reviewing and possibly refactoring the handling of `null` values for the `appendTo` parameter to ensure consistent behavior throughout the method. 
+
+This repair will help ensure that patterns with escaped quotes are parsed and formatted correctly, thus allowing the `ExtendedMessageFormat` class to pass the test case and handle similar practical use cases.

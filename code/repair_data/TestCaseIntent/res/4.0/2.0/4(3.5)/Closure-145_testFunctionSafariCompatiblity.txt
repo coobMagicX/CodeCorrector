@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to verify that the "isOneExactlyFunctionOrDo" function correctly identifies whether a given node represents a labeled FUNCTION or DO.
+
+Repair strategy: The repair strategy for the source code should focus on ensuring that the "isOneExactlyFunctionOrDo" function correctly handles labeled functions within IF statements.

@@ -1,0 +1,1 @@
+{"clear": "    public void clear() {\n        sumX = 0d;\n        sumXX = 0d;\n        sumY = 0d;\n        sumYY = 0d;\n        sumXY = 0d;\n        n = 0;\n    }", "predict": "    public double predict(double x) {\n        double b1 = getSlope();\n        return getIntercept(b1) + b1 * x;\n    }"}

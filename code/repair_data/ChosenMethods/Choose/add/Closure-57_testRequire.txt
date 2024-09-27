@@ -1,0 +1,3 @@
+1-ClosureCodingConvention
+2-extractClassNameIfRequire
+3-getSingletonGetterClassName

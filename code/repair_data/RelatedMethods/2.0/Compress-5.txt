@@ -1,0 +1,1 @@
+['getNextZipEntry', 'getNextEntry', 'read', 'close', 'skip', 'matches', 'checksig', 'closeEntry', 'fill', 'readFully']

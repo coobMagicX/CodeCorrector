@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to verify that attempting to create an archive input stream for a non-archive file will throw an ArchiveException with a specific error message.
+
+Repair strategy: To fix this test case, the source code needs to be modified to throw an ArchiveException with the correct error message when attempting to create an archive input stream for a non-archive file.

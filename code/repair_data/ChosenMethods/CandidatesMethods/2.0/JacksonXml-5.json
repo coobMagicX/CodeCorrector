@@ -1,0 +1,1 @@
+{"copy": "    public DefaultSerializerProvider copy() {\n        return new XmlSerializerProvider(this);\n    }"}

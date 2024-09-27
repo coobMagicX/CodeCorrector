@@ -1,0 +1,1 @@
+['reset', 'withLongOpt', 'withArgName', 'isRequired', 'withValueSeparator', 'hasOptionalArg', 'hasOptionalArgs', 'withType', 'withDescription', 'create']

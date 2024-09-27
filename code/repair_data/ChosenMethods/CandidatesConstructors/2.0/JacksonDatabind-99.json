@@ -1,0 +1,1 @@
+{"ReferenceType": "    protected ReferenceType(TypeBase base, JavaType refType)\n    {\n        super(base);\n        _referencedType = refType;\n        // we'll establish this as the anchor type\n        _anchorType = this;\n    }"}

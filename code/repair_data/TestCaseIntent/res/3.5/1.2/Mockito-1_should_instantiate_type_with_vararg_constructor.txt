@@ -1,0 +1,7 @@
+Analysis: The purpose of the `captureArgumentsFrom` method is to capture arguments from an invocation, specifically handling varargs. The failed line `new ParameterizedConstructorInstantiator(this, field("withVarargConstructor"), resolver).instantiate();` suggests that the instantiation of a constructor with varargs is not working as expected.
+
+Reasons for failure: 
+1. The implementation in `captureArgumentsFrom` does not properly handle varargs in the `isVarargs()` check block. It throws an `UnsupportedOperationException` instead of handling varargs appropriately.
+2. There is a logic issue in the handling of varargs within the `for` loop that processes matchers. The condition `isVariableArgument(invocation, position) && isVarargMatcher(m)` may not be correctly identifying varargs and vararg matchers, leading to incorrect processing.
+
+Overall, the failure in instantiating a constructor with varargs could be due to the mishandling of varargs in the `captureArgumentsFrom` method. Further debugging and refactoring of the varargs handling logic are needed to address this issue.

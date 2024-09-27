@@ -1,0 +1,1 @@
+{"testNoUndeclaredVarWhenUsingClosurePass": "    test(\"goog.require('namespace.Class1');\\n\", null,\n"}

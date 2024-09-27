@@ -1,0 +1,1 @@
+{"testDelegateWithTokenBuffer": "        assertToken(JsonToken.START_OBJECT, jp.nextToken());\n"}

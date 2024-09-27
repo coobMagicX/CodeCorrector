@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that the format string does not end with the string "null".
+
+Repair strategy: The repair strategy to fix this failing test case is to ensure that the format string returned by the CSV format does not have the string "null" at the end. This can be achieved by modifying the source code to properly handle the record separator.

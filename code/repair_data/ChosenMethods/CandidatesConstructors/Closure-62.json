@@ -1,0 +1,1 @@
+{"LightweightMessageFormatter": "  public LightweightMessageFormatter(SourceExcerptProvider source,\n      SourceExcerpt excerpt) {\n    super(source);\n    Preconditions.checkNotNull(source);\n    this.excerpt = excerpt;\n  }"}

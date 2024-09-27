@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to test the parsing of a long option with an equal sign and a single dash.
+
+Repair strategy: The repair strategy for this failing test case would be to modify the source code to correctly handle the long option with an equal sign and a single dash.

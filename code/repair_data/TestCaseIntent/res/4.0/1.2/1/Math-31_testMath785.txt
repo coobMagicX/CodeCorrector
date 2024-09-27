@@ -1,0 +1,11 @@
+Intent: The purpose of the source code is to evaluate a continued fraction for a given 'x' until either it converges within a specified error margin 'epsilon' or until a maximum number of iterations has been reached. This is done by continuously calculating values and checking if they diverge to infinity or converge to a non-number (NaN). In the event of divergence or non-convergence within the maximum iterations, an exception is thrown.
+
+The failing test case `testMath785` is testing the method `inverseCumulativeProbability(prob)` of the class `FDistribution`. The test is failing because, for these specific inputs, the continued fraction in the source code does not converge and thus fails to calculate the inverse cumulative probability.
+
+Fix strategy: The fix strategy would be to first debug the `evaluate` method by logging intermediate values and checking if they show any anomalies. Look for the inputs that cause the method to return infinite or NaN values. Then, after identifying the problem, modify the method accordingly. 
+
+This could involve adjusting the epsilon value for more precision, changing the scaling factor logic to prevent overflow or underflow, or redefining the conditions that cause the exception to be thrown. 
+
+It may also be useful to revisit the formulas used to calculate `cN` and `q2`, and confirm whether they are correctly implemented.
+
+In addition, it might be necessary to review the `inverseCumulativeProbability(prob)` function implementation in the `FDistribution` class, as the problem might be originating from that function, not from the `evaluate` function in the provided source code.

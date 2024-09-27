@@ -1,0 +1,1 @@
+['setOptions', 'getOptions', 'getRequiredOptions', 'flatten', 'parse', 'processProperties', 'checkRequiredOptions', 'processArgs', 'processOption']

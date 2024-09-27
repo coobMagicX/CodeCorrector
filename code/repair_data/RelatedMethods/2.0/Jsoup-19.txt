@@ -1,0 +1,1 @@
+['none', 'basic', 'relaxed', 'addAttributes', 'addEnforcedAttribute', 'preserveRelativeLinks', 'addProtocols', 'isSafeAttribute', 'testValidProtocol', 'getEnforcedAttributes', 'valueOf', 'equals', 'toString']

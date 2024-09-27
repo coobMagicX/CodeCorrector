@@ -1,0 +1,1 @@
+{"MultiDirectional": "    public MultiDirectional(final double khi, final double gamma) {\n        this.khi   = khi;\n        this.gamma = gamma;\n    }"}

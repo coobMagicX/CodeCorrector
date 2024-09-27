@@ -1,0 +1,1 @@
+['scale', 'scaleInPlace', 'ebeAdd', 'ebeSubtract', 'ebeMultiply', 'ebeDivide', 'distance1', 'distance', 'distanceInf', 'isMonotonic', 'checkRectangular', 'checkPositive', 'checkNonNegative', 'safeNorm', 'sortInPlace', 'linearCombination', 'equals', 'equalsIncludingNaN', 'normalizeArray', 'buildArray', 'convolve']

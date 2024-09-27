@@ -1,0 +1,1 @@
+{"testGetMsgWiringNoWarnings": "    test(\"/** @desc A bad foo. */ var MSG_FOO = 1;\", \"\");\n"}

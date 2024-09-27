@@ -1,0 +1,1 @@
+{"Class": ["BitInputStream"], "Constructor": ["BitInputStream"], "Method": ["close", "clearBitCache", "readBits"], "Overloaded": {"close": [["close", 0]], "clearBitCache": [["clearBitCache", 0]], "readBits": [["readBits", 1]]}}

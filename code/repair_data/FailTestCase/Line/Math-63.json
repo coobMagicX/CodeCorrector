@@ -1,0 +1,1 @@
+{"testArrayEquals": "        assertFalse(MathUtils.equals(new double[] { Double.NaN },\n"}

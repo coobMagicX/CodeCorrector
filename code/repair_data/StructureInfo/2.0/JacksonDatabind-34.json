@@ -1,0 +1,1 @@
+{"Class": ["NumberSerializer"], "Constructor": ["NumberSerializer"], "Method": ["serialize", "getSchema", "acceptJsonFormatVisitor"], "Overloaded": {"serialize": [["serialize", 3]], "getSchema": [["getSchema", 2]], "acceptJsonFormatVisitor": [["acceptJsonFormatVisitor", 2]]}}

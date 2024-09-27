@@ -1,0 +1,1 @@
+{"testMinimizeMaximize": "      Assert.assertTrue(optimizer.getEvaluations() < 150);\n", "testMath283": "      RealPointValuePair estimate = multiDirectional.optimize(function,\n"}

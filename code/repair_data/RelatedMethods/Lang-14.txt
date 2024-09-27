@@ -1,0 +1,1 @@
+['trim', 'strip', 'equals', 'equalsIgnoreCase', 'contains', 'substring', 'left', 'right', 'mid', 'split', 'join', 'remove', 'replace', 'overlay', 'chomp', 'chop', 'repeat', 'length', 'center', 'capitalize', 'uncapitalize', 'reverse', 'abbreviate', 'difference']

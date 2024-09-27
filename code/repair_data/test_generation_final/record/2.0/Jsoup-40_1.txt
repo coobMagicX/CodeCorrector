@@ -1,0 +1,8 @@
+public DocumentType(String name, String publicId, String systemId, String baseUri) {
+    super(baseUri);
+
+    // Removed Validate.notEmpty(name) to allow empty string for name as per the test case requirement.
+    attr("name", name);
+    attr("publicId", publicId);
+    attr("systemId", systemId);
+}

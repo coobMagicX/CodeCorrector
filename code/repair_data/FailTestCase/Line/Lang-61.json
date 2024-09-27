@@ -1,0 +1,1 @@
+{"testIndexOfLang294": "        assertEquals(-1, sb.indexOf(\"three\"));\n", "testLang294": "        sb.deleteAll(\"\\n%BLAH%\");\n"}

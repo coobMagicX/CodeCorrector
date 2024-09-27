@@ -1,0 +1,3 @@
+1-InliningBehavior
+2-InlineObjectLiterals
+3-replaceAssignmentExpression

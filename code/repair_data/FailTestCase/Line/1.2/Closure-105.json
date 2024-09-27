@@ -1,0 +1,1 @@
+{"testStringJoinAdd": "    foldSame(\"x = ['', foo].join(',')\");\n"}

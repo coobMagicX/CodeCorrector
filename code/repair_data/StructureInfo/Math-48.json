@@ -1,0 +1,1 @@
+{"Class": ["BaseSecantSolver"], "Constructor": ["BaseSecantSolver", "BaseSecantSolver", "BaseSecantSolver"], "Method": ["solve", "doSolve"], "Overloaded": {"solve": [["solve", 5], ["solve", 6], ["solve", 5]], "doSolve": [["doSolve", 0]]}}

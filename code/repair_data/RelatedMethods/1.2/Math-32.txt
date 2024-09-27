@@ -1,0 +1,1 @@
+['computeGeometricalProperties', 'getVertices', 'followLoop', 'equals', 'visitOrder', 'visitInternalNode', 'visitLeafNode']

@@ -1,0 +1,1 @@
+{"Class": ["UnivariateRealSolverUtils", "LazyHolder"], "Constructor": ["UnivariateRealSolverUtils"], "Method": ["solve", "bracket", "midpoint", "setup"], "Overloaded": {"solve": [["solve", 3], ["solve", 4]], "bracket": [["bracket", 4], ["bracket", 5]], "midpoint": [["midpoint", 2]], "setup": [["setup", 1]]}}

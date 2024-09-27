@@ -1,0 +1,5 @@
+Intent:
+The intent of the test case `testExceptNoNewLine` is to verify that the `getSourceLine` method correctly retrieves lines from a source file identified by a given name and line number. This includes cases where the file ends without a newline character, expecting the last line to be returned if it exists, and `null` if a non-existent line number is queried.
+
+Repair strategy:
+The error likely lies in the handling of the end-of-file scenario in the `getLine` method, where the method does not correctly handle cases where the last line of the file does not end with a newline character. The repair should involve modifying the condition that checks for the absence of a newline after the current position `pos`. Instead of returning `null` immediately, the method should check if `pos` is at the end of the string. If not, it should return the substring from `pos` to the end of the file. This ensures that the last line is returned even if it doesn't end with a newline character.

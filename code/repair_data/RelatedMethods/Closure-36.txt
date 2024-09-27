@@ -1,0 +1,1 @@
+['process', 'apply', 'isLValue', 'blacklistVarReferencesInTree', 'inline', 'removeDeclaration', 'inlineValue', 'canMoveAggressively', 'canMoveModerately', 'isValidDeclaration', 'isValidInitialization', 'isValidReference']

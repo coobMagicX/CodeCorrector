@@ -1,0 +1,1 @@
+{"CSVPrinter": "    public CSVPrinter(final Appendable out, final CSVFormat format) {\n        Assertions.notNull(out, \"out\");\n        Assertions.notNull(format, \"format\");\n\n        this.out = out;\n        this.format = format;\n        this.format.validate();\n    }"}

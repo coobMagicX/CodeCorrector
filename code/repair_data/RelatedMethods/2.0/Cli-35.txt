@@ -1,0 +1,1 @@
+['addOptionGroup', 'getOptionGroups', 'addOption', 'getOptions', 'helpOptions', 'getRequiredOptions', 'getOption', 'getMatchingOptions', 'hasOption', 'hasLongOption', 'hasShortOption', 'getOptionGroup', 'toString']

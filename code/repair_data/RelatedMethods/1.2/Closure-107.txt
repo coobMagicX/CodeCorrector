@@ -1,0 +1,1 @@
+['getJsFiles', 'parseArguments', 'getDefaultMetaVariable', 'isMultiValued', 'getType', 'addValue', 'asFieldSetter', 'asAnnotatedElement', 'getWarningGuardSpec', 'tokenizeKeepingQuotedStrings', 'processArgs', 'processFlagFile', 'initConfigFromFlags', 'createOptions', 'createCompiler', 'createExterns', 'getDefaultExterns', 'shouldRunCompiler', 'main']

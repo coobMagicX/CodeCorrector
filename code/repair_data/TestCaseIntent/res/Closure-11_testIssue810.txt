@@ -1,0 +1,5 @@
+Intent:
+The intent of the failing test case `testIssue810` is to verify that the source code correctly identifies and handles situations where a property is accessed on an object type that does not define this property. This test is checking the robustness of error handling for property access on objects.
+
+Repair strategy:
+The repair should focus on enhancing the error checking mechanism within the `visitGetProp` method to ensure that it correctly identifies and reports an error when a non-existent property is accessed on an object. This might involve checking if the property exists on the object's type before allowing access, and reporting an error if the property is not found. Additionally, the test indicates that the error message "Property unknownProp never defined on obj" should be generated, so the method should handle generating this specific error message when appropriate.

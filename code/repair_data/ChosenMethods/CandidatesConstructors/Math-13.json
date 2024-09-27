@@ -1,0 +1,1 @@
+{"AbstractLeastSquaresOptimizer": "    protected AbstractLeastSquaresOptimizer(ConvergenceChecker<PointVectorValuePair> checker) {\n        super(checker);\n    }"}

@@ -1,0 +1,5 @@
+To repair the source code based on the intent of the test, we need to modify the implementation of the `testValidProtocol` method. 
+
+The method that aids in the repair based on the test intent and repair logic is:
+
+1-addProtocols

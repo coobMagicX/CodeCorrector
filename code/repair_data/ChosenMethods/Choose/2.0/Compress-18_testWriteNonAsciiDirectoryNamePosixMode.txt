@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that needs to be added in the context is:
+
+1- `encodeNonAsciiCharacters`
+
+This method should be responsible for properly encoding non-ASCII characters before writing them to the archive. It should take a String as input and return the properly encoded String.

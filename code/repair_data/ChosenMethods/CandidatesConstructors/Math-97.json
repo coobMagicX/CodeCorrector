@@ -1,0 +1,1 @@
+{"BrentSolver": "    public BrentSolver(UnivariateRealFunction f) {\n        super(f, 100, 1E-6);\n    }"}

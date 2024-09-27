@@ -1,0 +1,1 @@
+['newParameterizedTypeWithOwner', 'subtypeOf', 'supertypeOf', 'canonicalize', 'getRawType', 'equal', 'equals', 'typeToString', 'getGenericSupertype', 'getSupertype', 'getArrayComponentType', 'getCollectionElementType', 'getMapKeyAndValueTypes', 'resolve', 'resolveTypeVariable', 'declaringClassOf', 'getActualTypeArguments', 'getOwnerType', 'getGenericComponentType']

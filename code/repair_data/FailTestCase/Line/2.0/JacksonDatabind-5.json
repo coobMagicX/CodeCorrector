@@ -1,0 +1,1 @@
+{"testDisappearingMixins515": "        assertEquals(\"{\\\"city\\\":\\\"Seattle\\\"}\", mapper.writeValueAsString(new PersonImpl()));\n"}

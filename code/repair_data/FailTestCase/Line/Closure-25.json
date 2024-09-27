@@ -1,0 +1,1 @@
+{"testBackwardsInferenceNew": "    assertEquals(\"{foo: (number|undefined)}\", getType(\"y\").toString());\n"}

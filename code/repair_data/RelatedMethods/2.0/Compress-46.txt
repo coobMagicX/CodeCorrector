@@ -1,0 +1,1 @@
+['getLocalFileDataLength', 'getCentralDirectoryLength', 'getLocalFileDataData', 'getCentralDirectoryData', 'parseFromLocalFileData', 'parseFromCentralDirectoryData', 'reset', 'setFlags', 'getFlags', 'zipLongToDate', 'dateToZipLong', 'unixTimeToZipLong', 'clone', 'equals']

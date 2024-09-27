@@ -1,0 +1,1 @@
+{"testCustomEnumValueAndKeyViaModifier": "        EnumMap<KeyEnum,String> map = mapper.readValue(\n"}

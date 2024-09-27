@@ -1,0 +1,1 @@
+{"Class": ["Base64InputStream"], "Constructor": ["Base64InputStream", "Base64InputStream", "Base64InputStream"], "Method": ["read", "markSupported"], "Overloaded": {"read": [["read", 0], ["read", 3]], "markSupported": [["markSupported", 0]]}}

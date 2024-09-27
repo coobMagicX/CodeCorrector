@@ -1,0 +1,8 @@
+Intent: The intent of the test case `can_mock_abstract_classes` is to verify that the mocking framework can successfully create a mock instance of an abstract class (`AbstractMessage`) using a specific constructor and default answer settings, and that calling a method (`getMessage()`) on this mock instance returns the expected value "hey!".
+
+Repair strategy: Since the test case fails at the assertion `assertEquals("hey!", mock.getMessage());`, it implies that either the mocked instance is not correctly returning "hey!" or the method `getMessage()` is not properly intercepted by the mock setup. The source code should be checked for:
+1. How the `useConstructor()` setting is handled, ensuring that it correctly initializes the mock with the intended constructor logic.
+2. Verify that the default answer setting `CALLS_REAL_METHODS` is correctly implemented so that the real method of the abstract class is invoked when `getMessage()` is called.
+3. Ensure that the mocking framework correctly handles abstract classes, particularly around method interception and constructor usage.
+4. The source code should ensure that the `MockMethodInterceptor` is correctly set up and associated with the mock instance to intercept method calls and provide the specified behavior (`CALLS_REAL_METHODS`).
+5. Review and ensure error handling around mock instantiation and method interception is robust, particularly handling any exceptions or incorrect type assignments that might prevent the mock from functioning as expected.

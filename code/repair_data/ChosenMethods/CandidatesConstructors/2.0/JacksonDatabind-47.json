@@ -1,0 +1,1 @@
+{"ReferenceProperty": "        public ReferenceProperty(Type t, String n) {\n            _type = t;\n            _name = n;\n        }"}

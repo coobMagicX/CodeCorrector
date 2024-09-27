@@ -1,0 +1,1 @@
+{"testCreateCopy3": "        assertEquals(101.0, s2.getMaxY(), EPSILON);\n"}

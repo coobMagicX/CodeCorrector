@@ -1,0 +1,1 @@
+{"Class": ["HarmonicFitter", "ParameterGuesser"], "Constructor": ["HarmonicFitter", "ParameterGuesser"], "Method": ["fit", "guess", "sortObservations", "guessAOmega", "guessPhi"], "Overloaded": {"fit": [["fit", 1], ["fit", 0]], "guess": [["guess", 0]], "sortObservations": [["sortObservations", 0]], "guessAOmega": [["guessAOmega", 0]], "guessPhi": [["guessPhi", 0]]}}

@@ -1,0 +1,1 @@
+['version', 'enable', 'disable', 'configure', 'canWriteObjectId', 'writeStartObject', 'writeEndObject', 'writeEmbeddedObject', 'writeObjectId', 'writeObjectRef', 'writeObject', 'writeObjectFieldStart', 'writeObjectField', 'flush', 'close', '_writeSimpleObject']

@@ -1,0 +1,17 @@
+Based on the test intent and repair strategy, the method that should be added to the code is `indexOfKey`. 
+
+Repaired code:
+
+```
+public String setValue(String val) {
+    String oldVal = parent.get(this.key);
+    if (parent != null) {
+        int i = parent.indexOfKey(this.key);
+        if (i != Attributes.NotFound) {
+            parent.vals[i] = val;
+        }
+    }
+    this.val = val;
+    return Attributes.checkNotNull(oldVal);
+}
+```

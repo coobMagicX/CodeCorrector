@@ -1,0 +1,1 @@
+{"testQuotedProps": "    testSame(\"({'a\\u0004b':0})\");\n", "testDoNotConvert": "    testSame(\"a['A\\u0004']\");\n"}

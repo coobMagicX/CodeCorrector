@@ -1,0 +1,3 @@
+Intent: The test case is designed to check if greater-than ('>') and less-than ('<') symbols are correctly escaped in XML attribute values but remain unescaped in HTML attribute values. This distinction is crucial because XML does not allow these characters in attribute values without escaping them, whereas HTML is more lenient.
+
+Repair strategy: Modify the source code to ensure that the '<' character is escaped as `&lt;` specifically when inAttribute is true and the escape mode is set to XHTML. Currently, the code does not differentiate based on the escape mode when deciding whether to escape '<' in attribute values. Ensure that the logic distinguishes between HTML and XHTML modes appropriately within the attribute escaping processing block.

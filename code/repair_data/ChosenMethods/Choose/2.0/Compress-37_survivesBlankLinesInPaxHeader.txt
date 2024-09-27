@@ -1,0 +1,5 @@
+Based on the test intent and repair strategy, the method that needs to be added to the context is:
+
+1-skipBlankLines
+
+The skipBlankLines method will be responsible for skipping blank lines when processing the keyword-value pairs in the header.

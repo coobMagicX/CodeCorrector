@@ -1,0 +1,3 @@
+Intent: The intent of the failing test cases is to test the behavior of the code when generating labeled FUNCTION or DO statements within IF statements.
+
+Repair strategy: The repair strategy for the failing test cases is to ensure that the generated code contains the necessary curly braces for the IF statements and that the labeled FUNCTION or DO statements are properly formatted.

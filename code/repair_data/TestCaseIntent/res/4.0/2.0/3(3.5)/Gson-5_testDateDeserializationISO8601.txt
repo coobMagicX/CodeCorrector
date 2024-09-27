@@ -1,0 +1,3 @@
+Intent: The intent of the failed test cases is to test the parsing of dates in ISO8601 format.
+
+Repair strategy: The repair strategy for this issue is to modify the source code to handle the case where the timezone offset does not have minutes specified.

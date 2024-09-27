@@ -1,0 +1,1 @@
+{"testCheckSymbolsOverrideForQuiet": "    test(\"x = 3;\", VarCheck.UNDEFINED_VAR_ERROR);\n"}

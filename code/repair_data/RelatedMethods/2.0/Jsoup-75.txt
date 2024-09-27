@@ -1,0 +1,1 @@
+['checkCapacity', 'indexOfKey', 'indexOfKeyIgnoreCase', 'get', 'getIgnoreCase', 'add', 'put', 'putIgnoreCase', 'remove', 'removeIgnoreCase', 'hasKey', 'hasKeyIgnoreCase', 'size', 'iterator', 'asList', 'dataset', 'html', 'toString', 'equals', 'clone', 'normalize', 'next', 'dataKey']

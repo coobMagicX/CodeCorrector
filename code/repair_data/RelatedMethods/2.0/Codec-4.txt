@@ -1,0 +1,1 @@
+['avail', 'encode', 'decode', 'isBase64', 'isArrayByteBase64', 'containsBase64Byte', 'encodeBase64', 'encodeBase64String', 'encodeBase64URLSafe', 'encodeBase64URLSafeString', 'encodeBase64Chunked', 'decodeBase64', 'reset']

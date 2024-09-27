@@ -1,0 +1,1 @@
+['testNode', 'equalStrings', 'getNamespaceURI', 'attributeIterator', 'getDefaultNamespaceURI', 'getImmediateNode', 'findEnclosingAttribute', 'createAttribute', 'remove', 'getRelativePositionByQName', 'matchesQName', 'getRelativePositionOfElement', 'getRelativePositionOfTextNode', 'equals', 'getPrefix', 'getValue', 'stringValue', 'compareChildNodePointers']

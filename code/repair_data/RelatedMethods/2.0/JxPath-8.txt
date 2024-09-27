@@ -1,0 +1,1 @@
+['evaluateCompare', 'compute', 'reduce', 'containsMatch', 'findMatch']

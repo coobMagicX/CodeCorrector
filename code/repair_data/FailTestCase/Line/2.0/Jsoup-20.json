@@ -1,0 +1,1 @@
+{"discardsSpuriousByteOrderMark": "        assertEquals(\"One\", doc.head().text());\n"}

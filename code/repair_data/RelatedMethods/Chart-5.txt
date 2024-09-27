@@ -1,0 +1,1 @@
+['getAutoSort', 'getAllowDuplicateXValues', 'getItemCount', 'getItems', 'getMaximumItemCount', 'setMaximumItemCount', 'add', 'delete', 'remove', 'clear', 'getDataItem', 'getX', 'getY', 'updateByIndex', 'update', 'addOrUpdate', 'indexOf', 'toArray', 'clone', 'createCopy', 'equals', 'hashCode']

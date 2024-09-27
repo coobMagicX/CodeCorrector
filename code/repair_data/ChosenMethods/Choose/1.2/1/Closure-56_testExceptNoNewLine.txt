@@ -1,0 +1,5 @@
+To repair the `getSourceLine` method, you should choose the following method from the candidate methods provided:
+
+1-getLineOffset
+
+Adjust the loop condition and modify the substring extraction logic as mentioned in the analysis to correct the issues and ensure that the method returns the specified line accurately.

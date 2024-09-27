@@ -1,0 +1,3 @@
+Intent: The intent of the failed test case is to test the round trip conversion of an octal or binary value of length 8.
+
+Repair strategy: To fix this test case, the source code needs to be modified to properly handle octal or binary values of length 8 in the formatLongOctalOrBinaryBytes method.

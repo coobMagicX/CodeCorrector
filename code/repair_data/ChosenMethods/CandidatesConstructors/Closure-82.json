@@ -1,0 +1,1 @@
+{"JSType": "  JSType(JSTypeRegistry registry) {\n    this.registry = registry;\n  }", "TypePair": "    public TypePair(JSType typeA, JSType typeB) {\n      this.typeA = typeA;\n      this.typeB = typeB;\n    }"}

@@ -1,0 +1,1 @@
+{"testEqualsAfterSerializationOfDerivedClass": "        assertEquals(mk.hashCode(), mk2.hashCode());\n"}

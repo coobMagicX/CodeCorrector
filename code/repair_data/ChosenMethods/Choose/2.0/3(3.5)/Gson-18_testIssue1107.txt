@@ -1,0 +1,3 @@
+Based on the test intent and repair strategy, the method that can aid in the repair is:
+
+1-getGenericSupertype

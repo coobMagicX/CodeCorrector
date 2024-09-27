@@ -1,0 +1,1 @@
+['close', 'getRecordSize', 'available', 'skip', 'mark', 'reset', 'skipRecordPadding', 'isEOFRecord', 'readRecord', 'readGlobalPaxHeaders', 'paxHeaders', 'parsePaxHeaders', 'applyPaxHeadersToCurrentEntry', 'readOldGNUSparse', 'isDirectory', 'read', 'canReadEntryData', 'isAtEOF', 'consumeRemainderOfLastBlock', 'matches']

@@ -1,0 +1,1 @@
+{"convertsImageToImg": "        assertEquals(\"<img />\\n<svg>\\n <image />\\n</svg>\", doc.body().html());\n"}

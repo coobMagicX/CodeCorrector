@@ -1,0 +1,4 @@
+Based on the test intent and repair strategy, the method that needs to be modified is the `writeBits` method.
+
+Desired format:
+1-writeBits

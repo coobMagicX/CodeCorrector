@@ -1,0 +1,10 @@
+Based on the test-repair intent provided, the context clearly requires a method that can determine whether the `<image>` tag is within an `<svg>` element or not. The source code should then conditionally convert `<image>` to `<img>` only if it is not within an `<svg>` element. This requires checking the parent or surrounding context of the tag being processed.
+
+From the provided code snippet and description, there seems to be a missing method or logic that specifically handles this conditional check and conversion based on the parent element. Therefore, a suitable method would be one that can:
+
+1. Check if the current tag's parent is an `<svg>` element.
+2. Convert `<image>` to `<img>` if and only if the parent is not an `<svg>`.
+
+However, the candidate methods list is empty (`[]`), indicating that no existing methods have been provided as options to choose from. This suggests that you might need to create a new method or modify existing logic to accommodate this requirement.
+
+Given the lack of specific methods to choose from, a hypothetical method could be named something like `conditionallyConvertImageTag`, which encapsulates the logic described. Since there are no methods listed in the candidate list, it is not possible to provide a direct answer in the desired format (`<idx>-<method_name>`). Instead, you would need to develop or identify a suitable method within the existing codebase or propose a new method that fulfills the described functionality.

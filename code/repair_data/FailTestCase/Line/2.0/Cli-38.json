@@ -1,0 +1,1 @@
+{"shouldParseConcatenatedShortOptions": "        assertNull(commandLine.getOptionValue(\"t1\"));\n"}

@@ -1,0 +1,7 @@
+public void close() throws IOException {
+    if (!this.closed) {
+        finish(); // Ensure that all entries are correctly finalized before closing.
+        super.close();
+        this.closed = true;
+    }
+}

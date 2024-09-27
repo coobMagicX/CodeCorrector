@@ -1,0 +1,1 @@
+{"Cleaner": "    public Cleaner(Whitelist whitelist) {\n        Validate.notNull(whitelist);\n        this.whitelist = whitelist;\n    }", "ElementMeta": "        ElementMeta(Element el, int numAttribsDiscarded) {\n            this.el = el;\n            this.numAttribsDiscarded = numAttribsDiscarded;\n        }"}

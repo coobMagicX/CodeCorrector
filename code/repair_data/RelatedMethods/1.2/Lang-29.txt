@@ -1,0 +1,1 @@
+['getJavaVersionAsFloat', 'getJavaVersionAsInt', 'getJavaVersionMatches', 'getJavaVersionTrimmed', 'isJavaVersionAtLeast', 'isJavaVersionMatch', 'toJavaVersionFloat', 'toJavaVersionInt', 'toJavaVersionIntArray', 'toVersionFloat', 'toVersionInt']

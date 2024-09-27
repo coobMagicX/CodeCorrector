@@ -1,0 +1,1 @@
+{"testRecordInference": "    assertEquals(\"{a: (boolean|undefined), b: (string|undefined)}\",\n", "testIssue785": "    assertEquals(\"{prop: (string|undefined)}\", getType(\"out\").toString());\n"}

@@ -1,0 +1,1 @@
+{"hasClassCaseInsensitive": "        assertTrue(one.hasClass(\"One\"));\n", "testByClassCaseInsensitive": "        assertEquals(elsFromAttr.size(), elsFromClass.size());\n"}

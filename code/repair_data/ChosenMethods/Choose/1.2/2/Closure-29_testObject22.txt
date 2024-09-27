@@ -1,0 +1,4 @@
+To repair the source code based on the intent of the test, you should modify the `isInlinableObject` method to allow for object literal assignments within loops. 
+
+Desired format:
+1-splitObject

@@ -1,0 +1,1 @@
+{"JsonPointer": "    protected JsonPointer(String fullString, String segment, JsonPointer next) {\n        _asString = fullString;\n        _nextSegment = next;\n        // Ok; may always be a property\n        _matchingPropertyName = segment;\n        _matchingElementIndex = _parseIndex(segment);\n    }"}

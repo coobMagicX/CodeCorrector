@@ -1,0 +1,7 @@
+Intent: The purpose of the test case `handlesCustomProtocols()` is to verify if the `testValidProtocol()` function correctly identifies and preserves custom protocols ("cid" and "data") in URLs when they are explicitly allowed in a whitelist. This ensures that images with these protocols are not dropped during the cleaning process by Jsoup.
+
+Repair strategy: The repair should involve modifying the `testValidProtocol()` method to ensure that it correctly handles and preserves custom protocols specified in the protocols set. This might require:
+1. Checking if the method correctly interprets and matches the protocol part of the URL against the set of allowed protocols.
+2. Ensuring that the method does not inadvertently modify or fail to recognize valid protocols when the URL is converted to lowercase.
+3. Verifying that the method correctly handles protocol comparison, possibly adjusting how protocols are added to the comparison set (ensuring the ':' character handling is consistent and correct).
+4. Reviewing how absolute URLs are generated and used in the method, to confirm they retain the protocol information accurately when `preserveRelativeLinks` is false.

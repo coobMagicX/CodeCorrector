@@ -1,0 +1,3 @@
+Intent: The intent of the failing test case is to verify that the code properly handles control characters after the tag name.
+
+Repair strategy: The code should be modified to handle control characters after the tag name by properly parsing and cleaning the HTML.

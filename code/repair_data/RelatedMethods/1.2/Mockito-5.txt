@@ -1,0 +1,1 @@
+['verify', 'handleVerifyException', 'canRecoverFromFailure', 'sleep', 'getPollingPeriod', 'getDuration', 'getDelegate']

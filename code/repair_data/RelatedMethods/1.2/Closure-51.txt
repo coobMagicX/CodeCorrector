@@ -1,0 +1,1 @@
+['getLastChar', 'addIdentifier', 'append', 'add', 'addOp', 'addNumber', 'shouldPreserveExtraBlocks']

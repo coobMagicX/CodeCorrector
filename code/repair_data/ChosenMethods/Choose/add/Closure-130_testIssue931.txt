@@ -1,0 +1,3 @@
+1-CollapseProperties
+2-CollapseProperties
+3-inlineAliasIfPossible

@@ -1,0 +1,1 @@
+['difference', 'encode', 'getMappingCode', 'getSoundexMapping', 'map', 'soundex']

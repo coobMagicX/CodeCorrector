@@ -1,0 +1,3 @@
+1-Class_list:ChiSquareTestImpl
+2-Constructor_list:ChiSquareTestImpl
+3-Methods_list:chiSquareTest

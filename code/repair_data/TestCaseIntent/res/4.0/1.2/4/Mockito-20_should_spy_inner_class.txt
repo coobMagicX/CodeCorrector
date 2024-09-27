@@ -1,0 +1,8 @@
+Intent: The test case `should_spy_inner_class` intends to verify that an abstract inner class (`InnerStrength`) can be spied on while automatically injecting mock dependencies. The test checks that the spy's methods function correctly and that the spy's constructor initializes as expected with injected mocks.
+
+Repair strategy:
+1. Ensure that the instantiation and classloading of the inner class are correctly handled, specifically when interfaced with mocking frameworks like Mockito.
+2. Verify that the order of initializations for @Mock and @Spy annotations is correctly implemented, especially ensuring that mocks are available before the spy's constructor is called.
+3. Review and possibly adjust the mechanisms by which inner classes are mocked or spied on, to correctly support the use of non-static inner classes in the context of Mockito or similar frameworks.
+4. Provide clear documentation or error messages pertaining to the limitations or special considerations required when mocking or spying on inner classes, particularly around the necessity of them being static or the context in which they are instantiated.
+5. Investigate and resolve any issues related to proxy instance creation and class casting within the mocking framework that could affect the correct functioning of spied inner class methods.

@@ -1,0 +1,1 @@
+['getFraction', 'getReducedFraction', 'getNumerator', 'getDenominator', 'getProperNumerator', 'reduce', 'invert', 'negate', 'abs', 'pow', 'greatestCommonDivisor', 'add', 'subtract', 'equals']
