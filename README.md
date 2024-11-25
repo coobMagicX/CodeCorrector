@@ -11,8 +11,8 @@ In this paper, we propose an APR approach named \textbf{CodeCorrector}, which em
 The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks shows that overall, {\tool} only generates a few patches (i.e., as low as ten) for each defect, but it outperforms all the state-of-the-art baselines both on Defects4J v1.2 without fine-grained defect localization information and on relatively complex Defects4J v2.0, and fixes 14 and 24 unique bugs on Defects4J v1.2 and v2.0 respectively. We further analyze the contributions of two core components to the performance of {\tool}, especially repair intents improve {\tool} by 112\% in correct patches and 78\% in plausible patches on Defects4J v1.2. Moreover, {\tool} produces more valid and correct patches with a 377\% improvement for GPT-3.5 and a 268\% improvement for GPT-4. 
 
 ## Dataset
-[Defects4J](https://github.com/rjust/defects4j)
-[QuixBugs](https://github.com/jkoppel/QuixBugs)
+### [Defects4J](https://github.com/rjust/defects4j)
+### [QuixBugs](https://github.com/jkoppel/QuixBugs)
 
 ## Dependency 
 * Ubantu 20.04.6 LTS
