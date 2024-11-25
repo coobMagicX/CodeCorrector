@@ -9,6 +9,7 @@ import json
 import os
 import re
 import getpass
+import argparse
 import signal
 import subprocess
 import time
@@ -44,235 +45,138 @@ exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", 
 openai_api_key = 'your key'
 
 
-datasets = parse_d4j(folder="./repair_data/")
-res_dict = {}
-tools = []
-wrong_additional_context_file = []
-repair_file_loop = []
-once_success_file = []
-twice_sucess_file = []
-model = ChatOpenAI(model="gpt-3.5-turbo-16k", openai_api_key=openai_api_key)
-for idx, (data_name, dataset) in enumerate(datasets.items()):
-    print("idx: ", idx)
-    print("data_name: ", data_name)
-    if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
-        continue
+def load_json(file_path):
+    """Load JSON data from file."""
+    with open(file_path, "r") as f:
+        return json.load(f)
+
+
+def load_text(file_path):
+    """Load text data from file."""
+    with open(file_path, "r") as f:
+        return f.read()
+
+
+def repair_code(agent_executor, memory, buggy, intents, additional_methods):
+    """Repair buggy code using agent executor."""
+    repair_input = f"""
+    Repair the buggy source code based on the provided Methods in the context and the intent of failed testcase.
+    Only use the existing methods and data for the repair.
+    Limit your modifications to the problematic source code section.
+
+    Desired format:
+    ```java
+    <put the full fixed code here>
+    ```
+
+    Intent of failed testcase:{intents}
+
+    The buggy source code: 
+    {buggy}
+
+    Methods that you can utilize in the context:
+    {additional_methods}
+    """
+    config = {"configurable": {"session_id": "test-session"}}
+    chain_with_message_history = RunnableWithMessageHistory(
+        agent_executor,
+        lambda session_id: memory,
+        input_messages_key="input",
+        history_messages_key="chat_history",
+        verbose=True
+    )
+    response = chain_with_message_history.invoke({"input": repair_input}, config)
+    return response
+
+
+def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
+    """Process a single dataset and attempt code repair."""
     buggy = dataset['buggy']
-    # print('buggy: ', buggy)
-
-    print("-----------------------  Check Out  -----------------------")
-    with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
-        bug_dict = json.load(f)
-
     bug_id = data_name.split('.')[0]
-    project = bug_id.split("-")[0]
-    bug = bug_id.split("-")[1]
-    tmp_bug_id = "test_" + bug_id
-    start = bug_dict[bug_id]['start']
-    end = bug_dict[bug_id]['end']
+    intents, additional_methods = "", ""
 
-    testcase_path = "path to FailTestCase Code"
-    with open(testcase_path + "fail_test_case.json", "r") as f:
-        testcase_dict = json.load(f)
-
-    twice_tag = 0
-    for t in testcase_dict[bug_id]:
-        twice_tag += 1
-        testcase_split = t.split("::")
-        print("testcase_split: ", testcase_split)
-        testcase_name = testcase_split[-1]
-        if testcase_name.endswith('\n'):
-            testcase_name = testcase_name[:-1]
-        print("testcase_name: ", testcase_name)
+    for t in testcase_dict.get(bug_id, []):
+        testcase_name = t.split("::")[-1].strip()
+        intent_path = f"path to Intent/{bug_id}_{testcase_name}.txt"
+        select_path = f"path to ChosenMethods/{bug_id}_{testcase_name}.txt"
 
         try:
-            intent_path = "path to Intent"
-            with open(intent_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
-                intents = f.read()
-        except:
+            intents = load_text(intent_path)
+            select_res = load_text(select_path)
+        except FileNotFoundError:
             continue
 
-        select_path = "path to ChosenMethods"
-        with open(select_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
-            select_res = f.read()
-
-        print("--select_res: \n", select_res)
+        # Parse selected methods
         select_pattern = re.compile(r"(\d+)-(.*?)(?=\n|\d+-|$)", re.DOTALL)
         select_matches = select_pattern.findall(select_res)
-        print("--select_matches: \n", select_matches)
 
-        chosen_path = "path to CandidatesClasses"
-        with open(chosen_path + data_name.split('.')[0] + ".json", "r") as f:
-            chosen_classes = json.load(f)
-        chosen_path = "path to CandidatesConstructors"
-        with open(chosen_path + data_name.split('.')[0] + ".json", "r") as f:
-            chosen_constructors = json.load(f)
-        chosen_path = "path to CandidatesMethods"
-        with open(chosen_path + data_name.split('.')[0] + ".json", "r") as f:
-            chosen_methods = json.load(f)
+        # Load additional methods
+        chosen_methods = load_json(f"path to CandidatesMethods/{data_name.split('.')[0]}.json")
+        for sl in select_matches:
+            key = sl[1]
+            if key in chosen_methods:
+                additional_methods += chosen_methods[key] + "\n"
 
-        if len(select_matches) != 0:
-            additional_methods = ""
-            for sl in select_matches:
-                try:
-                    key = sl[1]
-                    # if key in chosen_classes:
-                    #     value = chosen_classes[key]
-                    if key in chosen_constructors:
-                        value = chosen_constructors[key]
-                    if re.search(r'`?([^`]+?)`?\.?\s*$', key):
-                        method_key = re.search(r'`?([^`]+?)`?\.?\s*$', key).group(1)
-                        if method_key in chosen_methods:
-                            value = chosen_methods[method_key]
-                    elif key in chosen_methods:
-                        value = chosen_methods[key]
-                    else:
-                        continue
-                except:
-                    continue
-                additional_methods = value + "\n" + additional_methods
-        else:
-            additional_methods = ""
-
-
-        if additional_methods == "":
-            wrong_additional_context_file.append(bug_id)
-        print("Additional_methods: \n", additional_methods)
-
-
+        # Initialize repair process
         memory = ChatMessageHistory(session_id="test-session")
         repair_prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are an APR tool."),
-        ("placeholder", "{chat_history}"),
-        ("user", "{input}"),
-        ("placeholder", "{agent_scratchpad}")
+            ("system", "You are an APR tool."),
+            ("placeholder", "{chat_history}"),
+            ("user", "{input}"),
+            ("placeholder", "{agent_scratchpad}")
         ])
         agent = create_tool_calling_agent(model, tools, repair_prompt)
         agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-        # repair_chain = LLMChain(prompt=repair_prompt, llm=model, output_key="repair", verbose=True)
-        # repair_res = repair_chain.invoke({"code": buggy, "intents": intents, "Additional_methods": Additional_methods})["repair"]
-        config = {"configurable": {"session_id": "test-session"}}
-        chain_with_message_history = RunnableWithMessageHistory(
-            agent_executor,
-            # get_session_history,
-            lambda session_id: memory,
-            input_messages_key="input",
-            history_messages_key="chat_history",
-            verbose=True
-        )
 
-
-        # repair
-        response = chain_with_message_history.invoke(
-            {"input": """"
-        Repair the buggy source code based on the provided Methods in the context and the intent of failed testcase.
-        Only use the existing methods and data for the repair.
-        Limit your modifications to the problematic source code section.
-
-        Desired format:
-        ```java
-        <put the full fixed code here>
-        ```
-
-        Intent of failed testcase:{intents}
-
-        The buggy source code: 
-        {code}
-
-        Methods that you can utlize in the context:
-        {additional_methods}
-        
-        """.format(code=buggy, intents=intents, additional_methods=additional_methods)},
-            config
-        )
-        print("--input:\n", response['input'])
-
+        # Repair code
+        response = repair_code(agent_executor, memory, buggy, intents, additional_methods)
         repair_res = response["output"]
-        print("--repair_res:\n", repair_res)
 
+        # Extract repair result
         pattern = r"```java\n(.*?)\n```"
         try:
             repair_match = re.findall(pattern, repair_res, re.DOTALL)[0]
             well = 1
-        except:
+        except IndexError:
             repair_match = ""
             well = 0
 
-        print("--repair_match:\n", repair_match)
-        
-
-        # ------------------results----------------------
+        # Save results
         save_results(data_name, buggy, repair_match, well)
-
-        # repair
         test_result, javac_error = validate_patche(data_name)
-        print("--test_result:\n", test_result)
+
         if test_result == "success":
-            print("valid patch")
-            record_path = "path to record"
-            with open(record_path + bug_id + "_" + str(twice_tag) + ".txt", "w") as f:
-                f.write(repair_match)
-            if twice_tag == 1:
-                once_success_file.append(bug_id)
-            else:
-                twice_sucess_file.append(bug_id)
-            break
-        else:
-            print("invalid patch")
-            if javac_error:
-                print("javac_error: ", javac_error)
-                break
-            response2 = chain_with_message_history.invoke(
-            {"input": """"
-            The previous test case passed, but a new test case failed. Repair the code again!
-            Only use the existing methods and data for the repair.
-            Limit your modifications to the source code section.
+            return True
+    return False
 
-            Desired format:
-            ```java
-            <put the full fixed code here>
-            ```
 
-            New failed test:{test_result}
-            """.format(test_result=test_result)}, config)
-            print("--input:\n", response2['input'])
+def main(args):
+    datasets = parse_d4j(folder=args.folder)
+    bug_dict = load_json(args.bug_dict)
+    testcase_dict = load_json(args.testcase_dict)
 
-            second_res = response2["output"]
-            print("--second_res:\n", second_res)
+    model = ChatOpenAI(model="gpt-3.5-turbo-16k", openai_api_key=args.api_key)
+    tools = []
+    success_files = []
 
-            pattern = r"```java\n(.*?)\n```"
-            try:
-                second_match = re.findall(pattern, second_res, re.DOTALL)[0]
-                well = 1
-            except:
-                second_match = ""
-                well = 0
+    for idx, (data_name, dataset) in enumerate(datasets.items()):
+        print(f"Processing dataset {idx}: {data_name}")
+        if data_name.split('.')[0] in args.exclude_list:
+            continue
 
-            print("--second_match:\n", second_match)
-            
+        if process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
+            success_files.append(data_name)
 
-            # ------------------处理结果----------------------
-            save_results(data_name, buggy, second_match, well)
+    print("Successfully repaired files:", success_files)
 
-            # 执行修复
-            test_result, javac_error = validate_patche(data_name)
-            print("--test_result:\n", test_result)
-            if test_result == "success":
-                print("valid patch")
-                record_path = "path to record"
-                with open(record_path + bug_id + "_" + str(twice_tag) + "_sr" + ".txt", "w") as f:
-                    f.write(repair_match)
-                with open(record_path + bug_id + "_" + str(twice_tag) + "_sr" + "_input" + ".txt", "w") as f:
-                    f.write(response2['input'])
-                repair_file_loop.append(bug_id)
-                break
-            else:
-                print("invalid patch")
-                if javac_error:
-                    print("javac_error: ", javac_error)
-                    break
 
-print("== repair_file_loop== : ", repair_file_loop)
-print("== success_file_1== : ", once_success_file)
-print("== sucess_file_2== : ", twice_sucess_file)
-print("== may_pass== : ", may_pass)
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Automated Program Repair Tool")
+    parser.add_argument("--folder", type=str, required=True, help="Path to dataset folder")
+    parser.add_argument("--bug-dict", type=str, required=True, help="Path to bug dictionary JSON file")
+    parser.add_argument("--testcase-dict", type=str, required=True, help="Path to test case dictionary JSON file")
+    parser.add_argument("--api-key", type=str, required=True, help="OpenAI API key")
+    parser.add_argument("--exclude-list", type=str, nargs="*", default=[], help="List of files to exclude")
+
+    args = parser.parse_args()
+    main(args)

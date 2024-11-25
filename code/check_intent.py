@@ -7,6 +7,7 @@ Created on 22/6/2023 下午6:51
 """
 import json
 import os
+import argparse
 import re
 import getpass
 import signal
@@ -42,77 +43,96 @@ exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", 
 
 openai_api_key = 'your key'
 
+def analyze_test_case_intents(folder, file_list, exclude_list, model_name, api_key):
+    datasets = parse_d4j(folder=folder)
+    model = ChatOpenAI(model=model_name, openai_api_key=api_key)
+    set_verbose(True)
 
-datasets = parse_d4j(folder="./repair_data/")
-res_dict = {}
-model = ChatOpenAI(model="gpt-3.5-turbo-16k", openai_api_key=openai_api_key)
-set_verbose(True)
-for idx, (data_name, dataset) in enumerate(datasets.items()):
-    print("idx: ", idx)
-    print("data_name: ", data_name)
-    if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
-        continue
-    buggy = dataset['buggy']
-    print('buggy: ', buggy)
-    method_name = get_method(buggy)
-    print('method_name: ', method_name)
-
-    bug_id = data_name.split('.')[0]
-
-    testcase_path = "./repair_data/repair_test_json/FailTestCase/Code/2.0/"
-    with open(testcase_path + "fail_test_case.json", "r") as f:
-        testcase_dict = json.load(f)
-    tracecode_path = "./repair_data/repair_test_json/FailTestCase/Line/2.0/"
-    with open(tracecode_path + bug_id + ".json", "r") as f:
-        matching_codes = json.load(f)
-
-    for t in testcase_dict[bug_id]:
-        testcase_split = t.split("::")
-        print("testcase_split: ", testcase_split)
-        testcase_name = testcase_split[-1]
-        # 检查testcase_name是否以'\n'结尾并处理
-        if testcase_name.endswith('\n'):
-            testcase_name = testcase_name[:-1]
-        print("testcase_name: ", testcase_name)
-
-        with open(testcase_path + bug_id + "_" + testcase_name + ".java", "r") as f:
-            testcase_code = f.read()
-        print("testcase_code: \n", testcase_code)
-
-        try:
-            trace_line = matching_codes[testcase_name]
-        except:
+    for idx, (data_name, dataset) in enumerate(datasets.items()):
+        print("idx: ", idx)
+        print("data_name: ", data_name)
+        if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
             continue
+        buggy = dataset['buggy']
+        print('buggy: ', buggy)
+        method_name = get_method(buggy)
+        print('method_name: ', method_name)
 
-        if trace_line:
-            print("trace_line: ", trace_line)
+        bug_id = data_name.split('.')[0]
 
-            intent_prompt = ChatPromptTemplate.from_messages([
-            ("system", "You are a code testing and analysis assistant."),
-            ("user","""
-            Infer the purpose and intent of the failing test cases.
-            Analyze failed test cases and infer potential errors in the source code.
-            Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
-            (without details of the repair, just clearly state the direction for the repair)
+        testcase_path = f"{folder}/repair_test_json/FailTestCase/Code/2.0/"
+        with open(testcase_path + "fail_test_case.json", "r") as f:
+            testcase_dict = json.load(f)
+        tracecode_path = f"{folder}/repair_test_json/FailTestCase/Line/2.0/"
+        with open(tracecode_path + bug_id + ".json", "r") as f:
+            matching_codes = json.load(f)
 
-            Desired format:
-            Intent:<put the intent and purpose here>.
-            Repair strategy:<put the repair strategy here>.
+        for t in testcase_dict[bug_id]:
+            testcase_split = t.split("::")
+            print("testcase_split: ", testcase_split)
+            testcase_name = testcase_split[-1]
+            if testcase_name.endswith('\n'):
+                testcase_name = testcase_name[:-1]
+            print("testcase_name: ", testcase_name)
 
-            Source code: 
-            {code}
+            with open(testcase_path + bug_id + "_" + testcase_name + ".java", "r") as f:
+                testcase_code = f.read()
+            print("testcase_code: \n", testcase_code)
 
-            Failed test cases: 
-            {test_case}
+            try:
+                trace_line = matching_codes[testcase_name]
+            except KeyError:
+                continue
 
-            Fault-revealing lines of failed test cases:
-            {trace_line}
-            """)])
-            intent_chain = LLMChain(prompt=intent_prompt, llm=model, output_key="intent", verbose=True)
-            res = intent_chain.invoke({"code": buggy, "test_case": testcase_code, "trace_line": trace_line})
-            intent_res = res["intent"]
-            print("--intent_res:\n", intent_res)
+            if trace_line:
+                print("trace_line: ", trace_line)
 
-            intent_path = "./repair_data/repair_test_json/TestCaseIntent/res/"
-            with open(intent_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
-                f.write(intent_res)
+                intent_prompt = ChatPromptTemplate.from_messages([
+                    ("system", "You are a code testing and analysis assistant."),
+                    ("user", """
+                    Infer the purpose and intent of the failing test cases.
+                    Analyze failed test cases and infer potential errors in the source code.
+                    Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
+                    (without details of the repair, just clearly state the direction for the repair)
+
+                    Desired format:
+                    Intent:<put the intent and purpose here>.
+                    Repair strategy:<put the repair strategy here>.
+
+                    Source code: 
+                    {code}
+
+                    Failed test cases: 
+                    {test_case}
+
+                    Fault-revealing lines of failed test cases:
+                    {trace_line}
+                    """)
+                ])
+
+                intent_chain = LLMChain(prompt=intent_prompt, llm=model, output_key="intent", verbose=True)
+                res = intent_chain.invoke({"code": buggy, "test_case": testcase_code, "trace_line": trace_line})
+                intent_res = res["intent"]
+                print("--intent_res:\n", intent_res)
+
+                intent_path = f"{folder}/repair_test_json/TestCaseIntent/res/"
+                with open(intent_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
+                    f.write(intent_res)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Analyze test case intents and generate repair strategies.")
+    parser.add_argument('--folder', type=str, required=True, help="Folder path for the repair data.")
+    parser.add_argument('--file_list', type=str, nargs='+', required=True, help="List of files to include.")
+    parser.add_argument('--exclude_list', type=str, nargs='+', required=True, help="List of files to exclude.")
+    parser.add_argument('--model_name', type=str, default="gpt-3.5-turbo-16k", help="LLM model name to use.")
+    parser.add_argument('--api_key', type=str, required=True, help="OpenAI API key.")
+
+    args = parser.parse_args()
+
+    analyze_test_case_intents(
+        folder=args.folder,
+        file_list=args.file_list,
+        exclude_list=args.exclude_list,
+        model_name=args.model_name,
+        api_key=args.api_key
+    )

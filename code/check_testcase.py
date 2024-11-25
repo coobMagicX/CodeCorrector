@@ -152,233 +152,235 @@ def detect_encoding(file_path):
         return result['encoding']
 
 
-datasets = parse_d4j(folder="./repair_data/")
-testcase_dict = {}
-for idx, (data_name, dataset) in enumerate(datasets.items()):
-    if data_name.split('.')[0] not in file_list:
-        continue
-    buggy = dataset['buggy']
-    # print('buggy: ', buggy)
+if __name__ == '__main__':
 
-    # print("-----------------------  Check Out  -----------------------")
-    with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
-        bug_dict = json.load(f)
-
-    bug_id = data_name.split('.')[0]
-    project = bug_id.split("-")[0]
-    bug = bug_id.split("-")[1]
-    tmp_bug_id = "test_" + bug_id
-    start = bug_dict[bug_id]['start']
-    end = bug_dict[bug_id]['end']
-
-    # # print(bug_id)
-    subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
-    testmethods = os.popen('defects4j export -w %s -p tests.trigger' % ('/tmp/' + tmp_bug_id)).readlines()
-    source_dir = os.popen("defects4j export -p dir.src.classes -w /tmp/" + tmp_bug_id).readlines()[-1].strip()
-    with open("./repair_data/Defects4j/location" + "/{}.buggy.lines".format(bug_id), "r") as f:
-        locs = f.read()
-
-    loc = set([x.split("#")[0] for x in locs.splitlines()])  # should only be one
-    loc = loc.pop()
-
-    try:
-        with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r') as f:
-            source = f.readlines()
-    except:
-        with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r', encoding='ISO-8859-1') as f:
-            source = f.readlines()
-
-    # fail_test = []
-    # tag = []
-    # for t in testmethods:
-    #     cmd = 'defects4j test -w %s/ -t %s' % (('/tmp/' + bug_id), t.strip())
-    #     Returncode = ""
-    #     error_file = open("stderr.txt", "wb")
-    #     child = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=error_file, bufsize=-1,
-    #                              start_new_session=True)
-    #     while_begin = time.time()
-    #     while True:
-    #         Flag = child.poll()
-    #         if Flag == 0:
-    #             Returncode = child.stdout.readlines()  # child.stdout.read()
-    #             print(b"".join(Returncode).decode('utf-8'))
-    #             error_file.close()
-    #             break
-    #         elif Flag != 0 and Flag is not None:
-    #             compile_fail = True
-    #             error_file.close()
-    #             with open("stderr.txt", "rb") as f:
-    #                 r = f.readlines()
-    #             for line in r:
-    #                 if re.search(':\serror:\s', line.decode('utf-8')):
-    #                     error_string = line.decode('utf-8')
-    #                     break
-    #             break
-    #         elif time.time() - while_begin > 15:
-    #             error_file.close()
-    #             os.killpg(os.getpgid(child.pid), signal.SIGTERM)
-    #             timed_out = True
-    #             break
-    #         else:
-    #             time.sleep(0.01)
-    #     log = Returncode
-    #     if len(log) > 0 and log[-1].decode('utf-8') == "Failing tests: 0\n":
-    #         continue
-    #     else:
-    #         bugg = True
-    #         fail_test.append(t)
-    # print("fail_test: ", fail_test)
-    # if fail_test != []:
-    #     testcase_dict[bug_id] = fail_test
-    # else:
-    #     tag.append(bug_id)
-
-    # print("files in dir: \n", os.listdir("/tmp/" + tmp_bug_id))
-
-    print("-----------------------  Extract TestCase  -----------------------")
-    testcase_path = "./repair_data/repair_test_json/FailTestCase/Code/2.0/"
-    with open(testcase_path + "fail_test_case.json", "r") as f:
-        testcase_dict = json.load(f)
-    test_id = 0
-    for t in testcase_dict[bug_id]:
-        node_list = []
-        member_list = []
-        method_list = []
-        class_list = []
-        constructor_list = []
-
-        testcase_split = t.split("::")
-        print("testcase_split: ", testcase_split)
-        testcase_name = testcase_split[-1]
-        if testcase_name.endswith('\n'):
-            testcase_name = testcase_name[:-1]
-        print("testcase_name: ", testcase_name)
-
-        paths = [
-            '/tmp/' + tmp_bug_id + '/tests/' + testcase_split[0].replace(".", "/") + '.java',  # for Chart
-            '/tmp/' + tmp_bug_id + '/test/' + testcase_split[0].replace(".", "/") + '.java',   # for Closure Mockito
-            '/tmp/' + tmp_bug_id + '/src/test/' + testcase_split[0].replace(".", "/") + '.java',  # for Lang (Path 1)
-            '/tmp/' + tmp_bug_id + '/src/test/java/' + testcase_split[0].replace(".", "/") + '.java',  # for Lang (Path 2)
-            '/tmp/' + tmp_bug_id + '/gson/src/test/java/' + testcase_split[0].replace(".", "/") + '.java'  # for Gson
-        ]
-
-        testcode = None
-        for testcode_path in paths:
-            try:
-                encoding = detect_encoding(testcode_path)
-                with open(testcode_path, "r", encoding=encoding) as f:
-                    testcode = "".join(f.readlines())
-                    break  
-            except FileNotFoundError:
-                continue  
-            except UnicodeDecodeError as e:
-                print(f"Error decoding file {testcode_path} with detected encoding {encoding}: {e}")
-                raise Exception("wrong")
-
-        print("testcode_path: ", testcode_path)
-
-        testcode_ast = extract_ast(testcode)
-        find_node_in_ast(testcode_ast, testcase_name)
-        # 判断是否有这个testcase
-        if len(node_list) != 0:
-            testcase_node = node_list[0]
-        else:
+    datasets = parse_d4j(folder="./repair_data/")
+    testcase_dict = {}
+    for idx, (data_name, dataset) in enumerate(datasets.items()):
+        if data_name.split('.')[0] not in file_list:
             continue
-        testcase_code = extract_method_code(testcode, testcase_node)
-        print("testcase_code: \n", testcase_code)
+        buggy = dataset['buggy']
+        # print('buggy: ', buggy)
 
-        with open(testcase_path + bug_id + "_" + testcase_name + ".java", "w") as f:
-            f.write(testcase_code)
-        test_id += 1
+        # print("-----------------------  Check Out  -----------------------")
+        with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
+            bug_dict = json.load(f)
 
-    subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        bug_id = data_name.split('.')[0]
+        project = bug_id.split("-")[0]
+        bug = bug_id.split("-")[1]
+        tmp_bug_id = "test_" + bug_id
+        start = bug_dict[bug_id]['start']
+        end = bug_dict[bug_id]['end']
 
-    # print("-----------------------  Extract Trace1 -----------------------")
-    # subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    # subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
-    # subprocess.run("defects4j compile -w %s" % (('/tmp/' + tmp_bug_id)), shell=True)
-    # subprocess.run("defects4j test -w %s" % (('/tmp/' + tmp_bug_id)), shell=True)
-    # print("files in dir: \n", os.listdir("/tmp/" + tmp_bug_id))
-    # with open("/tmp/" + tmp_bug_id + "/failing_tests", "r") as f:
-    #     trace = f.read()
+        # # print(bug_id)
+        subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
+        testmethods = os.popen('defects4j export -w %s -p tests.trigger' % ('/tmp/' + tmp_bug_id)).readlines()
+        source_dir = os.popen("defects4j export -p dir.src.classes -w /tmp/" + tmp_bug_id).readlines()[-1].strip()
+        with open("./repair_data/Defects4j/location" + "/{}.buggy.lines".format(bug_id), "r") as f:
+            locs = f.read()
 
-    # trace_path = "./repair_data/repair_test_json/FailTestCase/Trace/2.0/"
-    # with open(trace_path + bug_id + ".txt", "w") as f:
-    #     f.write(trace)
+        loc = set([x.split("#")[0] for x in locs.splitlines()])  # should only be one
+        loc = loc.pop()
 
-    # subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    # raise Exception("stop")
-    
-    # print("-----------------------  Extract Trace2 -----------------------")
-    subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
+        try:
+            with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r') as f:
+                source = f.readlines()
+        except:
+            with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r', encoding='ISO-8859-1') as f:
+                source = f.readlines()
 
-    testcase_path = "path to FailTestCase Code"
-    with open(testcase_path + "fail_test_case.json", "r") as f:
-        testcase_dict = json.load(f)
-    test_id = 0
+        # fail_test = []
+        # tag = []
+        # for t in testmethods:
+        #     cmd = 'defects4j test -w %s/ -t %s' % (('/tmp/' + bug_id), t.strip())
+        #     Returncode = ""
+        #     error_file = open("stderr.txt", "wb")
+        #     child = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=error_file, bufsize=-1,
+        #                              start_new_session=True)
+        #     while_begin = time.time()
+        #     while True:
+        #         Flag = child.poll()
+        #         if Flag == 0:
+        #             Returncode = child.stdout.readlines()  # child.stdout.read()
+        #             print(b"".join(Returncode).decode('utf-8'))
+        #             error_file.close()
+        #             break
+        #         elif Flag != 0 and Flag is not None:
+        #             compile_fail = True
+        #             error_file.close()
+        #             with open("stderr.txt", "rb") as f:
+        #                 r = f.readlines()
+        #             for line in r:
+        #                 if re.search(':\serror:\s', line.decode('utf-8')):
+        #                     error_string = line.decode('utf-8')
+        #                     break
+        #             break
+        #         elif time.time() - while_begin > 15:
+        #             error_file.close()
+        #             os.killpg(os.getpgid(child.pid), signal.SIGTERM)
+        #             timed_out = True
+        #             break
+        #         else:
+        #             time.sleep(0.01)
+        #     log = Returncode
+        #     if len(log) > 0 and log[-1].decode('utf-8') == "Failing tests: 0\n":
+        #         continue
+        #     else:
+        #         bugg = True
+        #         fail_test.append(t)
+        # print("fail_test: ", fail_test)
+        # if fail_test != []:
+        #     testcase_dict[bug_id] = fail_test
+        # else:
+        #     tag.append(bug_id)
 
-    trace_path = "path to FailTestCase Trace"
-    with open(trace_path + bug_id + ".txt", "r") as f:
-        trace_list = f.readlines()
+        # print("files in dir: \n", os.listdir("/tmp/" + tmp_bug_id))
 
-    matching_lines = {}
-    matching_codes = {}
-    for t in testcase_dict[bug_id]:
-        testcase_split = t.split("::")
-        print("testcase_split: ", testcase_split)
-        testcase_name = testcase_split[-1]
-        if testcase_name.endswith('\n'):
-            testcase_name = testcase_name[:-1]
-        paths = [
-            '/tmp/' + tmp_bug_id + '/tests/' + testcase_split[0].replace(".", "/"),  # for Chart
-            '/tmp/' + tmp_bug_id + '/test/' + testcase_split[0].replace(".", "/"),   # for Closure Mockito
-            '/tmp/' + tmp_bug_id + '/src/test/' + testcase_split[0].replace(".", "/"),  # for Lang
-            '/tmp/' + tmp_bug_id + '/src/test/java/' + testcase_split[0].replace(".", "/"),  # for Lang
-            '/tmp/' + tmp_bug_id + '/gson/src/test/java/' + testcase_split[0].replace(".", "/")  # for Gson
-        ]
+        print("-----------------------  Extract TestCase  -----------------------")
+        testcase_path = "./repair_data/repair_test_json/FailTestCase/Code/2.0/"
+        with open(testcase_path + "fail_test_case.json", "r") as f:
+            testcase_dict = json.load(f)
+        test_id = 0
+        for t in testcase_dict[bug_id]:
+            node_list = []
+            member_list = []
+            method_list = []
+            class_list = []
+            constructor_list = []
 
-        testcode = None
+            testcase_split = t.split("::")
+            print("testcase_split: ", testcase_split)
+            testcase_name = testcase_split[-1]
+            if testcase_name.endswith('\n'):
+                testcase_name = testcase_name[:-1]
+            print("testcase_name: ", testcase_name)
 
-        for path in paths:
-            testcode_path = path + '.java'
-            if os.path.exists(testcode_path):
+            paths = [
+                '/tmp/' + tmp_bug_id + '/tests/' + testcase_split[0].replace(".", "/") + '.java',  # for Chart
+                '/tmp/' + tmp_bug_id + '/test/' + testcase_split[0].replace(".", "/") + '.java',   # for Closure Mockito
+                '/tmp/' + tmp_bug_id + '/src/test/' + testcase_split[0].replace(".", "/") + '.java',  # for Lang (Path 1)
+                '/tmp/' + tmp_bug_id + '/src/test/java/' + testcase_split[0].replace(".", "/") + '.java',  # for Lang (Path 2)
+                '/tmp/' + tmp_bug_id + '/gson/src/test/java/' + testcase_split[0].replace(".", "/") + '.java'  # for Gson
+            ]
+
+            testcode = None
+            for testcode_path in paths:
                 try:
                     encoding = detect_encoding(testcode_path)
                     with open(testcode_path, "r", encoding=encoding) as f:
-                        testcode = f.readlines()
-                    break
+                        testcode = "".join(f.readlines())
+                        break
                 except FileNotFoundError:
                     continue
                 except UnicodeDecodeError as e:
                     print(f"Error decoding file {testcode_path} with detected encoding {encoding}: {e}")
                     raise Exception("wrong")
-        print("testcode_path", testcode_path)
-        replaced_t = t.replace("::", ".").strip()
-        print("replaced_t", replaced_t)
-        for tl in trace_list:
-            if replaced_t in tl:
-                match = re.search(r'\((.*?)\)', tl)
-                if match:
-                    content_inside_parentheses = match.group(1)
-                    content = content_inside_parentheses.split(".")[0]
-                    line = content_inside_parentheses.split(".")[1].split(":")[1]
-                    matching_lines[testcase_name] = line
-                    print("content_inside_parentheses: ", content_inside_parentheses)
-                    print("testcode:", testcode)
-                    tracecode = testcode[int(line)-1]
-                    print("tracecode: ", tracecode)
-                    matching_codes[testcase_name] = tracecode
-                
-    print("len(matching_lines): ", len(matching_lines))
-    if len(matching_lines) == 0:
-        print(bug_id)
-    lines_path = "./repair_data/repair_test_json/FailTestCase/LineLoc/2.0/"
-    with open(lines_path + bug_id + ".json", "w") as f:
-            json.dump(matching_lines, f)
-    code_path = "./repair_data/repair_test_json/FailTestCase/Line/2.0/"
-    with open(code_path + bug_id + ".json", "w") as f:
-            json.dump(matching_codes, f)
 
-    print("testcode_path: ", testcode_path)
+            print("testcode_path: ", testcode_path)
+
+            testcode_ast = extract_ast(testcode)
+            find_node_in_ast(testcode_ast, testcase_name)
+            # 判断是否有这个testcase
+            if len(node_list) != 0:
+                testcase_node = node_list[0]
+            else:
+                continue
+            testcase_code = extract_method_code(testcode, testcase_node)
+            print("testcase_code: \n", testcase_code)
+
+            with open(testcase_path + bug_id + "_" + testcase_name + ".java", "w") as f:
+                f.write(testcase_code)
+            test_id += 1
+
+        subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+
+        # print("-----------------------  Extract Trace1 -----------------------")
+        # subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        # subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
+        # subprocess.run("defects4j compile -w %s" % (('/tmp/' + tmp_bug_id)), shell=True)
+        # subprocess.run("defects4j test -w %s" % (('/tmp/' + tmp_bug_id)), shell=True)
+        # print("files in dir: \n", os.listdir("/tmp/" + tmp_bug_id))
+        # with open("/tmp/" + tmp_bug_id + "/failing_tests", "r") as f:
+        #     trace = f.read()
+
+        # trace_path = "./repair_data/repair_test_json/FailTestCase/Trace/2.0/"
+        # with open(trace_path + bug_id + ".txt", "w") as f:
+        #     f.write(trace)
+
+        # subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        # raise Exception("stop")
+
+        # print("-----------------------  Extract Trace2 -----------------------")
+        subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
+
+        testcase_path = "path to FailTestCase Code"
+        with open(testcase_path + "fail_test_case.json", "r") as f:
+            testcase_dict = json.load(f)
+        test_id = 0
+
+        trace_path = "path to FailTestCase Trace"
+        with open(trace_path + bug_id + ".txt", "r") as f:
+            trace_list = f.readlines()
+
+        matching_lines = {}
+        matching_codes = {}
+        for t in testcase_dict[bug_id]:
+            testcase_split = t.split("::")
+            print("testcase_split: ", testcase_split)
+            testcase_name = testcase_split[-1]
+            if testcase_name.endswith('\n'):
+                testcase_name = testcase_name[:-1]
+            paths = [
+                '/tmp/' + tmp_bug_id + '/tests/' + testcase_split[0].replace(".", "/"),  # for Chart
+                '/tmp/' + tmp_bug_id + '/test/' + testcase_split[0].replace(".", "/"),   # for Closure Mockito
+                '/tmp/' + tmp_bug_id + '/src/test/' + testcase_split[0].replace(".", "/"),  # for Lang
+                '/tmp/' + tmp_bug_id + '/src/test/java/' + testcase_split[0].replace(".", "/"),  # for Lang
+                '/tmp/' + tmp_bug_id + '/gson/src/test/java/' + testcase_split[0].replace(".", "/")  # for Gson
+            ]
+
+            testcode = None
+
+            for path in paths:
+                testcode_path = path + '.java'
+                if os.path.exists(testcode_path):
+                    try:
+                        encoding = detect_encoding(testcode_path)
+                        with open(testcode_path, "r", encoding=encoding) as f:
+                            testcode = f.readlines()
+                        break
+                    except FileNotFoundError:
+                        continue
+                    except UnicodeDecodeError as e:
+                        print(f"Error decoding file {testcode_path} with detected encoding {encoding}: {e}")
+                        raise Exception("wrong")
+            print("testcode_path", testcode_path)
+            replaced_t = t.replace("::", ".").strip()
+            print("replaced_t", replaced_t)
+            for tl in trace_list:
+                if replaced_t in tl:
+                    match = re.search(r'\((.*?)\)', tl)
+                    if match:
+                        content_inside_parentheses = match.group(1)
+                        content = content_inside_parentheses.split(".")[0]
+                        line = content_inside_parentheses.split(".")[1].split(":")[1]
+                        matching_lines[testcase_name] = line
+                        print("content_inside_parentheses: ", content_inside_parentheses)
+                        print("testcode:", testcode)
+                        tracecode = testcode[int(line)-1]
+                        print("tracecode: ", tracecode)
+                        matching_codes[testcase_name] = tracecode
+
+        print("len(matching_lines): ", len(matching_lines))
+        if len(matching_lines) == 0:
+            print(bug_id)
+        lines_path = "./repair_data/repair_test_json/FailTestCase/LineLoc/2.0/"
+        with open(lines_path + bug_id + ".json", "w") as f:
+                json.dump(matching_lines, f)
+        code_path = "./repair_data/repair_test_json/FailTestCase/Line/2.0/"
+        with open(code_path + bug_id + ".json", "w") as f:
+                json.dump(matching_codes, f)
+
+        print("testcode_path: ", testcode_path)

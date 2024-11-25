@@ -9,6 +9,7 @@ import json
 import os
 import re
 import getpass
+import argparse
 import signal
 import subprocess
 import time
@@ -36,93 +37,120 @@ file_list = ['Chart-3', 'Chart-4', 'Chart-5', 'Chart-6', 'Chart-7', 'Chart-8', '
         'Math-10', 'Math-101', 'Math-102', 'Math-103', 'Math-105', 'Math-106', 'Math-11', 'Math-13', 'Math-17', 'Math-19', 'Math-2', 'Math-20', 'Math-21', 'Math-23', 'Math-24', 'Math-25', 'Math-26', 'Math-27', 'Math-28', 'Math-3', 'Math-30', 'Math-31', 'Math-32', 'Math-33', 'Math-34', 'Math-38', 'Math-39', 'Math-40', 'Math-41', 'Math-42', 'Math-43', 'Math-44', 'Math-45', 'Math-48', 'Math-5', 'Math-50', 'Math-51', 'Math-52', 'Math-53', 'Math-55', 'Math-56', 'Math-57', 'Math-58', 'Math-59', 'Math-60', 'Math-63', 'Math-64', 'Math-69', 'Math-7', 'Math-70', 'Math-72', 'Math-73', 'Math-74', 'Math-75', 'Math-78', 'Math-79', 'Math-8', 'Math-80', 'Math-82', 'Math-84', 'Math-85', 'Math-86', 'Math-87', 'Math-88', 'Math-89', 'Math-9', 'Math-90', 'Math-91', 'Math-94', 'Math-95', 'Math-96', 'Math-97',
         'Mockito-1', 'Mockito-12', 'Mockito-13', 'Mockito-18', 'Mockito-20', 'Mockito-22', 'Mockito-24', 'Mockito-27', 'Mockito-28', 'Mockito-29', 'Mockito-33', 'Mockito-34', 'Mockito-38', 'Mockito-5', 'Mockito-7', 'Mockito-8',
         ]
-exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", "Math-105", "Math-2", "Time-15",
-    "Lang-57","Math-101","Math-25","Math-34","Math-41","Math-45","Math-50","Math-86","Mockito-8"] #上下文短/testcase未找到
 openai_api_key = 'your key'
 
 
+def process_datasets(folder, file_list, exclude_list, model_name, api_key, structural_path, related_path, testcase_path, intent_path, select_path):
+    datasets = clean_parse_d4j(folder=folder)
+    res_dict = {}
+    model = ChatOpenAI(model=model_name, openai_api_key=api_key)
 
-
-datasets = clean_parse_d4j(folder="./repair_data/")
-res_dict = {}
-model = ChatOpenAI(model="gpt-4-turbo", openai_api_key=openai_api_key)
-for idx, (data_name, dataset) in enumerate(datasets.items()):
-    print("idx: ", idx)
-    print("data_name: ", data_name)
-    if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
-        continue
-    buggy = dataset['buggy']
-    print('buggy: ', buggy)
-
-    print("-----------------------  Check Out  -----------------------")
-    with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
-        bug_dict = json.load(f)
-
-    bug_id = data_name.split('.')[0]
-    project = bug_id.split("-")[0]
-    bug = bug_id.split("-")[1]
-    tmp_bug_id = "test_" + bug_id
-    start = bug_dict[bug_id]['start']
-    end = bug_dict[bug_id]['end']
-
-    print("-----------------------  Read  -----------------------")
-    structural_path = "path to StructureInfo"
-
-    with open(structural_path + bug_id + ".json", "r") as f:
-        loaded_dist = json.load(f)
-
-    related_path = "path to RelatedMethods"
-    with open(related_path + bug_id + ".txt", "r") as f:
-        related_methods = f.read()
-
-    if related_methods == "[]":
-        related_methods = loaded_dist["Method"]
-
-    related_classes = loaded_dist["Class"]
-    related_constructors = loaded_dist["Constructor"]
-
-
-    testcase_path = "path to FailTestCase Code"
-    with open(testcase_path + "fail_test_case.json", "r") as f:
-        testcase_dict = json.load(f)
-
-    for t in testcase_dict[bug_id]:
-        testcase_split = t.split("::")
-        testcase_name = testcase_split[-1]
-        if testcase_name.endswith('\n'):
-            testcase_name = testcase_name[:-1]
-        try:
-            intent_path = "path to Intent"
-            with open(intent_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
-                intents = f.read()
-        except:
+    for idx, (data_name, dataset) in enumerate(datasets.items()):
+        print("idx: ", idx)
+        print("data_name: ", data_name)
+        if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
             continue
+        buggy = dataset['buggy']
+        print('buggy: ', buggy)
 
+        print("-----------------------  Check Out  -----------------------")
+        with open(f"{folder}/Defects4j/single_function_repair.json", "r") as f:
+            bug_dict = json.load(f)
 
-        select_prompt = ChatPromptTemplate.from_messages([
-        ("system", "You are an APR assistant."),
-        ("user",""""
-        Choose the context information from the candidate options that aids in the test repair based on the intent and repair logic.
-        Choose one from each of the three candidate lists.
+        bug_id = data_name.split('.')[0]
+        project = bug_id.split("-")[0]
+        bug = bug_id.split("-")[1]
+        tmp_bug_id = "test_" + bug_id
+        start = bug_dict[bug_id]['start']
+        end = bug_dict[bug_id]['end']
 
-        Desired format:
-        <idx>-<place the name of context you choose from the candidate options.>
+        print("-----------------------  Read  -----------------------")
+        with open(f"{structural_path}/{bug_id}.json", "r") as f:
+            loaded_dist = json.load(f)
 
-        Candidate options from the context:
-        Class_list:{Class_list}
-        Constructor_list:{Constructor_list}
-        Methods_list:{Methods_list}
+        with open(f"{related_path}/{bug_id}.txt", "r") as f:
+            related_methods = f.read()
 
-        Test-Repair intent:
-        {intents}
+        if related_methods == "[]":
+            related_methods = loaded_dist["Method"]
 
-        Source code: 
-        {code}
-        """)])
-        select_chain = LLMChain(prompt=select_prompt, llm=model, output_key="select", verbose=True)
-        select_res = select_chain.invoke({"code": buggy, "intents": intents, "Class_list": related_classes, "Constructor_list": related_constructors, "Methods_list": related_methods})["select"]
-        print("--select_res:\n", select_res)
+        related_classes = loaded_dist["Class"]
+        related_constructors = loaded_dist["Constructor"]
 
-        select_path = "path to save"
-        with open(select_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
-            f.write(select_res)
+        with open(f"{testcase_path}/fail_test_case.json", "r") as f:
+            testcase_dict = json.load(f)
+
+        for t in testcase_dict[bug_id]:
+            testcase_split = t.split("::")
+            testcase_name = testcase_split[-1]
+            if testcase_name.endswith('\n'):
+                testcase_name = testcase_name[:-1]
+            try:
+                with open(f"{intent_path}/{bug_id}_{testcase_name}.txt", "r") as f:
+                    intents = f.read()
+            except FileNotFoundError:
+                continue
+
+            select_prompt = ChatPromptTemplate.from_messages([
+                ("system", "You are an APR assistant."),
+                ("user", """
+                Choose the context information from the candidate options that aids in the test repair based on the intent and repair logic.
+                Choose one from each of the three candidate lists.
+
+                Desired format:
+                <idx>-<place the name of context you choose from the candidate options.>
+
+                Candidate options from the context:
+                Class_list:{Class_list}
+                Constructor_list:{Constructor_list}
+                Methods_list:{Methods_list}
+
+                Test-Repair intent:
+                {intents}
+
+                Source code: 
+                {code}
+                """)
+            ])
+
+            select_chain = LLMChain(prompt=select_prompt, llm=model, output_key="select", verbose=True)
+            select_res = select_chain.invoke({
+                "code": buggy,
+                "intents": intents,
+                "Class_list": related_classes,
+                "Constructor_list": related_constructors,
+                "Methods_list": related_methods
+            })["select"]
+
+            print("--select_res:\n", select_res)
+
+            with open(f"{select_path}/{bug_id}_{testcase_name}.txt", "w") as f:
+                f.write(select_res)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description="Process datasets and generate repair selection.")
+    parser.add_argument('--folder', type=str, required=True, help="Folder path for the repair data.")
+    parser.add_argument('--file_list', type=str, nargs='+', required=True, help="List of files to include.")
+    parser.add_argument('--exclude_list', type=str, nargs='+', required=True, help="List of files to exclude.")
+    parser.add_argument('--model_name', type=str, default="gpt-4-turbo", help="LLM model name to use.")
+    parser.add_argument('--api_key', type=str, required=True, help="OpenAI API key.")
+    parser.add_argument('--structural_path', type=str, required=True, help="Path to the structural information.")
+    parser.add_argument('--related_path', type=str, required=True, help="Path to the related methods information.")
+    parser.add_argument('--testcase_path', type=str, required=True, help="Path to the fail test case information.")
+    parser.add_argument('--intent_path', type=str, required=True, help="Path to the intent information.")
+    parser.add_argument('--select_path', type=str, required=True, help="Path to save the repair selection results.")
+
+    args = parser.parse_args()
+
+    process_datasets(
+        folder=args.folder,
+        file_list=args.file_list,
+        exclude_list=args.exclude_list,
+        model_name=args.model_name,
+        api_key=args.api_key,
+        structural_path=args.structural_path,
+        related_path=args.related_path,
+        testcase_path=args.testcase_path,
+        intent_path=args.intent_path,
+        select_path=args.select_path
+    )

@@ -56,249 +56,248 @@ v2_file_list = ['Cli-11', 'Cli-12', 'Cli-14', 'Cli-15', 'Cli-17', 'Cli-19', 'Cli
 
 openai_api_key = 'your key'
 
+def split_camel_case(name):
+    words = []
+    start = 0
+    for i in range(1, len(name)):
+        if name[i].isupper() and (name[i - 1].islower() or (i < len(name) - 1 and name[i + 1].islower())):
+            words.append(name[start:i])
+            start = i
+    words.append(name[start:])
+    return words
 
-datasets = parse_d4j(folder="./repair_data/")
-res_dict = {}
-norelated_method_list = []
-norelated_method_dict = {}
-model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, openai_api_key=openai_api_key)
-set_verbose(True)
-for idx, (data_name, dataset) in enumerate(datasets.items()):
-    len_norelated_method = 0
-    method_list = []
-    class_list = []
-    constructor_list = []
-    node_list = []
-    member_list = []
-    inner_members = []
-    outer_members = []
-    
-    print("============================= new =================================")
-    print("idx: ", idx)
-    print("data_name: ", data_name)
-    if data_name.split('.')[0] not in file_list:
-        continue
-    buggy = dataset['buggy']
-    print('buggy: ', buggy)
+if __name__ == '__main__':
+    datasets = parse_d4j(folder="./repair_data/")
+    res_dict = {}
+    norelated_method_list = []
+    norelated_method_dict = {}
+    model = ChatOpenAI(model="gpt-3.5-turbo", temperature=0, openai_api_key=openai_api_key)
+    set_verbose(True)
+    for idx, (data_name, dataset) in enumerate(datasets.items()):
+        len_norelated_method = 0
+        method_list = []
+        class_list = []
+        constructor_list = []
+        node_list = []
+        member_list = []
+        inner_members = []
+        outer_members = []
 
-    with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
-        bug_dict = json.load(f)
+        print("============================= new =================================")
+        print("idx: ", idx)
+        print("data_name: ", data_name)
+        buggy = dataset['buggy']
+        print('buggy: ', buggy)
 
-    bug_id = data_name.split('.')[0]
-    project = bug_id.split("-")[0]
-    bug = bug_id.split("-")[1]
-    tmp_bug_id = "test_" + bug_id
-    start = bug_dict[bug_id]['start']
-    end = bug_dict[bug_id]['end']
+        with open("./repair_data/Defects4j" + "/single_function_repair.json", "r") as f:
+            bug_dict = json.load(f)
 
-    subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
-    testmethods = os.popen('defects4j export -w %s -p tests.trigger' % ('/tmp/' + tmp_bug_id)).readlines()
-    source_dir = os.popen("defects4j export -p dir.src.classes -w /tmp/" + tmp_bug_id).readlines()[-1].strip()
-    with open("./repair_data/Defects4j/location" + "/{}.buggy.lines".format(bug_id), "r") as f:
-        locs = f.read()
+        bug_id = data_name.split('.')[0]
+        project = bug_id.split("-")[0]
+        bug = bug_id.split("-")[1]
+        tmp_bug_id = "test_" + bug_id
+        start = bug_dict[bug_id]['start']
+        end = bug_dict[bug_id]['end']
 
-    loc = set([x.split("#")[0] for x in locs.splitlines()])  # should only be one
-    loc = loc.pop()
+        subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        subprocess.run("defects4j checkout -p %s -v %s -w %s" % (project, bug + 'b', ('/tmp/' + tmp_bug_id)), shell=True)
+        testmethods = os.popen('defects4j export -w %s -p tests.trigger' % ('/tmp/' + tmp_bug_id)).readlines()
+        source_dir = os.popen("defects4j export -p dir.src.classes -w /tmp/" + tmp_bug_id).readlines()[-1].strip()
+        with open("./repair_data/Defects4j/location" + "/{}.buggy.lines".format(bug_id), "r") as f:
+            locs = f.read()
 
-    try:
-        with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r') as f:
-            source = f.readlines()
-    except:
-        with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r', encoding='ISO-8859-1') as f:
-            source = f.readlines()
+        loc = set([x.split("#")[0] for x in locs.splitlines()])  # should only be one
+        loc = loc.pop()
 
-    subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
-    source_code = "".join(source)
-    print("source_code: \n", source_code)
+        try:
+            with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r') as f:
+                source = f.readlines()
+        except:
+            with open("/tmp/" + tmp_bug_id + "/" + source_dir + "/" + loc, 'r', encoding='ISO-8859-1') as f:
+                source = f.readlines()
 
-
-    print("-----------------------  Get identifier  -----------------------")
-    # identify and filter related methods based on identifiers extracted from Java code.
-    def split_camel_case(name):
-        words = []
-        start = 0
-        for i in range(1, len(name)):
-            if name[i].isupper() and (name[i-1].islower() or (i < len(name) - 1 and name[i+1].islower())):
-                words.append(name[start:i])
-                start = i
-        words.append(name[start:])
-        return words
-    tokens = list(javalang.tokenizer.tokenize(buggy))
-    identifiers = extract_identifiers(tokens)
-
-    structural_path = "path to StructureInfo"
-    with open(structural_path + bug_id + ".json", "r") as f:
-        loaded_dist = json.load(f)
-
-    loaded_method = loaded_dist["Method"]
-    related_methods = []
-    related_methods = [
-        method for method in loaded_method
-        if any(
-            len(split_camel_case(method.lower().replace(identifier.lower(), '', 1))) == 1
-            for identifier in identifiers if identifier.lower() in method.lower()
-        ) or len(split_camel_case(method)) == 1
-    ]
-
-    if len(related_methods) == 0:
-        len_norelated_method += 1
-        norelated_method_list.append(data_name)
-    related_path = "path to RelatedMethods"
-    with open(related_path + bug_id + ".txt", "w") as f:
-        f.write(str(related_methods))
+        subprocess.run('rm -rf ' + '/tmp/' + tmp_bug_id, shell=True)
+        source_code = "".join(source)
+        print("source_code: \n", source_code)
 
 
-    # print("-----------------------  Method Supplement  -----------------------")
-    # chosen_path = "path to CandidatesMethods"
-    # related_path = "path to RelatedMethods"
-    # with open(related_path + bug_id + ".txt", "r") as f:
-    #     text = f.read()
-    #     # print("text: ", text)
-    #     related_methods = ast.literal_eval(text)
-    # print("related_methods: ", type(related_methods), related_methods)
-    # chosen_methods = {}
-    # if related_methods == []:
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_methods, f)
-    # else:
-    #     for method_key in related_methods:
-    #         print(f"Key: {method_key}")
-    #         asts = extract_ast(source_code)
-    #         find_node_in_ast(asts, method_key)
-    #         for node in node_list:
-    #             method_code1 = extract_method_code(source_code, node)
-    #             if method_code1:
-    #                 print("method_code1: \n", method_code1)
-    #                 method_code = method_code1
-    #         for member in member_list:
-    #             method_code2 = extract_method_code(source_code, member)
-    #             if method_code2:
-    #                 print("method_code2: \n", method_code2)
-    #                 method_code = method_code2
-    #         chosen_methods[method_key] = method_code
-    #     print("chosen_methods: \n", chosen_methods)
-        
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_methods, f)
+        print("-----------------------  Get identifier  -----------------------")
+        # identify and filter related methods based on identifiers extracted from Java code.
+        tokens = list(javalang.tokenizer.tokenize(buggy))
+        identifiers = extract_identifiers(tokens)
 
-    # print("-----------------------  Class Supplement  -----------------------")
-    # def find_matching_brace(code, start):
-    #     """
-    #     Finds the position of the matching closing brace for the opening brace at code[start].
-    #     """
-    #     brace_count = 0
-    #     for i in range(start, len(code)):
-    #         if code[i] == '{':
-    #             brace_count += 1
-    #         elif code[i] == '}':
-    #             brace_count -= 1
-    #             if brace_count == 0:
-    #                 return i
-    #     return -1  # no matching brace found
+        structural_path = "path to StructureInfo"
+        with open(structural_path + bug_id + ".json", "r") as f:
+            loaded_dist = json.load(f)
 
-    # def omit_code_bodies(code: str) -> str:
-    #     result = []
-    #     i = 0
-    #     while i < len(code):
-    #         if code[i:i+6] == 'class ' or code[i:i+7] == 'static ':
-    #             match = re.match(r'(class|static\s+class)\s+\w+\s*(\([^)]*\))?\s*\{', code[i:])
-    #             if match:
-    #                 # Append the matched class/method declaration
-    #                 result.append(match.group(0))
-    #                 # Find the matching closing brace for this block
-    #                 start = i + match.end(0) - 1
-    #                 end = find_matching_brace(code, start)
-    #                 if end != -1:
-    #                     # Add the replacement text and the closing brace
-    #                     result.append("\n         //The specific code has been omitted, but there is no error\n        }")
-    #                     i = end + 1
-    #                     continue
-    #         elif re.match(r'\w+\s*\([^)]*\)\s*{', code[i:]):
-    #             # Matches method declarations
-    #             match = re.match(r'\w+\s*\([^)]*\)\s*{', code[i:])
-    #             if match:
-    #                 # Append the matched method declaration
-    #                 result.append(match.group(0))
-    #                 # Find the matching closing brace for this method
-    #                 start = i + match.end(0) - 1
-    #                 end = find_matching_brace(code, start)
-    #                 if end != -1:
-    #                     # Add the replacement text and the closing brace
-    #                     result.append("\n         //The specific code has been omitted, but there is no error\n        }")
-    #                     i = end + 1
-    #                     continue
-    #         # If no match, just add the current character to the result
-    #         result.append(code[i])
-    #         i += 1
-    #     return ''.join(result)
+        loaded_method = loaded_dist["Method"]
+        related_methods = []
+        related_methods = [
+            method for method in loaded_method
+            if any(
+                len(split_camel_case(method.lower().replace(identifier.lower(), '', 1))) == 1
+                for identifier in identifiers if identifier.lower() in method.lower()
+            ) or len(split_camel_case(method)) == 1
+        ]
 
-    # chosen_path = "path to CandidatesClasses"
-    # related_path = "path to StructureInfo"
-    # with open(related_path + bug_id + ".json", "r") as f:
-    #     related_classes = json.load(f)["Class"]
-    # print("related_classes: ", type(related_classes), related_classes)
-    # chosen_classes = {}
-    # if related_classes == []:
-    #     print("related_classes is null")
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_classes, f)
-    # else:
-    #     for class_key in related_classes:
-    #         print(f"Key: {class_key}")
-    #         asts = extract_ast(source_code)
-    #         find_node_in_ast(asts, class_key)
-    #         for node in node_list:
-    #             class_code1 = extract_method_code(source_code, node)
-    #             if class_code1:
-    #                 print("class_code1: \n", class_code1)
-    #                 class_code = class_code1
-    #         for inner in inner_members:
-    #             class_code2 = extract_method_code(source_code, inner)
-    #             if class_code2:
-    #                 print("class_code2: \n", class_code2)
-    #                 class_code = class_code2
-    #         for outer in outer_members:
-    #             class_code3 = extract_method_code(source_code, outer)
-    #             if class_code3:
-    #                 class_code = omit_code_bodies(class_code3)
-    #                 print("class_code3: \n", class_code)
-    #         chosen_classes[class_key] = class_code
-    #     print("chosen_classes: \n", chosen_classes)
+        if len(related_methods) == 0:
+            len_norelated_method += 1
+            norelated_method_list.append(data_name)
+        related_path = "path to RelatedMethods"
+        with open(related_path + bug_id + ".txt", "w") as f:
+            f.write(str(related_methods))
 
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_classes, f)
 
-    # print("-----------------------  Constructor Supplement  -----------------------")
-    # chosen_path = "path to CandidatesConstructors"
-    # related_path = "path to StructureInfo"
-    # with open(related_path + bug_id + ".json", "r") as f:
-    #     related_constructors = json.load(f)["Constructor"]
-    # print("related_constructors: ", type(related_constructors), related_constructors)
-    # chosen_constructors = {}
-    # if related_constructors == []:
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_constructors, f)
-    # else:
-    #     for constructor_key in related_constructors:
-    #         print(f"Key: {constructor_key}")
-    #         asts = extract_ast(source_code)
-    #         find_node_in_ast(asts, constructor_key)
-    #         for node in node_list:
-    #             constructor_code1 = extract_method_code(source_code, node)
-    #             if constructor_code1:
-    #                 print("constructor_code1: \n", constructor_code1)
-    #                 constructor_code = constructor_code1
-    #         for member in inner_members:
-    #             constructor_code2 = extract_method_code(source_code, member)
-    #             if constructor_code2:
-    #                 print("constructor_code2: \n", constructor_code2)
-    #                 constructor_code = constructor_code2
-    #         if constructor_code:
-    #             chosen_constructors[constructor_key] = constructor_code
-    #         else:
-    #             chosen_constructors = {}
-    #     print("chosen_constructors: \n", chosen_constructors)
+        # print("-----------------------  Method Supplement  -----------------------")
+        # chosen_path = "path to CandidatesMethods"
+        # related_path = "path to RelatedMethods"
+        # with open(related_path + bug_id + ".txt", "r") as f:
+        #     text = f.read()
+        #     # print("text: ", text)
+        #     related_methods = ast.literal_eval(text)
+        # print("related_methods: ", type(related_methods), related_methods)
+        # chosen_methods = {}
+        # if related_methods == []:
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_methods, f)
+        # else:
+        #     for method_key in related_methods:
+        #         print(f"Key: {method_key}")
+        #         asts = extract_ast(source_code)
+        #         find_node_in_ast(asts, method_key)
+        #         for node in node_list:
+        #             method_code1 = extract_method_code(source_code, node)
+        #             if method_code1:
+        #                 print("method_code1: \n", method_code1)
+        #                 method_code = method_code1
+        #         for member in member_list:
+        #             method_code2 = extract_method_code(source_code, member)
+        #             if method_code2:
+        #                 print("method_code2: \n", method_code2)
+        #                 method_code = method_code2
+        #         chosen_methods[method_key] = method_code
+        #     print("chosen_methods: \n", chosen_methods)
 
-    #     with open(chosen_path + bug_id + ".json", "w") as f:
-    #         json.dump(chosen_constructors, f)
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_methods, f)
+
+        # print("-----------------------  Class Supplement  -----------------------")
+        # def find_matching_brace(code, start):
+        #     """
+        #     Finds the position of the matching closing brace for the opening brace at code[start].
+        #     """
+        #     brace_count = 0
+        #     for i in range(start, len(code)):
+        #         if code[i] == '{':
+        #             brace_count += 1
+        #         elif code[i] == '}':
+        #             brace_count -= 1
+        #             if brace_count == 0:
+        #                 return i
+        #     return -1  # no matching brace found
+
+        # def omit_code_bodies(code: str) -> str:
+        #     result = []
+        #     i = 0
+        #     while i < len(code):
+        #         if code[i:i+6] == 'class ' or code[i:i+7] == 'static ':
+        #             match = re.match(r'(class|static\s+class)\s+\w+\s*(\([^)]*\))?\s*\{', code[i:])
+        #             if match:
+        #                 # Append the matched class/method declaration
+        #                 result.append(match.group(0))
+        #                 # Find the matching closing brace for this block
+        #                 start = i + match.end(0) - 1
+        #                 end = find_matching_brace(code, start)
+        #                 if end != -1:
+        #                     # Add the replacement text and the closing brace
+        #                     result.append("\n         //The specific code has been omitted, but there is no error\n        }")
+        #                     i = end + 1
+        #                     continue
+        #         elif re.match(r'\w+\s*\([^)]*\)\s*{', code[i:]):
+        #             # Matches method declarations
+        #             match = re.match(r'\w+\s*\([^)]*\)\s*{', code[i:])
+        #             if match:
+        #                 # Append the matched method declaration
+        #                 result.append(match.group(0))
+        #                 # Find the matching closing brace for this method
+        #                 start = i + match.end(0) - 1
+        #                 end = find_matching_brace(code, start)
+        #                 if end != -1:
+        #                     # Add the replacement text and the closing brace
+        #                     result.append("\n         //The specific code has been omitted, but there is no error\n        }")
+        #                     i = end + 1
+        #                     continue
+        #         # If no match, just add the current character to the result
+        #         result.append(code[i])
+        #         i += 1
+        #     return ''.join(result)
+
+        # chosen_path = "path to CandidatesClasses"
+        # related_path = "path to StructureInfo"
+        # with open(related_path + bug_id + ".json", "r") as f:
+        #     related_classes = json.load(f)["Class"]
+        # print("related_classes: ", type(related_classes), related_classes)
+        # chosen_classes = {}
+        # if related_classes == []:
+        #     print("related_classes is null")
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_classes, f)
+        # else:
+        #     for class_key in related_classes:
+        #         print(f"Key: {class_key}")
+        #         asts = extract_ast(source_code)
+        #         find_node_in_ast(asts, class_key)
+        #         for node in node_list:
+        #             class_code1 = extract_method_code(source_code, node)
+        #             if class_code1:
+        #                 print("class_code1: \n", class_code1)
+        #                 class_code = class_code1
+        #         for inner in inner_members:
+        #             class_code2 = extract_method_code(source_code, inner)
+        #             if class_code2:
+        #                 print("class_code2: \n", class_code2)
+        #                 class_code = class_code2
+        #         for outer in outer_members:
+        #             class_code3 = extract_method_code(source_code, outer)
+        #             if class_code3:
+        #                 class_code = omit_code_bodies(class_code3)
+        #                 print("class_code3: \n", class_code)
+        #         chosen_classes[class_key] = class_code
+        #     print("chosen_classes: \n", chosen_classes)
+
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_classes, f)
+
+        # print("-----------------------  Constructor Supplement  -----------------------")
+        # chosen_path = "path to CandidatesConstructors"
+        # related_path = "path to StructureInfo"
+        # with open(related_path + bug_id + ".json", "r") as f:
+        #     related_constructors = json.load(f)["Constructor"]
+        # print("related_constructors: ", type(related_constructors), related_constructors)
+        # chosen_constructors = {}
+        # if related_constructors == []:
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_constructors, f)
+        # else:
+        #     for constructor_key in related_constructors:
+        #         print(f"Key: {constructor_key}")
+        #         asts = extract_ast(source_code)
+        #         find_node_in_ast(asts, constructor_key)
+        #         for node in node_list:
+        #             constructor_code1 = extract_method_code(source_code, node)
+        #             if constructor_code1:
+        #                 print("constructor_code1: \n", constructor_code1)
+        #                 constructor_code = constructor_code1
+        #         for member in inner_members:
+        #             constructor_code2 = extract_method_code(source_code, member)
+        #             if constructor_code2:
+        #                 print("constructor_code2: \n", constructor_code2)
+        #                 constructor_code = constructor_code2
+        #         if constructor_code:
+        #             chosen_constructors[constructor_key] = constructor_code
+        #         else:
+        #             chosen_constructors = {}
+        #     print("chosen_constructors: \n", chosen_constructors)
+
+        #     with open(chosen_path + bug_id + ".json", "w") as f:
+        #         json.dump(chosen_constructors, f)
