@@ -4,14 +4,15 @@
 **The replication package for this paper is currently being organized and prepared. We are working to ensure that all necessary components are included and properly documented for reproducibility.**
 
 ## Introduction
-Automated program repair (APR) plays a crucial role in ensuring the quality of software code, as manual bug fixing is time-consuming and labor-intensive. Despite large language models (LLMs) have gained attention in APR due to their patch generation capabilities, existing APR techniques still suffer from several limitations (e.g., heavy reliance on fault localization, preliminary defect cause analysis, and untargeted global context selection) that might influence program repair. As a result, these LLM-based approaches are effective in some bugs, but struggle to generate correct patches in complex practical scenarios. To address these challenges, a more effective LLM-based APR approach is required to generate more accurate patches. 
+Automated program repair (APR) plays a crucial role in ensuring the quality of software code, as manual bug fixing is time-consuming and labor-intensive. Despite large language models (LLMs) have gained attention in APR due to their patch generation capabilities, existing APR techniques still suffer from several limitations (e.g., heavy reliance on fine-grained fault localization and untargeted context selection) that might influence program repair. As a result, these LLM-based approaches are effective in some bugs, but struggle to generate correct patches in complex practical scenarios. To address these challenges, a more effective LLM-based APR approach is required to generate more accurate patches. 
 
-In this paper, we propose an APR approach named CodeCorrector, that empowers LLMs’ ability of program repair by supplementing scenario-specific knowledge to mimic developers’ program repair behavior. Given a failing test and its buggy file, CodeCorrector analyzes test objectives and repair logic from test failure information to summarize repair intentions, selects global context information based on repair intentions, then builds repair prompts with scenario-specific knowledge (i.e., repair intents, local and global context) for LLMs to generate patches.Our motivation is to provide a new perspective for automated program repair by following the process of human developers’ manual repair work. 
+In this paper, we propose an APR approach named \textbf{CodeCorrector}, which empowers the bug-fixing ability of LLMs by context-aware prompting that adaptively selects the specific context for each defect. Given a failing test and its buggy file, CodeCorrector analyzes test objectives from failing tests and deduces implicit repair logic to distill repair intentions, selects global context information according to repair intentions, then builds context-aware repair prompts with specific scenario information (i.e., repair intents, local and global context) for LLMs to generate patches.  Our motivation is to provide a new perspective for more powerful LLM-based program repair by analyzing the traits (e.g., repair intent) of each bug and adaptively selecting its relevant and useful context to effectively guide LLMs for correct program repair in complex code scenarios. 
 
-The evaluation on a subset of the widely-used Defects4J v1.2 and v2.0 datasets shows that overall, CodeCorrector only generates a few patches (i.e., as low as seven) for each defect, but it can outperform all state-of-the-art baselines, and fixes 24 and 25 unique bugs on Defects4J v1.2 and v2.0 respectively. We further analyze the contributions of two core components to the performance of CodeCorrector, especially repair intents improve CodeCorrector by 161% in correct patches and 91% in plausible patches on Defects4J v1.2. Moreover, CodeCorrector improves base LLMs to produce more valid and correct patches by 400% for GPT-3.5 and 270% for GPT-4.
+The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks shows that overall, {\tool} only generates a few patches (i.e., as low as ten) for each defect, but it outperforms all the state-of-the-art baselines both on Defects4J v1.2 without fine-grained defect localization information and on relatively complex Defects4J v2.0, and fixes 14 and 24 unique bugs on Defects4J v1.2 and v2.0 respectively. We further analyze the contributions of two core components to the performance of {\tool}, especially repair intents improve {\tool} by 112\% in correct patches and 78\% in plausible patches on Defects4J v1.2. Moreover, {\tool} produces more valid and correct patches with a 377\% improvement for GPT-3.5 and a 268\% improvement for GPT-4. 
 
 ## Dataset
-[Defects4J](https://github.com/rjust/defects4j)
+### [Defects4J](https://github.com/rjust/defects4j)
+### [QuixBugs](https://github.com/jkoppel/QuixBugs)
 
 ## Dependency 
 * Ubantu 20.04.6 LTS
@@ -19,12 +20,14 @@ The evaluation on a subset of the widely-used Defects4J v1.2 and v2.0 datasets s
 * Java 1.8
 * openai 1.31
 * langchain 0.2
+* Ollama 0.3.3
 
 ## Project Structure
 ```
 .
 ├── code/                     # Main code and data used for CodeCorrector
-│   ├── repair_data/           # Directory containing various information used for code repair
+│   ├── repair_data/          # Directory containing various information used for code repair
+│   ├── otherLLM/             # Updated experiments on open source small parameter models
 │   │   ├── StructureInfo/     
 │   │   ├── SourceCode/        
 │   │   ├── RelatedMethods/       
@@ -48,32 +51,39 @@ The evaluation on a subset of the widely-used Defects4J v1.2 and v2.0 datasets s
 ## Result
 ### Defects4J v1.2
 
-| Project  | #Bug | CodeCorrector    | FitRepair | AlphaRepair | Tare | Selfapr | CURE | GAMMA  | Tbar    |  
-|--------- |------|------------------|-----------|-------------|------|---------|------|--------|---------|
-| Chart    | 16   | 14               | 8         | 8           | 11   | 7       | 9    | 9/9   | 10      |  
-| Closure  | 93   | 19               | 29        | 22          | 22   | 16      | 13   | 20/22 | 18      |  
-| Lang     | 42   | 20               | 17        | 11          | 13   | 9       | 9    | 10/17 | 10      |  
-| Math     | 72   | 24               | 23        | 19          | 20   | 18      | 9    | 19/25 | 16      |  
-| Time     | 16   | 4                | 3         | 3           | 3    | 1       | 1    | 1/2   | 2       |  
-| Mockito  | 16   | 5                | 5         | 4           | 4    | 3       | 4    | 2/3   | 2       |  
-| **Total**| 255  | **86/122**       | 85  | 67    | 71 | 56 | 52 | 61 | 58 |  
+| Project   | #Bug | CodeCorrector | ChatRepair | FitRepair | AlphaRepair | Tare | SelfApr | CURE | GAMMA     | Tbar |
+|-----------|------|---------------|------------|-----------|-------------|------|---------|------|-----------|------|
+| Chart     | 16   | 14            | 13         | 8         | 8           | 11   | 7       | 9    | 9/9       | 10   |
+| Closure   | 93   | 20            | 25(37)     | 29        | 22          | 22   | 16      | 13   | 20/22     | 18   |
+| Lang      | 42   | 20            | 13(21)     | 17        | 11          | 13   | 9       | 9    | 10/17     | 10   |
+| Math      | 72   | 24            | 17(32)     | 23        | 23          | 20   | 18      | 19   | 19/25     | 16   |
+| Time      | 16   | 4             | 2(3)       | 3         | 3           | 3    | 1       | 1    | 1/2       | 2    |
+| Mockito   | 16   | 5             | 6          | 5         | 4           | 5    | 4       | 4    | 2/3       | 2    |
+| **Total** | 255  | **87/128**        | 76(114)| 85    | 67      | 71| 56  | 52| 61    | 58|
+
+
 
 ### Defects4J v2.0
 
-| Project          | #Bug | CodeCorrector | FitRepair | AlphaRepair | Tare | Selfapr | CURE | GAMMA | Tbar |
-|----------------- |------|---------------|-----------|-------------|------|---------|------|-------|------|
-| Closure          | 12   | 1             | 0         | 1           | 1    | 1       | 1    | 1     | 0    |
-| Cli              | 23   | 7             | 6         | 7           | 8    | 2       | 5    | 8     | 5    |
-| Codec            | 11   | 5             | 5         | 5           | 4    | 6       | 4    | 2     | 2    |
-| Collection       | 1    | 0             | 0         | 0           | 1    | 1       | 0    | 0     | 0    |
-| Compress         | 33   | 7             | 1         | 6           | 6    | 1       | 4    | 4     | 4    |
-| Csv              | 11   | 3             | 1         | 5           | 1    | 1       | 0    | 1     | 0    |
-| Gson             | 9    | 3             | 2         | 1           | 1    | 0       | 0    | 1     | 2    |
-| JacksonCore      | 13   | 4             | 3         | 3           | 2    | 3       | 2    | 2     | 2    |
-| JacksonDatabind  | 51   | 9             | 10        | 8           | 8    | 0       | 9    | 2     | 2    |
-| JacksonXml       | 4    | 0             | 1         | 0           | 0    | 0       | 0    | 0     | 0    |
-| Jsoup            | 53   | 9             | 9         | 14          | 5    | 5       | 4    | 10    | 9    |
-| JxPath           | 7    | 0             | 1         | 0           | 0    | 1       | 2    | 0     | 0    |
-| **Total**        | 228  | **51/84**     | 44    | 35      | 38 | 42 | 18 | 38 | 38 |
+| Project          | #Bug | CodeCorrector | ChatRepair | FitRepair | AlphaRepair | Tare | SelfApr | CURE | GAMMA | Tbar |
+|-------------------|------|---------------|------------|-----------|-------------|------|---------|------|-------|------|
+| Closure          | 12   | 1             | 1          | 0         | 1           | 1    | 1       | 1    | 1     | 0    |
+| Cli              | 23   | 7             | 6          | 6         | 7           | 8    | 2       | 5    | 8     | 5    |
+| Codec            | 11   | 5             | 5          | 5         | 5           | 6    | 1       | 4    | 2     | 2    |
+| Collection       | 3    | 1             | 1          | 1         | 1           | 1    | 0       | 1    | 1     | 1    |
+| Compress         | 3    | 0             | 0          | 0         | 0           | 0    | 0       | 0    | 0     | 0    |
+| Csv              | 4    | 1             | 1          | 0         | 0           | 1    | 0       | 0    | 0     | 0    |
+| Gson             | 3    | 1             | 1          | 0         | 0           | 1    | 0       | 0    | 0     | 0    |
+| JacksonCore      | 13   | 4             | 3          | 3         | 3           | 4    | 1       | 4    | 4     | 1    |
+| JacksonDatabind  | 51   | 10            | 10         | 8         | 8           | 10   | 2       | 8    | 9     | 5    |
+| JacksonXml       | 4    | 1             | 1          | 0         | 1           | 1    | 0       | 0    | 1     | 0    |
+| Jsoup            | 53   | 9             | 9          | 9         | 14          | 9    | 1       | 10   | 10    | 9    |
+| JxPath           | 7    | 0             | 0          | 0         | 0           | 0    | 0       | 0    | 0     | 0    |
+| **Total**        | 228  | **63/100**        | 48     | 44    | 35      | 42| 18  | 38| 38| 18|
 
+### QuixBugs
 
+| Dataset          | #Bug | CodeCorrector | ChatRepair | AlphaRepair | Tare | CURE | GAMMA | CoCoNut |
+|------------------|------|---------------|------------|-------------|------|------|-------|---------|
+| QuixBugs_Java    | 40   | 30/35         | 40/-       | 28/30       | 27/27| 26/35| 22/-  | 13/20   |
+| QuixBugs_Python  | 40   | 38/39         | 40/-       | 27/32       | -/-  | -/-  | -/-   | 19/21   |
