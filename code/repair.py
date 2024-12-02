@@ -57,10 +57,10 @@ def load_text(file_path):
         return f.read()
 
 
-def repair_code(agent_executor, memory, buggy, intents, additional_methods):
+def repair_code(agent_executor, memory, buggy, directions, additional_methods):
     """Repair buggy code using agent executor."""
     repair_input = f"""
-    Repair the buggy source code based on the provided Methods in the context and the intent of failed testcase.
+    Repair the buggy source code based on the provided Methods in the context and the direction of repair.
     Only use the existing methods and data for the repair.
     Limit your modifications to the problematic source code section.
 
@@ -69,7 +69,7 @@ def repair_code(agent_executor, memory, buggy, intents, additional_methods):
     <put the full fixed code here>
     ```
 
-    Intent of failed testcase:{intents}
+    Direction of repair:{directions}
 
     The buggy source code: 
     {buggy}
@@ -93,15 +93,15 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
     """Process a single dataset and attempt code repair."""
     buggy = dataset['buggy']
     bug_id = data_name.split('.')[0]
-    intents, additional_methods = "", ""
+    directions, additional_methods = "", ""
 
     for t in testcase_dict.get(bug_id, []):
         testcase_name = t.split("::")[-1].strip()
-        intent_path = f"path to Intent/{bug_id}_{testcase_name}.txt"
+        direction_path = f"path to direction/{bug_id}_{testcase_name}.txt"
         select_path = f"path to ChosenMethods/{bug_id}_{testcase_name}.txt"
 
         try:
-            intents = load_text(intent_path)
+            directions = load_text(direction_path)
             select_res = load_text(select_path)
         except FileNotFoundError:
             continue
@@ -129,7 +129,7 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
         agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
         # Repair code
-        response = repair_code(agent_executor, memory, buggy, intents, additional_methods)
+        response = repair_code(agent_executor, memory, buggy, directions, additional_methods)
         repair_res = response["output"]
 
         # Extract repair result

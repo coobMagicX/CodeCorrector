@@ -40,7 +40,7 @@ file_list = ['Chart-3', 'Chart-4', 'Chart-5', 'Chart-6', 'Chart-7', 'Chart-8', '
 openai_api_key = 'your key'
 
 
-def process_datasets(folder, file_list, exclude_list, model_name, api_key, structural_path, related_path, testcase_path, intent_path, select_path):
+def process_datasets(folder, file_list, exclude_list, model_name, api_key, structural_path, related_path, testcase_path, direction_path, select_path):
     datasets = clean_parse_d4j(folder=folder)
     res_dict = {}
     model = ChatOpenAI(model=model_name, openai_api_key=api_key)
@@ -86,15 +86,15 @@ def process_datasets(folder, file_list, exclude_list, model_name, api_key, struc
             if testcase_name.endswith('\n'):
                 testcase_name = testcase_name[:-1]
             try:
-                with open(f"{intent_path}/{bug_id}_{testcase_name}.txt", "r") as f:
-                    intents = f.read()
+                with open(f"{direction_path}/{bug_id}_{testcase_name}.txt", "r") as f:
+                    directions = f.read()
             except FileNotFoundError:
                 continue
 
             select_prompt = ChatPromptTemplate.from_messages([
                 ("system", "You are an APR assistant."),
                 ("user", """
-                Choose the context information from the candidate options that aids in the test repair based on the intent and repair logic.
+                Choose the context information from the candidate options that aids in the test repair based on the direction and repair logic.
                 Choose one from each of the three candidate lists.
 
                 Desired format:
@@ -105,8 +105,8 @@ def process_datasets(folder, file_list, exclude_list, model_name, api_key, struc
                 Constructor_list:{Constructor_list}
                 Methods_list:{Methods_list}
 
-                Test-Repair intent:
-                {intents}
+                Test-Repair direction:
+                {directions}
 
                 Source code: 
                 {code}
@@ -116,7 +116,7 @@ def process_datasets(folder, file_list, exclude_list, model_name, api_key, struc
             select_chain = LLMChain(prompt=select_prompt, llm=model, output_key="select", verbose=True)
             select_res = select_chain.invoke({
                 "code": buggy,
-                "intents": intents,
+                "directions": directions,
                 "Class_list": related_classes,
                 "Constructor_list": related_constructors,
                 "Methods_list": related_methods
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     parser.add_argument('--structural_path', type=str, required=True, help="Path to the structural information.")
     parser.add_argument('--related_path', type=str, required=True, help="Path to the related methods information.")
     parser.add_argument('--testcase_path', type=str, required=True, help="Path to the fail test case information.")
-    parser.add_argument('--intent_path', type=str, required=True, help="Path to the intent information.")
+    parser.add_argument('--direction_path', type=str, required=True, help="Path to the direction information.")
     parser.add_argument('--select_path', type=str, required=True, help="Path to save the repair selection results.")
 
     args = parser.parse_args()
@@ -151,6 +151,6 @@ if __name__ == '__main__':
         structural_path=args.structural_path,
         related_path=args.related_path,
         testcase_path=args.testcase_path,
-        intent_path=args.intent_path,
+        direction_path=args.direction_path,
         select_path=args.select_path
     )

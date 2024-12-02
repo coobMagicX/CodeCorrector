@@ -8,7 +8,7 @@ Created on 22/6/2023 下午6:51
 # 标准库导入
 import json
 import os
-import argparse
+argparse
 import re
 import getpass
 import signal
@@ -41,8 +41,18 @@ from langchain_ollama import ChatOllama
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline, BitsAndBytesConfig
 
 # 本地工具导入
-from repair_utils import clean_parse_d4j, load_data, save_to_json, get_unified_diff, save_results, get_method, validate_patche, _run_validation, run_d4j_test
-
+from repair_utils import (
+    clean_parse_d4j,
+    load_data,
+    save_to_json,
+    get_unified_diff,
+    save_results,
+    get_method,
+    validate_patche,
+    _run_validation,
+    run_d4j_test,
+    may_pass
+)
 
 
 
@@ -53,7 +63,6 @@ file_list = ['Chart-1', 'Chart-10', 'Chart-11', 'Chart-12', 'Chart-13', 'Chart-1
         'Mockito-1', 'Mockito-12', 'Mockito-13', 'Mockito-18', 'Mockito-20', 'Mockito-22', 'Mockito-24', 'Mockito-27', 'Mockito-28', 'Mockito-29', 'Mockito-33', 'Mockito-34', 'Mockito-38', 'Mockito-5', 'Mockito-7', 'Mockito-8',
         'Time-14', 'Time-15', 'Time-16', 'Time-17', 'Time-18', 'Time-19', 'Time-20', 'Time-22', 'Time-23', 'Time-24', 'Time-25', 'Time-27', 'Time-4', 'Time-5', 'Time-7', 'Time-8'
         ]
-# file_list = ['Lang-53']
 exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", "Math-105", "Math-2", "Time-15",
     "Lang-57","Math-101","Math-25","Math-34","Math-41","Math-45","Math-50","Math-86","Mockito-8",
     "Lang-51"] #上下文短/testcase未找到/上下文无补充
@@ -80,85 +89,70 @@ llm = ChatOllama(
     temperature=0.7,
     )
 
-
-def repair_candidate_selection(base_path, folder, file_list, exclude_list):
+def analyze_test_cases(base_path, folder, file_list, exclude_list):
+    token_files = {}
     datasets = clean_parse_d4j(folder=folder)
-    for time in range(1, 11):
+    for time in range(2, 11):
         for idx, (data_name, dataset) in enumerate(datasets.items()):
             print("idx: ", idx)
             print("data_name: ", data_name)
             if data_name.split('.')[0] not in file_list or data_name.split('.')[0] in exclude_list:
                 continue
             buggy = dataset['buggy']
-
-            with open(base_path + "/repair_data/Defects4j/single_function_repair.json", "r") as f:
-                bug_dict = json.load(f)
-
             bug_id = data_name.split('.')[0]
-            project = bug_id.split("-")[0]
-            bug = bug_id.split("-")[1]
-            tmp_bug_id = "test_" + bug_id
-            start = bug_dict[bug_id]['start']
-            end = bug_dict[bug_id]['end']
-
-            structural_path = base_path + "/repair_data/repair_test_json/StructureInfo/1.2/"
-            with open(structural_path + bug_id + ".json", "r") as f:
-                loaded_dist = json.load(f)
-            print("loaded_method \n", loaded_dist["Method"])
-
-            related_path = base_path + "/repair_data/repair_test_json/RelatedMethods/1.2/"
-            with open(related_path + bug_id + ".txt", "r") as f:
-                related_methods = f.read()
-
-            if related_methods == "[]":
-                related_methods = loaded_dist["Method"]
-            related_classes = loaded_dist["Class"]
-            related_constructors = loaded_dist["Constructor"]
-
             testcase_path = base_path + "/repair_data/repair_test_json/FailTestCase/Code/1.2/"
             with open(testcase_path + "fail_test_case.json", "r") as f:
                 testcase_dict = json.load(f)
+
+            tracecode_path = base_path + "/repair_data/repair_test_json/FailTestCase/Line/1.2/"
+            with open(tracecode_path + bug_id + ".json", "r") as f:
+                matching_codes = json.load(f)
 
             for t in testcase_dict[bug_id]:
                 testcase_split = t.split("::")
                 testcase_name = testcase_split[-1]
                 if testcase_name.endswith('\n'):
                     testcase_name = testcase_name[:-1]
+
+                with open(testcase_path + bug_id + "_" + testcase_name + ".java", "r") as f:
+                    testcase_code = f.read()
+
                 try:
-                    direction_path = "./TestCasedirection/res/llama3/1.2/{}/".format(time)
-                    with open(direction_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
-                        directions = f.read()
-                except FileNotFoundError:
+                    trace_line = matching_codes[testcase_name]
+                except KeyError:
                     continue
 
-                # ---------------------- 用 LLM ---------------------------
-                message = [
-                    {"role": "system", "content": "You are an APR assistant."},
-                    {"role": "user", "content": """
-                    Choose context information from candidate options that best supports the repair based on the repair direction. Choose one option from each of the three candidate lists.
+                if trace_line:
+                    message = [
+                        {"role": "system", "content": "You are a code testing and analysis assistant."},
+                        {"role": "user", "content": """
+                        Infer the purpose and intent of the failing test cases.
+                        Analyze failed test cases and infer potential errors in the source code.
+                        Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
+                        (without details of the repair, just clearly state the direction for the repair)
 
-                    Return strictly in this format: <idx>-<Class/Constructor/Method>: <Name of context you choose from the candidate options.>
+                        Desired format:
+                        Intent:<put the intent and purpose here>.
+                        Repair strategy:<put the repair strategy here>.
 
-                    Candidate options from the context:
-                        Class_list:{Class_list}
-                        Constructor_list:{Constructor_list}
-                        Methods_list:{Methods_list}
+                        Source code: 
+                        {buggy}
 
-                    Repair direction:
-                    {direction}
+                        Failed test cases: 
+                        {testcase_code}
 
-                    Source code: 
-                    {code}
-                    """.format(Class_list=related_classes, Constructor_list=related_constructors, Methods_list=related_methods, directions=directions, code=buggy)}
-                ]
-                response = llm.invoke(message).content
-                print("--response:\n", response)
-                direction_path = "./Choose/res/llama3/1.2/{}/".format(time)
-                with open(direction_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
-                    f.write(response)
+                        Fault-revealing lines of failed test cases:
+                        {trace_line}
+                        """.format(buggy=buggy, testcase_code=testcase_code, trace_line=trace_line)}
+                    ]
+                    response = llm.invoke(message).content
+                    print("--response:\n", response)
+                    direction_path = "./TestCasedirection/res/llama3/1.2/{}/".format(time)
+                    with open(direction_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
+                        f.write(response)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Select the best repair candidate options based on repair direction.")
+    parser = argparse.ArgumentParser(description="Analyze test cases and infer repair strategies.")
     parser.add_argument('--base_path', type=str, required=True, help="Base path for the project.")
     parser.add_argument('--folder', type=str, required=True, help="Folder path for the repair data.")
     parser.add_argument('--file_list', type=str, nargs='+', required=True, help="List of files to include.")
@@ -166,7 +160,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    repair_candidate_selection(
+    analyze_test_cases(
         base_path=args.base_path,
         folder=args.folder,
         file_list=args.file_list,

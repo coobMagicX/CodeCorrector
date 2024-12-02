@@ -134,7 +134,7 @@ def repair_context_selection(base_path, folder, file_list, exclude_list):
                 message = [
                     {"role": "system", "content": "You are an APR assistant."},
                     {"role": "user", "content": """
-                    Choose context information from candidate options that best supports the repair based on the repair intent. Choose one option from each of the three candidate lists.
+                    Choose context information from candidate options that best supports the repair based on the repair direction. Choose one option from each of the three candidate lists.
 
                     Return strictly in this format: <idx>-<put the type of option here>: <put the name of context you choose from the candidate options here.>
 
@@ -143,7 +143,7 @@ def repair_context_selection(base_path, folder, file_list, exclude_list):
                         Constructor_list:{Constructor_list}
                         Methods_list:{Methods_list}
 
-                    Test-Repair intent:
+                    Repair direction:
                     {intents}
 
                     Source code: 
@@ -157,7 +157,7 @@ def repair_context_selection(base_path, folder, file_list, exclude_list):
                     f.write(response)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Select repair context information based on repair intent.")
+    parser = argparse.ArgumentParser(description="Select repair context information based on repair direction.")
     parser.add_argument('--base_path', type=str, required=True, help="Base path for the project.")
     parser.add_argument('--folder', type=str, required=True, help="Folder path for the repair data.")
     parser.add_argument('--file_list', type=str, nargs='+', required=True, help="List of files to include.")

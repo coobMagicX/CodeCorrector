@@ -8,7 +8,7 @@ Created on 22/6/2023 下午6:51
 # 标准库导入
 import json
 import os
-argparse
+import argparse
 import re
 import getpass
 import signal
@@ -67,32 +67,16 @@ exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", 
     "Lang-57","Math-101","Math-25","Math-34","Math-41","Math-45","Math-50","Math-86","Mockito-8",
     "Lang-51"] #上下文短/testcase未找到/上下文无补充
 
-# ---------------------- 原生 ---------------------------
-# # 加载本地模型和分词器
-# os.environ['CUDA_VISIBLE_DEVICES'] = '2' 
-# model_name = "/home/usersuper/Project/WYH/falcon7b/falcon-mamba-7b-instruct/"  # 本地模型路径
-# tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-# model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, device_map="auto", quantization_config=BitsAndBytesConfig(load_in_4bit=True))
-# pipe = pipeline(
-#     "text-generation",
-#     model=model,
-#     tokenizer=tokenizer,
-#     max_length=1024,
-#     device_map="auto"
-#     )
-# local_model = HuggingFacePipeline(pipeline=pipe)
-
 # ---------------------- Ollama ---------------------------
 llm = ChatOllama(
     base_url='http://127.0.0.1:11434',
-    model = "llama3.1",
+    model = "glm4",
     temperature=0.7,
     )
 
-def analyze_test_cases(base_path, folder, file_list, exclude_list):
-    token_files = {}
+def infer(base_path, folder, file_list, exclude_list):
     datasets = clean_parse_d4j(folder=folder)
-    for time in range(2, 11):
+    for time in range(1, 11):
         for idx, (data_name, dataset) in enumerate(datasets.items()):
             print("idx: ", idx)
             print("data_name: ", data_name)
@@ -126,33 +110,33 @@ def analyze_test_cases(base_path, folder, file_list, exclude_list):
                     message = [
                         {"role": "system", "content": "You are a code testing and analysis assistant."},
                         {"role": "user", "content": """
-                        Infer the purpose and intent of the failing test cases.
-                        Analyze failed test cases and infer potential errors in the source code.
-                        Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
-                        (without details of the repair, just clearly state the direction for the repair)
+                            Infer the purpose and intent of the failing test cases.
+                            Analyze failed test cases and infer potential errors in the source code.
+                            Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
+                            (without details of the repair, just clearly state the direction for the repair)
 
-                        Desired format:
-                        Intent:<put the intent and purpose here>.
-                        Repair strategy:<put the repair strategy here>.
+                            Desired format:
+                            Intent:<put the intent and purpose here>.
+                            Repair strategy:<put the repair strategy here>.
 
-                        Source code: 
-                        {buggy}
+                            Source code: 
+                            {buggy}
 
-                        Failed test cases: 
-                        {testcase_code}
+                            Failed test cases: 
+                            {testcase_code}
 
-                        Fault-revealing lines of failed test cases:
-                        {trace_line}
-                        """.format(buggy=buggy, testcase_code=testcase_code, trace_line=trace_line)}
+                            Fault-revealing lines of failed test cases:
+                            {trace_line}
+                            """.format(buggy=buggy, testcase_code=testcase_code, trace_line=trace_line)}
                     ]
                     response = llm.invoke(message).content
                     print("--response:\n", response)
-                    intent_path = "./TestCaseIntent/res/llama3/1.2/{}/".format(time)
-                    with open(intent_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
+                    direction_path = "./TestCasedirection/res/glm4/1.2/{}/".format(time)
+                    with open(direction_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
                         f.write(response)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Analyze test cases and infer repair strategies.")
+    parser = argparse.ArgumentParser(description="Infer test case intents and repair strategies.")
     parser.add_argument('--base_path', type=str, required=True, help="Base path for the project.")
     parser.add_argument('--folder', type=str, required=True, help="Folder path for the repair data.")
     parser.add_argument('--file_list', type=str, nargs='+', required=True, help="List of files to include.")
@@ -160,9 +144,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    analyze_test_cases(
+    infer(
         base_path=args.base_path,
         folder=args.folder,
         file_list=args.file_list,
         exclude_list=args.exclude_list
     )
+

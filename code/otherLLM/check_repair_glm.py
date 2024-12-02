@@ -158,9 +158,9 @@ def repair_execution(base_path, folder, file_list, exclude_list):
                 if testcase_name.endswith('\n'):
                     testcase_name = testcase_name[:-1]
                 try:
-                    intent_path = "./TestCaseIntent/res/glm4/1.2/{}/".format(time)
-                    with open(intent_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
-                        intents = f.read()
+                    direction_path = "./TestCasedirection/res/glm4/1.2/{}/".format(time)
+                    with open(direction_path + bug_id + "_" + testcase_name + ".txt", "r") as f:
+                        directions = f.read()
                 except FileNotFoundError:
                     continue
 
@@ -176,7 +176,7 @@ def repair_execution(base_path, folder, file_list, exclude_list):
                 message = [
                     {"role": "system", "content": "You are an APR tool."},
                     {"role": "user", "content": """
-                    Repair the buggy source code based on the provided Methods in the context and the intent of failed testcase.
+                    Repair the buggy source code based on the provided Methods in the context and the direction of repair.
                     Only use the existing methods and data for the repair.
                     Limit your modifications to the problematic source code section.
 
@@ -185,14 +185,14 @@ def repair_execution(base_path, folder, file_list, exclude_list):
                     <put the full fixed code here>
                     ```
 
-                    Intent of failed testcase:{intents}
+                    Direction of repair:{directions}
 
                     The buggy source code: 
                     {code}
 
                     Methods that you can utilize in the context:
                     {additional_methods}
-                    """.format(intents=intents, code=buggy, additional_methods=additional_methods)}
+                    """.format(directions=directions, code=buggy, additional_methods=additional_methods)}
                 ]
                 response = llm.invoke(message).content
                 print("--response:\n", response)
