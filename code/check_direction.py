@@ -43,7 +43,7 @@ exclude_list = ["Chart-10", "Chart-11", "Closure-111", "Closure-82", "Lang-14", 
 
 openai_api_key = 'your key'
 
-def analyze_test_case_intents(folder, file_list, exclude_list, model_name, api_key):
+def analyze_test_case_directions(folder, file_list, exclude_list, model_name, api_key):
     datasets = parse_d4j(folder=folder)
     model = ChatOpenAI(model=model_name, openai_api_key=api_key)
     set_verbose(True)
@@ -87,7 +87,7 @@ def analyze_test_case_intents(folder, file_list, exclude_list, model_name, api_k
             if trace_line:
                 print("trace_line: ", trace_line)
 
-                intent_prompt = ChatPromptTemplate.from_messages([
+                direction_prompt = ChatPromptTemplate.from_messages([
                     ("system", "You are a code testing and analysis assistant."),
                     ("user", """
                     Infer the purpose and intent of the failing test cases.
@@ -110,12 +110,12 @@ def analyze_test_case_intents(folder, file_list, exclude_list, model_name, api_k
                     """)
                 ])
 
-                direction_chain = LLMChain(prompt=intent_prompt, llm=model, output_key="direction", verbose=True)
-                res = intent_chain.invoke({"code": buggy, "test_case": testcase_code, "trace_line": trace_line})
+                direction_chain = LLMChain(prompt=direction_prompt, llm=model, output_key="direction", verbose=True)
+                res = direction_chain.invoke({"code": buggy, "test_case": testcase_code, "trace_line": trace_line})
                 direction_res = res["direction"]
                 print("--direction_res:\n", direction_res)
 
-                direction_path = f"{folder}/repair_test_json/TestCaseIntent/res/"
+                direction_path = f"{folder}/repair_test_json/TestCasedirection/res/"
                 with open(direction_path + bug_id + "_" + testcase_name + ".txt", "w") as f:
                     f.write(direction_res)
 
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    analyze_test_case_intents(
+    analyze_test_case_directions(
         folder=args.folder,
         file_list=args.file_list,
         exclude_list=args.exclude_list,
