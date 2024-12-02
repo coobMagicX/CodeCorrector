@@ -6,9 +6,9 @@
 ## Introduction
 Automated program repair (APR) plays a crucial role in ensuring the quality of software code, as manual bug fixing is time-consuming and labor-intensive. Despite large language models (LLMs) have gained attention in APR due to their patch generation capabilities, existing APR techniques still suffer from several limitations (e.g., heavy reliance on fine-grained fault localization and untargeted context selection) that might influence program repair. As a result, these LLM-based approaches are effective in some bugs, but struggle to generate correct patches in complex practical scenarios. To address these challenges, a more effective LLM-based APR approach is required to generate more accurate patches. 
 
-In this paper, we propose an APR approach named \textbf{CodeCorrector}, which empowers the bug-fixing ability of LLMs by context-aware prompting that adaptively selects the specific context for each defect. Given a failing test and its buggy file, CodeCorrector analyzes test objectives from failing tests and deduces implicit repair logic to distill repair intentions, selects global context information according to repair intentions, then builds context-aware repair prompts with specific scenario information (i.e., repair intents, local and global context) for LLMs to generate patches.  Our motivation is to provide a new perspective for more powerful LLM-based program repair by analyzing the traits (e.g., repair intent) of each bug and adaptively selecting its relevant and useful context to effectively guide LLMs for correct program repair in complex code scenarios. 
+In this paper, we propose a context-aware APR approach named CodeCorrector, which designs a Chain-of-Thought (CoT) approach to follow developers’ program repair behavior. Firstly, for a given defect, CodeCorrector instructs a LLM to summarize why the test fails according to the failure message and then infer the corresponding repair direction. Secondly, it then instructs the LLM to select the relevant context information to the repair direction regarding the given defect. That is, the CoT method enables the adaptive selection of context information for any given defect. Finally, based on the analyzed repair direction and relevant context information, CodeCorrector instructs the LLM to generate patches for completing the APR process. Our motivation is to provide a new perspective for more powerful LLM-based program repair by analyzing the traits (e.g., repair direction) of each bug and adaptively selecting its relevant and useful context to effectively guide LLMs for correct program repair in complex code scenarios. 
 
-The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks shows that overall, {\tool} only generates a few patches (i.e., as low as ten) for each defect, but it outperforms all the state-of-the-art baselines both on Defects4J v1.2 without fine-grained defect localization information and on relatively complex Defects4J v2.0, and fixes 14 and 24 unique bugs on Defects4J v1.2 and v2.0 respectively. We further analyze the contributions of two core components to the performance of {\tool}, especially repair intents improve {\tool} by 112\% in correct patches and 78\% in plausible patches on Defects4J v1.2. Moreover, {\tool} produces more valid and correct patches with a 377\% improvement for GPT-3.5 and a 268\% improvement for GPT-4. 
+The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks shows that overall, CodeCorrector only generates a few patches (i.e., as low as ten) for each defect, but it outperforms all the state-of-the-art baselines both on Defects4J v1.2 without fine-grained defect localization information and on relatively complex Defects4J v2.0, and fixes 14 and 24 unique bugs on Defects4J v1.2 and v2.0 respectively. We further analyze the contributions of two core components to the performance of CodeCorrector, especially repair direction improve CodeCorrector by 112\% in correct patches and 78\% in plausible patches on Defects4J v1.2. Moreover, CodeCorrector produces more valid and correct patches with a 377\% improvement for GPT-3.5 and a 268\% improvement for GPT-4. 
 
 ## Dataset
 ### [Defects4J](https://github.com/rjust/defects4j)
@@ -33,11 +33,11 @@ The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks 
 │   │   ├── RelatedMethods/       
 │   │   ├── FailTestCase/
 │   │   ├── Defects4j/         # Referenced from [Automated Program Repair in the Era of Large Pre-trained Language Models]
-│   │   ├── TestCaseIntent/       
+│   │   ├── TestCasedirection/       
 │   │   ├── ChosenMethods/
 │   │   └── Generation/    
 │   ├── check_ast.py          
-│   ├── check_intent.py       
+│   ├── check_direction.py       
 │   ├── check_testcase.py      
 │   ├── check_method.py       
 │   ├── repair.py              # Main script for performing code repairs
