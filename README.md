@@ -43,9 +43,11 @@ The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks 
 │   ├── repair.py              # Main script for performing code repairs
 │   └── utils.py               # Utility functions used across the project
 ├── README.md                  # Project documentation
+├── baseline_ChatRepair        # The baseline code we reproduce
 ├── result/                    # Some manual review results
 │   ├── 1.2result/             # Results for version 1.2
-│   └── 2.0result/             # Results for version 2.0
+│   ├── 2.0result/             # Results for version 2.0
+│   └── quixbugs_result/       # Results for quixbugs_result
 ```
 
 ## Code
