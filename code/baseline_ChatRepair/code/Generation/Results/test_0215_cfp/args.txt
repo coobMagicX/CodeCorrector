@@ -1,0 +1,1 @@
+Namespace(dataset='defects4j-1.2-function', folder='Results/test', function=True, hunk=False, key_file='api_key.txt', lang='Java', target_folder='Results/test', tmp_prefix='test', total_tries=10)

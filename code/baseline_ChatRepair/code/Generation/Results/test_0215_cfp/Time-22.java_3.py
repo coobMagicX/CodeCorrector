@@ -1,0 +1,1 @@
+protected BasePeriod(long duration, Chronology chrono

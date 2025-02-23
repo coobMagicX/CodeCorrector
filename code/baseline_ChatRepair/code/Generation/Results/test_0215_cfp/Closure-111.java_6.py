@@ -1,0 +1,1 @@
+protected JSType caseTopType(JSType top

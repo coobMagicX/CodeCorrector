@@ -1,0 +1,1 @@
+public static boolean containsIgnoreCase(String str, String search
