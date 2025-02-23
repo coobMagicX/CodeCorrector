@@ -33,11 +33,11 @@ The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks 
 │   │   ├── RelatedMethods/       
 │   │   ├── FailTestCase/
 │   │   ├── Defects4j/         # Referenced from [Automated Program Repair in the Era of Large Pre-trained Language Models]
-│   │   ├── TestCaseIntent/       
+│   │   ├── TestCaseDirection/       
 │   │   ├── ChosenMethods/
 │   │   └── Generation/    
 │   ├── check_ast.py          
-│   ├── check_intent.py       
+│   ├── check_direction.py       
 │   ├── check_testcase.py      
 │   ├── check_method.py       
 │   ├── repair.py              # Main script for performing code repairs
@@ -46,6 +46,30 @@ The evaluation on a subset of the widely-used Defects4J and QuixBugs benchmarks 
 ├── result/                    # Some manual review results
 │   ├── 1.2result/             # Results for version 1.2
 │   └── 2.0result/             # Results for version 2.0
+```
+
+## Code
+You can modify and run the code in the following way:
+1. Modify the file paths in the code to match your actual setup.
+2. Run check_testcase.py to extract testcase and assert statement.
+```
+python check_testcase.py
+```
+3. Run check_direction.py to infer repair direction.
+```
+python check_direction.py
+```
+4. Run check_ast.py to construct candidate repository.
+```
+python check_ast.py
+```
+5. Run check_method.py to select context.
+```
+python check_method.py
+```
+6. Run repair.py to fix the bug.
+```
+python repair.py
 ```
 
 ## Result
