@@ -56,13 +56,35 @@ def load_text(file_path):
     with open(file_path, "r") as f:
         return f.read()
 
-
-def repair_code(agent_executor, memory, buggy, directions, additional_methods):
+def adjust_code(agent_executor, memory, compile_info):
     """Repair buggy code using agent executor."""
     repair_input = f"""
-    Repair the buggy source code based on the provided Methods in the context and the direction of repair.
-    Only use the existing methods and data for the repair.
-    Limit your modifications to the problematic source code section.
+    Patch fails to compile. Repair it again.
+    
+    Desired format:
+    ```java
+    <put the full fixed code here>
+    ```
+    
+    Compile errors: {compile_info}
+    """
+    config = {"configurable": {"session_id": "test-session"}}
+    chain_with_message_history = RunnableWithMessageHistory(
+        agent_executor,
+        lambda session_id: memory,
+        input_messages_key="input",
+        history_messages_key="chat_history",
+        verbose=True
+    )
+    response = chain_with_message_history.invoke({"input": repair_input}, config)
+    return response
+
+def repair_code(agent_executor, memory, buggy, directions, context):
+    """Repair buggy code using agent executor."""
+    repair_input = f"""
+    Repair the buggy code based on the provided context and the repair direction.
+    Only use the existing code for the repair.
+    Limit the repair to the buggy code.
 
     Desired format:
     ```java
@@ -71,11 +93,11 @@ def repair_code(agent_executor, memory, buggy, directions, additional_methods):
 
     Direction of repair:{directions}
 
-    The buggy source code: 
+    Buggy code: 
     {buggy}
 
-    Methods that you can utilize in the context:
-    {additional_methods}
+    Context that you can utilize in the context:
+    {context}
     """
     config = {"configurable": {"session_id": "test-session"}}
     chain_with_message_history = RunnableWithMessageHistory(
@@ -93,7 +115,7 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
     """Process a single dataset and attempt code repair."""
     buggy = dataset['buggy']
     bug_id = data_name.split('.')[0]
-    directions, additional_methods = "", ""
+    directions, context = "", ""
 
     for t in testcase_dict.get(bug_id, []):
         testcase_name = t.split("::")[-1].strip()
@@ -115,7 +137,7 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
         for sl in select_matches:
             key = sl[1]
             if key in chosen_methods:
-                additional_methods += chosen_methods[key] + "\n"
+                context += chosen_methods[key] + "\n"
 
         # Initialize repair process
         memory = ChatMessageHistory(session_id="test-session")
@@ -129,7 +151,7 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
         agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 
         # Repair code
-        response = repair_code(agent_executor, memory, buggy, directions, additional_methods)
+        response = repair_code(agent_executor, memory, buggy, directions, context)
         repair_res = response["output"]
 
         # Extract repair result
@@ -147,6 +169,20 @@ def process_dataset(data_name, dataset, bug_dict, testcase_dict, model, tools):
 
         if test_result == "success":
             return True
+        else:
+            if javac_error == True:
+                compile_info = test_result
+                error_response = adjust_code(agent_executor, memory, compile_info)
+                pattern = r"```java\n(.*?)\n```"
+                try:
+                    error_patch = re.findall(pattern, error_response, re.DOTALL)[0], 1
+                except IndexError:
+                    error_patch = ""
+                save_results(data_name, buggy, error_patch, well)
+                test_result, javac_error = validate_patche(data_name)
+            else:
+                continue
+
     return False
 
 

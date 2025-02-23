@@ -66,6 +66,7 @@ def run_d4j_test(source, testmethods, bug_id):
     compile_fail = False
     timed_out = False
     entire_bugg = False
+    failing_test = ""
     error_string = ""
 
     try:
@@ -117,6 +118,7 @@ def run_d4j_test(source, testmethods, bug_id):
             continue
         else:
             bugg = True
+            failing_test = t
             break
 
     if not bugg:

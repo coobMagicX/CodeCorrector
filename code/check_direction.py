@@ -88,30 +88,28 @@ def analyze_test_case_intents(folder, file_list, exclude_list, model_name, api_k
                 print("trace_line: ", trace_line)
 
                 intent_prompt = ChatPromptTemplate.from_messages([
-                    ("system", "You are a code testing and analysis assistant."),
+                    ("system", "You are an assistant for code analysis."),
                     ("user", """
                     Infer the purpose and intent of the failing test cases.
-                    Analyze failed test cases and infer potential errors in the source code.
                     Based on this analysis, provide a brief outline of key repair direction that can help the source code pass the test case.
                     (without details of the repair, just clearly state the direction for the repair)
 
                     Desired format:
-                    Intent:<put the intent and purpose here>.
-                    Repair strategy:<put the repair strategy here>.
+                    direction:<put the intent and purpose here>. <put the repair strategy here>.
 
                     Source code: 
-                    {code}
+                    {buggy}
 
                     Failed test cases: 
-                    {test_case}
+                    {test_code}
 
                     Fault-revealing lines of failed test cases:
-                    {trace_line}
+                    {trigger_line}
                     """)
                 ])
 
                 direction_chain = LLMChain(prompt=intent_prompt, llm=model, output_key="direction", verbose=True)
-                res = intent_chain.invoke({"code": buggy, "test_case": testcase_code, "trace_line": trace_line})
+                res = direction_chain.invoke({"buggy": buggy, "test_code": testcase_code, "trigger_line": trace_line})
                 direction_res = res["direction"]
                 print("--direction_res:\n", direction_res)
 

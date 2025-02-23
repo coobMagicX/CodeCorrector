@@ -210,7 +210,7 @@ if __name__ == '__main__':
         #                 end = find_matching_brace(code, start)
         #                 if end != -1:
         #                     # Add the replacement text and the closing brace
-        #                     result.append("\n         //The specific code has been omitted, but there is no error\n        }")
+        #                     result.append("\n         //The specific code has been omitted, and no errors are present.\n        }")
         #                     i = end + 1
         #                     continue
         #         elif re.match(r'\w+\s*\([^)]*\)\s*{', code[i:]):

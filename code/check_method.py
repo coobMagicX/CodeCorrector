@@ -91,35 +91,34 @@ def process_datasets(folder, file_list, exclude_list, model_name, api_key, struc
             except FileNotFoundError:
                 continue
 
+            context_list = {}
+            context_list["Class_list"] = related_classes
+            context_list["Constructor"] = related_constructors
+            context_list["Method"] = related_methods
             select_prompt = ChatPromptTemplate.from_messages([
                 ("system", "You are an APR assistant."),
-                ("user", """
-                Choose the context information from the candidate options that aids in the test repair based on the direction and repair logic.
-                Choose one from each of the three candidate lists.
+                ("user", f"""
+                Choose the context information from the candidate options that aids in the repair based on the repair direction.
 
                 Desired format:
                 <idx>-<place the name of context you choose from the candidate options.>
 
                 Candidate options from the context:
-                Class_list:{Class_list}
-                Constructor_list:{Constructor_list}
-                Methods_list:{Methods_list}
+                {context_list}
 
                 Test-Repair direction:
                 {directions}
 
                 Source code: 
-                {code}
+                {buggy}
                 """)
             ])
 
             select_chain = LLMChain(prompt=select_prompt, llm=model, output_key="select", verbose=True)
             select_res = select_chain.invoke({
-                "code": buggy,
+                "buggy": buggy,
                 "directions": directions,
-                "Class_list": related_classes,
-                "Constructor_list": related_constructors,
-                "Methods_list": related_methods
+                "context_list": context_list,
             })["select"]
 
             print("--select_res:\n", select_res)
